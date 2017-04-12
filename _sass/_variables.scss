@@ -12,6 +12,7 @@ $darkerGray: #222;
 $darkGray: #333;
 $gray: #666;
 $lightGray: #eee;
+$veryLightGray: #fbfbfb;
 $white: #fff;
 
 // Font stacks
@@ -21,7 +22,7 @@ $georgia: Georgia, serif;
 
 // Mobile breakpoints
 @mixin mobile {
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 740px) {
     @content;
   }
 }

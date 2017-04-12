@@ -22,7 +22,12 @@
           <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
 
           <div class="site-info">
-            <h2 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}<span class="site-subtitle">{{ site.subtitle }}</span></a></h2>
+            <h2 class="site-name">
+              <a href="{{ site.baseurl }}/">
+                <span class="site-name-first-line">{{ site.name }}</span>
+                <span class="site-name-second-line">{{ site.subtitle }}</span>
+              </a>
+            </h2>
             <p class="site-description">{{ site.description }}</p>
           </div>
 
