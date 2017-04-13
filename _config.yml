@@ -26,9 +26,9 @@ footer-links:
   flickr:
   github: jurebajt
   instagram:
-  linkedin:
+  linkedin: jurebajt
   pinterest:
-  rss: # just type anything here for a working RSS icon
+  rss: enabled # just type anything here for a working RSS icon
   twitter: byteneer
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
