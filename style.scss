@@ -70,11 +70,11 @@ p {
 }
 
 a {
-  color: $blue;
+  color: $primary-color;
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
-    color: $blue;
+    color: $primary-color;
   }
 }
 
@@ -152,7 +152,7 @@ img {
 //
 
 .wrapper-masthead {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .masthead {
@@ -251,7 +251,7 @@ nav {
 
     @include mobile {
       margin: 0 10px;
-      color: $blue;
+      color: $primary-color;
     }
   }
 }
@@ -288,6 +288,73 @@ nav {
     text-transform: uppercase;
     font-size: 15px;
   }
+}
+
+.projects-title {
+  margin-top: 60px;
+  margin-bottom: 0;
+}
+
+.projects-grid__item {
+  width: 50%;
+  float: left;
+  margin-top: 20px;
+  padding: 20px;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  @include mobile {
+    width: 100%;
+    float: none;
+    margin-top: 40px;
+    padding: 0;
+  }
+}
+
+.projects-grid__item-image-container {
+  height: 250px;
+  text-align: center;
+}
+
+.projects-grid__item-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.projects-grid__item-title {
+  margin: 10px 0 0;
+
+  a {
+    color: inherit;
+  }
+}
+
+.projects-grid__item-description {
+  margin: 10px 0 0;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.projects-grid__item-tech-stack {
+  margin: 5px 0 0;
+  color: $gray;
+  font-size: 14px;
+}
+
+.projects-grid__item-tech-stack-label {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 5px;
+  background-color: $primary-color;
+  color: $white;
+  border-radius: 3px;
+  white-space: nowrap;
 }
 
 .wrapper-footer {
