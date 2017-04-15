@@ -9,7 +9,7 @@ permalink: /about/
 
   <div class="entry">
     <p>
-        As you might have guessed from page header, my name is Jure Bajt and I'm a full stack web engineer who really likes front-end development. I'm currently a part of the awesome <a href="http://www.zemanta.com/team/" target="_blank">Zemanta's</a> engineering team.
+        As you might have guessed from page header, my name is Jure Bajt and I'm a full stack web engineer based in Slovenia who really likes front-end development. I'm currently a part of the awesome <a href="http://www.zemanta.com/team/" target="_blank">Zemanta's</a> engineering team.
     </p>
     <p>
         <strong>CV:</strong> <a href="https://www.linkedin.com/in/jurebajt/" target="_blank">LinkedIn</a>
