@@ -14,7 +14,7 @@ permalink: /about/
     <p>
         <strong>CV:</strong> <a href="https://www.linkedin.com/in/jurebajt/" target="_blank">LinkedIn</a>
         <br>
-        <strong>Contact:</strong> <a href="mailto:jure@byteneer.com">jure@byteneer.com</a>
+        <strong>Contact:</strong> <a href="mailto:jure.bajt@gmail.com">Email</a>
     </p>
     <p>
         I might be a bit geeky at times (everyday really). In the meantime, however, I like to enjoy my life through many, non-tech related activities:
