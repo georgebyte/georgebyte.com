@@ -183,7 +183,6 @@ img {
 
 .site-info {
   float: left;
-  padding: 8px 0;
 
   @include mobile {
     float: none;
@@ -204,19 +203,19 @@ img {
 }
 
 .site-description {
+  width: 300px;
   margin: 8px 0 0;
   color: $gray;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 16px;
 
   @include mobile {
-    margin: 3px 0;
+    width: auto;
   }
 }
 
 nav {
   float: right;
-  margin-top: 25px;
   font-family: $sansSerifFont;
   font-size: 18px;
 
@@ -236,7 +235,6 @@ nav {
 
     @include mobile {
       margin: 0 10px;
-      color: $primary-color;
     }
   }
 }
