@@ -4,10 +4,6 @@ title: Blog
 permalink: /blog/
 ---
 
-<div class="blog-description">
-    Blogging about IT engineer's everyday.
-</div>
-
 <div class="posts">
     {% for post in site.posts %}
         <article class="post">
@@ -17,7 +13,7 @@ permalink: /blog/
                 {{ post.excerpt }}
             </div>
 
-            <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+            <a href="{{ site.baseurl }}{{ post.url }}" class="button">Read more</a>
         </article>
     {% endfor %}
 </div>

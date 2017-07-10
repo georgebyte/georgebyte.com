@@ -18,8 +18,9 @@ html {
 }
 
 body {
-	background: $white;
-  font: 18px/1.4 $sansSerifFont;
+  background: $white;
+  font: 18px/1.6 $serifFont;
+  font-weight: 300;
   color: $darkGray;
 }
 
@@ -31,12 +32,12 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $sansSerifFont;
+  font-family: $titlesFont;
   color: $darkerGray;
   font-weight: bold;
 
-  line-height: 1.7;
-  margin: 1em 0 15px;
+  line-height: 1.4;
+  margin: 10px 0;
   padding: 0;
 
   @include mobile {
@@ -46,18 +47,18 @@ h1, h2, h3, h4, h5, h6 {
 
 h1,
 .post-list-post-title {
-  font-size: 30px;
+  font-size: 34px;
   a {
     color: inherit;
   }
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 26px;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 h4 {
@@ -70,11 +71,14 @@ p {
 }
 
 a {
-  color: $primary-color;
+  color: $primaryColor;
   text-decoration: none;
-	cursor: pointer;
-  &:hover, &:active {
-    color: $primary-color;
+  cursor: pointer;
+  transition: color $easeInOut;
+
+  &:hover,
+  &:active {
+    color: $primaryColor;
   }
 }
 
@@ -117,8 +121,38 @@ img {
 }
 
 .date {
-  font-style: italic;
-  color: $gray;
+  // font-style: italic;
+  color: $lighterGray;
+  font-size: 15px;
+}
+
+.label {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: $primaryColor;
+  border-radius: 3px;
+  font-family: $titlesFont;
+  font-size: 16px;
+  color: $white;
+  white-space: nowrap;
+}
+
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: $primaryColor;
+  border-radius: 3px;
+  font-family: $titlesFont;
+  color: $white;
+  white-space: nowrap;
+  text-transform: uppercase;
+  transition: background-color $easeInOut;
+
+  &:hover,
+  &:active {
+    color: $white;
+    background-color: $primaryColorLighter;
+  }
 }
 
 // Specify the color of the selection
@@ -193,19 +227,26 @@ img {
 
 .site-name {
   margin: 0;
-  color: $darkGray;
   cursor: pointer;
-  font-family: $sansSerifFont;
+  font-family: $titlesFont;
   font-size: 35px;
   line-height: 35px;
-  font-weight: 300;
-  letter-spacing: 1px;
+
+  a {
+    color: $darkGray;
+
+    &:hover,
+    &:active {
+      color: $primaryColor;
+    }
+  }
 }
 
 .site-description {
   width: 300px;
   margin: 8px 0 0;
   color: $gray;
+  font-family: $sansSerifFont;
   font-size: 15px;
   line-height: 16px;
 
@@ -270,12 +311,7 @@ nav {
   }
 
   .comments {
-    margin-top: 10px;
-  }
-
-  .read-more {
-    text-transform: uppercase;
-    font-size: 15px;
+    margin-top: 60px;
   }
 }
 
@@ -283,6 +319,10 @@ nav {
   padding-left: 0;
   font-size: inherit;
   color: inherit;
+}
+
+.projects-title {
+  margin-bottom: -10px;
 }
 
 .projects-grid__item {
@@ -318,7 +358,7 @@ nav {
 }
 
 .projects-grid__item-title {
-  margin: 10px 0 0;
+  margin-top: 0;
 
   a {
     color: inherit;
@@ -338,13 +378,7 @@ nav {
 }
 
 .projects-grid__item-tech-stack-label {
-  display: inline-block;
   margin-top: 4px;
-  padding: 2px 5px;
-  background-color: $primary-color;
-  color: $white;
-  border-radius: 3px;
-  white-space: nowrap;
 }
 
 .wrapper-footer {
