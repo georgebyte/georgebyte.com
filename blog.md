@@ -6,7 +6,7 @@ permalink: /blog/
 
 <div class="posts">
     {% for post in site.posts %}
-        <article class="post">
+        <article class="post posts__post">
             <h2 class="post-list-post-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
 
             <div class="entry">

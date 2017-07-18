@@ -303,11 +303,24 @@ nav {
     font-size: 22px;
     font-style: italic;
   }
+}
 
+.post:not(.posts__post) {
   .post-excerpt {
-    padding-left: 30px;
+    position: relative;
+    padding: 50px 15px 15px;
+    background-color: $veryLightGray;
+    color: $darkGray;
+  }
+
+  .post-excerpt:before {
+    content: "tl;dr";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: $darkerGray;
     font-size: 20px;
-    color: #aaa;
+    font-weight: 600;
   }
 
   .comments {
@@ -315,8 +328,7 @@ nav {
   }
 }
 
-.posts .post-excerpt {
-  padding-left: 0;
+.posts__post .post-excerpt {
   font-size: inherit;
   color: inherit;
 }
