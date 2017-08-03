@@ -115,6 +115,25 @@ img {
   max-width: 100%;
 }
 
+.image {
+  display: block;
+}
+
+.image--centered {
+  text-align: center;
+}
+
+.image__img {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.image__description {
+  margin: 10px 0 0;
+  color: $lighterGray;
+  font-size: 15px;
+}
+
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
   max-width: none;
