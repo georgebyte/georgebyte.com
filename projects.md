@@ -2,6 +2,7 @@
 layout: default
 title: Projects
 permalink: /projects/
+description: 'A list of Jure Bajt's software development projects.'
 ---
 
 <article class="page">
