@@ -39,7 +39,7 @@ permalink: /projects/
                         </a>
                     </div>
                     <p class="projects-grid__item-description">
-                        Implementation of custom table component capable of rendering huge datasets (via virtual scroll). It supports multiple types of data (images with previews, links, currency etc.), inline editing, row selection etc.
+                        Implementation of custom table component capable of rendering huge datasets (via virtual scroll). It supports multiple types of data (images with previews, links, currency etc.), multi-level, collapsable rows, inline editing, row selection etc.
                     </p>
                     <div class="projects-grid__item-tech-stack">
                         <span class="projects-grid__item-tech-stack-label label">AngularJS</span>

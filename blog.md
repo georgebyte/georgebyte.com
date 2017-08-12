@@ -2,7 +2,12 @@
 layout: default
 title: Blog
 permalink: /blog/
+description: 'A blend of software development, front-end, UX, tech and life.'
 ---
+
+<div class="quote">
+    A blend of software development, front-end, UX, tech and life.
+</div>
 
 <div class="posts">
     {% for post in site.posts %}

@@ -150,6 +150,15 @@ img {
     }
 }
 
+.quote {
+    position: relative;
+    display: block;
+    margin: 30px 0;
+    font-size: 20px;
+    color: $lighterGray;
+    font-style: italic;
+}
+
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
   max-width: none;

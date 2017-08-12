@@ -1,13 +1,13 @@
 ---
 layout: post
 title: 'A tale of a software engineer: The beginnings'
-description: 'TODO'
+description: 'My journey from a curious child to a (stil curious) full-stack web engineer.'
 ---
 
 <p class="post-excerpt">
     It all started with Age of Empires II. Then Wordpress made me enroll in a computer science program at university where I realized I had a bunch of things to learn about software engineering. After 3 years of studies I gathered some real-world experience during student internships, got my first job as a web developer, failed to get another and ultimately landed a full-stack engineer position at Zemanta. I learned a bunch trough this journey and cracked the code of "How to be a *real* software engineer?".
     <br><br>
-    Now, for a more poetic version of the above excerpt please keep on reading ...
+    Now, for a more poetic version of the above excerpt just keep reading ...
 </p>
 
 ## Chapter 1: Pre-university years
@@ -59,7 +59,7 @@ I created a plan. I read a bunch of books about JavaScript and watched many vide
 
 ## Chapter 6: LinkedIn works
 
-The more I learned, the more confident I was as a front-end engineer. Once enough of this confidence accumulated I changed my LinkedIn headline to call myself a front-end engineer. Many interview offers started to appear in my inbox. Most of them from companies abroad. I didn't want to move so I turned them down. But one day I got an email from Zemanta's tech lead.
+The more I learned, the more confident I was as a front-end engineer. Once enough of this confidence accumulated, I changed my LinkedIn headline to call myself a front-end engineer. Many interview offers started to appear in my inbox. Most of them from companies abroad. I didn't want to move so I turned them down. But one day I got an email from Zemanta's tech lead.
 
 ## Chapter 7: Zemanta
 
@@ -67,11 +67,11 @@ I got invited to an interview. A four-hour interview. I was scared because I kne
 
 Sure thing, this didn't happen. I actually enjoyed the interview challenges and questions. I realized I know a lot about software development. Interviewers at Zemanta must have thought the same since they later offered me a position I gladly accepted.
 
-I kept improving as a front-end engineer for the first year at Zemanta (AngularJS, front-end architecture etc.). After a while, I started to notice that I was reading less front-end related articles from my RSS feeds. At the beginning, everything was interesting to read and learn about. With time, however, less and less new stuff appeared in my RSS feeds. I realized I was slowly getting over JavaScript fatigue. I established a solid base of front-end knowhow. And this foundation enables me to quickly pick up a new shiny framework/ technology if needed.
+I kept improving as a front-end engineer for the first year at Zemanta (AngularJS, front-end architecture etc.). After a while, I started to notice that I was reading less front-end related articles from my RSS feeds. At the beginning, everything was interesting to read about and learn. With time, however, less and less new stuff appeared in my RSS feeds. I realized I was slowly getting over JavaScript fatigue. I established a solid base of front-end know-how. And this foundation enables me to quickly pick up a new shiny framework/ technology if needed.
 
 In order to progress further in my engineering career, I had to adjust my learning course. I wanted to expand my knowledge of web development from front-end to back-end and become a more well-rounded full-stack engineer.
 
-This means I have to learn more about server-side technologies, APIs, software architecture, project research and management etc. And that's what's keeping me busy for the last few months.
+This meant I had to learn more about server-side technologies, APIs, software architecture, project research and management etc. And that's what's keeping me busy for the last few months.
 
 ## Chapter 8: Keep calm and keep learning
 
@@ -79,7 +79,7 @@ I'm sure you managed to recognize the common denominator of my career path if yo
 
 <div class="vertical-separator"></div>
 
-Before you leave, please consider posting an excerpt of your own career path and one most important thing you learned along the way in the comment section bellow. I would love to hear how you got into the bussiness.
+Before you leave, please consider sharing an excerpt of your own career path and one most important thing you learned along the way in the comment section. I would love to hear how you got into the business.
 
 Also, let's connect on [Twitter](https://twitter.com/jurebajt) (I have no product to push on you and my feed stays clean and interesting 😇).
 
