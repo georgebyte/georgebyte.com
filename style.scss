@@ -134,13 +134,28 @@ img {
   font-size: 15px;
 }
 
+.vertical-separator {
+    display: block;
+    height: 5px;
+    margin: 30px 0;
+
+    &:before {
+        content: '...';
+        display: inline-block;
+        vertical-align: top;
+        margin-top: -9px;
+        line-height: 5px;
+        font-size: 32px;
+        color: $lightGray;
+    }
+}
+
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
   max-width: none;
 }
 
 .date {
-  // font-style: italic;
   color: $lighterGray;
   font-size: 15px;
 }
@@ -327,6 +342,7 @@ nav {
 .post:not(.posts__post) {
   .post-excerpt {
     position: relative;
+    margin-bottom: 30px;
     padding: 50px 15px 15px;
     background-color: $veryLightGray;
     color: $darkGray;
