@@ -1,11 +1,11 @@
 ---
 layout: post
 title: 'A tale of a software engineer: The beginnings'
-description: 'My journey from a curious child to a (stil curious) full-stack web engineer.'
+description: 'My journey from a curious child to a (still curious) full stack web engineer.'
 ---
 
 <p class="post-excerpt">
-    It all started with Age of Empires II. Then Wordpress made me enroll in a computer science program at university where I realized I had a bunch of things to learn about software engineering. After 3 years of studies I gathered some real-world experience during student internships, got my first job as a web developer, failed to get another and ultimately landed a full-stack engineer position at Zemanta. I learned a bunch trough this journey and cracked the code of "How to be a *real* software engineer?".
+    It all started with Age of Empires II. Then Wordpress made me enroll in a computer science program at university where I realized I had a bunch of things to learn about software engineering. After 3 years of studies I gathered some real-world experience during student internships, got my first job as a web developer, failed to get another and ultimately landed a full stack engineer position at Zemanta. I learned a bunch trough this journey and cracked the code of "How to be a *real* software engineer?".
     <br><br>
     Now, for a more poetic version of the above excerpt just keep reading ...
 </p>
@@ -69,7 +69,7 @@ Sure thing, this didn't happen. I actually enjoyed the interview challenges and 
 
 I kept improving as a front-end engineer for the first year at Zemanta (AngularJS, front-end architecture etc.). After a while, I started to notice that I was reading less front-end related articles from my RSS feeds. At the beginning, everything was interesting to read about and learn. With time, however, less and less new stuff appeared in my RSS feeds. I realized I was slowly getting over JavaScript fatigue. I established a solid base of front-end know-how. And this foundation enables me to quickly pick up a new shiny framework/ technology if needed.
 
-In order to progress further in my engineering career, I had to adjust my learning course. I wanted to expand my knowledge of web development from front-end to back-end and become a more well-rounded full-stack engineer.
+In order to progress further in my engineering career, I had to adjust my learning course. I wanted to expand my knowledge of web development from front-end to back-end and become a more well-rounded full stack engineer.
 
 This meant I had to learn more about server-side technologies, APIs, software architecture, project research and management etc. And that's what's keeping me busy for the last few months.
 
