@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Blog
-permalink: /blog/
-description: 'A blend of software development, front-end, UX, tech and life.'
+title: "Blog"
+permalink: "/blog/"
+description: "A blend of software development, front-end, UX, tech and life."
 ---
 
 <div class="quote">

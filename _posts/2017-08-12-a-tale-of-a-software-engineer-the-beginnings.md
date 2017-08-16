@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 'A tale of a software engineer: The beginnings'
-description: 'My journey from a curious child to a (still curious) full stack web engineer.'
+title: "A tale of a software engineer: The beginnings"
+description: "My journey from a curious child to a (still curious) full stack web engineer."
 ---
 
 <p class="post-excerpt">
