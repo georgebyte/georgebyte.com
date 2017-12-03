@@ -10,14 +10,44 @@ Probably the most popular way (or perhaps the most hyped way) of managing state 
 
 Redux was first introduced as a React's companion state management system. It gained a lot of traction and it is often considered to be a silver bullet for state management. Sadly, silver bullets in software development are rare. I'm not mocking Redux. Paired with component based app architectures, it really made state management in front-end applications more manageable. But this was not because of a single JavaScript library. It was the main idea of Redux that enabled us to think about state differently and adopt new ways of managing the state. 
 
-Our dashboard application is a hybrid Angular app (running AngularJS and Angular simultaneously).
+Our dashboard application is a hybrid Angular app (running AngularJS and Angular simultaneously). AngularJS part of the app uses a pup-sub like pattern with global services to ensure state consistency. But it's far from ideal, the more features we add, the harder it becomes to ensure state is consistent across all components and services. That's why we decided to find a solution for easier state management when we started the upgrade to Angular.
 
-- While upgrading to Angular we came up with a simple state store architecture.
-- Introducing a new library for Redux means introducing new complexity.
-- It is possible to achieve similar data flow using injectable services and RxJS observables - something that is a part of core Angular framework. No need to introduce new libraries.
-- No new concepts to learn - a store is a class storing the state. Its methods are the actions modifying the state. Because the state is observable (RxJS behavioral subject), interested entities can subscribe to its updates.
-- Store class is an abstract class features' stores can extend - unified interface, consistent app architecture.
-- How to initialize the store with state object?
+Introducing new libraries into an app brings additional complexity to the mix. And since our build system, new Angular framework, TypeScript and hybrid app bootstrap brought a lot of additional complexity, we didn't want to further complicate things by introducing another layer of complexity of a state management library. We have rather used the ideas from Redux to implement a state store architecture that leverages Angular (and RxJS) features to do its job.
+
+Leveraging injectable Angular services and RxJS observables we achieved similar data flow as if we used Redux. We implemented an abstract store class. It looks like this:
+
+```
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/Observable';
+
+export class Store<T> {
+    private _state$: BehaviorSubject<T>;
+
+    protected constructor (initialState: T) {
+        this._state$ = new BehaviorSubject(initialState);
+    }
+
+    get state$ (): Observable<T> {
+        return this._state$.asObservable();
+    }
+
+    get state (): T {
+        return this._state$.getValue();
+    }
+
+    setState (nextState: T): void {
+        this._state$.next(nextState);
+    }
+}
+```
+
+This abstract store class stores the state in a RxJS behavioral subject. Changing the state means pushing modified state into the `_state$` stream. Because the state is represented as a stream (BehaviorSubject), others can subscribe to its updates. It is also possible to get the current state via the `state` getter without subscribing to further state changes. This abstract `Store` class provides a unified interface for all the feature' store services in our app. Let's have a look how exactly to implement an example feature store service.
+
+<!--
+- First extend the abstract store class.
+- Call the super() constructor with initial feature's state.
+- Add methods that modify the state (similar to Redux reducers).
+
 - By providing stores to components, you get a "self-cleaning" state store, that is kept in memory just as long as the component needing it - not everything needs to be in global state object.
 - Global state can be achieved by providing the store to the root component.
 
@@ -28,3 +58,4 @@ Our dashboard application is a hybrid Angular app (running AngularJS and Angular
 - How to make HTTP requests?
 - How to test the store?
 - Hot to test the components?
+-->
