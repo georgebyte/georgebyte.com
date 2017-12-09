@@ -1,4 +1,11 @@
-# Angular state management with observable store services
+---
+layout: post
+title: "Angular state management with observable store services"
+description: ""
+---
+
+<p class="post-excerpt">
+</p>
 
 State management is one of the thing that makes front-end development a challenge, especially in larger and more complex single page applications. Over the past year we were researching different ways of managing state in our app at my day job. The app is a fairly complex dashboard with a lot of ways for users to interact with it and modify "the state". There are also some real-time updates coming from the server that modify app's state. Because of this it is not a trivial task to ensure consistency and integrity of the state and data flowing through the app.
 
@@ -16,37 +23,29 @@ Introducing new libraries into an app brings additional complexity to the mix. A
 
 Leveraging injectable Angular services and RxJS observables we achieved similar data flow as if we used Redux. We implemented an abstract store class. It looks like this:
 
-```
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
+{% gist 09b4924ab19ec6b9f344fa417caae67c store.ts %}
 
-export class Store<T> {
-    private _state$: BehaviorSubject<T>;
+This abstract store class stores the state in a RxJS behavioral subject. Changing the state means pushing modified state into the `_state$` stream. Because the state is represented as a stream (BehaviorSubject), others can subscribe to its updates. It is also possible to get the current state via the `state` getter without subscribing to further state changes. This abstract `Store` class provides a unified interface for all the feature' store services in our app. Let's have a look how exactly to implement an example feature's store service.
 
-    protected constructor (initialState: T) {
-        this._state$ = new BehaviorSubject(initialState);
-    }
+When creating a feature's store service, we should first extend the abstract `Store` class:
 
-    get state$ (): Observable<T> {
-        return this._state$.asObservable();
-    }
+{% gist 09b4924ab19ec6b9f344fa417caae67c coffee-shop.store(1).ts %}
 
-    get state (): T {
-        return this._state$.getValue();
-    }
+Note `CoffeeShopState` type used when extending the `Store` class. This lets the store know what is the type of its state. `CoffeeShopState` is a class representing state structure with initial values. In this example it looks like this:
 
-    setState (nextState: T): void {
-        this._state$.next(nextState);
-    }
-}
-```
+{% gist 09b4924ab19ec6b9f344fa417caae67c coffee-shop-state.ts %}
 
-This abstract store class stores the state in a RxJS behavioral subject. Changing the state means pushing modified state into the `_state$` stream. Because the state is represented as a stream (BehaviorSubject), others can subscribe to its updates. It is also possible to get the current state via the `state` getter without subscribing to further state changes. This abstract `Store` class provides a unified interface for all the feature' store services in our app. Let's have a look how exactly to implement an example feature store service.
+The last thing to do to make this little example work is to add a `super` call to `CoffeeShopStore`'s constructor in order to correctly initialize store's state when creating an instance of the store.
+
+{% gist 09b4924ab19ec6b9f344fa417caae67c coffee-shop.store(2).ts %}
+
+`CoffeeShopStore` is now ready to be used in Angular apps. Each instance of `CoffeeShopStore` has a way of getting its current state or an observable of state and setting the state. To make it more useful we should add some feature specific methods to modify the state (similar to Redux reducers).
+
+{% gist 09b4924ab19ec6b9f344fa417caae67c coffee-shop.store(3).ts %}
 
 <!--
-- First extend the abstract store class.
-- Call the super() constructor with initial feature's state.
-- Add methods that modify the state (similar to Redux reducers).
+- Fix/ find better examples of reducers.
+- Describe immutable state.
 
 - By providing stores to components, you get a "self-cleaning" state store, that is kept in memory just as long as the component needing it - not everything needs to be in global state object.
 - Global state can be achieved by providing the store to the root component.
