@@ -107,6 +107,18 @@ em, i {
   font-style: italic;
 }
 
+code {
+  font-family: monospace;
+}
+
+code.highlighter-rouge {
+  vertical-align: top;
+  color: $lighterGray;
+  background-color: $veryLightGray;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
 strong, b {
   font-weight: bold;
 }
