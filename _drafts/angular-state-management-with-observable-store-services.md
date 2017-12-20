@@ -24,27 +24,27 @@ Introducing new libraries into an app brings additional complexity to the mix. A
 Leveraging injectable Angular services and RxJS observables we achieved similar data flow as if we used Redux. We implemented an abstract store class. It looks like this:
 
 {% highlight typescript linenos %}
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 
 export class Store<T> {
-    private _state$: BehaviorSubject<T>;
+  private _state$: BehaviorSubject<T>;
 
-    protected constructor (initialState: T) {
-        this._state$ = new BehaviorSubject(initialState); // A long comment to test text wrapping in code blocks
-    }
+  protected constructor (initialState: T) {
+    this._state$ = new BehaviorSubject(initialState);
+  }
 
-    get state$ (): Observable<T> {
-        return this._state$.asObservable();
-    }
+  get state$ (): Observable<T> {
+    return this._state$.asObservable();
+  }
 
-    get state (): T {
-        return this._state$.getValue();
-    }
+  get state (): T {
+    return this._state$.getValue();
+  }
 
-    setState (nextState: T): void {
-        this._state$.next(nextState);
-    }
+  setState (nextState: T): void {
+    this._state$.next(nextState);
+  }
 }
 {% endhighlight %}
 
@@ -53,63 +53,72 @@ This abstract store class stores the state in a RxJS behavioral subject. Changin
 When creating a feature's store service, we should first extend the abstract `Store` class:
 
 {% highlight typescript linenos %}
+import { Injectable } from '@angular/core';
+import { Store } from './store';
+import { CoffeeElectionState } from './coffee-election-state';
+
 @Injectable()
-export class CoffeeShopStore extends Store<CoffeeShopState> {}
+export class CoffeeElectionStore extends Store<CoffeeElectionState> {}
 {% endhighlight %}
 
-Note `CoffeeShopState` type used when extending the `Store` class. This lets the store know what is the type of its state. `CoffeeShopState` is a class representing state structure with initial values. In this example it looks like this:
+Note `CoffeeElectionState` type used when extending the `Store` class. This lets the store know what is the type of its state. `CoffeeElectionState` is a class representing state structure with initial values. In this example it looks like this:
 
 {% highlight typescript linenos %}
-export class CoffeeShopState {
-    orders: {type: string, quantity: number}[] = [];
-    preparedCoffees: string[] = [];
+export class CoffeeElectionState {
+  candidates: {name: string, votes: number}[] = [];
 }
 {% endhighlight %}
 
-The last thing to do to make this little example work is to add a `super` call to `CoffeeShopStore`'s constructor in order to correctly initialize store's state when creating an instance of the store.
+The last thing to do to make this little example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize store's state when creating an instance of the store.
 
 {% highlight typescript linenos %}
+import { Injectable } from '@angular/core';
+import { Store } from './store';
+import { CoffeeElectionState } from './coffee-election-state';
+
 @Injectable()
-export class CoffeeShopStore extends Store<CoffeeShopState> {
-    constructor () {
-        super(new CoffeeShopState());
-    }
+export class CoffeeElectionStore extends Store<CoffeeElectionState> {
+  constructor () {
+    super(new CoffeeElectionState());
+  }
 }
 {% endhighlight %}
 
-`CoffeeShopStore` is now ready to be used in Angular apps. Each instance of `CoffeeShopStore` has a way of getting its current state or an observable of state and setting the state. To make it more useful we should add some feature specific methods to modify the state (similar to Redux reducers).
+`CoffeeElectionStore` is now ready to be used in Angular apps. Each instance of `CoffeeElectionStore` has a way of getting its current state or an observable of state and setting the state. To make it more useful we should add some feature specific methods to modify the state (similar to Redux reducers).
 
 {% highlight typescript linenos %}
+import { Injectable } from '@angular/core';
+import { Store } from './store';
+import { CoffeeElectionState } from './coffee-election-state';
+
 @Injectable()
-export class CoffeeShopStore extends Store<CoffeeShopState> {
-    constructor () {
-        super(new CoffeeShopState());
-    }
+export class CoffeeElectionStore extends Store<CoffeeElectionState> {
+  constructor () {
+    super(new CoffeeElectionState());
+  }
 
-    addOrders (orders: {type: string, quantity: number}[]): void {
-        this.state = {
-            ...this.state,
-            orders: [
-                ...this.state.orders,
-                orders,
-            ],
-        };
-    }
+  addVote (candidate: {name: string, votes: number}): void {
+    this.setState({
+      ...this.state,
+      candidates: this.state.candidates.map(c => {
+        if (c === candidate) {
+          return {...c, votes: c.votes + 1};
+        }
+        return c;
+      })
+    });
+  }
 
-    processOrders (): void {
-        this.state = {
-            ...this.state,
-            preparedCoffees: [
-                ...this.state.preparedCoffees,
-                newOrders,
-            ],
-        };
-    }
+  addCandidate (name: string): void {
+    this.setState({
+      ...this.state,
+      candidates: [...this.state.candidates, {name: name, votes: 0}]
+    });
+  }
 }
 {% endhighlight %}
 
 <!--
-- Fix/ find better examples of reducers.
 - Describe immutable state.
 
 - By providing stores to components, you get a "self-cleaning" state store, that is kept in memory just as long as the component needing it - not everything needs to be in global state object.
