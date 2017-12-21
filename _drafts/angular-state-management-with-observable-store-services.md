@@ -53,12 +53,10 @@ This abstract store class stores the state in a RxJS behavioral subject. Changin
 When creating a feature's store service, we should first extend the abstract `Store` class:
 
 {% highlight typescript linenos %}
-import { Injectable } from '@angular/core';
-import { Store } from './store';
-import { CoffeeElectionState } from './coffee-election-state';
-
 @Injectable()
-export class CoffeeElectionStore extends Store<CoffeeElectionState> {}
+export class CoffeeElectionStore extends Store<CoffeeElectionState> {
+  ...
+}
 {% endhighlight %}
 
 Note `CoffeeElectionState` type used when extending the `Store` class. This lets the store know what is the type of its state. `CoffeeElectionState` is a class representing state structure with initial values. In this example it looks like this:
@@ -69,28 +67,19 @@ export class CoffeeElectionState {
 }
 {% endhighlight %}
 
-The last thing to do to make this little example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize store's state when creating an instance of the store.
+The last thing left to do to make this little example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize store's state when creating an instance of the `CoffeeElectionStore` store.
 
 {% highlight typescript linenos %}
-import { Injectable } from '@angular/core';
-import { Store } from './store';
-import { CoffeeElectionState } from './coffee-election-state';
-
-@Injectable()
-export class CoffeeElectionStore extends Store<CoffeeElectionState> {
-  constructor () {
-    super(new CoffeeElectionState());
-  }
+...
+constructor () {
+  super(new CoffeeElectionState());
 }
+...
 {% endhighlight %}
 
-`CoffeeElectionStore` is now ready to be used in Angular apps. Each instance of `CoffeeElectionStore` has a way of getting its current state or an observable of state and setting the state. To make it more useful we should add some feature specific methods to modify the state (similar to Redux reducers).
+Each created instance of `CoffeeElectionStore` now has a way of getting its current state or an observable of state and setting the state. To make it more useful, some feature specific methods to modify the state (similar to Redux reducers) should be added.
 
 {% highlight typescript linenos %}
-import { Injectable } from '@angular/core';
-import { Store } from './store';
-import { CoffeeElectionState } from './coffee-election-state';
-
 @Injectable()
 export class CoffeeElectionStore extends Store<CoffeeElectionState> {
   constructor () {
@@ -118,11 +107,47 @@ export class CoffeeElectionStore extends Store<CoffeeElectionState> {
 }
 {% endhighlight %}
 
-<!--
-- Describe immutable state.
+In the example above `CoffeeElectionStore` functionality was extended by defining `addVote` and `addCandidate` methods. In essence these methods modify the state by pushing a new state object into the observable stream (`BehaviorSubject`) via the `setState` helper.
 
-- By providing stores to components, you get a "self-cleaning" state store, that is kept in memory just as long as the component needing it - not everything needs to be in global state object.
-- Global state can be achieved by providing the store to the root component.
+Note how it is impossible to modify the state without notifying listeners about the change. This characteristic of observable stores makes them a perfect fit for implementing one-way data flow in Angular apps - much like with Redux or a similar state management library.
+
+## How to use the store
+
+App's state could all be stored in a single global state object. But as the app grows, so does the state object and it's not long before it becomes just too big to manage. So instead of storing the whole state in one object it is much more manageable to split the state into smaller chunks. A good way to split the properties is to group them by feature and extract them into a separate state object, managed by the feature's store.
+
+Based on such split there are typically two types of stores:
+- global stores, which contain the state of a globally used feature,
+- component stores, which contain the state only used by a single component.
+
+To setup a store containing global state accessed by different features and components in the app, we list the store in the root app module providers list. The store and its state will be available until we reload the page.
+
+{% highlight typescript linenos %}
+@NgModule({
+  ...
+  providers: [ExampleGlobalStore],
+})
+export class AppModule {
+  ...
+}
+{% endhighlight %}
+
+<!-- How to use this global store? -->
+
+Not all app state needs to be global though. Some component specific state should only exist in memory as long as the component using it. Once user navigates to a different view, the component is destroyed and its state should be cleaned-up too. We can achieve this by providing the store to a component. This way we get a "self-cleaning" state store, that is kept in memory just as long as the component needing it.
+
+{% highlight typescript linenos %}
+@Component({
+  ...
+  providers: [ExampleComponentStore],
+})
+export class ExampleComponent {
+  ...
+}
+{% endhighlight %}
+
+<!-- How to use private component store? -->
+
+<!--
 
 - How to subscribe to state updates in components/ services?
 - How to subscribe to state updates in templates using the async pipe?
