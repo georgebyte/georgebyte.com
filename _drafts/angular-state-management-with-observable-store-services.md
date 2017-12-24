@@ -116,10 +116,10 @@ Note how it is impossible to modify the state without notifying listeners about 
 App's state could all be stored in a single global state object. But as the app grows, so does the state object and it's not long before it becomes just too big to manage. So instead of storing the whole state in one object it is much more manageable to split the state into smaller chunks. A good way to split the properties is to group them by feature and extract them into a separate state object, managed by the feature's store.
 
 Based on such split there are typically two types of stores:
-- global stores, which contain the state of a globally used feature,
+- global stores, which contain the state of a globally used features,
 - component stores, which contain the state only used by a single component.
 
-To setup a store containing global state accessed by different features and components in the app, we list the store in the root app module providers list. The store and its state will be available until we reload the page.
+To setup a store containing global state accessed by different services and components in the app, the store is listed in the root app module providers list. The store and its state will be available until we reload the page.
 
 {% highlight typescript linenos %}
 @NgModule({
@@ -131,7 +131,18 @@ export class AppModule {
 }
 {% endhighlight %}
 
-<!-- How to use this global store? -->
+To use a global store in different parts of the app it needs to be defined as their dependency. Angular then injects the same instance of a global store (defined as singleton provider in `AppModule`) into every component/ service depending on it.
+
+{% highlight typescript linenos %}
+@Component({ ... })
+export class ExampleDependantComponent {
+  constructor (private exampleGlobalStore: ExampleGlobalStore) {
+    // ExampleDependantComponent has access to global state via exampleGlobalStore reference
+  }
+}
+{% endhighlight %}
+
+Note that many global stores can be provided to `AppModule`, each managing its own subset of global state. The codebase is much more maintainable this way, since each store follows the principle of single responsibility.
 
 Not all app state needs to be global though. Some component specific state should only exist in memory as long as the component using it. Once user navigates to a different view, the component is destroyed and its state should be cleaned-up too. We can achieve this by providing the store to a component. This way we get a "self-cleaning" state store, that is kept in memory just as long as the component needing it.
 
@@ -145,7 +156,7 @@ export class ExampleComponent {
 }
 {% endhighlight %}
 
-<!-- How to use private component store? -->
+Private component stores are used in the same way as global stores by defining them as component's dependencies in the component constructor. There is one important difference though. Private stores are defined as components' providers and not as `AppModule` providers. That's why private stores are not singletons. Instead, Angular creates a new instance of the store each time a component depending on it is created. Multiple instances of the same component can be present in the DOM at the same time and each has its own state. Additionally, when a component is destroyed, so is its store and the memory is auto cleaned.
 
 <!--
 
