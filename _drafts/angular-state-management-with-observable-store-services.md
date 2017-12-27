@@ -158,13 +158,53 @@ export class ExampleComponent {
 
 Private component stores are used in the same way as global stores by defining them as component's dependencies in the component constructor. There is one important difference though. Private stores are defined as components' providers and not as `AppModule` providers. That's why private stores are not singletons. Instead, Angular creates a new instance of the store each time a component depending on it is created. Multiple instances of the same component can be present in the DOM at the same time and each has its own state. Additionally, when a component is destroyed, so is its store and the memory is auto cleaned.
 
-<!--
+## Subscribing to state updates in components and services
 
-- How to subscribe to state updates in components/ services?
-- How to subscribe to state updates in templates using the async pipe?
-- What data to store in the store?
-- What logic to put in components?
-- How to make HTTP requests?
+Once a store instance is injected into a component or service, this component/ service can subscribe to state updates. In previous example of `coffee-election` component, subscribing to state updates looks like this:
+
+{% highlight typescript linenos %}
+@Component({ ... })
+export class CoffeeElectionComponent implements OnInit {
+  constructor (private store: CoffeeElectionStore) {}
+
+  ngOnInit () {
+    this.store.state$.subscribe(state => {
+      // Logic to execute on state update
+    });
+  }
+}
+{% endhighlight %}
+
+It is also possible to only subscribe to updates of a subset of state:
+
+{% highlight typescript linenos %}
+this.store.state$
+  .map(state => state.candidates)
+  .distinctUntilChanged()
+  .subscribe(candidates => {
+    // Logic to execute on state.candidates update
+  });
+{% endhighlight %}
+
+Note that these subscriptions must be cleaned up before a component is destroyed in order to prevent memory leaks. We won't go into details about unsubscribing in this post. Check out [this topic on Stack Overflow](https://stackoverflow.com/a/41177163){:target='_blank'} to learn more.
+
+## Subscribing to state updates in components' templates
+
+In case a component doesn't execute any logic on state updates and it serves only as a proxy to pass the state to its template to render it, Angular provides a nice shortcut to subscribe to state updates from templates directly via the `async` pipe. `ngFor` in the example below will redraw a list of candidates every time the state is updated.
+
+{% highlight html linenos %}
+<ul>
+  <li *ngFor="let candidate of (store.state$ | async).candidates">
+    <span>{% raw %}{{ candidate.name }}{% endraw %}</span>
+    <span>Votes: {% raw %}{{ candidate.votes }}{% endraw %}</span>
+    <button (click)="store.addVote(candidate)">+</button>
+  </li>
+</ul>
+{% endhighlight %}
+
+As a nice bonus, subscriptions to state updates via `async` pipes are automatically cleaned up by the framework upon destroying the component.
+
+<!--
 - How to test the store?
-- Hot to test the components?
+- A suggestion about which state to store in the store and which in components?
 -->
