@@ -5,6 +5,7 @@ description: ""
 ---
 
 <p class="post-excerpt">
+TODO
 </p>
 
 State management is one of the thing that makes front-end development a challenge, especially in larger and more complex single page applications. Over the past year we were researching different ways of managing state in our app at my day job. The app is a fairly complex dashboard with a lot of ways for users to interact with it and modify "the state". There are also some real-time updates coming from the server that modify app's state. Because of this it is not a trivial task to ensure consistency and integrity of the state and data flowing through the app.
@@ -204,7 +205,57 @@ In case a component doesn't execute any logic on state updates and it serves onl
 
 As a nice bonus, subscriptions to state updates via `async` pipes are automatically cleaned up by the framework upon destroying the component.
 
+## Unit testing the store
+
+Testing state modifying store methods is pretty straightforward. It consists of three steps:
+1. Creating an instance of tested store and setting up mocked initial state.
+2. Calling a store method the test is testing.
+3. Asserting the method updated the state correctly.
+
+In practice unit tests to test the store from the *Coffee election* example look like this:
+
+{% highlight typescript linenos %}
+describe('CoffeeElectionStore', () => {
+  let store: CoffeeElectionStore;
+
+  const MOCK_CANDIDATES = [{name: 'Test candidate 1', votes: 0}, {name: 'Test candidate 2', votes: 5}];
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [CoffeeElectionStore]
+    });
+
+    store = new CoffeeElectionStore();
+    store.setState({
+      candidates: MOCK_CANDIDATES
+    });
+  });
+
+  it('should correctly add a vote to a candidate', () => {
+    store.addVote(MOCK_CANDIDATES[1]);
+    expect(store.state.candidates[0].votes).toBe(0);
+    expect(store.state.candidates[1].votes).toBe(6);
+  });
+
+  it('should correctly add a candidate', () => {
+    store.addCandidate('Test candidate 3');
+    expect(store.state.candidates[2].name).toBe('Test candidate 3');
+  });
+});
+{% endhighlight %}
+
+## Conclusion
+
+The purpose of this post was to present how one can leverage the built in features of Angular framework to implement a simple yet powerful state management solution. The provided *Coffee election* example app is very simple, but the concepts it demonstrates can be used to successfully manage state in much bigger and more complex apps. At Zemanta we used observable store services to implement a rather complex feature and since the experiment worked out great, we will continue to use such stores in our app going forward.
+
+PS: The example app used in the post is available here: [github.com/jurebajt/coffee-election](https://github.com/jurebajt/coffee-election){:target='_blank'}.
+
+<div class="vertical-separator"></div>
+
+
+
+Also, let's connect on [Twitter](https://twitter.com/jurebajt) (I have no product to push on you and my feed stays clean and interesting 😇).
+
 <!--
-- How to test the store?
 - A suggestion about which state to store in the store and which in components?
 -->
