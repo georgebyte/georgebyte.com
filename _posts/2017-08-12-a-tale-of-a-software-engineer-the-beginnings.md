@@ -81,5 +81,4 @@ I'm sure you managed to recognize the common denominator of my career path if yo
 
 Before you leave, please consider sharing an excerpt of your own career path and one most important thing you learned along the way in the comment section. I would love to hear how you got into the business.
 
-Also, let's connect on [Twitter](https://twitter.com/jurebajt) (I have no product to push on you and my feed stays clean and interesting 😇).
-
+Also, let's connect on [Twitter](https://twitter.com/jurebajt){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).

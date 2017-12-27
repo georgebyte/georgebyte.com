@@ -256,4 +256,4 @@ PS: The example app used in the post is available here: [github.com/jurebajt/cof
 
 I hope you learned something new while reading this post. If anything seems confusing please get back to me in the comments. Suggestions, improvements or just general discussion about the topic is very welcome, too.
 
-Also, let's connect on [Twitter](https://twitter.com/jurebajt) (I have no product to push on you and my feed stays clean and interesting 😇).
+Also, let's connect on [Twitter](https://twitter.com/jurebajt){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).
