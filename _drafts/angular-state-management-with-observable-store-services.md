@@ -8,21 +8,21 @@ description: ""
 TODO
 </p>
 
-State management is one of the thing that makes front-end development a challenge, especially in larger and more complex single page applications. Over the past year we were researching different ways of managing state in our app at my day job. The app is a fairly complex dashboard with a lot of ways for users to interact with it and modify "the state". There are also some real-time updates coming from the server that modify app's state. Because of this it is not a trivial task to ensure consistency and integrity of the state and data flowing through the app.
+State management is one of the things that make front-end development a challenge, especially in larger and more complex single page applications.
 
-Probably the most popular way (or perhaps the most hyped way) of managing state is using Redux (or a Redux-like method of state management). The main idea is simple:
+Probably the most popular way of managing state is using Redux (or a Redux-like method of state management). The main idea is simple:
 - one source of truth (app state),
 - actions modifying this state in a "pure" way (reducers),
 - a way of executing these actions (invoking the reducers by emitting events to them),
 - a way of subscribing to state updates or pushing the updates to entities interested in them.
 
-Redux was first introduced as a React's companion state management system. It gained a lot of traction and it is often considered to be a silver bullet for state management. Sadly, silver bullets in software development are rare. I'm not mocking Redux. Paired with component based app architectures, it really made state management in front-end applications more manageable. But this was not because of a single JavaScript library. It was the main idea of Redux that enabled us to think about state differently and adopt new ways of managing the state.
+At my day job we have a client facing dashboard application build as a hybrid Angular app (running AngularJS and Angular simultaneously). AngularJS part of the app uses private component state in components' controllers and global services (implementing pup-sub pattern) to handle app's state. This solution is far from ideal - the more features we add, the harder it becomes to ensure the state is consistent across all components and services.
 
-Our dashboard application is a hybrid Angular app (running AngularJS and Angular simultaneously). AngularJS part of the app uses a pup-sub like pattern with global services to ensure state consistency. But it's far from ideal, the more features we add, the harder it becomes to ensure state is consistent across all components and services. That's why we decided to find a solution for easier state management when we started the upgrade to Angular.
+The process of upgrading to Angular gave us the opportunity to rethink how we tackle state management in our app. Introducing new libraries into an app would bring additional complexity to the mix. And since our build system, new Angular framework, TypeScript and hybrid app bootstrap brought a lot of additional complexity already, we didn't want to further complicate things by introducing another layer of complexity of a state management library. We have rather used the ideas from Redux to create a state management solution that leverages Angular (and RxJS) features to do its job. This post demonstrates how we implemented it using observable store services.
 
-Introducing new libraries into an app brings additional complexity to the mix. And since our build system, new Angular framework, TypeScript and hybrid app bootstrap brought a lot of additional complexity, we didn't want to further complicate things by introducing another layer of complexity of a state management library. We have rather used the ideas from Redux to implement a state store architecture that leverages Angular (and RxJS) features to do its job.
+## Abstract `Store` class
 
-Leveraging injectable Angular services and RxJS observables we achieved similar data flow as if we used Redux. We implemented an abstract store class. It looks like this:
+By leveraging injectable Angular services and RxJS observables we achieved similar data flow as if we used Redux. We implemented an abstract store class. It looks like this:
 
 {% highlight typescript linenos %}
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -50,6 +50,8 @@ export class Store<T> {
 {% endhighlight %}
 
 This abstract store class stores the state in a RxJS behavioral subject. Changing the state means pushing modified state into the `_state$` stream. Because the state is represented as a stream (BehaviorSubject), others can subscribe to its updates. It is also possible to get the current state via the `state` getter without subscribing to further state changes. This abstract `Store` class provides a unified interface for all the feature' store services in our app. Let's have a look how exactly to implement an example feature's store service.
+
+## Features' stores
 
 When creating a feature's store service, we should first extend the abstract `Store` class:
 
@@ -252,10 +254,6 @@ PS: The example app used in the post is available here: [github.com/jurebajt/cof
 
 <div class="vertical-separator"></div>
 
-
+I hope you learned something new while reading this post. If anything seems confusing please get back to me in the comments. Suggestions, improvements or just general discussion about the topic is very welcome, too.
 
 Also, let's connect on [Twitter](https://twitter.com/jurebajt) (I have no product to push on you and my feed stays clean and interesting 😇).
-
-<!--
-- A suggestion about which state to store in the store and which in components?
--->
