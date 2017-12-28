@@ -8,17 +8,19 @@ description: ""
 TODO
 </p>
 
-State management is one of the things that make front-end development a challenge, especially in larger and more complex single page applications.
-
-Probably the most popular way of managing state is using Redux (or a Redux-like method of state management). The main idea is simple:
+State management is one of the things that make front-end development a challenge, especially in larger and more complex single page applications. Many solutions were developed which try to solve this challenge. Probably the most popular way of managing state is using Redux (or a Redux-like method). The main ideas of Redux are not too hard to understand:
 - one source of truth (app state),
-- actions modifying this state in a "pure" way (reducers),
-- a way of executing these actions (invoking the reducers by emitting events to them),
-- a way of subscribing to state updates or pushing the updates to entities interested in them.
+- actions modifying the state in a "pure" way (reducers),
+- reducers are invoked by emitting events to them,
+- interested entities are notified about state updates.
 
-At my day job we have a client facing dashboard application build as a hybrid Angular app (running AngularJS and Angular simultaneously). AngularJS part of the app uses private component state in components' controllers and global services (implementing pup-sub pattern) to handle app's state. This solution is far from ideal - the more features we add, the harder it becomes to ensure the state is consistent across all components and services.
+At my day job we have a client facing dashboard application build as a hybrid Angular app (running AngularJS and Angular side by side). AngularJS part of the app stores some state in components' controllers and other in global services (implementing a pup-sub pattern). This solution is far from ideal - the more features we add, the harder it becomes to ensure the state is consistent across all components and services.
 
-The process of upgrading to Angular gave us the opportunity to rethink how we tackle state management in our app. Introducing new libraries into an app would bring additional complexity to the mix. And since our build system, new Angular framework, TypeScript and hybrid app bootstrap brought a lot of additional complexity already, we didn't want to further complicate things by introducing another layer of complexity of a state management library. We have rather used the ideas from Redux to create a state management solution that leverages Angular (and RxJS) features to do its job. This post demonstrates how we implemented it using observable store services.
+The process of upgrading to Angular gave us the opportunity to rethink how we tackle state management in the app. We didn't want to introduce another layer of complexity by adding a state management library to the codebase. New Angular framework, TypeScript, new build system and hybrid app bootstrap already brought a lot of additional complexity to the mix. Instead we used the ideas from Redux to create a state management solution that leverages Angular (and RxJS) features to do its job.
+
+This post explains how one can use the observable store service pattern we developed to manage state in Angular apps. The solution was inspired by the following article from Angular University: [How to build Angular apps using Observable Data Services](https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/){:target='_blank'}.
+
+To showcase the usage of observable stores we'll build a simple app called *Coffee election* that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates.
 
 ## Abstract `Store` class
 
@@ -254,6 +256,6 @@ PS: The example app used in the post is available here: [github.com/jurebajt/cof
 
 <div class="vertical-separator"></div>
 
-I hope you learned something new while reading this post. If anything seems confusing please get back to me in the comments. Suggestions, improvements or just general discussion about the topic is very welcome, too.
+I hope you learned something new while reading this post. If anything seems confusing please get back to me in the comments. Suggestions, improvements or just general discussion about the topic are very welcome, too.
 
 Also, let's connect on [Twitter](https://twitter.com/jurebajt){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).
