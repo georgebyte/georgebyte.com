@@ -18,13 +18,13 @@ At my day job we have a client facing dashboard application build as a hybrid An
 
 The process of upgrading to Angular gave us the opportunity to rethink how we tackle state management in the app. We didn't want to introduce another layer of complexity by adding a state management library to the codebase. New Angular framework, TypeScript, new build system and hybrid app bootstrap already brought a lot of additional complexity to the mix. Instead we used the ideas from Redux to create a state management solution that leverages Angular (and RxJS) features to do its job.
 
-This post explains how one can use the observable store service pattern we developed to manage state in Angular apps. The solution was inspired by the following article from Angular University: [How to build Angular apps using Observable Data Services](https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/){:target='_blank'}.
+This post explains how one can use the observable store pattern we developed to manage state in Angular apps. The solution was inspired by the following article from Angular University: [How to build Angular apps using Observable Data Services](https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/){:target='_blank'}.
 
 To showcase the usage of observable stores we'll build a simple app called *Coffee election* that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates.
 
 ## Abstract `Store` class
 
-By leveraging injectable Angular services and RxJS observables we achieved similar data flow as if we used Redux. We implemented an abstract store class. It looks like this:
+At the core of observable store pattern is an abstract `Store` class. It leverages RxJS to achieve data flow similar to Redux. It is implemented like this:
 
 {% highlight typescript linenos %}
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -51,11 +51,13 @@ export class Store<T> {
 }
 {% endhighlight %}
 
-This abstract store class stores the state in a RxJS behavioral subject. Changing the state means pushing modified state into the `_state$` stream. Because the state is represented as a stream (BehaviorSubject), others can subscribe to its updates. It is also possible to get the current state via the `state` getter without subscribing to further state changes. This abstract `Store` class provides a unified interface for all the feature' store services in our app. Let's have a look how exactly to implement an example feature's store service.
+The store's state (`_state$`) is a RxJS `BehaviorSubject`. Changing the state means pushing new state object into the `_state$` stream. This is done via the `setState` method. Interested entities can subscribe to state updates by subscribing to the `$state` property. It is also possible to get the current state via the `state` property without subscribing to state updates.
+
+The `Store` class provides a unified interface for all the features' store services. In the next section we'll have a look at how to use the abstract `Store` class to implement a feature's store service.
 
 ## Features' stores
 
-When creating a feature's store service, we should first extend the abstract `Store` class:
+Feature specific stores are Angular `Injectable`s extending the abstract `Store` class:
 
 {% highlight typescript linenos %}
 @Injectable()
@@ -64,7 +66,7 @@ export class CoffeeElectionStore extends Store<CoffeeElectionState> {
 }
 {% endhighlight %}
 
-Note `CoffeeElectionState` type used when extending the `Store` class. This lets the store know what is the type of its state. `CoffeeElectionState` is a class representing state structure with initial values. In this example it looks like this:
+In the code snippet above note the `CoffeeElectionState` type used when extending the `Store`. Specifying `CoffeeElectionState` as type lets the generic store know how the specific feature's state object looks like. `CoffeeElectionState` is a class representing state object definition with initial values. In the *Coffee election* example app it looks like this:
 
 {% highlight typescript linenos %}
 export class CoffeeElectionState {
@@ -72,17 +74,15 @@ export class CoffeeElectionState {
 }
 {% endhighlight %}
 
-The last thing left to do to make this little example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize store's state when creating an instance of the `CoffeeElectionStore` store.
+One last thing to do to make this little example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize the state when creating an instance of the `CoffeeElectionStore`.
 
 {% highlight typescript linenos %}
-...
 constructor () {
   super(new CoffeeElectionState());
 }
-...
 {% endhighlight %}
 
-Each created instance of `CoffeeElectionStore` now has a way of getting its current state or an observable of state and setting the state. To make it more useful, some feature specific methods to modify the state (similar to Redux reducers) should be added.
+With the above code in place, each instance of `CoffeeElectionStore` has a way of setting the state and getting its current state or an observable of its state. To make it more useful, some feature specific methods to modify the state (similar to Redux reducers) should be added:
 
 {% highlight typescript linenos %}
 @Injectable()
@@ -112,19 +112,19 @@ export class CoffeeElectionStore extends Store<CoffeeElectionState> {
 }
 {% endhighlight %}
 
-In the example above `CoffeeElectionStore` functionality was extended by defining `addVote` and `addCandidate` methods. In essence these methods modify the state by pushing a new state object into the observable stream (`BehaviorSubject`) via the `setState` helper.
+In the example above `CoffeeElectionStore`'s functionality was extended by defining `addVote` and `addCandidate` methods. In essence these methods modify the state by pushing a new state object into the observable `state$` stream via the `setState` helper.
 
 Note how it is impossible to modify the state without notifying listeners about the change. This characteristic of observable stores makes them a perfect fit for implementing one-way data flow in Angular apps - much like with Redux or a similar state management library.
 
-## How to use the store
+## Using injectable store services
 
-App's state could all be stored in a single global state object. But as the app grows, so does the state object and it's not long before it becomes just too big to manage. So instead of storing the whole state in one object it is much more manageable to split the state into smaller chunks. A good way to split the properties is to group them by feature and extract them into a separate state object, managed by the feature's store.
+App's state could all be stored in a single global state object. But as the app grows, so does the state object and it can quickly become too big to easily extend it to support new features. So instead of storing the whole state in one place it is better to split the state into smaller chunks. A good way to split the properties is to group them by feature and extract these groups into separate state objects, managed by different stores.
 
-Based on such split there are typically two types of stores:
-- global stores, which contain the state of a globally used features,
+There are two types of stores that emerge from splitting:
+- global stores, which contain the states of globally used features,
 - component stores, which contain the state only used by a single component.
 
-To setup a store containing global state accessed by different services and components in the app, the store is listed in the root app module providers list. The store and its state will be available until we reload the page.
+To setup a **store containing global state** accessed by different services and components, the store is listed in the root app module providers list. The state in such stores will be available until the page is reloaded.
 
 {% highlight typescript linenos %}
 @NgModule({
@@ -136,20 +136,20 @@ export class AppModule {
 }
 {% endhighlight %}
 
-To use a global store in different parts of the app it needs to be defined as their dependency. Angular then injects the same instance of a global store (defined as singleton provider in `AppModule`) into every component/ service depending on it.
+Note that many global stores can be defined as providers in the `AppModule`, each managing its own subset of global state. The codebase stays much more maintainable this way, since each store follows the principle of single responsibility.
+
+To use a global store in different parts of the app, the store needs to be defined as their dependency. This way Angular injects the same instance of a global store (defined as singleton provider in `AppModule`) into every component/ service depending on it.
 
 {% highlight typescript linenos %}
 @Component({ ... })
-export class ExampleDependantComponent {
+export class ExampleComponent {
   constructor (private exampleGlobalStore: ExampleGlobalStore) {
-    // ExampleDependantComponent has access to global state via exampleGlobalStore reference
+    // ExampleComponent has access to global state via exampleGlobalStore reference
   }
 }
 {% endhighlight %}
 
-Note that many global stores can be provided to `AppModule`, each managing its own subset of global state. The codebase is much more maintainable this way, since each store follows the principle of single responsibility.
-
-Not all app state needs to be global though. Some component specific state should only exist in memory as long as the component using it. Once user navigates to a different view, the component is destroyed and its state should be cleaned-up too. We can achieve this by providing the store to a component. This way we get a "self-cleaning" state store, that is kept in memory just as long as the component needing it.
+Not all state needs to be global though. Some **component specific state** should only exist in memory for as long as the component using it. Once user navigates to a different view and the component is destroyed, its state should be cleaned-up too. This can be achieved by adding the store to a list of component's providers. This way we get "self-cleaning" stores, that are kept in memory as long as the components using them are kept in memory.
 
 {% highlight typescript linenos %}
 @Component({
@@ -161,7 +161,7 @@ export class ExampleComponent {
 }
 {% endhighlight %}
 
-Private component stores are used in the same way as global stores by defining them as component's dependencies in the component constructor. There is one important difference though. Private stores are defined as components' providers and not as `AppModule` providers. That's why private stores are not singletons. Instead, Angular creates a new instance of the store each time a component depending on it is created. Multiple instances of the same component can be present in the DOM at the same time and each has its own state. Additionally, when a component is destroyed, so is its store and the memory is auto cleaned.
+Private component stores are used in the same way as global stores by defining them as component's dependencies in the component constructor. The key difference is that these component specific stores are not singletons. Instead, Angular creates a new instance of the store each time a component depending on it is created. Multiple instances of the same component can be present in the DOM at the same time and each one of them would have its own state.
 
 ## Subscribing to state updates in components and services
 
