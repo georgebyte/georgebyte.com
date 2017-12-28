@@ -20,7 +20,7 @@ The process of upgrading to Angular gave us the opportunity to rethink how we ta
 
 This post explains how one can use the observable store pattern we developed to manage state in Angular apps. The solution was inspired by the following article from Angular University: [How to build Angular apps using Observable Data Services](https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/){:target='_blank'}.
 
-To showcase the usage of observable stores we'll build a simple app called *Coffee election* that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates.
+To showcase the usage of observable stores we'll build a simple app called *Coffee election* that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates. The source code is available on GitHub: [github.com/jurebajt/coffee-election](https://github.com/jurebajt/coffee-election){:target='_blank'}.
 
 ## Abstract `Store` class
 
@@ -165,7 +165,7 @@ Private component stores are used in the same way as global stores by defining t
 
 ## Subscribing to state updates in components and services
 
-Once a store instance is injected into a component or service, this component/ service can subscribe to state updates. In previous example of `coffee-election` component, subscribing to state updates looks like this:
+Once a store instance is injected into a component or service, this component/ service can subscribe to state updates. In the example of `coffee-election` component, subscribing to state updates looks like this:
 
 {% highlight typescript linenos %}
 @Component({ ... })
@@ -195,7 +195,7 @@ Note that these subscriptions must be cleaned up before a component is destroyed
 
 ## Subscribing to state updates in components' templates
 
-In case a component doesn't execute any logic on state updates and it serves only as a proxy to pass the state to its template to render it, Angular provides a nice shortcut to subscribe to state updates from templates directly via the `async` pipe. `ngFor` in the example below will redraw a list of candidates every time the state is updated.
+In case a component doesn't execute any logic on state updates and it only serves as a proxy to pass the state to its template to render it, Angular provides a nice shortcut to subscribe to state updates from templates directly via the `async` pipe. `ngFor` in the example below will redraw a list of candidates every time the state is updated.
 
 {% highlight html linenos %}
 <ul>
@@ -212,7 +212,7 @@ As a nice bonus, subscriptions to state updates via `async` pipes are automatica
 ## Unit testing the store
 
 Testing state modifying store methods is pretty straightforward. It consists of three steps:
-1. Creating an instance of tested store and setting up mocked initial state.
+1. Creating an instance of the tested store and setting up mocked initial state.
 2. Calling a store method the test is testing.
 3. Asserting the method updated the state correctly.
 
@@ -251,8 +251,6 @@ describe('CoffeeElectionStore', () => {
 ## Conclusion
 
 The purpose of this post was to present how one can leverage the built in features of Angular framework to implement a simple yet powerful state management solution. The provided *Coffee election* example app is very simple, but the concepts it demonstrates can be used to successfully manage state in much bigger and more complex apps. At Zemanta we used observable store services to implement a rather complex feature and since the experiment worked out great, we will continue to use such stores in our app going forward.
-
-PS: The example app used in the post is available here: [github.com/jurebajt/coffee-election](https://github.com/jurebajt/coffee-election){:target='_blank'}.
 
 <div class="vertical-separator"></div>
 
