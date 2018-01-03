@@ -171,6 +171,27 @@ img {
     font-style: italic;
 }
 
+.highlight-filename {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: -20px;
+  padding: 2px 8px;
+  background-color: $veryLightGray;
+  border: 1px solid $lightGray;
+  border-bottom: 0;
+  color: $lighterGray;
+  font-size: 16px;
+  font-family: monospace;
+
+  a {
+    color: $lighterGray;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
   max-width: none;
