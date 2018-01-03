@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "State management in Angular with observable store services"
-description: ""
+description: "Observable stores are a state management solution for Angular apps implemented using RxJS to mimic Redux architecture."
 ---
 
 <p class="post-excerpt">
-TODO
+Observable stores are a state management solution for Angular apps implemented using RxJS to mimic Redux architecture. The post explains how to create, use and test these observable store services.
 </p>
 
 Effective state management in front-end development is a challenge, especially in larger and more complex single page applications. Right now, Redux is probably the most popular way of managing state. It is based on a few main ideas:
