@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Angular state management with observable store services"
+title: "State management in Angular with observable store services"
 description: ""
 ---
 
