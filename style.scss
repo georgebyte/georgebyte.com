@@ -15,13 +15,21 @@
 
 html {
   font-size: 100%;
+  height: 100%;
 }
 
 body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   background: $white;
   font: 18px/1.6 $serifFont;
   font-weight: 300;
   color: $darkGray;
+}
+
+.wrapper {
+  flex: 1 0 auto;
 }
 
 .container {
