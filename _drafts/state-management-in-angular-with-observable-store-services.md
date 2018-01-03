@@ -16,7 +16,7 @@ Effective state management in front-end development is a challenge, especially i
 
 At my day job we have a client facing dashboard application build as a hybrid Angular app (running AngularJS and Angular side by side). AngularJS part of the app stores some state in components' controllers and other in global services (implementing a pup-sub pattern). Every feature manages its state in a slightly different way because there are no clear conventions set about state management. As a consequence, the more features we add, the harder it becomes to ensure the state stays consistent across all components and services.
 
-The process of upgrading to Angular gave us the opportunity to rethink how we tackle state management in the app. We didn't want to introduce another layer of complexity by adding a state management library to the codebase. New Angular framework, TypeScript, new build system and hybrid app bootstrap already brought a lot of additional complexity to the mix. Instead, we used the ideas from Redux to create a state management solution that leverages Angular's (and RxJS's) features to do its job.
+The process of upgrading to Angular gave us the opportunity to rethink how we tackle state management in the app. We didn't want to introduce another layer of complexity by adding a state management library to the codebase. New Angular framework, TypeScript, new build system and hybrid app bootstrap already brought a lot of additional complexity to the mix. Instead, we used the ideas from Redux to create **a state management solution that leverages Angular's (and RxJS's) features** to do its job.
 
 This post explains how one can use the observable store pattern we developed to manage state in Angular apps. The solution was inspired by the following article from Angular University: [How to build Angular apps using Observable Data Services](https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/){:target='_blank'}.
 
@@ -24,7 +24,7 @@ To showcase the usage of observable stores we'll build a simple app called *Coff
 
 ## Abstract `Store` class
 
-At the core of observable store pattern is an abstract `Store` class. It leverages RxJS to achieve data flow similar to Redux. It is implemented like this:
+At the core of observable store pattern is the abstract `Store` class. It leverages RxJS to achieve data flow similar to Redux. It is implemented like this:
 
 <span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/store.ts" target="_blank">store.ts</a></span>
 {% highlight typescript linenos %}
@@ -52,9 +52,9 @@ export class Store<T> {
 }
 {% endhighlight %}
 
-The store's state (`_state$`) is a RxJS `BehaviorSubject`. Changing the state means pushing new state object into the `_state$` stream via the `setState` method. Interested entities can subscribe to state updates by subscribing to the `$state` property. It is also possible to get the current state via the `state` property without subscribing to state updates.
+The store's state (`_state$`) is a RxJS `BehaviorSubject`. Changing the state means pushing new state object into the `_state$` stream via the `setState` method. Interested entities can subscribe to state updates by subscribing to the `state$` property. It is also possible to get the current state via the `state` property without subscribing to state updates.
 
-`Store` class provides a unified interface for all features' store services to extend. In the next section we'll have a look at how to use the abstract `Store` class to implement an example feature store service.
+`Store` class provides a **unified interface** for all features' store services to extend. In the next section we'll have a look at how to use the abstract `Store` class to implement an example feature store service.
 
 ## Features' stores
 
@@ -79,7 +79,7 @@ export class CoffeeElectionState {
 }
 {% endhighlight %}
 
-One last thing to do to make this simple example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize the state when creating an instance of `CoffeeElectionStore`:
+One last thing to do to make this simple example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize the state when creating a new instance of `CoffeeElectionStore`:
 
 <span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/coffee-election.store.ts" target="_blank">coffee-election.store.ts</a></span>
 {% highlight typescript linenos %}
@@ -119,16 +119,16 @@ export class CoffeeElectionStore extends Store<CoffeeElectionState> {
 }
 {% endhighlight %}
 
-In the example above `CoffeeElectionStore`'s functionality was extended by defining `addVote` and `addCandidate` methods. In essence, these methods modify the state by pushing a new state object into the observable `state$` stream via the `setState` helper.
+In the example above `CoffeeElectionStore`'s functionality was extended by defining `addVote` and `addCandidate` methods. In essence, these methods modify the state by pushing new state objects into the observable `state$` stream via the `setState` method.
 
-Note how it is impossible to modify the state without notifying listeners about the change. This characteristic of observable stores makes them a perfect fit for implementing one-way data flow in Angular apps - much like with Redux or a similar state management library.
+Note how it is **impossible to modify the state without notifying listeners about the change**. This characteristic of observable stores makes them a perfect fit for implementing one-way data flow in Angular apps - much like with Redux or a similar state management library.
 
 ## Using injectable store services
 
-App's state could all be stored in a single global state object. But as the app grows, so does the state object and it can quickly become too big to easily extend it with new features. So instead of storing the whole state in one place, it is better to split the state into smaller chunks. A good way to split the properties is to group them by feature and extract these groups into separate state objects, managed by corresponding stores.
+App's state could all be stored in a single global state object. But as the app grows, so does the state object and it can quickly become too big to easily extend it with new features. So instead of storing the whole state in one place, it is better to **split the state into smaller chunks**. A good way to split the properties is to group them by feature and extract these groups into separate state objects, managed by corresponding stores.
 
 There are two types of stores that emerge from splitting:
-- global stores that contain the states of globally used features,
+- global stores that contain globally used state,
 - component stores that contain the states used by a single component.
 
 To set up a **store containing global state** accessed by different services and components, the store is listed as a provider in a module's providers list (root app module or a feature specific module). This way Angular adds a new global provider to its dependency injector. The state in global stores will be available until the page is reloaded.
@@ -144,9 +144,9 @@ export class AppModule {
 }
 {% endhighlight %}
 
-Note that many global stores can be defined as providers in app's modules, each managing its own subset of global state. The codebase stays much more maintainable this way, since each store follows the principle of single responsibility.
+Note that **many global stores can be defined** as providers in app's modules, each managing its own subset of global state. The codebase stays much more maintainable this way, since each store follows the principle of single responsibility.
 
-To use a global store in different parts of the app, the store needs to be defined as their dependency. This way Angular injects the same instance of a global store (defined as singleton provider in `AppModule` or any other module) into every component/ service depending on it.
+To use a global store in different parts of the app, the store needs to be defined as their dependency. This way Angular injects the **same instance** of a global store (defined as singleton provider in `AppModule` or any other module) into every component/ service depending on it.
 
 <span class="highlight-filename">example.component.ts</span>
 {% highlight typescript linenos %}
@@ -171,7 +171,7 @@ export class ExampleComponent {
 }
 {% endhighlight %}
 
-Private component stores are used in the same way as global stores by defining them as dependencies in the components' constructors. The key difference is that these component specific stores are not singletons. Instead, Angular creates a new instance of the store each time a component depending on it is created. As a consequence, multiple instances of the same component can be present in the DOM at the same time, each one of them having its own store instance with its own state.
+Private component stores are used in the same way as global stores by defining them as dependencies in the components' constructors. The key difference is that these **component specific stores are not singletons**. Instead, Angular creates a new instance of the store each time a component depending on it is created. As a consequence, multiple instances of the same component can be present in the DOM at the same time, each one of them having its own store instance with its own state.
 
 ## Subscribing to state updates in components and services
 
@@ -202,7 +202,7 @@ this.store.state$
   });
 {% endhighlight %}
 
-Note that these subscriptions must be cleaned up before a component is destroyed in order to prevent memory leaks. We won't go into details about unsubscribing in this post. Check out [this topic on Stack Overflow](https://stackoverflow.com/a/41177163){:target='_blank'} to learn more.
+Note that these **subscriptions must be cleaned up** before a component is destroyed in order to prevent memory leaks. We won't go into details about unsubscribing in this post. Check out [this topic on Stack Overflow](https://stackoverflow.com/a/41177163){:target='_blank'} to learn more.
 
 ## Subscribing to state updates in components' templates
 
@@ -219,13 +219,13 @@ In case a component doesn't execute any logic on state update and it only serves
 </ul>
 {% endhighlight %}
 
-These subscriptions to state updates via `async` pipes are automatically cleaned up by the framework upon destroying the component.
+These subscriptions to state updates via `async` pipes are **automatically cleaned up** by the framework upon destroying the component.
 
 ## Unit testing the store
 
 Testing state modifying store methods is pretty straightforward. It consists of three steps:
 1. Creating an instance of the tested store and setting up mocked initial state.
-2. Calling a store method the test is testing.
+2. Calling a store's method the test is testing.
 3. Asserting the method updated the state correctly.
 
 In practice unit tests to test the store from the *Coffee election* example look like this:
