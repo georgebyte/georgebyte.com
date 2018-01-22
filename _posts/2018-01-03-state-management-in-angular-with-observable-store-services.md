@@ -158,7 +158,7 @@ export class ExampleComponent {
 }
 {% endhighlight %}
 
-Not all state needs to be global though. **Component specific state** should only exist in memory if a component is using it. Once user navigates to a different view and the component is destroyed, its state should be cleaned-up too. This can be achieved by adding the store to a list of component's providers. This way we get "self-cleaning" stores, that are kept in memory as long as components using them are kept in memory.
+Not all state needs to be global though. **Component specific state** should only exist in memory if a component is using it. Once user navigates to a different view and the component is destroyed, its state should be cleaned-up too. This can be achieved by adding the store to a list of component's providers. This way we get "self-cleaning" stores that are kept in memory as long as components using them are kept in memory.
 
 <span class="highlight-filename">example.component.ts</span>
 {% highlight typescript linenos %}
