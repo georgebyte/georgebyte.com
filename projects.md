@@ -17,7 +17,7 @@ description: "A list of Jure Bajt's software development projects."
                     </h3>
                     <div class="projects-grid__item-image-container">
                         <a href="https://www.npmjs.com/package/ngx-categorized-select" target="_blank">
-                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/ngx-categorized-select-screenshot.png" />
+                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/ngx-categorized-select-screenshot.png" alt="ngx-categorized-select component screenshot" />
                         </a>
                     </div>
                     <p class="projects-grid__item-description">
@@ -35,7 +35,7 @@ description: "A list of Jure Bajt's software development projects."
                     </h3>
                     <div class="projects-grid__item-image-container">
                         <a href="{{ site.baseurl }}/images/birthday-party-planner-screenshot.png">
-                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/birthday-party-planner-screenshot.png" />
+                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/birthday-party-planner-screenshot.png" alt="Birthday party planner screenshot" />
                         </a>
                     </div>
                     <p class="projects-grid__item-description">
@@ -56,7 +56,7 @@ description: "A list of Jure Bajt's software development projects."
                     </h3>
                     <div class="projects-grid__item-image-container">
                         <a href="{{ site.baseurl }}/images/custom-table-component-screenshot.png">
-                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/custom-table-component-screenshot.png" />
+                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/custom-table-component-screenshot.png" alt="Custom table component screenshot" />
                         </a>
                     </div>
                     <p class="projects-grid__item-description">
@@ -72,7 +72,7 @@ description: "A list of Jure Bajt's software development projects."
                     </h3>
                     <div class="projects-grid__item-image-container">
                         <a href="https://github.com/Zemanta/examples-rendering-performance" target="_blank">
-                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/boosting-web-app-fps-talk-screenshot.png" />
+                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/boosting-web-app-fps-talk-screenshot.png" alt="Boosting Web-app FPS talk first slide" />
                         </a>
                     </div>
                     <p class="projects-grid__item-description">
@@ -91,7 +91,7 @@ description: "A list of Jure Bajt's software development projects."
                     </h3>
                     <div class="projects-grid__item-image-container">
                         <a href="{{ site.baseurl }}/images/venue-seat-selection-screenshot.png">
-                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/venue-seat-selection-screenshot.png" />
+                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/venue-seat-selection-screenshot.png" alt="Seat selection widget screenshot" />
                         </a>
                     </div>
                     <p class="projects-grid__item-description">
