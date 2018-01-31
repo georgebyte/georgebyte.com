@@ -13,6 +13,24 @@ description: "A list of Jure Bajt's software development projects."
             <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
+                        <a href="https://www.npmjs.com/package/ngx-categorized-select" target="_blank">ngx-categorized-select npm package</a>
+                    </h3>
+                    <div class="projects-grid__item-image-container">
+                        <a href="https://www.npmjs.com/package/ngx-categorized-select" target="_blank">
+                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/ngx-categorized-select-screenshot.png" />
+                        </a>
+                    </div>
+                    <p class="projects-grid__item-description">
+                        My first open source project - a component for Angular 2+ to select categorized items.
+                    </p>
+                    <div class="projects-grid__item-tech-stack">
+                        <span class="projects-grid__item-tech-stack-label label">Angular</span>
+                        <span class="projects-grid__item-tech-stack-label label">npm</span>
+                        <span class="projects-grid__item-tech-stack-label label">Open source</span>
+                    </div>
+                </div>
+                <div class="projects-grid__item">
+                    <h3 class="projects-grid__item-title">
                         <a href="https://github.com/jurebajt/bday-party-planner" target="_blank">Birthday party planner</a>
                     </h3>
                     <div class="projects-grid__item-image-container">
@@ -30,6 +48,8 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">Django rest framework</span>
                     </div>
                 </div>
+            </div>
+            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         Custom table component
@@ -46,14 +66,14 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">AngularJS</span>
                     </div>
                 </div>
-            </div>
-            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         <a href="https://github.com/Zemanta/examples-rendering-performance" target="_blank">Talk: Boosting Web-app FPS</a>
                     </h3>
                     <div class="projects-grid__item-image-container">
-                        <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/boosting-web-app-fps-talk-screenshot.png" />
+                        <a href="https://github.com/Zemanta/examples-rendering-performance" target="_blank">
+                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/boosting-web-app-fps-talk-screenshot.png" />
+                        </a>
                     </div>
                     <p class="projects-grid__item-description">
                         An hour long talk at JSmeet (November 2016) focused on performance fundamentals every web-developer should know when building performant web-apps. Slides and lots of examples available at project's URL.
@@ -63,6 +83,8 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">CSS</span>
                     </div>
                 </div>
+            </div>
+            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         <a href="http://mojekarte.si" target="_blank">Seat selection widget</a>
@@ -84,5 +106,3 @@ description: "A list of Jure Bajt's software development projects."
         </div>
     </div>
 </article>
-
-
