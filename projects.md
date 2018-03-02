@@ -31,6 +31,26 @@ description: "A list of Jure Bajt's software development projects."
                 </div>
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
+                        <a href="http://slides.com/jurebajt/state-management-in-angular-with-observable-store-services" target="_blank">Talk: State management in Angular with observable store services</a>
+                    </h3>
+                    <div class="projects-grid__item-image-container">
+                        <a href="http://slides.com/jurebajt/state-management-in-angular-with-observable-store-services" target="_blank">
+                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/state-management-in-angular-with-observable-store-services-talk-screenshot.png" alt="State management in Angular with observable store services talk first slide" />
+                        </a>
+                    </div>
+                    <p class="projects-grid__item-description">
+                        A talk about <a href="/state-management-in-angular-with-observable-store-services/" target="_blank">observable store pattern</a> at <a href="https://www.meetup.com/Ljubljana-JavaScript-User-Group/events/247901199/" target="_blank">JavaScript Meet (February 2018)</a>.
+                    </p>
+                    <div class="projects-grid__item-tech-stack">
+                        <span class="projects-grid__item-tech-stack-label label">State management</span>
+                        <span class="projects-grid__item-tech-stack-label label">Angular</span>
+                        <span class="projects-grid__item-tech-stack-label label">RxJS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-grid__row clearfix">
+                <div class="projects-grid__item">
+                    <h3 class="projects-grid__item-title">
                         <a href="https://github.com/jurebajt/bday-party-planner" target="_blank">Birthday party planner</a>
                     </h3>
                     <div class="projects-grid__item-image-container">
@@ -48,8 +68,6 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">Django rest framework</span>
                     </div>
                 </div>
-            </div>
-            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         Custom table component
@@ -66,6 +84,8 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">AngularJS</span>
                     </div>
                 </div>
+            </div>
+            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         <a href="https://github.com/Zemanta/examples-rendering-performance" target="_blank">Talk: Boosting Web-app FPS</a>
@@ -76,15 +96,13 @@ description: "A list of Jure Bajt's software development projects."
                         </a>
                     </div>
                     <p class="projects-grid__item-description">
-                        An hour long talk at JSmeet (November 2016) focused on performance fundamentals every web-developer should know when building performant web-apps. Slides and lots of examples available at project's URL.
+                        An hour long talk at <a href="https://www.meetup.com/Ljubljana-JavaScript-User-Group/events/235410586/" target="_blank">JSmeet (November 2016)</a> focused on performance fundamentals every web-developer should know when building performant web-apps. Slides and lots of examples available at project's URL.
                     </p>
                     <div class="projects-grid__item-tech-stack">
                         <span class="projects-grid__item-tech-stack-label label">JavaScript</span>
                         <span class="projects-grid__item-tech-stack-label label">CSS</span>
                     </div>
                 </div>
-            </div>
-            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         <a href="http://mojekarte.si" target="_blank">Seat selection widget</a>
