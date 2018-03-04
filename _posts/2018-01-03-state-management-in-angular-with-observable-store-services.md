@@ -267,6 +267,17 @@ describe('CoffeeElectionStore', () => {
 
 The purpose of this post was to present how one can leverage the built in features of Angular framework to implement a simple yet powerful state management solution. The provided *Coffee election* example app is very simple, but the concepts it demonstrates can be used to successfully manage state in much bigger and more complex apps. At Zemanta we used observable store services to implement a rather complex feature and since the experiment worked out great we will continue to use such stores in our app going forward.
 
+<div class="note">
+  <p class="note__label">Edit (March 4, 2018):</p>
+  <p>Some readers pointed out that different state management libraries (e.g. ngrx) provide the same functionality as observable store services and were wondering why one may use observable store pattern instead of these libraries.</p>
+
+  <p>Observable store pattern I described in this blog post is a much simpler solution in my opinion.</p>
+
+  <p>I used ngrx in the past and I think it is a really good library for state management. But it also takes longer to learn it, because of all the features it supports.</p>
+
+  <p>As it turned out in our case at Zemanta, one may not need a full blown state management library to manage state even in larger applications. This "stripped down" implementation of Redux pattern covers pretty much all of Zemanta's app use cases without introducing much additional complexity. I believe less complexity comes from the fact that observable store services heavily depend on Angular features (dependency injection, async pipes etc.) to do a lot of heavy lifting (e.g. cleaning-up unused state when components are destroyed, creating new instances of stores when needed etc.).</p>
+</div>
+
 <div class="vertical-separator"></div>
 
 I hope you learned something new by reading this post. If anything seems confusing please get back to me in the comments. Suggestions, improvements or just general discussion about the topic are very welcome, too.
