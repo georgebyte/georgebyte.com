@@ -24,7 +24,7 @@ This post explains how one can use the observable store pattern we developed to 
 
 To showcase the usage of observable stores we'll build a simple app called *Coffee election* that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates. The source code is available on GitHub: [github.com/jurebajt/coffee-election](https://github.com/jurebajt/coffee-election){:target='_blank'}.
 
-## Abstract `Store` class
+## Abstract `Store` class (get it from npm: [rxjs-observable-store](https://www.npmjs.com/package/rxjs-observable-store){:target='_blank'})
 
 At the core of observable store pattern is the abstract `Store` class. It leverages RxJS to achieve data flow similar to Redux. It is implemented like this:
 
