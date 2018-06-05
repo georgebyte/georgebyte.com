@@ -13,6 +13,24 @@ description: "A list of Jure Bajt's software development projects."
             <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
+                        <a href="https://www.npmjs.com/package/rxjs-observable-store" target="_blank">rxjs-observable-store npm package</a>
+                    </h3>
+                    <div class="projects-grid__item-image-container">
+                        <a href="https://www.npmjs.com/package/rxjs-observable-store" target="_blank">
+                            <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/rxjs-observable-store-screenshot.png" alt="rxjs-observable-store Store class screenshot" />
+                        </a>
+                    </div>
+                    <p class="projects-grid__item-description">
+                        A state management solution implemented using RxJS to mimic Redux architecture. Read my blog post <a href="https://jurebajt.com/state-management-in-angular-with-observable-store-services/" target="_blank">State management in Angular with observable store services</a> to learn more.
+                    </p>
+                    <div class="projects-grid__item-tech-stack">
+                        <span class="projects-grid__item-tech-stack-label label">RxJS</span>
+                        <span class="projects-grid__item-tech-stack-label label">npm</span>
+                        <span class="projects-grid__item-tech-stack-label label">Open source</span>
+                    </div>
+                </div>
+                <div class="projects-grid__item">
+                    <h3 class="projects-grid__item-title">
                         <a href="https://www.npmjs.com/package/ngx-categorized-select" target="_blank">ngx-categorized-select npm package</a>
                     </h3>
                     <div class="projects-grid__item-image-container">
@@ -29,6 +47,8 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">Open source</span>
                     </div>
                 </div>
+            </div>
+            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         <a href="http://slides.com/jurebajt/state-management-in-angular-with-observable-store-services" target="_blank">Talk: State management in Angular with observable store services</a>
@@ -47,8 +67,6 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">RxJS</span>
                     </div>
                 </div>
-            </div>
-            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         <a href="https://github.com/jurebajt/bday-party-planner" target="_blank">Birthday party planner</a>
@@ -68,6 +86,8 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">Django rest framework</span>
                     </div>
                 </div>
+            </div>
+            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         Custom table component
@@ -84,8 +104,6 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">AngularJS</span>
                     </div>
                 </div>
-            </div>
-            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         <a href="https://github.com/Zemanta/examples-rendering-performance" target="_blank">Talk: Boosting Web-app FPS</a>
@@ -103,6 +121,8 @@ description: "A list of Jure Bajt's software development projects."
                         <span class="projects-grid__item-tech-stack-label label">CSS</span>
                     </div>
                 </div>
+            </div>
+            <div class="projects-grid__row clearfix">
                 <div class="projects-grid__item">
                     <h3 class="projects-grid__item-title">
                         <a href="http://mojekarte.si" target="_blank">Seat selection widget</a>
