@@ -1,0 +1,48 @@
+body {
+    background-color: #efefee;
+}
+
+.page {
+    width: 1440px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+.page__content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -32px 0 0 -32px;
+}
+
+.panel {
+    flex: 0 1 320px;
+    margin: 32px 0 0 32px;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px 0 #cccccc;
+}
+
+.panel__title {
+    margin: 0;
+    padding: 8px;
+    border-bottom: 1px solid #cccccc;
+    color: #555555;
+}
+
+.panel__title-text {
+    padding-left: 4px;
+}
+
+.panel__content {
+    padding: 8px;
+}
+
+.link-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.link-list__link {
+    font-size: 16px;
+    font-family: monospace;
+}
