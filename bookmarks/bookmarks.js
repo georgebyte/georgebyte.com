@@ -91,7 +91,7 @@
         },
         {
             name: 'Software engineering',
-            iconClasses: 'fas fa-terminal',
+            iconClasses: 'fas fa-code',
             panelClasses: 'software-engineering-links',
             bookmarks: [
                 {name: 'GitLab', url: 'https://gitlab.com/'},
@@ -107,12 +107,13 @@
         },
         {
             name: 'Finance',
-            iconClasses: '',
+            iconClasses: 'fas fa-university',
             panelClasses: 'finance-links',
             bookmarks: [
                 {name: 'Finance', url: 'https://drive.google.com/drive/u/0/folders/1FTKghwn_GGiKUJxpHgSoRLu0tGROiCvt?ths=true'},
                 {name: 'ETF trades', url: 'https://docs.google.com/spreadsheets/d/1AXZP4jamcOPKzksOj_qpoYK_epD3dAXDu46fu7aRhU8/edit#gid=662105215'},
                 {name: 'Degiro', url: 'https://trader.degiro.nl/'},
+                {name: 'Portfolio - Carta', url: 'https://carta.com/investors/firm/23408/company/49917/holdings/'},
                 {name: 'Finance and investing', url: 'https://drive.google.com/drive/folders/1Jf9h7x7I0E1w9XDelaOaiVwVfb7kv5Zk'},
                 {name: 'Portfolio', url: 'https://www.investing.com/portfolio/?portfolioID=YGdmNmcwN2g2YW5lYzQ%3D'},
                 {name: 'Stocks chart', url: 'https://www.investing.com/charts/stocks-charts'},
@@ -125,18 +126,18 @@
         },
         {
             name: 'Reading',
-            iconClasses: '',
+            iconClasses: 'fas fa-book',
             panelClasses: 'reading-links',
             bookmarks: [
                 {name: 'Goodreads', url: 'https://www.goodreads.com/'},
-                {name: 'Summaries - Actionable Books', url: 'http://www.actionablebooks.com/en-ca/summaries/'},
-                {name: 'Summaries - Derek Sivers', url: 'https://sivers.org/book'},
+                {name: 'Actionable Books (summaries)', url: 'http://www.actionablebooks.com/en-ca/summaries/'},
+                {name: 'Derek Sivers (summaries)', url: 'https://sivers.org/book'},
                 {name: '', url: ''},
             ],
         },
         {
             name: 'Learning',
-            iconClasses: '',
+            iconClasses: 'fas fa-graduation-cap',
             panelClasses: 'learning-links',
             bookmarks: [
                 {name: 'Touch typing', url: 'http://www.typingstudy.com/'},
@@ -145,7 +146,7 @@
         },
         {
             name: 'Writing',
-            iconClasses: '',
+            iconClasses: 'fas fa-pen-fancy',
             panelClasses: 'writing-links',
             bookmarks: [
                 {name: 'Thesaurus', url: 'http://thesaurus.com/'},
@@ -160,7 +161,7 @@
         },
         {
             name: 'Cooking',
-            iconClasses: '',
+            iconClasses: 'fas fa-utensils',
             panelClasses: 'cooking-links',
             bookmarks: [
                 {name: 'StillTasty', url: 'http://www.stilltasty.com/'},
@@ -170,7 +171,7 @@
         },
         {
             name: 'Crypto',
-            iconClasses: '',
+            iconClasses: 'fab fa-bitcoin',
             panelClasses: 'crypto-links',
             bookmarks: [
                 {name: 'Crypto trades', url: 'https://docs.google.com/spreadsheets/d/1RcssO8LDkTMm26MKzX7DlQcTdTiZ9JhhsVwr1wyICGs/edit'},
@@ -189,7 +190,7 @@
         },
         {
             name: 'IRL services',
-            iconClasses: '',
+            iconClasses: 'fas fa-store-alt',
             panelClasses: 'irl-services-links',
             bookmarks: [
                 {name: 'Barbara Mazej Poredoš', url: 'http://www.zd-lj.si/zdlj/index.php?option=com_zdravniki&SIFRAD=20015&strm_zdr=5650&view=zdravnik&Itemid=823'},
@@ -200,7 +201,7 @@
         },
         {
             name: 'Fitness',
-            iconClasses: '',
+            iconClasses: 'fas fa-dumbbell',
             panelClasses: 'fitness-links',
             bookmarks: [
                 {name: 'Strength Standards', url: 'http://www.strengthstandards.co/#/home'},
@@ -209,7 +210,7 @@
         },
         {
             name: 'Faith',
-            iconClasses: '',
+            iconClasses: 'fab fa-pagelines',
             panelClasses: 'faith-links',
             bookmarks: [
                 {name: 'Hozana', url: 'https://hozana.si/'},
@@ -220,7 +221,7 @@
         },
         {
             name: 'Free time',
-            iconClasses: '',
+            iconClasses: 'fas fa-gamepad',
             panelClasses: 'free-time-links',
             bookmarks: [
                 {name: 'TasteDive', url: 'https://tastedive.com/'},
@@ -230,7 +231,7 @@
         },
         {
             name: 'P2P',
-            iconClasses: '',
+            iconClasses: 'fas fa-cloud-download-alt',
             panelClasses: 'p2p-links',
             bookmarks: [
                 {name: 'Partis', url: 'http://www.partis.si/'},
@@ -238,6 +239,58 @@
                 {name: 'Audiobook torrents', url: 'http://audiobookbay.nl/'},
                 {name: 'Mac Torrent Download', url: 'https://mac-torrent-download.net/'},
                 {name: 'Black Box Repack', url: 'http://www.blackboxrepack.com/'},
+                {name: '', url: ''},
+            ],
+        },
+        {
+            name: 'Zemanta business',
+            iconClasses: 'far fa-building',
+            panelClasses: 'zemanta-links',
+            bookmarks: [
+                {name: 'Okta', url: 'https://outbrain.okta.com/app/UserHome'},
+                {name: 'CakeHR', url: 'https://zemanta.cake.hr/dashboard#'},
+                {name: 'Monday', url: 'https://outbrain.monday.com/boards/61145642'},
+                {name: 'Lighthouse', url: 'https://getlighthouse.com/agenda/meetings'},
+                {name: 'Outbrain Payment Portal', url: 'https://suppliers.tipalti.com/Outbrain/portal/index'},
+                {name: '', url: ''},
+            ],
+        },
+        {
+            name: 'Zemanta engineering',
+            iconClasses: 'fas fa-terminal',
+            panelClasses: 'zemanta-links',
+            bookmarks: [
+                {name: 'Zemanta One', url: 'https://one.zemanta.com/'},
+                {name: 'Z1 admin', url: 'https://one.zemanta.com/admin/'},
+                {name: 'K1 admin', url: 'https://k1.zemanta.com/admin/'},
+                {name: 'Jenkins', url: 'https://j.zemanta.com/job/Zemanta/job/zemanta-eins/'},
+                {name: 'DeployKitty', url: 'http://dk2.zemanta.com:8000/deploykitty/dash/'},
+                {name: 'Redash', url: 'http://redash.zemanta.com:8123/'},
+                {name: 'FullStory', url: 'https://app.fullstory.com/ui/qrh/segments/everyone/people/0'},
+                {name: 'Zemanta One API', url: 'http://dev.zemanta.com/one/api/'},
+                {name: 'Style Guide', url: 'https://app.frontify.com/d/OuQNfGPbmLg6/zemanta-style-guide'},
+                {name: '', url: ''},
+            ],
+        },
+        {
+            name: 'Zemanta monitoring',
+            iconClasses: 'fas fa-chart-area',
+            panelClasses: 'zemanta-links',
+            bookmarks: [
+                {name: 'Sentry', url: 'https://sentry.io/zemanta/'},
+                {name: 'Grafana', url: 'https://marty.zemanta.com:3000/'},
+                {name: 'New Relic', url: 'https://rpm.newrelic.com/accounts/719319/applications'},
+                {name: 'LogDNA', url: 'https://app.logdna.com/92b58769bf/logs/view'},
+                {name: 'Sentry (zemanta-eins-frontend)', url: 'https://sentry.io/zemanta/frontend/'},
+                {name: 'Sentry (zemanta-eins)', url: 'https://sentry.io/zemanta/eins-1/'},
+                {name: 'Sentry (sspd-frontend)', url: 'https://sentry.io/zemanta/sspd-frontend/'},
+                {name: 'Grafana (Nextgen Alerts)', url: 'https://marty.zemanta.com:3000/dashboard/db/nextgen-alerts?orgId=1'},
+                {name: 'Grafana (REST API)', url: 'https://marty.zemanta.com:3000/dashboard/db/rest-api?orgId=1'},
+                {name: 'Grafana (AWS RDS)', url: 'https://marty.zemanta.com:3000/dashboard/db/aws-rds?orgId=1'},
+                {name: 'Grafana (Z1 Performance)', url: 'https://marty.zemanta.com:3000/dashboard/db/z1-performance?orgId=1'},
+                {name: 'Grafana (K1 Sync)', url: 'https://marty.zemanta.com:3000/dashboard/db/k1-sync?orgId=1'},
+                {name: 'Grafana (Z1 Main Dash)', url: 'https://marty.zemanta.com:3000/dashboard/db/z1-main-dash?orgId=1'},
+                {name: 'Grafana (System Resources)', url: 'https://marty.zemanta.com:3000/dashboard/db/system-resources?orgId=1'},
                 {name: '', url: ''},
             ],
         },

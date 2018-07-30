@@ -3,7 +3,7 @@ body {
 }
 
 .page {
-    width: 1440px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 32px;
 }
@@ -15,7 +15,7 @@ body {
 }
 
 .panel {
-    flex: 0 1 320px;
+    flex: 1 1 320px;
     margin: 32px 0 0 32px;
     background-color: #ffffff;
     box-shadow: 0 0 3px 0 #cccccc;
