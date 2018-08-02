@@ -296,10 +296,17 @@
         },
     ];
 
+    const SEARCH_INPUT = document.getElementById('search-input');
     const BOOKMARKS_CONTAINER = document.getElementById('bookmarks-container');
 
     function init () {
+        focusSearchInput();
         renderBookmarks(BOOKMARKS, BOOKMARKS_CONTAINER);
+        initVisibilityChangeEventListener();
+    }
+
+    function focusSearchInput () {
+        SEARCH_INPUT.focus();
     }
 
     function renderBookmarks (bookmarks, target) {
@@ -335,6 +342,14 @@
             }
         });
         target.innerHTML = generatedHtml;
+    }
+
+    function initVisibilityChangeEventListener () {
+        document.addEventListener(
+            'visibilitychange',
+            () => { document.hidden === false && focusSearchInput() },
+            false
+        );
     }
 
     init();
