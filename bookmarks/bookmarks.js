@@ -240,6 +240,7 @@
             panelClasses: 'reading-links',
             bookmarks: [
                 {name: 'Goodreads', url: 'https://www.goodreads.com/'},
+                {name: 'Audible', url: 'https://www.audible.com/'},
                 {
                     name: 'Actionable Books (summaries)',
                     url: 'http://www.actionablebooks.com/en-ca/summaries/',
