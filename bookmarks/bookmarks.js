@@ -167,6 +167,11 @@
                 {name: 'GitLab', url: 'https://gitlab.com/'},
                 {name: 'GitHub', url: 'https://github.com/'},
                 {name: 'Gists', url: 'https://gist.github.com/jurebajt'},
+                {
+                    name: 'VS Code Settings Sync gist',
+                    url:
+                        'https://gist.github.com/jurebajt/fcc985ba39d708745287e4789f85e3af',
+                },
                 {name: 'DevDocs', url: 'http://devdocs.io/'},
                 {name: 'CodePen', url: 'http://codepen.io/jurebajt/'},
                 {name: 'Choose a license', url: 'http://choosealicense.com/'},
