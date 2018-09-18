@@ -30,27 +30,24 @@ At the core of observable store pattern is the abstract `Store` class. It levera
 
 <span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/store.ts" target="_blank">store.ts</a></span>
 {% highlight typescript linenos %}
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import {Observable, BehaviorSubject} from 'rxjs';
 
 export class Store<T> {
-  private _state$: BehaviorSubject<T>;
+    state$: Observable<T>;
+    private _state$: BehaviorSubject<T>;
 
-  protected constructor (initialState: T) {
-    this._state$ = new BehaviorSubject(initialState);
-  }
+    protected constructor (initialState: T) {
+        this._state$ = new BehaviorSubject(initialState);
+        this.state$ = this._state$.asObservable();
+    }
 
-  get state$ (): Observable<T> {
-    return this._state$.asObservable();
-  }
+    get state (): T {
+        return this._state$.getValue();
+    }
 
-  get state (): T {
-    return this._state$.getValue();
-  }
-
-  setState (nextState: T): void {
-    this._state$.next(nextState);
-  }
+    setState (nextState: T): void {
+        this._state$.next(nextState);
+    }
 }
 {% endhighlight %}
 
