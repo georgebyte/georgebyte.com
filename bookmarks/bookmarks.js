@@ -507,9 +507,9 @@
                     url: 'https://sentry.io/zemanta/sspd-frontend/',
                 },
                 {
-                    name: 'Grafana (Nextgen Alerts)',
+                    name: 'Grafana (Z1 Team Alerts)',
                     url:
-                        'https://marty.zemanta.com:3000/dashboard/db/nextgen-alerts?orgId=1',
+                        'https://marty.zemanta.com:3000/d/000000118/z1-team-alerts?orgId=1',
                 },
                 {
                     name: 'Grafana (REST API)',
