@@ -4,6 +4,44 @@ title: "Angular architecture for larger applications"
 description: "TODO"
 ---
 
+<!-- 
+- services (stores) and connecting store to endpoints
+- types, helpers, pipes - where to put?
+- subscribing to global stores from components - add to example app
+
+- Basic idea
+    - State managed using observable stores - link to previous blog post
+    - Component based architecture (smart and dumb (input-output) components)
+        - Smart components can be views or containers - they connect stores with dumb components
+        - Views are smart containers that can be routed to. They do "URL sync"
+
+- Structure overview
+    - App divided into modules
+        - Core module
+        - Features modules
+            - Routing - each feature defines its own routes in its RoutingModule
+        - Shared module
+        - Views module
+        - Layout module
+    - Each module defines its constants (enums) and configs
+
+- Styles
+    - BEM
+    - Base and other global styles
+    - Component styles - layout child components with styles in parents to make child components more reusable
+    - Overwriting child styles from parents with ::ng-deep
+    - Responsive design - design in a mobile-first fashion and enhance this design with media queries in views (or other components who know exactly the relation between them and window size, e.g. modals)
+    - Global and components' Scss variables (location, naming)
+
+- Testing
+    - Tests located besides testee with .spec.ts postfix
+    - ...app/testing directory with stubbed components, services etc.
+
+- Extras
+    - AppInitializationModule and resolvers
+    - Use links when changing URL, not buttons (open in new tab support)
+ -->
+
 ## Component based architecture
 
 
@@ -11,7 +49,7 @@ description: "TODO"
 
 ```plain
 app/
-├── core/ # SINGLETON services provided via root injector and SINGLETON components (e.g. modal dialog)
+├── core/ # SINGLETON services provided via root injector
 │   ├── core-service-example/
 │   │   ├── helpers/
 │   │   │   └── example.helpers.ts
@@ -23,25 +61,6 @@ app/
 │   │   ├── types/
 │   │   │   └── type-example.ts
 │   │   └── core-service-example.module.ts (optional for larger core services)
-│   ├── complex-component-example/
-│   │   ├── components/
-│   │   │   └── simple-component-example/
-│   │   │       ├── _component-example.variables.scss
-│   │   │       ├── component-example.component.html
-│   │   │       ├── component-example.component.scss
-│   │   │       ├── component-example.component.ts
-│   │   │       └── type-example.ts
-│   │   ├── helpers/
-│   │   │   └── example.helpers.ts
-│   │   ├── types/
-│   │   │   └── type-example.ts
-│   │   └── complex-component-example.module.ts
-│   ├── simple-component-example/
-│   │   ├── _component-example.variables.scss
-│   │   ├── component-example.component.html
-│   │   ├── component-example.component.scss
-│   │   ├── component-example.component.ts
-│   │   └── type-example.ts
 │   └── core.module.ts
 ├── features/
 │   └── feature-example/
@@ -90,9 +109,25 @@ app/
 │   └── layout.module.ts
 ├── shared/
 │   ├── components/
-│   │   └── component-example/
-│   │       ├── ...
-│   │       └── (similar to complex/simple-component-example in core module)
+│   │   ├── complex-component-example/
+│   │   │   ├── components/
+│   │   │   │   └── simple-component-example/
+│   │   │   │       ├── _component-example.variables.scss
+│   │   │   │       ├── component-example.component.html
+│   │   │   │       ├── component-example.component.scss
+│   │   │   │       ├── component-example.component.ts
+│   │   │   │       └── type-example.ts
+│   │   │   ├── helpers/
+│   │   │   │   └── example.helpers.ts
+│   │   │   ├── types/
+│   │   │   │   └── type-example.ts
+│   │   │   └── complex-component-example.module.ts
+│   │   └── simple-component-example/
+│   │       ├── _component-example.variables.scss
+│   │       ├── component-example.component.html
+│   │       ├── component-example.component.scss
+│   │       ├── component-example.component.ts
+│   │       └── type-example.ts
 │   ├── directives/
 │   │   └── directive-example.directive.ts
 │   ├── pipes/
