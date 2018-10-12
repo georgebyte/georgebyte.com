@@ -1,19 +1,19 @@
 ---
 layout: post
-title: "Angular architecture for larger applications"
+title: "Scalable Angular architecture for larger applications"
 description: "TODO"
 ---
 
 <!-- 
-- services (stores) and connecting store to endpoints
 - types, helpers, pipes - where to put?
-- subscribing to global stores from components - add to example app
 
-- Basic idea
-    - State managed using observable stores - link to previous blog post
+- Main ideas
     - Component based architecture (smart and dumb (input-output) components)
         - Smart components can be views or containers - they connect stores with dumb components
         - Views are smart containers that can be routed to. They do "URL sync"
+    - Making requests
+        - Stores are connected to backend via endpoints
+        - Updating request state - simple (in endpoint) and more complex (RequestStateUpdater)
 
 - Structure overview
     - App divided into modules
@@ -39,11 +39,17 @@ description: "TODO"
 
 - Extras
     - AppInitializationModule and resolvers
-    - Use links when changing URL, not buttons (open in new tab support)
- -->
+-->
 
-## Component based architecture
+## Main ideas
 
+### State management with observable store services
+
+Effective state management is crucial in larger front-end applications. This scalable Angular app architecture was designed with observable store services as its main way of managing state. Observable stores are a state management solution implemented using RxJS to mimic Redux architecture. I described them in depth in my previous blog post [State management in Angular with observable store services](/state-management-in-angular-with-observable-store-services/). I recommend that you check it out before you continue reading this blog post.
+
+### Smart containers and presentational components
+
+Component based architecture has gained a lot of popularity in front-end development over the past few years.
 
 ## Structure overview
 
