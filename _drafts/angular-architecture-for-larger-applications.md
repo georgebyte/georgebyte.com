@@ -9,6 +9,7 @@ description: "TODO"
 
 - Main ideas
     - Component based architecture (smart and dumb (input-output) components)
+        - One way data flow
         - Smart components can be views or containers - they connect stores with dumb components
         - Views are smart containers that can be routed to. They do "URL sync"
     - Making requests
@@ -45,11 +46,20 @@ description: "TODO"
 
 ### State management with observable store services
 
-Effective state management is crucial in larger front-end applications. This scalable Angular app architecture was designed with observable store services as its main way of managing state. Observable stores are a state management solution implemented using RxJS to mimic Redux architecture. I described them in depth in my previous blog post [State management in Angular with observable store services](/state-management-in-angular-with-observable-store-services/). I recommend that you check it out before you continue reading this blog post.
+Effective state management is crucial in larger front-end applications. This scalable Angular app architecture was designed with observable store services as its main way of managing state. Observable stores are a state management solution implemented using RxJS to mimic Redux architecture. I described them in depth in my previous post about [State management in Angular with observable store services](/state-management-in-angular-with-observable-store-services/). I recommend that you check it out before you continue reading this blog post.
 
-### Smart containers and presentational components
+### Component based architecture
 
-Component based architecture has gained a lot of popularity in front-end development over the past few years.
+Component based architecture has gained a lot of popularity in front-end development over the past few years. It's a pattern that fits nicely in the context of developing front-end applications and enables developers to write maintainable and extensible front-end code.
+
+The scalable Angular app architecture described in this article is strongly rooted in component based architecture. The purpose of many ideas written bellow is to enhance components' reusability which in turn makes front-end apps faster (and way more fun) to extend and easier to understand. In my opinion, the two most important ideas to create truly reusable components are to separate them into **containers and presentational components** and to ensure that **app's data is flowing in one direction only**.
+
+#### Smart containers and presentational components
+
+#### One-way data flow
+
+
+  https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
 
 ## Structure overview
 
