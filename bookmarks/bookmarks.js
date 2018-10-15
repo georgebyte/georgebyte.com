@@ -27,6 +27,11 @@
                     name: 'Shopping list',
                     url: 'https://todoist.com/app?lang=en&v=856#start',
                 },
+                {
+                    name: 'Wisdom DB',
+                    url:
+                        'https://docs.google.com/spreadsheets/d/1UzilPdk01HA-l4UPhUK8TYgqp8wjyteSb5MnUTEsH2M/edit#gid=0',
+                },
                 {name: '', url: ''},
             ],
         },
