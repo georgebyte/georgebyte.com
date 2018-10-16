@@ -206,6 +206,10 @@
                     url:
                         'https://docs.google.com/spreadsheets/d/1AXZP4jamcOPKzksOj_qpoYK_epD3dAXDu46fu7aRhU8/edit#gid=662105215',
                 },
+                {
+                    name: 'Banka IN',
+                    url: 'https://www.bankain.si/BIN/vstopna.seam?login=motp',
+                },
                 {name: 'Degiro', url: 'https://trader.degiro.nl/'},
                 {
                     name: 'Portfolio - Carta',
