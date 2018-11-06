@@ -152,6 +152,14 @@
                     url: 'https://my.clippings.io/#/',
                 },
                 {
+                    name: 'Convert web page to PDF',
+                    url: 'https://www.web2pdfconvert.com/',
+                },
+                {
+                    name: 'Extract annotations from PDFs',
+                    url: 'https://www.sumnotes.net',
+                },
+                {
                     name: 'Source code → image',
                     url:
                         'https://carbon.now.sh/?bg=rgba(20,92,153,1)&t=base16-light&l=auto&ds=true&wc=false&wa=true&pv=48px&ph=32px&ln=true',
@@ -381,8 +389,8 @@
             panelClasses: 'fitness-links',
             bookmarks: [
                 {
-                    name: 'Strength Standards',
-                    url: 'http://www.strengthstandards.co/#/home',
+                    name: 'Strength standards',
+                    url: 'https://strengthlevel.com/strength-standards',
                 },
                 {name: '', url: ''},
             ],
@@ -449,6 +457,11 @@
                 {
                     name: 'Outbrain Payment Portal',
                     url: 'https://suppliers.tipalti.com/Outbrain/portal/index',
+                },
+                {
+                    name: 'Office library',
+                    url:
+                        'https://docs.google.com/spreadsheets/d/1FLnA8TFy7JLpJCq51eULVOR0vvyw1uVBQhMRVsdsiZk/edit#gid=0',
                 },
                 {name: '', url: ''},
             ],
