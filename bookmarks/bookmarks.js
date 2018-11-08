@@ -506,7 +506,7 @@
             panelClasses: 'zemanta-links',
             bookmarks: [
                 {name: 'Sentry', url: 'https://sentry.io/zemanta/'},
-                {name: 'Grafana', url: 'https://marty.zemanta.com:3000/'},
+                {name: 'Grafana', url: 'https://grafana.zemanta.com/'},
                 {
                     name: 'New Relic',
                     url:
@@ -531,37 +531,22 @@
                 {
                     name: 'Grafana (Z1 Team Alerts)',
                     url:
-                        'https://marty.zemanta.com:3000/d/000000118/z1-team-alerts?orgId=1',
+                        'https://grafana.zemanta.com/d/000000118/z1-team-alerts?orgId=1',
                 },
                 {
                     name: 'Grafana (REST API)',
                     url:
-                        'https://marty.zemanta.com:3000/dashboard/db/rest-api?orgId=1',
+                        'https://grafana.zemanta.com/dashboard/db/rest-api?orgId=1',
                 },
                 {
                     name: 'Grafana (AWS RDS)',
                     url:
-                        'https://marty.zemanta.com:3000/dashboard/db/aws-rds?orgId=1',
-                },
-                {
-                    name: 'Grafana (Z1 Performance)',
-                    url:
-                        'https://marty.zemanta.com:3000/dashboard/db/z1-performance?orgId=1',
+                        'https://grafana.zemanta.com/dashboard/db/aws-rds?orgId=1',
                 },
                 {
                     name: 'Grafana (K1 Sync)',
                     url:
-                        'https://marty.zemanta.com:3000/dashboard/db/k1-sync?orgId=1',
-                },
-                {
-                    name: 'Grafana (Z1 Main Dash)',
-                    url:
-                        'https://marty.zemanta.com:3000/dashboard/db/z1-main-dash?orgId=1',
-                },
-                {
-                    name: 'Grafana (System Resources)',
-                    url:
-                        'https://marty.zemanta.com:3000/dashboard/db/system-resources?orgId=1',
+                        'https://grafana.zemanta.com/dashboard/db/k1-sync?orgId=1',
                 },
                 {name: '', url: ''},
             ],
