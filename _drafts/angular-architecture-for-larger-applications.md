@@ -8,7 +8,7 @@ description: "TODO"
 - types, helpers, pipes - where to put?
 
 - Main ideas
-    - Component based architecture (smart and dumb (input-output) components)
+    - Component based architecture (smart and presentational components)
         - One way data flow
         - Smart components can be views or containers - they connect stores with dumb components
         - Views are smart containers that can be routed to. They do "URL sync"
@@ -28,6 +28,7 @@ description: "TODO"
 
 - Styles
     - BEM
+    - Nest only :first-child and similar selectors
     - Base and other global styles
     - Component styles - layout child components with styles in parents to make child components more reusable
     - Overwriting child styles from parents with ::ng-deep
@@ -42,26 +43,90 @@ description: "TODO"
     - AppInitializationModule and resolvers
 -->
 
-## Main ideas
+Note: All code examples used in this post are parts of the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this post. It lets its users vote for their favorite type of coffee and displays voting results.
 
-### State management with observable store services
+## 1. Main ideas
 
-Effective state management is crucial in larger front-end applications. This scalable Angular app architecture was designed with observable store services as its main way of managing state. Observable stores are a state management solution implemented using RxJS to mimic Redux architecture. I described them in depth in my previous post about [State management in Angular with observable store services](/state-management-in-angular-with-observable-store-services/). I recommend that you check it out before you continue reading this blog post.
+This section will present the patterns and main ideas used to create a scalable app architecture described later in the post.
 
-### Component based architecture
+### 1.1 State management with observable store services
+
+Effective state management is crucial in larger front-end applications. This scalable Angular app architecture was designed with observable store services as its main way of managing state. Observable stores are a state management solution implemented using RxJS to mimic Redux architecture. I described them in depth in my previous post about [State management in Angular with observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'}. I recommend that you check it out before you continue reading this blog post.
+
+### 1.2 Component based architecture
 
 Component based architecture has gained a lot of popularity in front-end development over the past few years. It's a pattern that fits nicely in the context of developing front-end applications and enables developers to write maintainable and extensible front-end code.
 
-The scalable Angular app architecture described in this article is strongly rooted in component based architecture. The purpose of many ideas written bellow is to enhance components' reusability which in turn makes front-end apps faster (and way more fun) to extend and easier to understand. In my opinion, the two most important ideas to create truly reusable components are to separate them into **containers and presentational components** and to ensure that **app's data is flowing in one direction only**.
+The scalable Angular app architecture described in this article is strongly rooted in component based architecture. The purpose of many ideas written bellow is to enhance components' reusability which in turn makes front-end apps easier (and way more fun) to understand and extend. In my opinion, the two most important ideas to create truly reusable components are to separate them into **containers and presentational components** and to ensure that **app's data (state) is flowing in one direction only**.
 
-#### Smart containers and presentational components
+#### 1.2.1 Smart containers and presentational components
 
-#### One-way data flow
+In the [previous article about observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'} we've learned how to store app's state in observable stores. To make an app useful though we would want to present this state to the users and create an interface for them to interact with the state. This is where presentational components come into play.
+
+**Presentational components** are responsible for rendering the current state and providing an interface that makes it possible for the user to interact with the app. They define how the rendered state should look like in their templates and style definitions. They also setup event listeners to handle the interaction part of their responsibilities.
+
+Let's see how the theory of presentational components looks like in practice. We'll first have a look at a simplified template of a coffee candidate that the users can vote for.
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/components/coffee-candidate/coffee-candidate.component.html" target="_blank">coffee-candidate.component.html</a>
+</span>
+{% highlight html linenos %}
+<div class="ce-coffee-candidate__name">
+    <div class="ce-coffee-candidate__label">Name</div>
+    <div class="ce-coffee-candidate__value">{% raw %}{{candidate.name}}{% endraw %}</div>
+</div>
+
+<div class="ce-coffee-candidate__action">
+    <button
+        class="ce-button ce-button--primary ce-coffee-candidate__action-button"
+        (click)="onUserAction.emit(UserAction.AddVote)"
+    >
+        Add vote
+    </button>
+</div>
+{% endhighlight %}
+
+The template above renders `candidate`'s name and sets up a `click` event handler on "Add vote" button that triggers `onUserAction.emit(UserAction.AddVote)`. The properties and methods used are defined in component class:
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/components/coffee-candidate/coffee-candidate.component.ts" target="_blank">coffee-candidate.component.ts</a>
+</span>
+{% highlight typescript linenos %}
+@Component({
+    selector: 'ce-coffee-candidate',
+    templateUrl: './coffee-candidate.component.html',
+    styleUrls: ['./coffee-candidate.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CoffeeCandidateComponent {
+    @Input()
+    candidate: Candidate;
+    @Output()
+    onUserAction = new EventEmitter<UserAction>();
+
+    UserAction = UserAction; // Constants exposed to component's template
+}
+{% endhighlight %}
+
+As you can see the component class is pretty simple. There is basically only one `Input` and one `Output` defined. And that's the point. `CoffeeCandidateComponent` is concerned with just the presentation of state (passed in via inputs) and reacting to user actions by emitting events (via outputs).
+
+In many cases presentational components need additional methods and properties in order to support more complicated user interfaces. Some examples would be:
+
+* a `boolean` property `isSectionVisible` used to show/hide a certain section of component's UI,
+* methods to compute (from input data) some additional properties rendered in the UI,
+* event handlers for more complex user interaction,
+* methods to throttle or debounce user input etc.
+
+Logic needed to implement these functionalities can be quite complex. But no matter how complex it is, it should always be concerned with just the presentation of app's state and capturing user actions. There should be **no business logic, no direct app's state updates, no API calls etc.** in presentational components. This things should be handled by observable stores or other services. And to connect presentational components to the stores or other services we need container components.
+
+**Smart container components** ...
 
 
-  https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0
 
-## Structure overview
+
+#### 1.2.2 One-way data flow
+
+## 2. Structure overview
 
 ```plain
 app/
