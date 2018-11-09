@@ -7,9 +7,10 @@ description: "TODO"
 <!-- 
 - types, helpers, pipes - where to put?
 
-- Main ideas
+- Main ideas and concepts
     - Component based architecture (smart and presentational components)
         - One way data flow
+        - OnPush change detection strategy and immutable objects
         - Smart components can be views or containers - they connect stores with dumb components
         - Views are smart containers that can be routed to. They do "URL sync"
     - Making requests
@@ -45,7 +46,7 @@ description: "TODO"
 
 Note: All code examples used in this post are parts of the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this post. It lets its users vote for their favorite type of coffee and displays voting results.
 
-## 1. Main ideas
+## 1. Main ideas and concepts
 
 This section will present the patterns and main ideas used to create a scalable app architecture described later in the post.
 
@@ -117,11 +118,72 @@ In many cases presentational components need additional methods and properties i
 * event handlers for more complex user interaction,
 * methods to throttle or debounce user input etc.
 
-Logic needed to implement these functionalities can be quite complex. But no matter how complex it is, it should always be concerned with just the presentation of app's state and capturing user actions. There should be **no business logic, no direct app's state updates, no API calls etc.** in presentational components. This things should be handled by observable stores or other services. And to connect presentational components to the stores or other services we need container components.
+Logic needed to implement these functionalities can be quite complex. But no matter how complex it is, it should always be concerned with just the presentation of app's state and capturing of user actions. There should be **no business logic, no direct app's state updates, no API calls etc.** in presentational components. This should be handled by observable stores or other services.
 
-**Smart container components** ...
+Presentational components can also include other components in their templates in order to keep their purpose as focused as possible. These additional components can be defined in presentational component's template directly or [projected from parent components](https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b){:target='_blank'} into a `<ng-content>` tag.
 
+What one gets by implementing this pattern of presentational components is a clear separation of concerns. **Presentational components are decoupled from the app's business logic and have no clue about app's state structure.** They **define the rules (an interface)** of how to communicate with them via typed inputs and outputs. And this makes presentational components truly **reusable**.
 
+Good, we've got presentational components covered. Let's continue and explore the other type of components we need in order to create an actual app. Presentational components are decoupled from business logic and app's state structure, but we still need to somehow connect their inputs and outputs correctly to that business logic, state stored in observable stores and services. And that's the role of smart container components.
+
+**Smart container components** are components that act as a "glue" which **binds observable stores and other business logic with presentational components** in a loosely coupled way. They are "smart" because in order achieve this they must know how app's state is structured, which stores contain the state required, which store's method to call when an output callback is triggered by a presentational component etc. Because of that, container components are much more specific to app's features and their reusability is lower. But that's fine - some parts of the app must be smart so that the app can do smart things.
+
+A container component class may look something like this:
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.ts" target="_blank">coffee-list.view.ts</a>
+</span>
+{% highlight typescript linenos %}
+@Component({
+    templateUrl: './coffee-list.view.html',
+    styleUrls: ['./coffee-list.view.scss'],
+    providers: [CoffeeListStore, CoffeeListEndpoint],
+})
+export class CoffeeListView implements OnInit {
+    constructor(public store: CoffeeListStore) {}
+
+    ngOnInit(): void {
+        this.store.init();
+    }
+}
+{% endhighlight %}
+
+Nothing too complicated. The most interesting parts are:
+
+* `providers: [CoffeeListStore, CoffeeListEndpoint]` which defines the services we'll need in this component and it's subcomponents,
+* `constructor(public store: CoffeeListStore) {}` which creates a new instance of the observable store,
+* `this.store.init()` which initializes the observable store.
+
+The template of a container component is much more interesting in my oppinion:
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.html" target="_blank">coffee-list.view.html</a>
+</span>
+{% highlight html linenos %}
+<ng-container *ngIf="{state$: store.state$ | async} as subs">
+    <div
+        class="ce-panel ce-coffee-list-view__list-item"
+        *ngIf="subs.state$.requests.listCandidates.inProgress"
+    >
+        <div class="ce-loader ce-loader--takeover"></div>
+    </div>
+
+    <ng-container *ngIf="!subs.state$.requests.listCandidates.inProgress">
+        <div
+            class="ce-panel ce-coffee-list-view__list-item"
+            *ngFor="let candidate of subs.state$.candidateList.candidates"
+        >
+            <ce-coffee-candidate
+                class="ce-coffee-candidate ce-coffee-list-view__candidate"
+                [candidate]="candidate"
+                (onUserAction)="store.submitUserAction(candidate, $event)"
+            ></ce-coffee-candidate>
+        </div>
+    </ng-container>
+</ng-container>
+{% endhighlight %}
+
+<!-- TODO: Explain the template. -->
 
 
 #### 1.2.2 One-way data flow
