@@ -60,7 +60,7 @@ Component based architecture has gained a lot of popularity in front-end develop
 
 The scalable Angular app architecture described in this article is strongly rooted in component based architecture. The purpose of many ideas written bellow is to enhance components' reusability which in turn makes front-end apps easier (and way more fun) to understand and extend. In my opinion, the two most important ideas to create truly reusable components are to separate them into **containers and presentational components** and to ensure that **app's data (state) is flowing in one direction only**.
 
-#### 1.2.1 Smart containers and presentational components
+#### 1.2.1 Presentational components and smart containers
 
 In the [previous article about observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'} we've learned how to store app's state in observable stores. To make an app useful though we would want to present this state to the users and create an interface for them to interact with the state. This is where presentational components come into play.
 
@@ -128,7 +128,7 @@ Good, we've got presentational components covered. Let's continue and explore th
 
 **Smart container components** are components that act as a "glue" which **binds observable stores and other business logic with presentational components** in a loosely coupled way. They are "smart" because in order achieve this they must know how app's state is structured, which stores contain the state required, which store's method to call when an output callback is triggered by a presentational component etc. Because of that, container components are much more specific to app's features and their reusability is lower. But that's fine - some parts of the app must be smart so that the app can do smart things.
 
-A container component class may look something like this:
+A container component class may look something like this (please refer to my previous post about [observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'} if any of the code examples bellow doesn't make sense to you):
 
 <span class="highlight-filename">
     <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.ts" target="_blank">coffee-list.view.ts</a>
@@ -154,7 +154,7 @@ Nothing too complicated. The most interesting parts are:
 * `constructor(public store: CoffeeListStore) {}` which creates a new instance of the observable store,
 * `this.store.init()` which initializes the observable store.
 
-The template of a container component is much more interesting in my oppinion:
+The template of a container component is much more interesting in my opinion:
 
 <span class="highlight-filename">
     <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.html" target="_blank">coffee-list.view.html</a>
@@ -183,7 +183,19 @@ The template of a container component is much more interesting in my oppinion:
 </ng-container>
 {% endhighlight %}
 
-<!-- TODO: Explain the template. -->
+The example above shows a container component "in action". First a `subs` object is created whose role is to store subscriptions to different observables stores. This is an optimization so that only one subscription per store is created in a template by [storing conditional result in a variable](https://angular.io/api/common/NgIf#storing-conditional-result-in-a-variable){:target='_blank'}. Otherwise `async` pipe would create a new subscription for every template binding using `store.state$` observable.
+
+The next interesting part is the inclusion of a presentational component (`<ce-coffee-candidate>`). Notice how the container component wires correct inputs and outputs to `CoffeeCandidateComponent`. As I stated before, container component knows how `store`'s state is structured and which methods of modifying the state exist in the store. It also knows what the interface exposed by `CoffeeCandidateComponent` looks like. And it knows how to connect the store to `CoffeeCandidateComponent` in order to add a voting feature to the app.
+
+The best part is that the store doesn't care who uses its state and in what way it is used. It is instead concerned with implementing the right business logic and state persistance. The store assumes a "smart" consumer knows how to use its exposed interface. Similarly `CoffeeCandidateComponent` presentational component isn't concerned with where a `candidate` to render comes from or how to update the state when user votes for this coffee candidate.
+
+This clear separation of concerns makes the app much easier to understand and extend with new features. And it enables one-way data flow which I'll explain in the next section.
+
+There's is just one more thing left to explain in this section. You may have noticed the above container component is actually called a "view" and this isn't a mistake.
+
+A **view** is a special type of a container component ...
+
+<!-- TODO: Explain the views. -->
 
 
 #### 1.2.2 One-way data flow
