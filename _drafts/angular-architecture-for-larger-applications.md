@@ -5,15 +5,11 @@ description: "TODO"
 ---
 
 <!-- 
-- types, helpers, pipes - where to put?
-
 - Main ideas and concepts
-    - Component based architecture (smart and presentational components)
+    - Component based architecture
         - One way data flow
-        - OnPush change detection strategy and immutable objects
-        - Smart components can be views or containers - they connect stores with dumb components
-        - Views are smart containers that can be routed to. They do "URL sync"
-    - Making requests
+            - OnPush change detection strategy and immutable objects
+    - Handling HTTP requests
         - Stores are connected to backend via endpoints
         - Updating request state - simple (in endpoint) and more complex (RequestStateUpdater)
 
@@ -25,7 +21,7 @@ description: "TODO"
         - Shared module
         - Views module
         - Layout module
-    - Each module defines its constants (enums) and configs
+    - Each module defines its constants (enums) and configs, types, helpers, pipes etc.
 
 - Styles
     - BEM
@@ -189,16 +185,85 @@ The next interesting part is the inclusion of a presentational component (`<ce-c
 
 The best part is that the store doesn't care who uses its state and in what way it is used. It is instead concerned with implementing the right business logic and state persistance. The store assumes a "smart" consumer knows how to use its exposed interface. Similarly `CoffeeCandidateComponent` presentational component isn't concerned with where a `candidate` to render comes from or how to update the state when user votes for this coffee candidate.
 
-This clear separation of concerns makes the app much easier to understand and extend with new features. And it enables one-way data flow which I'll explain in the next section.
+This clear separation of concerns makes the app much easier to understand and extend with new features. And it enables data to "flow" in one direction through the app. I'll explain this further in a minute.
 
-There's is just one more thing left to explain in this section. You may have noticed the above container component is actually called a "view" and this isn't a mistake.
+There's is just one more thing left to explain in this section. You may have noticed the above container component is actually called a "view". This isn't a mistake.
 
-A **view** is a special type of a container component ...
+A **view** is a special type of container component. It's a smart container **component which can be routed to** by Angular `Router`. In other words, it's a component included in the list of `Routes` with a path specified:
 
-<!-- TODO: Explain the views. -->
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/coffee-list-routing.module.ts" target="_blank">coffee-list-routing.module.ts</a>
+</span>
+{% highlight typescript linenos %}
+const routes: Routes = [
+    {
+        path: 'list',
+        component: CoffeeListView,
+    },
+];
 
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
+})
+export class CoffeeListRoutingModule {}
+{% endhighlight %}
+
+Views are quite similar to regular container components. The only difference is that views are responsible for **synching query params' state with state in app's stores**. An example will make this statement much clearer:
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.ts" target="_blank">coffee-list.view.ts</a>
+</span>
+{% highlight typescript linenos %}
+export class CoffeeListView implements OnInit, OnDestroy {
+    private ngUnsubscribe$: Subject<undefined> = new Subject();
+
+    constructor(public store: CoffeeListStore, private route: ActivatedRoute) {}
+
+    ngOnInit(): void {
+        ...
+        this.subscribeToQueryParamsUpdates();
+    }
+
+    private subscribeToQueryParamsUpdates(): void {
+        this.route.queryParams
+            .pipe(takeUntil(this.ngUnsubscribe$))
+            .subscribe(params => {
+                this.store.sortCandidates(params.sort);
+            });
+    }
+
+    ngOnDestroy(): void {
+        this.ngUnsubscribe$.next();
+        this.ngUnsubscribe$.complete();
+    }
+}
+{% endhighlight %}
+
+`CoffeeListView` is responsible for updating the state whenever `sort` query param is updated. It does this by subscribing to an observable of route's query params (`this.route.queryParams.subscribe(...)`) and then invoking store's `sortCandidates` method with `sort` query param value.
+
+Views should take care of doing the sync in reverse direction too. What this means is that whenever state in store is updated (and this update must be reflected in the URL), it is views that are responsible for making the new state persistent by updating the URL. In practice it looks like this:
+
+{% highlight typescript linenos %}
+this.store.state$
+    .pipe(takeUntil(this.ngUnsubscribe$))
+    .subscribe(state => {
+        this.router.navigate(['.'], {
+            queryParams: {
+                sort: state.sort,
+            },
+        });
+    });
+{% endhighlight %}
 
 #### 1.2.2 One-way data flow
+
+As promised a few paragraphs above, this section will explore what is a good way for data to "flow" through the app. What do I have in mind when I say *data*? Two things mainly:
+
+* **state from stores** we would like to present to the user and
+* **actions' payload** needed to update app's state upon user interaction.
+
+<!-- TODO: Explain one-way data flow -->
 
 ## 2. Structure overview
 
