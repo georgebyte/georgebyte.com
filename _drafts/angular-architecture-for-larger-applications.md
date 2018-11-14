@@ -260,8 +260,19 @@ this.store.state$
 
 As promised a few paragraphs above, this section will explore what is a good way for data to "flow" through the app. What do I have in mind when I say *data*? Two things mainly:
 
-* **state from stores** we would like to present to the user and
+* **app's state** we would like to present to the user and
 * **actions' payload** needed to update app's state upon user interaction.
+
+One-way data flow is a great pattern to ensure state is consistent across all components making up the app. It became quite popular thanks to React. But this doesn't mean it is only possible to use this pattern in React apps. On the contrary, I would argue that one-way data flow is a great pattern to use when developing front-end applications regardless of framework. Because data flows in one direction it is easy to "follow" it around and get a clear picture of how the app works.
+
+Here's a diagram of how the one-way data flow pattern looks like when applied to the architecture I'm describing in this blog post:
+
+<div class="image image--centered">
+    <img src="/images/one-way-data-flow.png" alt="Diagram 1: One-way data flow" class="image__img">
+    <p class="image__description">Diagram 1: One-way data flow</p>
+</div>
+
+
 
 <!-- TODO: Explain one-way data flow -->
 
