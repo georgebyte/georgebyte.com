@@ -6,9 +6,6 @@ description: "TODO"
 
 <!-- 
 - Main ideas and concepts
-    - Component based architecture
-        - One way data flow
-            - OnPush change detection strategy and immutable objects
     - Handling HTTP requests
         - Stores are connected to backend via endpoints
         - Updating request state - simple (in endpoint) and more complex (RequestStateUpdater)
@@ -38,6 +35,7 @@ description: "TODO"
 
 - Extras
     - AppInitializationModule and resolvers
+    - OnPush change detection strategy and immutable objects
 -->
 
 Note: All code examples used in this post are parts of the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this post. It lets its users vote for their favorite type of coffee and displays voting results.
@@ -54,13 +52,13 @@ Effective state management is crucial in larger front-end applications. This sca
 
 Component based architecture has gained a lot of popularity in front-end development over the past few years. It's a pattern that fits nicely in the context of developing front-end applications and enables developers to write maintainable and extensible front-end code.
 
-The scalable Angular app architecture described in this article is strongly rooted in component based architecture. The purpose of many ideas written bellow is to enhance components' reusability which in turn makes front-end apps easier (and way more fun) to understand and extend. In my opinion, the two most important ideas to create truly reusable components are to separate them into **containers and presentational components** and to ensure that **app's data (state) is flowing in one direction only**.
+The scalable Angular app architecture described in this article is strongly rooted in component based architecture. The purpose of many ideas written bellow is to enhance components' reusability which in turn makes front-end apps easier (and way more fun) to understand and extend. In my opinion, the most important part of creating truly reusable components is to separate them into **containers and presentational components**.
 
-#### 1.2.1 Presentational components and smart containers
+#### 1.2.1 Presentational components
 
 In the [previous article about observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'} we've learned how to store app's state in observable stores. To make an app useful though we would want to present this state to the users and create an interface for them to interact with the state. This is where presentational components come into play.
 
-**Presentational components** are responsible for rendering the current state and providing an interface that makes it possible for the user to interact with the app. They define how the rendered state should look like in their templates and style definitions. They also setup event listeners to handle the interaction part of their responsibilities.
+Presentational components are responsible for rendering the current state and providing an interface that makes it possible for the user to interact with the app. They define how the rendered state should look like in their templates and style definitions. They also setup event listeners to handle the interaction part of their responsibilities.
 
 Let's see how the theory of presentational components looks like in practice. We'll first have a look at a simplified template of a coffee candidate that the users can vote for.
 
@@ -122,7 +120,9 @@ What one gets by implementing this pattern of presentational components is a cle
 
 Good, we've got presentational components covered. Let's continue and explore the other type of components we need in order to create an actual app. Presentational components are decoupled from business logic and app's state structure, but we still need to somehow connect their inputs and outputs correctly to that business logic, state stored in observable stores and services. And that's the role of smart container components.
 
-**Smart container components** are components that act as a "glue" which **binds observable stores and other business logic with presentational components** in a loosely coupled way. They are "smart" because in order achieve this they must know how app's state is structured, which stores contain the state required, which store's method to call when an output callback is triggered by a presentational component etc. Because of that, container components are much more specific to app's features and their reusability is lower. But that's fine - some parts of the app must be smart so that the app can do smart things.
+#### 1.2.2 Smart container components
+
+Smart container components are components that act as a "glue" which **binds observable stores and other business logic with presentational components** in a loosely coupled way. They are "smart" because in order achieve this they must know how app's state is structured, which stores contain the state required, which store's method to call when an output callback is triggered by a presentational component etc. Because of that, container components are much more specific to app's features and their reusability is lower. But that's fine - some parts of the app must be smart so that the app can do smart things.
 
 A container component class may look something like this (please refer to my previous post about [observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'} if any of the code examples bellow doesn't make sense to you):
 
@@ -256,7 +256,7 @@ this.store.state$
     });
 {% endhighlight %}
 
-#### 1.2.2 One-way data flow
+#### 1.3 One-way data flow
 
 As promised a few paragraphs above, this section will explore what is a good way for data to "flow" through the app. What do I have in mind when I say *data*? Two things mainly:
 
@@ -272,9 +272,29 @@ Here's a diagram of how the one-way data flow pattern looks like when applied to
     <p class="image__description">Diagram 1: One-way data flow</p>
 </div>
 
+The diagram might look a bit intimidating at first but don't worry, it's actually quite simple to understand it if you follow the arrows. Here's a breakdown of our "data journey":
 
+1. The store first loads data from an API (more on this later). It then transforms loaded data if necessary and updates its state.
+2. Updated state is pushed to all subscribers (smart components or other stores) - this happens automatically since state is a RxJS observable.
+3. Smart components compute local state (if needed) from updated state.
+4. Updated state and smart components' local state is propagated to presentational components via `@Input()` bindings.
+5. Presentational components compute local state (if needed) from inputs and re-render the state.
 
-<!-- TODO: Explain one-way data flow -->
+Upon user interaction data flows like this:
+
+1. Presentational component registers user interaction and emits an event with payload to a smart component via `@Output()` binding.
+2. Smart component reacts to emitted event by invoking store's method with arguments computed form event's payload.
+3. Store updates its state directly or sends a request to an API to make the update persistent. In this case new state is loaded from API and stored into state after the request is complete.
+4. ... and we've come full circle.
+
+There is another version of the circle presented in the diagram. In this version presentational components are substituted with query params. There are only two differences in how data flows:
+
+* Upon state update, view propagates updates to query params instead of presentational components.
+* State updates are triggered by query params updates instead of user's actions.
+
+This concludes the explanation of one-way data flow. It's not so hard too keep the state in all parts of the app consistent if data flows in one direction. There's always just one source of truth for a particular piece of state (one of the stores) and there is only one way to update this state (via a corresponding store).
+
+1.4 Communication with external "systems"
 
 ## 2. Structure overview
 
