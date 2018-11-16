@@ -19,6 +19,7 @@ description: "TODO"
         - Views module
         - Layout module
     - Each module defines its constants (enums) and configs, types, helpers, pipes etc.
+    - Subscribing to updates in other core or feature stores
 
 - Styles
     - BEM
@@ -38,7 +39,7 @@ description: "TODO"
     - OnPush change detection strategy and immutable objects
 -->
 
-Note: All code examples used in this post are parts of the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this post. It lets its users vote for their favorite type of coffee and displays voting results.
+Note: All code examples used in this post are simplified snippets of code from the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this post. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementations, just click on the file name above code blocks.
 
 ## 1. Main ideas and concepts
 
@@ -256,7 +257,7 @@ this.store.state$
     });
 {% endhighlight %}
 
-#### 1.3 One-way data flow
+### 1.3 One-way data flow
 
 As promised a few paragraphs above, this section will explore what is a good way for data to "flow" through the app. What do I have in mind when I say *data*? Two things mainly:
 
@@ -292,9 +293,76 @@ There is another version of the circle presented in the diagram. In this version
 * Upon state update, view propagates updates to query params instead of presentational components.
 * State updates are triggered by query params updates instead of user's actions.
 
-This concludes the explanation of one-way data flow. It's not so hard too keep the state in all parts of the app consistent if data flows in one direction. There's always just one source of truth for a particular piece of state (one of the stores) and there is only one way to update this state (via a corresponding store).
+This concludes the explanation of one-way data flow. It's not so hard too keep the state in all parts of the app consistent if data flows in one direction. There's always just **one source of truth** for a particular piece of state (one of the stores) and there is only **one way to update** this state (via a corresponding store).
 
-1.4 Communication with external "systems"
+### 1.4 Communication with external systems
+
+The last pattern I'll talk about in this part of the post is about how to connect an app with external "systems", such as server API, browser's local storage, cookies etc. Although I'll only provide examples of communication with servers, the two main ideas are the same for other types of external systems:
+
+* Observable **stores** should be the **only part of an app that knows about external systems**.
+* Observable stores should not communicate with external systems directly - a **proxy service** should be used to abstract away communication details.
+
+The following examples demonstrate how these ideas translate into practice when communicating with a REST API. The proxy service in this case is called `CoffeeListEndpoint` and is injected into the store as `endpoint`. The store uses it to reload a list of candidates on initialization and when user wants to sort the list of candidates (omitted in the example for clarity).
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.store.ts" target="_blank">coffee-list.store.ts</a>
+</span>
+{% highlight typescript linenos %}
+@Injectable()
+export class CoffeeListStore extends Store<CoffeeListStoreState>
+    implements OnDestroy {
+    private ngUnsubscribe$: Subject<undefined> = new Subject();
+    private reloadCandidates$: Subject<undefined> = new Subject();
+
+    constructor(
+        private endpoint: CoffeeListEndpoint,
+    ) {
+        super(new CoffeeListStoreState());
+    }
+
+    init(): void {
+        this.initReloadCandidates$();
+        this.reloadCandidates();
+    }
+
+    ...
+
+    reloadCandidates(): void {
+        this.reloadCandidates$.next();
+    }
+
+    ...
+
+    private initReloadCandidates$(): void {
+        this.reloadCandidates$
+            .pipe(
+                switchMap(() => {
+                    return this.endpoint.listCandidates(
+                        this.state.candidateList.sort
+                    );
+                }),
+                tap(candidates => {
+                    this.setState({
+                        ...this.state,
+                        candidateList: {
+                            ...this.state.candidateList,
+                            candidates: candidates,
+                        },
+                    });
+                }),
+                retry(),
+                takeUntil(this.ngUnsubscribe$)
+            )
+            .subscribe();
+    }
+}
+{% endhighlight %}
+
+<!-- TODO: Explain why switchMap is used -->
+
+<!-- TODO: Add simplified endpoint example -->
+
+<!-- TODO: Explain how to update request state (passing store instance to `StoreEndpoint` or using a request state updater) -->
 
 ## 2. Structure overview
 
