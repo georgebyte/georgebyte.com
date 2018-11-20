@@ -147,6 +147,10 @@
                     url: 'https://www.photopea.com/',
                 },
                 {
+                    name: 'Image optimizer',
+                    url: 'https://squoosh.app/',
+                },
+                {
                     name: 'Time zone converter',
                     url:
                         'https://www.timeanddate.com/worldclock/converter.html?p1=736&p2=676&p3=179&p4=224&p5=248',

@@ -26,7 +26,13 @@ $titlesFont: 'Open Sans Condensed', 'Arial', sans-serif;
 $easeInOut: 200ms ease-in-out;
 
 // Mobile breakpoints
-@mixin mobile {
+@mixin mobile-masthead {
+  @media screen and (max-width: 810px) {
+    @content;
+  }
+}
+
+@mixin mobile-projects {
   @media screen and (max-width: 740px) {
     @content;
   }

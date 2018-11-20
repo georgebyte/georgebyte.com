@@ -1,7 +1,8 @@
 ---
-layout: post
+layout: knowledge-entry
 title: "Scalable Angular architecture for larger applications"
 description: "TODO"
+date: 2018-11-20
 ---
 
 <!-- 

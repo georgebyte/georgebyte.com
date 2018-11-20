@@ -1,10 +1,10 @@
 ---
-layout: post
+layout: blog-post
 title: "A tale of a software engineer: The beginnings"
 description: "My journey from a curious child to a (still curious) full stack web engineer."
 ---
 
-<p class="post-excerpt">
+<p class="excerpt">
     It all started with Age of Empires II. Then Wordpress made me enroll in a computer science program at university where I realized I had a bunch of things to learn about software engineering. After 3 years of studies I gathered some real-world experience during student internships, got my first job as a web developer, failed to get another and ultimately landed a full stack engineer position at Zemanta. I learned a bunch trough this journey and cracked the code of "How to be a *real* software engineer?".
     <br><br>
     Now, for a more poetic version of the above excerpt just keep reading ...

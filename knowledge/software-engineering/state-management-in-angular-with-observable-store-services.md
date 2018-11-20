@@ -1,11 +1,14 @@
 ---
-layout: post
+layout: knowledge-entry
+permalink: /state-management-in-angular-with-observable-store-services/
 title: "State management in Angular with observable store services"
 description: "Observable stores are a state management solution for Angular apps implemented using RxJS to mimic Redux architecture."
+date: 2018-11-20
+custom_breadcrumbs: /knowledge/software-engineering/state-management-in-angular-with-observable-store-services/
 ---
 
-<p class="post-excerpt">
-Observable stores are a state management solution for Angular apps implemented using RxJS to mimic Redux architecture. The post explains how to create, use and test these observable store services.
+<p class="excerpt">
+Observable stores are a state management solution for Angular apps implemented using RxJS to mimic Redux architecture. This article explains how to create, use and test these observable store services.
 </p>
 
 Effective state management in front-end development is a challenge, especially in larger and more complex single page applications. Right now, Redux is probably the most popular way of managing state. It is based on a few main ideas:
@@ -20,7 +23,7 @@ The process of upgrading to Angular gave us the opportunity to rethink how we ta
 
 One could argue that developing a custom solution for state management introduces additional complexity to the codebase too. It would be naive to dismiss such claims. The difference though is in how much of this complexity is added by developing features using Redux versus observable store pattern. The solution we developed is a really stripped down version of Redux. It does not "prescribe" how to handle async actions, how to combine reducers, how to implement middleware etc. Its only role is to provide a simple API to update state object and to subscribe to its updates. Stores are otherwise just good ol' Angular service classes.
 
-This post explains how one can use the observable store pattern we developed to manage state in Angular apps. The solution was inspired by the following article from Angular University: [How to build Angular apps using Observable Data Services](https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/){:target='_blank'}.
+This article explains how one can use the observable store pattern we developed to manage state in Angular apps. The solution was inspired by the following article from Angular University: [How to build Angular apps using Observable Data Services](https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/){:target='_blank'}.
 
 To showcase the usage of observable stores we'll build a simple app called *Coffee election* that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates. The source code is available on GitHub: [github.com/jurebajt/coffee-election](https://github.com/jurebajt/coffee-election){:target='_blank'}.
 
@@ -201,7 +204,7 @@ this.store.state$
   });
 {% endhighlight %}
 
-Note that these **subscriptions must be cleaned up** before a component is destroyed in order to prevent memory leaks. We won't go into details about unsubscribing in this post. Check out [this topic on Stack Overflow](https://stackoverflow.com/a/41177163){:target='_blank'} to learn more.
+Note that these **subscriptions must be cleaned up** before a component is destroyed in order to prevent memory leaks. We won't go into details about unsubscribing in this article. Check out [this topic on Stack Overflow](https://stackoverflow.com/a/41177163){:target='_blank'} to learn more.
 
 ## Subscribing to state updates in components' templates
 
@@ -262,13 +265,13 @@ describe('CoffeeElectionStore', () => {
 
 ## Conclusion
 
-The purpose of this post was to present how one can leverage the built in features of Angular framework to implement a simple yet powerful state management solution. The provided *Coffee election* example app is very simple, but the concepts it demonstrates can be used to successfully manage state in much bigger and more complex apps. At Zemanta we used observable store services to implement a rather complex feature and since the experiment worked out great we will continue to use such stores in our app going forward.
+The purpose of this article was to present how one can leverage the built in features of Angular framework to implement a simple yet powerful state management solution. The provided *Coffee election* example app is very simple, but the concepts it demonstrates can be used to successfully manage state in much bigger and more complex apps. At Zemanta we used observable store services to implement a rather complex feature and since the experiment worked out great we will continue to use such stores in our app going forward.
 
 <div class="note">
   <p class="note__label">Edit (March 4, 2018):</p>
   <p>Some readers pointed out that different state management libraries (e.g. ngrx) provide the same functionality as observable store services and were wondering why one may use observable store pattern instead of these libraries.</p>
 
-  <p>Observable store pattern I described in this blog post is a much simpler solution in my opinion.</p>
+  <p>Observable store pattern I described here is a much simpler solution in my opinion.</p>
 
   <p>I used ngrx in the past and I think it is a really good library for state management. But it also takes longer to learn it, because of all the features it supports.</p>
 
@@ -277,6 +280,6 @@ The purpose of this post was to present how one can leverage the built in featur
 
 <div class="vertical-separator"></div>
 
-I hope you learned something new by reading this post. If anything seems confusing please get back to me in the comments. Suggestions, improvements or just general discussion about the topic are very welcome, too.
+I hope you learned something new by reading this article. If anything seems confusing please get back to me in the comments. Suggestions, improvements or just general discussion about the topic are very welcome, too.
 
 Also, let's connect on [Twitter](https://twitter.com/jurebajt){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).
