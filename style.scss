@@ -89,6 +89,11 @@ a {
   }
 }
 
+a[id^="jbref:"] {
+  color: inherit;
+  cursor: initial;
+}
+
 ul, ol {
   margin: 15px 0;
   padding-left: 30px;
@@ -112,6 +117,32 @@ ul ul, ol ul {
 
 em, i {
   font-style: italic;
+}
+
+sup {
+  vertical-align: super;
+  font-size: 14px;
+
+  a {
+    color: inherit;
+  }
+}
+
+.footnote:before {
+  content: '[';
+}
+
+.footnote:after {
+  content: ']';
+}
+
+.footnotes {
+  margin: 15px 0 0;
+}
+
+.footnotes ol,
+.footnotes p {
+  margin: 0;
 }
 
 code {
@@ -184,6 +215,23 @@ img {
   .note__label {
     font-weight: 600;
   }
+}
+
+.message {
+  margin: 15px 0;
+  padding: 15px;
+  background: $primaryColorLightest;
+  border: 1px solid $primaryColorLighter;
+  color: $primaryColor;
+  font-family: $sansSerifFont;
+}
+
+.message > *:first-child {
+  margin-top: 0;
+}
+
+.message > *:last-child {
+  margin-bottom: 0;
 }
 
 .highlight-filename {
@@ -459,21 +507,24 @@ nav {
 }
 
 .knowledge-toc {
+  font-family: $sansSerifFont;
+
   .breadcrumbs {
     margin-bottom: 20px;
   }
 
   h2 {
-    margin: 10px 0 0;
-  }
-
-  h2 {
-    font-size: 20px;
+    margin: 15px 0 5px;
+    font-size: 22px;
   }
 
   ul {
     margin: 0;
   }
+}
+
+.knowledge-entry-legend {
+  font-size: 14px;
 }
 
 .projects-grid__item-image-container {

@@ -3,6 +3,11 @@ layout: knowledge-toc
 title: "Software engineering"
 ---
 
+## General
+
+* [Coding](coding)
+* [Testing](testing)
+
 ## Front-end development
 
 * State management
