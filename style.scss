@@ -234,6 +234,24 @@ img {
   margin-bottom: 0;
 }
 
+.checklist {
+  margin: 15px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checklist label {
+  position: relative;
+  padding-left: 18px;
+}
+
+.checklist input[type="checkbox"] {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  margin: 0;
+}
+
 .highlight-filename {
   display: block;
   margin-top: 20px;

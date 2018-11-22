@@ -11,4 +11,5 @@ description: "An ever-changing collection of my knowledge - guides, ideas, pros 
 
 ### Main topics:
 
+* [My setup](my-setup)
 * [Software engineering](software-engineering)
