@@ -15,7 +15,7 @@ include_legend: true
 
 ## Dealing with bugs
 
-* Some bugs don't matter. It is better to fix the bugs that are problematic in practice (<mark>exception driven development</mark>) rather than theory.[^1]
+* {:#jbref:exception-driven-development}Some bugs don't matter. It is better to fix the bugs that are problematic in practice (<mark>exception driven development</mark>) rather than theory.[^1]
     * [?] Rare bugs should probably still be fixed if reported.
 
 ---
