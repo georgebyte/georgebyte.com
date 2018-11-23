@@ -7,6 +7,7 @@ title: "Software engineering"
 
 * [Coding](coding)
 * [Testing](testing)
+* [Product development](product-development)
 
 ## Front-end development
 
