@@ -38,6 +38,7 @@ hyper + a    Notion
 hyper + r    Evernote
 hyper + s    Slack
 hyper + t    Trello
+hyper + l    Toggl
 {% endhighlight %}
 
 ## Bookmarks

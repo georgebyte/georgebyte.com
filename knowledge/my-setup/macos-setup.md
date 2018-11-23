@@ -65,6 +65,7 @@ Cask:
 * Alfred 3
 * Spectacle - window manager
 * F.lux
+* Stretchly - break reminders
 * Keka
 * VLC
 * Kap - record screen (GIF or video)
@@ -79,14 +80,13 @@ Cask:
 * Slow Quit Apps
 
 {% highlight plain %}
-brew cask install dropbox docker karabiner-elements sensiblesidebuttons alfred spectacle flux keka vlc kap calibre postman google-chrome appcleaner iterm2 day-o android-file-transfer xld
+brew cask install dropbox docker karabiner-elements sensiblesidebuttons alfred spectacle flux stretchly keka vlc kap calibre postman google-chrome appcleaner iterm2 day-o android-file-transfer xld
 
 brew tap dteoh/sqa && brew cask install slowquitapps
 {% endhighlight %}
 
 App store:
 * Amphetamine
-* Time Out - break reminders
 * Slack
 * Trello
 * GIF Brewery 3 (GIF editor)
@@ -98,6 +98,7 @@ Manual install:
 * Visual Studio Code
 * Intellij IDEA
 * JDK
+* [TogglDesktop](https://toggl.com/toggl-desktop/){:target='_blank'}
 * [DeezPlayer](https://deezplayer.imanel.org/){:target='_blank'}
 * Bid defender (Sophos)
 * Viscosity (Tunnelblick)
