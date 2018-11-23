@@ -21,12 +21,6 @@
                     name: 'Outbrain calendar',
                     url: 'https://calendar.google.com/calendar/b/1/r',
                 },
-                {name: 'NowDoThis', url: 'http://nowdothis.com/'},
-                {name: 'Pocket', url: 'https://getpocket.com/a/queue/list/'},
-                {
-                    name: 'Shopping list',
-                    url: 'https://todoist.com/app?lang=en&v=856#start',
-                },
                 {
                     name: 'Wisdom DB',
                     url:
@@ -108,10 +102,16 @@
             iconClasses: 'fas fa-concierge-bell',
             panelClasses: 'services-links',
             bookmarks: [
+                {name: 'Pocket', url: 'https://getpocket.com/a/queue/list/'},
                 {
                     name: 'Notion',
                     url:
                         'https://www.notion.so/juresworkspace/Jure-s-workspace-2e68506e6426494e929709ebe909d37a',
+                },
+                {name: 'Toggl', url: 'https://toggl.com/app/timer'},
+                {
+                    name: 'Shopping list',
+                    url: 'https://todoist.com/app?lang=en&v=856#start',
                 },
                 {name: 'Deezer', url: 'http://www.deezer.com/'},
                 {name: 'Dropbox', url: 'https://www.dropbox.com/home'},
