@@ -6,11 +6,6 @@ date: 2018-11-20
 ---
 
 <!-- 
-- Main ideas and concepts
-    - Handling HTTP requests
-        - Stores are connected to backend via endpoints
-        - Updating request state - simple (in endpoint) and more complex (RequestStateUpdater)
-
 - Structure overview
     - App divided into modules
         - Core module
@@ -314,16 +309,19 @@ export class CoffeeListStore extends Store<CoffeeListStoreState>
     implements OnDestroy {
     private ngUnsubscribe$: Subject<undefined> = new Subject();
     private reloadCandidates$: Subject<undefined> = new Subject();
+    private storeRequestStateUpdater: StoreRequestStateUpdater;
 
-    constructor(
-        private endpoint: CoffeeListEndpoint,
-    ) {
+    constructor(private endpoint: CoffeeListEndpoint) {
         super(new CoffeeListStoreState());
     }
 
     init(): void {
         this.initReloadCandidates$();
         this.reloadCandidates();
+
+        this.storeRequestStateUpdater = endpointHelpers.getStoreRequestStateUpdater(
+            this
+        );
     }
 
     ...
@@ -339,7 +337,8 @@ export class CoffeeListStore extends Store<CoffeeListStoreState>
             .pipe(
                 switchMap(() => {
                     return this.endpoint.listCandidates(
-                        this.state.candidateList.sort
+                        this.state.candidateList.sort,
+                        this.storeRequestStateUpdater
                     );
                 }),
                 tap(candidates => {
@@ -359,11 +358,102 @@ export class CoffeeListStore extends Store<CoffeeListStoreState>
 }
 {% endhighlight %}
 
-<!-- TODO: Explain why switchMap is used -->
+Notice how `endpoint.listCandidates` is not called directly. This pattern is used to make sure we'll always **update the state with data from endpoint's last response** if multiple reload candidates requests are initiated at roughly the same time. When we want to reload the list of candidates we push a new value (`undefined`) into `store.reloadCandidates$` stream. This triggers execution of pipeable operators. Inside `switchMap` we create a new request and `switchMap` replaces previous pending request (if present) with this newly created request. The rest of pipeable operators are only executed when the last request is finished. The state is then updated with most recent data from endpoint. If a request to the endpoint is not successful the `retry` operator is used to resubscribe to `store.reloadCandidates$` observable. Otherwise the stream would complete and no further reloads could be triggered by pushing new values into `store.reloadCandidates$`.
 
-<!-- TODO: Add simplified endpoint example -->
+Lets now have a look at how `endpoint.listCandidates` is implemented.
 
-<!-- TODO: Explain how to update request state (passing store instance to `StoreEndpoint` or using a request state updater) -->
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.endpoint.ts" target="_blank">coffee-list.endpoint.ts</a>
+</span>
+{% highlight typescript linenos %}
+@Injectable()
+export class CoffeeListEndpoint {
+    constructor(private http: HttpClient) {}
+
+    listCandidates(
+        sort: Sort,
+        requestStateUpdater: StoreRequestStateUpdater
+    ): Observable<Candidate[]> {
+        const request = COFFEE_LIST_CONFIG.requests.listCandidates;
+        const options = {
+            params: {
+                ...sortHelpers.convertSortToRequestParams(sort),
+            },
+        };
+        requestStateUpdater(request.name, {inProgress: true});
+        return this.http
+            .get<ApiResponse<Candidate[]>>(request.url, options)
+            .pipe(
+                map(response => {
+                    requestStateUpdater(request.name, {inProgress: false});
+                    return response.data;
+                }),
+                catchError((error: HttpErrorResponse) => {
+                    requestStateUpdater(request.name, {
+                        inProgress: false,
+                        error: true,
+                    });
+                    return throwError(error);
+                })
+            );
+    }
+
+    ...
+}
+{% endhighlight %}
+
+In essence, endpoint constructs request parameters and executes HTTP request via Angular's `HttpClient`. One part that needs some more context are the calls to `requestStateUpdater`. `requestStateUpdater: StoreRequestStateUpdater` is a function used to update request state in the store. Endpoint from the example above uses it to update the state of a request to `inProgress` or `error`. Stores use `endpointHelpers.getStoreRequestStateUpdater` in order to generate the default `StoreRequestStateUpdater`.
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/shared/helpers/endpoint.helpers.ts" target="_blank">endpoint.helpers.ts</a>
+</span>
+{% highlight typescript linenos %}
+export function getStoreRequestStateUpdater(
+    store: any,
+): StoreRequestStateUpdater {
+    return (requestName, requestState) => {
+        store.setState({
+            ...store.state,
+            requests: {
+                ...store.state.requests,
+                [requestName]: requestState,
+            },
+        });
+    };
+}
+{% endhighlight %}
+
+Sometimes a more flexible way of updating request state is required. In these cases `requestStateUpdater: CustomRequestStateUpdater` can be passed to the endpoint. For example, calling the `getUpdateCandidateRequestStateUpdater` in `CoffeeListStore` generates such custom request state updater.
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.store.ts" target="_blank">coffee-list.store.ts</a>
+</span>
+{% highlight typescript linenos %}
+...
+
+private getUpdateCandidateRequestStateUpdater(
+    candidate: Candidate
+): CustomRequestStateUpdater {
+    return requestState => {
+        this.setState({
+            ...this.state,
+            candidateList: {
+                ...this.state.candidateList,
+                candidates: this.state.candidateList.candidates.map(c => {
+                    if (c.id === candidate.id) {
+                        return {...c, updateRequest: requestState};
+                    }
+                    return c;
+                }),
+            },
+        });
+    };
+}
+
+...
+{% endhighlight %}
+
+This custom request state updater is used to update the candidate's `updateRequest` property with request state passed in via `requestState`.
 
 ## 2. Structure overview
 
