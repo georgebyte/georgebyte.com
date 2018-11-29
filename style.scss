@@ -161,6 +161,12 @@ strong, b {
   font-weight: bold;
 }
 
+mark {
+  padding: 1px 2px;
+  border-radius: 2px;
+  background-color: #afe5ff;
+}
+
 img {
   max-width: 100%;
 }
