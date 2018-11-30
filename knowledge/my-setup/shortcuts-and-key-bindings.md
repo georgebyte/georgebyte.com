@@ -98,6 +98,8 @@ cmd + space, 'gl <query>'    Search and open GitLab repositories
 
 cmd + space, 'newfile <filename>'    Create new file in Finder
 
+cmd + space, 'vscodeworkspace'    Link or init a Visual Studio Code workspace in current directory
+
 cmd + space, 'zshrc'                    Edit ~/.zshrc
 cmd + space, 'gitconfig'                Edit ~/.gitconfig
 cmd + space, 'gitignore'                Edit ~/.gitignore_global
