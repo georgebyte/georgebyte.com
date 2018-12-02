@@ -2,7 +2,7 @@
 layout: default
 title: "Projects"
 permalink: "/projects/"
-description: "A list of Jure Bajt's software development projects."
+description: "A list of my software development projects."
 ---
 
 <div class="quote projects-quote">

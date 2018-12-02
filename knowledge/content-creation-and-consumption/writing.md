@@ -1,6 +1,7 @@
 ---
 layout: knowledge-entry
 title: "Writing"
+description: "A collection of my knowledge about writing."
 date: 2018-11-23
 include_legend: true
 ---

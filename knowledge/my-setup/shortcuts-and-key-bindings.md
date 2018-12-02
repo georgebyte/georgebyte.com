@@ -1,6 +1,7 @@
 ---
 layout: knowledge-entry
 title: "Shortcuts and key bindings"
+description: "A collection of shortcuts and keybindings I use the most."
 date: 2018-11-22
 ---
 

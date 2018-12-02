@@ -1,6 +1,7 @@
 ---
 layout: knowledge-entry
 title: "Coding"
+description: "A collection of my knowledge about coding/programming."
 date: 2018-11-21
 include_legend: true
 ---

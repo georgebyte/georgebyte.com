@@ -1,6 +1,7 @@
 ---
 layout: knowledge-toc
 title: "Software engineering"
+description: "A collection of my knowledge about software engineering."
 ---
 
 ## General

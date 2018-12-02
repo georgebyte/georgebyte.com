@@ -1,6 +1,7 @@
 ---
 layout: knowledge-entry
 title: "Product development"
+description: "A collection of my knowledge about product development."
 date: 2018-11-23
 include_legend: true
 ---

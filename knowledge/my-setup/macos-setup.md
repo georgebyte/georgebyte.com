@@ -1,6 +1,7 @@
 ---
 layout: knowledge-entry
 title: "macOS setup"
+description: "My macOS workstation setup."
 date: 2018-11-23
 ---
 

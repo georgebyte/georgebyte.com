@@ -1,6 +1,7 @@
 ---
 layout: knowledge-entry
 title: "Testing"
+description: "A collection of my knowledge about software testing."
 date: 2018-11-21
 include_legend: true
 ---

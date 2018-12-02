@@ -1,6 +1,7 @@
 ---
 layout: knowledge-toc
 title: "My setup"
+description: "Notes about my workflow and workstations setup."
 ---
 
 ## General
