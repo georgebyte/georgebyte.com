@@ -2,7 +2,7 @@
 layout: knowledge-entry
 title: "Product development"
 description: "A collection of my knowledge about product development."
-date: 2018-11-23
+date: 2018-12-02
 include_legend: true
 ---
 
@@ -16,6 +16,7 @@ Speed of iteration beats quality of iteration. (Boyd's law of iteration)[^1]
 
 * [+] Faster you can get something in front of users, faster you'll verify you are building what users want and adjust the course.
 * [+] To achieve faster iterations you must strip all unnecessary requirements from scope and you'll really be developing a MVP with less over-engineering.
+* [-] MVPs can be used as cover for rushing to a less thoughtful solution without considering the context or the long-term implications.[^2]
 * [-] If the quality is bellow a certain threshold, users won't use the product and you'll get no useful feedback except "The app is broken!!".
 
 ## Feature design
@@ -45,6 +46,10 @@ The huge body of intermediate users is so dominant that you can and should ignor
 * [-] If new users aren't gracefully introduced to all the intermediate features, they may find the product too complicated to use and leave.
 * [?] Expert users may bring a huge pile of money which you'll pass on while ignoring them.
 
+<div class="vertical-separator vertical-separator--condensed"></div>
+
+<mark>It’s easy to get lost in the details</mark> when making decisions about complex systems - it's comforting to focus on getting the details right while ignoring the larger implications.[^2]
+
 ## Users' feedback
 
 Observe how users actually behave versus the way they tell you they behave/will behave.[^1]
@@ -64,3 +69,4 @@ People are the source of, and the solution to, all the problems you'll run into 
 ## References
 
 [^1]: How to Stop Sucking and Be Awesome Instead by Jeff Atwood
+[^2]: [Thinking in Triplicate by Erika Hall](https://medium.com/mule-design/a-three-part-plan-to-save-the-world-98653a20a12f){:target='_blank'}
