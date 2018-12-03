@@ -16,6 +16,8 @@ date: 2018-11-20
         - Layout module
     - Each module defines its constants (enums) and configs, types, helpers, pipes etc.
     - Subscribing to updates in other core or feature stores
+    - Tests located besides testee with .spec.ts postfix
+    - ...app/testing directory with stubbed components, services etc.
 
 - Styles
     - BEM
@@ -26,11 +28,7 @@ date: 2018-11-20
     - Responsive design - design in a mobile-first fashion and enhance this design with media queries in views (or other components who know exactly the relation between them and window size, e.g. modals)
     - Global and components' Scss variables (location, naming)
 
-- Testing
-    - Tests located besides testee with .spec.ts postfix
-    - ...app/testing directory with stubbed components, services etc.
-
-- Extras
+- Extras ("bonus points")
     - AppInitializationModule and resolvers
     - OnPush change detection strategy and immutable objects
 -->
@@ -39,7 +37,7 @@ Note: All code examples used in this post are simplified snippets of code from t
 
 ## 1. Main ideas and concepts
 
-This section will present the patterns and main ideas used to create a scalable app architecture described later in the post.
+This section will present the patterns and main ideas used to create a scalable app architecture described later in the article. These concepts are in my opinion current state of the art when it comes to front-end applications development. Although I'll present them in the context of Angular framework, I would suggest you consider adopting their slightly modified version even when developing apps using other frameworks.
 
 ### 1.1 State management with observable store services
 
@@ -455,7 +453,33 @@ private getUpdateCandidateRequestStateUpdater(
 
 This custom request state updater is used to update the candidate's `updateRequest` property with request state passed in via `requestState`.
 
+This concludes the first part where we explored main concepts and ideas used to create a scalable app architecture. We covered quite some ground while learning about state management with observable stores, presentational and smart container components, one-way data flow and communication with external systems.
+
+In the next part we'll dive into less theoretical stuff. I'll present how to lay out an app's directory structure and how to organize your source files so that you'll know exactly where to put different parts that make up your app.
+
 ## 2. Structure overview
+
+The concept of scalable Angular architecture presented in this article is based on dividing an app into different modules. At the root level this division looks like this:
+
+{% highlight plain %}
+app/
+├── core/
+├── features/
+├── layout/
+├── shared/
+├── styles/
+├── testing/
+├── views/
+├── app-routing.module.ts
+├── app.component.html
+├── app.component.ts
+├── app.constants.ts
+└── app.module.ts
+{% endhighlight %}
+
+In this part of the article we'll define the role of each one of these modules and explore their inner workings and structure. Their **structure is very similar in order to keep the burden of complexity out of the way** while programming, allowing you to focus on the things that matter like specific business logic and good user experience.
+
+### 2.1 Core module
 
 ```plain
 app/
