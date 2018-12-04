@@ -293,6 +293,14 @@ img {
   font-size: 15px;
 }
 
+.date a {
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .label {
   display: inline-block;
   padding: 4px 8px;

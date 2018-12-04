@@ -3,6 +3,7 @@ layout: knowledge-entry
 title: "Workflow"
 description: "Notes about my workflow and services I use."
 date: 2018-11-22
+history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledge/my-setup/workflow.md"
 ---
 
 ## Daily planning process

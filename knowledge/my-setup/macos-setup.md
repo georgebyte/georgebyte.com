@@ -3,6 +3,7 @@ layout: knowledge-entry
 title: "macOS setup"
 description: "My macOS workstation setup."
 date: 2018-11-23
+history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledge/my-setup/macos-setup.md"
 ---
 
 **Change default shell to zsh**

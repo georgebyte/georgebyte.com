@@ -3,6 +3,7 @@ layout: knowledge-entry
 title: "Coding"
 description: "A collection of my knowledge about coding/programming."
 date: 2018-11-21
+history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledge/software-engineering/coding.md"
 include_legend: true
 ---
 

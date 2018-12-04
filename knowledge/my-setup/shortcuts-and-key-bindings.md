@@ -3,6 +3,7 @@ layout: knowledge-entry
 title: "Shortcuts and key bindings"
 description: "A collection of shortcuts and keybindings I use the most."
 date: 2018-11-22
+history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledge/my-setup/shortcuts-and-key-bindings.md"
 ---
 
 ## Keybindings syntax

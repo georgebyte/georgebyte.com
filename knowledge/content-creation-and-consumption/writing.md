@@ -3,6 +3,7 @@ layout: knowledge-entry
 title: "Writing"
 description: "A collection of my knowledge about writing."
 date: 2018-11-23
+history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledge/content-creation-and-consumption/writing.md"
 include_legend: true
 ---
 

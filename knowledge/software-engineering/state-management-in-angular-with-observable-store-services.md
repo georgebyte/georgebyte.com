@@ -4,6 +4,7 @@ permalink: /state-management-in-angular-with-observable-store-services/
 title: "State management in Angular with observable store services"
 description: "Observable stores are a state management solution for Angular apps implemented using RxJS to mimic Redux architecture."
 date: 2018-11-20
+history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledge/software-engineering/state-management-in-angular-with-observable-store-services.md"
 custom_breadcrumbs: /knowledge/software-engineering/state-management-in-angular-with-observable-store-services/
 ---
 
