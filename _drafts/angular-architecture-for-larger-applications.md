@@ -8,7 +8,6 @@ date: 2018-11-20
 <!-- 
 - Structure overview
     - App divided into modules
-        - Core module
         - Features modules
             - Routing - each feature defines its own routes in its RoutingModule
         - Shared module
@@ -470,16 +469,74 @@ app/
 ├── styles/
 ├── testing/
 ├── views/
-├── app-routing.module.ts
-├── app.component.html
-├── app.component.ts
-├── app.constants.ts
-└── app.module.ts
+└── ...
 {% endhighlight %}
 
 In this part of the article we'll define the role of each one of these modules and explore their inner workings and structure. Their **structure is very similar in order to keep the burden of complexity out of the way** while programming, allowing you to focus on the things that matter like specific business logic and good user experience.
 
-### 2.1 Core module
+### 2.1 App's root
+
+At the root of the app there are the following files whose main purpose is to tie everything together into a nicely working app:
+
+{% highlight plain %}
+app/
+├── ... (app's other modules)
+├── app-initialization.module.ts
+├── app-routing.module.ts
+├── app.component.html
+├── app.component.scss
+├── app.component.ts
+├── app.config.ts
+├── app.constants.ts
+└── app.module.ts
+{% endhighlight %}
+
+<!-- TODO: Describe these files and their purpose one by one -->
+<!-- TODO: Describe app routing module -->
+<!-- TODO: Describe app initialization module -->
+
+### 2.2 Core module
+
+Core module is dedicated to **singleton providers (services) provided in root injector**. Only one instance is created for each one of these services in app's "lifetime" between page reloads. An example of such service would be the `user` core service which is responsible for holding the state of the logged-in user.
+
+Core module's directories and files are structured like this:
+
+{% highlight plain %}
+core/
+├── core-service-example/
+│   ├── helpers/
+│   │   ├── example.helpers.ts
+│   │   └── ...
+│   ├── services/ (observable stores, endpoints, regular Angular services etc.)
+│   │   ├── core-service-example-resolver.service.ts (data providers used by Angular router - see https://angular.io/api/router/Resolve)
+│   │   ├── core-service-example.endpoint.ts
+│   │   ├── core-service-example.store.state.ts
+│   │   ├── core-service-example.store.ts
+│   │   └── ...
+│   ├── types/
+│   │   ├── type-example.ts
+│   │   └── ...
+│   ├── core-service-example.config.ts
+│   └── (core-submodule-example.module.ts) (optional for larger core submodules)
+└── core.module.ts
+{% endhighlight %}
+
+Each core service or, in the case of larger core submodules, each submodule, should be specified in `providers`/`imports` lists in `CoreModule`:
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/core/core.module.ts" target="_blank">core.module.ts</a>
+</span>
+{% highlight typescript linenos %}
+@NgModule({
+    imports: [CoreSubmoduleExampleModule],
+    providers: [CoreServiceExampleStore, CoreServiceExampleEndpoint],
+})
+export class CoreModule {}
+{% endhighlight %}
+
+As we saw before, `CoreModule` is imported into `AppModule` so that all of its providers are added to app's root injector.
+
+### 2.3 Feature modules
 
 ```plain
 app/
