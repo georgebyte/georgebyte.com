@@ -13,10 +13,10 @@ date: 2018-11-20
         - Shared module
         - Views module
         - Layout module
-    - Each module defines its constants (enums) and configs, types, helpers, pipes etc.
+        - ...app/testing directory with stubbed components, services etc.
+    - Each module defines its constants (enums, only feature modules and root constants) and configs, types, helpers, pipes etc.
     - Subscribing to updates in other core or feature stores
     - Tests located besides testee with .spec.ts postfix
-    - ...app/testing directory with stubbed components, services etc.
 
 - Styles
     - BEM
@@ -28,7 +28,6 @@ date: 2018-11-20
     - Global and components' Scss variables (location, naming)
 
 - Extras ("bonus points")
-    - AppInitializationModule and resolvers
     - OnPush change detection strategy and immutable objects
 -->
 
@@ -491,9 +490,15 @@ app/
 └── app.module.ts
 {% endhighlight %}
 
-<!-- TODO: Describe these files and their purpose one by one -->
-<!-- TODO: Describe app routing module -->
-<!-- TODO: Describe app initialization module -->
+`AppModule` is app's root module. It imports other modules and declares `AppComponent`.
+
+`AppComponent` is app's main component. It is app's "shell" component and usually includes a `<router-outlet>` directive into which Angular router renders other components.
+
+`AppRoutingModule` is the main routing module. It initializes Angular router with top-level `Routes` config. Other routes are defined in features' routing modules - more about this later.
+
+`AppInitializationModule` makes use of Angular's `APP_INITIALIZER` injection token to do some work during Angular initialization process. This is useful for loading app's settings from a server since the code is executed before rendering anything. Note that your app won’t start until all sent promises are resolved so doing too much work might impact the performance of your app negatively. In many scenarios it is better to use route resolvers to load necessary data before rendering route's component as this doesn't delay app's initialization.
+
+Lastly, `app.constants.ts` is used to store global constants' enums and `app.config.ts` is used to store global app's configs like REST API base URL or default sort order.
 
 ### 2.2 Core module
 
@@ -534,7 +539,7 @@ Each core service or, in the case of larger core submodules, each submodule, sho
 export class CoreModule {}
 {% endhighlight %}
 
-As we saw before, `CoreModule` is imported into `AppModule` so that all of its providers are added to app's root injector.
+`CoreModule` is imported into `AppModule` so that all of its providers are added to app's root injector.
 
 ### 2.3 Feature modules
 
