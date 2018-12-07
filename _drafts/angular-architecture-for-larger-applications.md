@@ -509,7 +509,7 @@ Core module's directories and files are structured like this:
 {% highlight plain %}
 core/
 ├── core-service-example/
-│   ├── helpers/
+│   ├── helpers/ (pure helper functions grouped by related functionalities)
 │   │   ├── example.helpers.ts
 │   │   └── ...
 │   ├── services/ (observable stores, endpoints, regular Angular services etc.)
@@ -518,11 +518,13 @@ core/
 │   │   ├── core-service-example.store.state.ts
 │   │   ├── core-service-example.store.ts
 │   │   └── ...
-│   ├── types/
+│   ├── types/ (TypeScript types, interfaces and classes)
 │   │   ├── type-example.ts
 │   │   └── ...
 │   ├── core-service-example.config.ts
 │   └── (core-submodule-example.module.ts) (optional for larger core submodules)
+├── another-core-service-example/
+│   └── ... (same as above) 
 └── core.module.ts
 {% endhighlight %}
 
@@ -543,6 +545,61 @@ export class CoreModule {}
 
 ### 2.3 Feature modules
 
+Feature module is a module composed of related components, providers, types, constants, routing configs etc. All these **components work together to implement an app's feature**. Their only concern should be this feature and they **should care as little as possible about other parts of the app**. This usually means that all of the **connections to the "outside world" are made from features' stores** to stores (providers) in `CoreModule` by subscribing to their observable state or by features' views synching query params' state with state in features' stores.
+
+Feature modules live inside `app/features/` directory, each module in its own subdirectory, with a structure like this:
+
+{% highlight plain %}
+features/
+├── feature-example/
+│   ├── components/ (presentational components)
+│   │   ├── component-example/
+│   │   │   ├── _component-example.variables.scss
+│   │   │   ├── component-example.component.html
+│   │   │   ├── component-example.component.scss
+│   │   │   ├── component-example.component.ts
+│   │   │   └── private-type-example.ts
+│   │   └── ...
+│   ├── containers/ (container components that CAN'T be routed to)
+│   │   ├── container-example/
+│   │   │   ├── _container-example.variables.scss
+│   │   │   ├── container-example.container.html
+│   │   │   ├── container-example.container.scss
+│   │   │   └── container-example.container.ts
+│   │   └── ...
+│   ├── helpers/ (pure helper functions grouped by related functionalities)
+│   │   ├── example.helpers.ts
+│   │   └── ...
+│   ├── services/ (observable stores, endpoints, regular Angular services etc.)
+│   │   ├── feature-example.endpoint.ts
+│   │   ├── feature-example.store.state.ts
+│   │   ├── feature-example.store.ts
+│   │   └── ...
+│   ├── types/ (TypeScript types, interfaces and classes)
+│   │   ├── type-example.ts
+│   │   └── ...
+│   ├── views/ (container components that CAN be routed to)
+│   │   ├── view-example/
+│   │   │   ├── _view-example.variables.scss
+│   │   │   ├── view-example.view.html
+│   │   │   ├── view-example.view.scss
+│   │   │   └── view-example.view.ts
+│   │   └── ...
+│   ├── feature-example-routing.module.ts
+│   ├── feature-example.configs.ts
+│   ├── feature-example.constants.ts
+│   └── feature-example.module.ts
+└── another-feature-example/
+    └── ... (same as above)
+{% endhighlight %}
+
+<!-- TODO: Explain feature's module -->
+<!-- TODO: Explain feature's routing module -->
+<!-- TODO: Explain feature's constants and configs -->
+
+
+
+<!-- 
 ```plain
 app/
 ├── core/ # SINGLETON services provided via root injector
@@ -654,3 +711,4 @@ app/
 ├── app.constants.ts
 └── app.module.ts
 ```
+-->
