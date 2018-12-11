@@ -2,7 +2,7 @@
 layout: knowledge-entry
 title: "Shortcuts and key bindings"
 description: "A collection of shortcuts and keybindings I use the most."
-date: 2018-11-22
+date: 2018-12-11
 history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledge/my-setup/shortcuts-and-key-bindings.md"
 ---
 
@@ -32,14 +32,16 @@ hyper + ]              Move window to next display
 
 {% highlight plain %}
 hyper + w    Default web browser
-hyper + f    Alfred's "Finder"
+hyper + f    Finder
 hyper + e    Code editor
 hyper + d    Web development browser
 hyper + c    Terminal
+hyper + v    Version control GUI
 hyper + a    Notion
 hyper + r    Evernote
 hyper + s    Slack
 hyper + t    Trello
+hyper + p    Preview
 hyper + l    Toggl
 {% endhighlight %}
 
