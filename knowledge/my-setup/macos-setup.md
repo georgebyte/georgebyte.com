@@ -2,7 +2,7 @@
 layout: knowledge-entry
 title: "macOS setup"
 description: "My macOS workstation setup."
-date: 2018-11-23
+date: 2018-12-17
 history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledge/my-setup/macos-setup.md"
 ---
 
@@ -76,13 +76,14 @@ Cask:
 * Google Chrome
 * AppCleaner
 * iTerm2
+* GitKraken
 * Day-0 (`E d MMM HH:mm`, clock with calendar in menu bar - disable default clock, reorder items in menu bar with `cmd` + click and drag)
 * Android File Transfer (enable USB debugging on device via Settings > Developer options > USB debugging)
 * XLD - CD rip
 * Slow Quit Apps
 
 {% highlight plain %}
-brew cask install dropbox docker karabiner-elements sensiblesidebuttons alfred spectacle flux stretchly keka vlc kap calibre postman google-chrome appcleaner iterm2 day-o android-file-transfer xld
+brew cask install dropbox docker karabiner-elements sensiblesidebuttons alfred spectacle flux stretchly keka vlc kap calibre postman google-chrome appcleaner iterm2 gitkraken day-o android-file-transfer xld
 
 brew tap dteoh/sqa && brew cask install slowquitapps
 {% endhighlight %}

@@ -195,6 +195,10 @@
                 },
                 {name: 'DevDocs', url: 'http://devdocs.io/'},
                 {name: 'CodePen', url: 'http://codepen.io/jurebajt/'},
+                {
+                    name: 'Bundlephobia - cost of adding a npm package',
+                    url: 'https://bundlephobia.com/',
+                },
                 {name: 'Choose a license', url: 'http://choosealicense.com/'},
                 {
                     name: 'Contribute to open source',
