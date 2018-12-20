@@ -496,9 +496,9 @@ app/
 
 `AppRoutingModule` is the main routing module. It initializes Angular router with top-level `Routes` config. Other routes are defined in features' routing modules - more about this later.
 
-`AppInitializationModule` makes use of Angular's `APP_INITIALIZER` injection token to do some work during Angular initialization process. This is useful for loading app's settings from a server since the code is executed before rendering anything. Note that your app won’t start until all sent promises are resolved so doing too much work might impact the performance of your app negatively. In many scenarios it is better to use route resolvers to load necessary data before rendering route's component as this doesn't delay app's initialization.
+`AppInitializationModule` makes use of Angular's `APP_INITIALIZER` injection token to do some work during Angular initialization process. This is useful for loading app's settings from a server since the code is executed before rendering anything. Note that your app won’t start until all promises are resolved so doing too much work might impact the performance of your app negatively. In many scenarios it is better to use route resolvers to load necessary data before rendering route's component as this doesn't delay app's initialization.
 
-Lastly, `app.constants.ts` is used to store global constants' enums and `app.config.ts` is used to store global app's configs like REST API base URL or default sort order.
+Lastly, `app.constants.ts` is used to store global constants' enums and `app.config.ts` is used to store global app's configs like REST API base URL or some defaults.
 
 ### 2.2 Core module
 
@@ -593,11 +593,40 @@ features/
     └── ... (same as above)
 {% endhighlight %}
 
-<!-- TODO: Explain feature's module -->
-<!-- TODO: Explain feature's routing module -->
-<!-- TODO: Explain feature's constants and configs -->
+Most of the structure should be understandable if you read the comments in the snippet above and the [first part](#1-main-ideas-and-concepts) of this article.
 
+At this point I would like to touch very quickly just on the files at the root of the feature module.
 
+`FeatureExampleModule` is the definition of the feature module. It imports `FeatureExampleRoutingModule` and other app's modules needed by the feature. It also declares components implemented by the feature. `FeatureExampleModule` can be imported directly into `AppModule` or it can be lazy loaded by Angular router.
+
+`FeatureExampleRoutingModule` contains route definitions introduced by the feature, for example:
+
+{% highlight typescript linenos %}
+const routes: Routes = [{
+    path: 'feature',
+    children: [
+        {
+            path: '', // Default view for this feature accessible at /feature
+            component: FirstExampleView,
+        },
+        {
+            path: 'second', // Another view for this feature accessible at /feature/second
+            component: SecondExampleView,
+        },
+        ...
+   ]
+}];
+
+@NgModule({
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
+})
+export class CoffeeListRoutingModule {}
+{% endhighlight %}
+
+There should be a route definition specifying `path` for every view component inside `views` directory. In larger applications it is usually a good idea create a URL "namespace" assigned to feature's route definitions by using [componentless routes](https://angular.io/api/router/Routes#componentless-routes){:target='_blank'}.
+
+At last, feature's constants and configs store feature specific constants' enums and configs, similarly to global app's constants and configs.
 
 <!-- 
 ```plain
