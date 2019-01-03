@@ -8,13 +8,9 @@ date: 2018-11-20
 <!-- 
 - Structure overview
     - App divided into modules
-        - Features modules
-            - Routing - each feature defines its own routes in its RoutingModule
-        - Shared module
         - Views module
         - Layout module
         - ...app/testing directory with stubbed components, services etc.
-    - Each module defines its constants (enums, only feature modules and root constants) and configs, types, helpers, pipes etc.
     - Subscribing to updates in other core or feature stores
     - Tests located besides testee with .spec.ts postfix
 
@@ -627,6 +623,54 @@ export class CoffeeListRoutingModule {}
 There should be a route definition specifying `path` for every view component inside `views` directory. In larger applications it is usually a good idea create a URL "namespace" assigned to feature's route definitions by using [componentless routes](https://angular.io/api/router/Routes#componentless-routes){:target='_blank'}.
 
 At last, feature's constants and configs store feature specific constants' enums and configs, similarly to global app's constants and configs.
+
+### 2.4 Shared module
+
+`SharedModule` is a place to store all the **reusable components**, directives, pipes, helpers and types used by an app. **No component, directive or anything else from `SharedModule` should depend on any other module, component, provider etc.** There should be **no business logic** implemented by the members of `SharedModule`.
+
+Shared module's directories and files are structured like this:
+
+{% highlight plain %}
+shared/
+├── components/
+│   ├── complex-component-example/ (larger and more complex reusable components with many sub-components)
+│   │   ├── components/
+│   │   │   ├── simple-component-example/
+│   │   │   │   ├── _component-example.variables.scss
+│   │   │   │   ├── component-example.component.html
+│   │   │   │   ├── component-example.component.scss
+│   │   │   │   ├── component-example.component.ts
+│   │   │   │   └── private-type-example.ts
+│   │   │   └── ...
+│   │   ├── types/
+│   │   │   ├── type-example.ts
+│   │   │   └── ...
+│   │   ├── _complex-component-example.variables.scss
+│   │   ├── complex-component-example.component.html
+│   │   ├── complex-component-example.component.scss
+│   │   ├── complex-component-example.component.ts
+│   │   └── complex-component-example.module.ts
+│   ├── simple-component-example/
+│   │   ├── _component-example.variables.scss
+│   │   ├── component-example.component.html
+│   │   ├── component-example.component.scss
+│   │   ├── component-example.component.ts
+│   │   └── private-type-example.ts
+│   └── ...
+├── directives/
+│   ├── directive-example.directive.ts
+│   └── ...
+├── helpers/
+│   ├── example.helpers.ts
+│   └── ...
+├── pipes/
+│   ├── pipe-example.pipe.ts
+│   └── ...
+├── types/
+│   ├── type-example.ts
+│   └── ...
+└── shared.module.ts
+{% endhighlight %}
 
 <!-- 
 ```plain
