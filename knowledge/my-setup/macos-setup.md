@@ -2,7 +2,7 @@
 layout: knowledge-entry
 title: "macOS setup"
 description: "My macOS workstation setup."
-date: 2018-12-17
+date: 2019-01-03
 history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledge/my-setup/macos-setup.md"
 ---
 
@@ -112,14 +112,14 @@ Manual install:
 **Import SIGEN-CA certificate**
 
 {% highlight plain %}
-open ~/Dropbox/Documents/Certificates/jure_bajt_SIGEN-CA.p12
+open ~/Dropbox/Certificates/jure_bajt_SIGEN-CA.p12
 {% endhighlight %}
 
 **Link SSH keys**
 
 {% highlight plain %}
-cp ~/Dropbox/Zemanta/Ssh/jure_bajt_zemanta ~/.ssh/jure_bajt_zemanta &&
-cp ~/Dropbox/Zemanta/Ssh/jure_bajt_zemanta.pub ~/.ssh/jure_bajt_zemanta.pub &&
+cp ~/Dropbox/Zemanta/SSH\ keys/jure_bajt_zemanta ~/.ssh/jure_bajt_zemanta &&
+cp ~/Dropbox/Zemanta/SSH\ keys/jure_bajt_zemanta.pub ~/.ssh/jure_bajt_zemanta.pub &&
 
 chmod 400 ~/.ssh/jure_bajt_zemanta.pub &&
 chmod 400 ~/.ssh/jure_bajt_zemanta
@@ -128,7 +128,7 @@ chmod 400 ~/.ssh/jure_bajt_zemanta
 **Set System Preferences to preferred defaults**
 
 {% highlight plain %}
-bash ~/Dropbox/Sync/Configs/macos-preferences.sh
+bash ~/Dropbox/@workstation/macos-preferences.sh
 {% endhighlight %}
 
 System Preferences:
@@ -158,7 +158,7 @@ System Preferences:
 Link Jure's Karabiner keybindings:
 
 {% highlight plain %}
-ln -s ~/Dropbox/Sync/Karabiner-Elements/jures-karabiner-keybindings.json ~/.config/karabiner/assets/complex_modifications/jures-karabiner-keybindings.json
+ln -s ~/Dropbox/@workstation/Karabiner-Elements/jures-karabiner-keybindings.json ~/.config/karabiner/assets/complex_modifications/jures-karabiner-keybindings.json
 {% endhighlight %}
 
 In Karabiner-Elements preferences select Complex Modifications > Add rule > Jure's Karabiner keybindings > Enable all.
@@ -166,14 +166,21 @@ In Karabiner-Elements preferences select Complex Modifications > Add rule > Jure
 **Install fonts**
 
 {% highlight plain %}
-open ~/Dropbox/Sync/Configs/Monaco\ for\ Powerline.otf
+open ~/Dropbox/@workstation/Fonts/Monaco\ for\ Powerline.otf
 {% endhighlight %}
 
 **Install Oh My Zsh**
 
 {% highlight plain %}
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+ln -s ~/Dropbox/@workstation/zsh/jure-agnoster.zsh-theme ~/.oh-my-zsh/themes/jure-agnoster.zsh-theme
 {% endhighlight %}
+
+**Setup iTerm2**
+
+* Set "Load preferences from a custom folder or URL" to `~/Dropbox/@workstation/iTerm2`.
+* Set Profiles > Colors to Solarized Dark preset.
 
 **Install SCM Breeze**
 
@@ -199,16 +206,17 @@ rm ~/.gitignore_global &&
 rm ~/.npmrc &&
 rm ~/.git.scmbrc &&
 rm ~/.tigrc &&
+rm ~/.z &&
 rm ~/.markdownlintrc
 
-ln -s ~/Dropbox/Sync/Configs/jure-agnoster.zsh-theme ~/.oh-my-zsh/themes/jure-agnoster.zsh-theme &&
-ln -s ~/Dropbox/Sync/Configs/zshrc ~/.zshrc &&
-ln -s ~/Dropbox/Sync/Configs/gitconfig ~/.gitconfig &&
-ln -s ~/Dropbox/Sync/Configs/gitignore_global ~/.gitignore_global &&
-ln -s ~/Dropbox/Sync/Configs/npmrc ~/.npmrc &&
-ln -s ~/Dropbox/Sync/Configs/git.scmbrc ~/.git.scmbrc &&
-ln -s ~/Dropbox/Sync/Configs/tigrc ~/.tigrc &&
-ln -s ~/Dropbox/Sync/Configs/markdownlintrc ~/.markdownlintrc
+ln -s ~/Dropbox/@workstation/Dotfiles/zshrc ~/.zshrc &&
+ln -s ~/Dropbox/@workstation/Dotfiles/gitconfig ~/.gitconfig &&
+ln -s ~/Dropbox/@workstation/Dotfiles/gitignore_global ~/.gitignore_global &&
+ln -s ~/Dropbox/@workstation/Dotfiles/npmrc ~/.npmrc &&
+ln -s ~/Dropbox/@workstation/Dotfiles/git.scmbrc ~/.git.scmbrc &&
+ln -s ~/Dropbox/@workstation/Dotfiles/tigrc ~/.tigrc &&
+ln -s ~/Dropbox/@workstation/Dotfiles/z ~/.z &&
+ln -s ~/Dropbox/@workstation/Dotfiles/markdownlintrc ~/.markdownlintrc
 {% endhighlight %}
 
 **Install awscli**
@@ -270,7 +278,7 @@ duti -s org.videolan.vlc .wav all
 **Setup AWS**
 
 {% highlight plain %}
-ln -s ~/Dropbox/Sync/Configs/aws ~/.aws
+ln -s ~/Dropbox/@workstation/aws ~/.aws
 {% endhighlight %}
 
 **Setup Brave**
@@ -278,7 +286,7 @@ ln -s ~/Dropbox/Sync/Configs/aws ~/.aws
 * Configure settings
 * Install extensions:
     * [LastPass](https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd){:target='_blank'}
-    * [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en){:target='_blank'} (import settings from `~/Dropbox/Sync/Vimium/vimium-options.json`)
+    * [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en){:target='_blank'} (import settings from `~/Dropbox/@workstation/Vimium/vimium-options.json`)
     * [Save to Pocket](https://chrome.google.com/webstore/detail/save-to-pocket/niloccemoadcdkdjlinkgdfekeahmflj?hl=en){:target='_blank'}
     * [Evernote](https://chrome.google.com/webstore/detail/evernote-web-clipper/pioclpoplcdbaefihamjohnefbikjilc#){:target='_blank'}
     * [Video Speed Controller](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en){:target='_blank'}
@@ -300,7 +308,7 @@ Set preferences to recommended colors and wake up time to 5:00.
 **Setup ssh config to set which keys to use for which hosts**
 
 {% highlight plain %}
-ln -s ~/Dropbox/Sync/Configs/ssh_config ~/.ssh/config
+ln -s ~/Dropbox/@workstation/SSH\ keys/ssh_config ~/.ssh/config
 {% endhighlight %}
 
 **Add other executables to PATH**

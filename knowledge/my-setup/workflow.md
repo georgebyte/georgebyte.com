@@ -13,7 +13,7 @@ history: "https://github.com/jurebajt/jurebajt.github.io/commits/master/knowledg
     <li><label><input type="checkbox">Check <mark>monthly log and </mark>recurring tasks in BuJo.</label></li>
     <li><label><input type="checkbox">Check <mark>personal mail</mark> and move items to correct service or BuJo.</label></li>
     <li><label><input type="checkbox">Check <mark>work mail</mark> and move items to correct service or BuJo.</label></li>
-    <li><label><input type="checkbox">Check <mark>"Inbox"</mark> in Evernote and move items to correct notebook, service or BuJo.</label></li>
+    <li><label><input type="checkbox">Check <mark>"@inbox"</mark> in Evernote and move items to correct notebook, service or BuJo.</label></li>
     <li><label><input type="checkbox">Check <mark>personal calendar</mark> and add items to BuJo.</label></li>
     <li><label><input type="checkbox">Check <mark>work calendar</mark> and add items to BuJo.</label></li>
     <li><label><input type="checkbox">Check <mark>Z1 team's main Trello board</mark> and add tasks to BuJo.</label></li>
