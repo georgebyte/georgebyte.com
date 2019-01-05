@@ -28,7 +28,7 @@ $easeInOut: 200ms ease-in-out;
 
 // Mobile breakpoints
 @mixin mobile-masthead {
-  @media screen and (max-width: 810px) {
+  @media screen and (max-width: 740px) {
     @content;
   }
 }
