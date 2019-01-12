@@ -5,29 +5,7 @@ description: "TODO"
 last_update: 2018-11-20
 ---
 
-<!-- 
-- Structure overview
-    - App divided into modules
-        - Views module
-        - Layout module
-        - ...app/testing directory with stubbed components, services etc.
-    - Subscribing to updates in other core or feature stores
-    - Tests located besides testee with .spec.ts postfix
-
-- Styles
-    - BEM
-    - Nest only :first-child and similar selectors
-    - Base and other global styles
-    - Component styles - layout child components with styles in parents to make child components more reusable
-    - Overwriting child styles from parents with ::ng-deep
-    - Responsive design - design in a mobile-first fashion and enhance this design with media queries in views (or other components who know exactly the relation between them and window size, e.g. modals)
-    - Global and components' Scss variables (location, naming)
-
-- Extras ("bonus points")
-    - OnPush change detection strategy and immutable objects
--->
-
-Note: All code examples used in this post are simplified snippets of code from the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this post. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementations, just click on the file name above code blocks.
+Note: All code examples used in this article are simplified snippets of code from the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this article. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementations, just click on the file name above code blocks.
 
 ## 1. Main ideas and concepts
 
@@ -35,7 +13,7 @@ This section will present the patterns and main ideas used to create a scalable 
 
 ### 1.1 State management with observable store services
 
-Effective state management is crucial in larger front-end applications. This scalable Angular app architecture was designed with observable store services as its main way of managing state. Observable stores are a state management solution implemented using RxJS to mimic Redux architecture. I described them in depth in my previous post about [State management in Angular with observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'}. I recommend that you check it out before you continue reading this blog post.
+Effective state management is crucial in larger front-end applications. This scalable Angular app architecture was designed with observable store services as its main way of managing state. Observable stores are a state management solution implemented using RxJS to mimic Redux architecture. I described them in depth in my previous article about [State management in Angular with observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'}. I recommend that you check it out before you continue reading this article.
 
 ### 1.2 Component based architecture
 
@@ -107,13 +85,13 @@ Presentational components can also include other components in their templates i
 
 What one gets by implementing this pattern of presentational components is a clear separation of concerns. **Presentational components are decoupled from the app's business logic and have no clue about app's state structure.** They **define the rules (an interface)** of how to communicate with them via typed inputs and outputs. And this makes presentational components truly **reusable**.
 
-Good, we've got presentational components covered. Let's continue and explore the other type of components we need in order to create an actual app. Presentational components are decoupled from business logic and app's state structure, but we still need to somehow connect their inputs and outputs correctly to that business logic, state stored in observable stores and services. And that's the role of smart container components.
+Good, we've got presentational components covered. Let's continue and explore the other type of components we need in order to create an actual app. Presentational components are decoupled from business logic and app's state structure, but we still need to somehow connect their inputs and outputs correctly to that business logic and app’s state. And that's the role of smart container components.
 
 #### 1.2.2 Smart container components
 
 Smart container components are components that act as a "glue" which **binds observable stores and other business logic with presentational components** in a loosely coupled way. They are "smart" because in order achieve this they must know how app's state is structured, which stores contain the state required, which store's method to call when an output callback is triggered by a presentational component etc. Because of that, container components are much more specific to app's features and their reusability is lower. But that's fine - some parts of the app must be smart so that the app can do smart things.
 
-A container component class may look something like this (please refer to my previous post about [observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'} if any of the code examples bellow doesn't make sense to you):
+A container component class may look something like this (please refer to my previous article about [observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'} if any of the code examples bellow doesn't make sense to you):
 
 <span class="highlight-filename">
     <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.ts" target="_blank">coffee-list.view.ts</a>
@@ -254,7 +232,7 @@ As promised a few paragraphs above, this section will explore what is a good way
 
 One-way data flow is a great pattern to ensure state is consistent across all components making up the app. It became quite popular thanks to React. But this doesn't mean it is only possible to use this pattern in React apps. On the contrary, I would argue that one-way data flow is a great pattern to use when developing front-end applications regardless of framework. Because data flows in one direction it is easy to "follow" it around and get a clear picture of how the app works.
 
-Here's a diagram of how the one-way data flow pattern looks like when applied to the architecture I'm describing in this blog post:
+Here's a diagram of how the one-way data flow pattern looks like when applied to the architecture I'm describing in this article:
 
 <div class="image image--centered">
     <img src="/images/one-way-data-flow.png" alt="Diagram 1: One-way data flow" class="image__img">
@@ -285,7 +263,7 @@ This concludes the explanation of one-way data flow. It's not so hard too keep t
 
 ### 1.4 Communication with external systems
 
-The last pattern I'll talk about in this part of the post is about how to connect an app with external "systems", such as server API, browser's local storage, cookies etc. Although I'll only provide examples of communication with servers, the two main ideas are the same for other types of external systems:
+The last pattern I'll talk about in this part of the article is about how to connect an app with external "systems", such as server API, browser's local storage, cookies etc. Although I'll only provide examples of communication with servers, the two main ideas are the same for other types of external systems:
 
 * Observable **stores** should be the **only part of an app that knows about external systems**.
 * Observable stores should not communicate with external systems directly - a **proxy service** should be used to abstract away communication details.
@@ -350,7 +328,7 @@ export class CoffeeListStore extends Store<CoffeeListStoreState>
 }
 {% endhighlight %}
 
-Notice how `endpoint.listCandidates` is not called directly. This pattern is used to make sure we'll always **update the state with data from endpoint's last response** if multiple reload candidates requests are initiated at roughly the same time. When we want to reload the list of candidates we push a new value (`undefined`) into `store.reloadCandidates$` stream. This triggers execution of pipeable operators. Inside `switchMap` we create a new request and `switchMap` replaces previous pending request (if present) with this newly created request. The rest of pipeable operators are only executed when the last request is finished. The state is then updated with most recent data from endpoint. If a request to the endpoint is not successful the `retry` operator is used to resubscribe to `store.reloadCandidates$` observable. Otherwise the stream would complete and no further reloads could be triggered by pushing new values into `store.reloadCandidates$`.
+Notice how `endpoint.listCandidates` is not called directly. This pattern is used to make sure we'll always **update the state with data from endpoint's last response** if multiple reload candidates requests are initiated at roughly the same time. When we want to reload the list of candidates we push a new value (`undefined`) into `store.reloadCandidates$` stream. This triggers execution of pipeable operators. Inside `switchMap` we create a new request and `switchMap` replaces previous pending request (if present) with this newly created request. The rest of pipeable operators are only executed when the last request is finished. The state is then updated with most recent data from endpoint. If a request to the endpoint is not successful the `retry` operator is used to resubscribe to `store.reloadCandidates$` observable (otherwise the stream would complete and no further reloads could be triggered by pushing new values into `store.reloadCandidates$`).
 
 Lets now have a look at how `endpoint.listCandidates` is implemented.
 
@@ -451,7 +429,7 @@ This concludes the first part where we explored main concepts and ideas used to 
 
 In the next part we'll dive into less theoretical stuff. I'll present how to lay out an app's directory structure and how to organize your source files so that you'll know exactly where to put different parts that make up your app.
 
-## 2. Structure overview
+## 2. Splitting apps' functionalities into Angular modules
 
 The concept of scalable Angular architecture presented in this article is based on dividing an app into different modules. At the root level this division looks like this:
 
@@ -508,7 +486,7 @@ core/
 │   ├── helpers/ (pure helper functions grouped by related functionalities)
 │   │   ├── example.helpers.ts
 │   │   └── ...
-│   ├── services/ (observable stores, endpoints, regular Angular services etc.)
+│   ├── services/ (observable stores, endpoints, regular Angular services (providers) etc.)
 │   │   ├── core-service-example-resolver.service.ts (data providers used by Angular router - see https://angular.io/api/router/Resolve)
 │   │   ├── core-service-example.endpoint.ts
 │   │   ├── core-service-example.store.state.ts
@@ -541,7 +519,7 @@ export class CoreModule {}
 
 ### 2.3 Feature modules
 
-Feature module is a module composed of related components, providers, types, constants, routing configs etc. All these **components work together to implement an app's feature**. Their only concern should be this feature and they **should care as little as possible about other parts of the app**. This usually means that all of the **connections to the "outside world" are made from features' stores** to stores (providers) in `CoreModule` by subscribing to their observable state or by features' views synching query params' state with state in features' stores.
+Feature module is a module composed of related components, providers, types, constants, routing configs etc. All these **components work together to implement an app's feature**. Their only concern should be this feature and they **should care as little as possible about other parts of the app**. This means that all of the **connections to the "outside world" are made from features' stores** to stores (providers) in `CoreModule` (subscribing to their observable state or triggering actions defined by these core services) or by features' views synching query params' state with state in features' stores. **A feature should never communicate with other features directly - this communications should be supported via providers in `CoreModules`.** Adhering to this rule we prevent creating direct dependencies/ tight coupling between features.
 
 Feature modules live inside `app/features/` directory, each module in its own subdirectory, with a structure like this:
 
@@ -550,15 +528,13 @@ features/
 ├── feature-example/
 │   ├── components/ (presentational components)
 │   │   ├── component-example/
-│   │   │   ├── _component-example.variables.scss
 │   │   │   ├── component-example.component.html
 │   │   │   ├── component-example.component.scss
 │   │   │   ├── component-example.component.ts
 │   │   │   └── private-type-example.ts
 │   │   └── ...
-│   ├── containers/ (container components that CAN'T be routed to)
+│   ├── containers/ (container components that CAN'T be routed to, usually used by views to compose more complex interfaces)
 │   │   ├── container-example/
-│   │   │   ├── _container-example.variables.scss
 │   │   │   ├── container-example.container.html
 │   │   │   ├── container-example.container.scss
 │   │   │   └── container-example.container.ts
@@ -566,7 +542,7 @@ features/
 │   ├── helpers/ (pure helper functions grouped by related functionalities)
 │   │   ├── example.helpers.ts
 │   │   └── ...
-│   ├── services/ (observable stores, endpoints, regular Angular services etc.)
+│   ├── services/ (observable stores, endpoints, regular Angular services (providers) etc.)
 │   │   ├── feature-example.endpoint.ts
 │   │   ├── feature-example.store.state.ts
 │   │   ├── feature-example.store.ts
@@ -576,7 +552,6 @@ features/
 │   │   └── ...
 │   ├── views/ (container components that CAN be routed to)
 │   │   ├── view-example/
-│   │   │   ├── _view-example.variables.scss
 │   │   │   ├── view-example.view.html
 │   │   │   ├── view-example.view.scss
 │   │   │   └── view-example.view.ts
@@ -626,7 +601,7 @@ At last, feature's constants and configs store feature specific constants' enums
 
 ### 2.4 Shared module
 
-`SharedModule` is a place to store all the **reusable components**, directives, pipes, helpers and types used by an app. **No component, directive or anything else from `SharedModule` should depend on any other module, component, provider etc.** There should be **no business logic** implemented by the members of `SharedModule`.
+`SharedModule` is a place to store all the **reusable presentational components**, directives, pipes, helpers and types used by features to create their UI. **No component, directive or anything else from `SharedModule` should depend on any other module, component, provider etc.** There should be **no business logic** implemented by the members of `SharedModule`. You should think about `SharedModule` as of a private `node_modules` collection of reusable functionalities.
 
 Shared module's directories and files are structured like this:
 
@@ -636,7 +611,6 @@ shared/
 │   ├── complex-component-example/ (larger and more complex reusable components with many sub-components)
 │   │   ├── components/
 │   │   │   ├── simple-component-example/
-│   │   │   │   ├── _component-example.variables.scss
 │   │   │   │   ├── component-example.component.html
 │   │   │   │   ├── component-example.component.scss
 │   │   │   │   ├── component-example.component.ts
@@ -645,13 +619,11 @@ shared/
 │   │   ├── types/
 │   │   │   ├── type-example.ts
 │   │   │   └── ...
-│   │   ├── _complex-component-example.variables.scss
 │   │   ├── complex-component-example.component.html
 │   │   ├── complex-component-example.component.scss
 │   │   ├── complex-component-example.component.ts
 │   │   └── complex-component-example.module.ts
 │   ├── simple-component-example/
-│   │   ├── _component-example.variables.scss
 │   │   ├── component-example.component.html
 │   │   ├── component-example.component.scss
 │   │   ├── component-example.component.ts
@@ -672,116 +644,80 @@ shared/
 └── shared.module.ts
 {% endhighlight %}
 
+### 2.5 Layout module
+
+Layout module is a place where I recommend putting the components like header and footer used to create basic app layout. These components are usually rendered in the UI at all times and are often included directly into root `AppComponent`:
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/app.component.html" target="_blank">app.component.html</a>
+</span>
+{% highlight html linenos %}
+<ce-header class="ce-header"></ce-header>
+
+<div class="ce-view-container">
+    <router-outlet></router-outlet>
+</div>
+{% endhighlight %}
+
+Directory structure of the layout module is not to complicated:
+
+{% highlight plain %}
+layout/
+├── footer/
+│   ├── footer.component.html
+│   ├── footer.component.scss
+│   └── footer.component.ts
+├── header/
+│   ├── header.component.html
+│   ├── header.component.scss
+│   └── header.component.ts
+└── layout.module.ts
+{% endhighlight %}
+
+### 2.6 Views module
+
+Views module is another module that usually turns out to be quite simple. It holds the views that are not a part of any feature and whose routing paths are defined in `AppRoutingModule`. An example of such a view is a 404 page (`PageNotFoundView`).
+
+<span class="highlight-filename">
+    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/app-routing.module.ts" target="_blank">app-routing.module.ts</a>
+</span>
+{% highlight typescript linenos %}
+const appRoutes: Routes = [
+    {
+        path: '',
+        redirectTo: coffeeListRoutingPaths.coffeeList,
+        pathMatch: 'full',
+    },
+    {path: '**', component: PageNotFoundView},
+];
+{% endhighlight %}
+
+Views module's directory structure is the following:
+
+{% highlight plain %}
+views/
+├── page-not-found/
+│   ├── page-not-found.component.html
+│   ├── page-not-found.component.scss
+│   └── page-not-found.component.ts
+└── views.module.ts
+{% endhighlight %}
+
+### 2.7 Styles
+
+Directory `/styles` at app's root is not exactly holding a styles module. It is used to store all the files with app's global styles definitions. I won't go into details here as CSS architecture is a topic for an article on its own. I'm already working on such article. Stay tuned if you're interested (via [Twitter](https://twitter.com/jurebajt){:target='_blank'} or [RSS feed](/feed.xml){:target='_blank'}).
+
+### 3. Testing
+
+If there's one thing you SHOULDN'T remember from this article is the lack of unit tests. I allowed myself to omit them in the [Coffee Election example app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'} for clarity since directory structure snippets would get even more verbose. I would not allow myself to do such a thing in a production app! 🧐
+
 <!-- 
-```plain
-app/
-├── core/ # SINGLETON services provided via root injector
-│   ├── core-service-example/
-│   │   ├── helpers/
-│   │   │   └── example.helpers.ts
-│   │   ├── services/
-│   │   │   ├── core-service-example-resolver.service.ts
-│   │   │   ├── core-service-example.endpoint.ts
-│   │   │   ├── core-service-example.store.state.ts
-│   │   │   └── core-service-example.store.ts
-│   │   ├── types/
-│   │   │   └── type-example.ts
-│   │   └── core-service-example.module.ts (optional for larger core services)
-│   └── core.module.ts
-├── features/
-│   └── feature-example/
-│       ├── components/ # "Dumb" components
-│       │   └── simple-component-example/
-│       │       ├── _component-example.variables.scss
-│       │       ├── component-example.component.html
-│       │       ├── component-example.component.scss
-│       │       ├── component-example.component.ts
-│       │       └── type-example.ts
-│       ├── containers/ # Smart containers that can't be routed to
-│       │   └── container-example/
-│       │       ├── _container-example.variables.scss
-│       │       ├── container-example.container.html
-│       │       ├── container-example.container.scss
-│       │       └── container-example.container.ts
-│       ├── helpers/
-│       │   └── example.helpers.ts
-│       ├── services/
-│       │   ├── feature-example.endpoint.ts
-│       │   ├── feature-example.store.state.ts
-│       │   └── feature-example.store.ts
-│       ├── types/
-│       │   └── type-example.ts
-│       ├── views/ # Smart containers that can be routed to
-│       │   └── view-example/
-│       │       ├── _view-example.variables.scss
-│       │       ├── view-example.view.html
-│       │       ├── view-example.view.scss
-│       │       └── view-example.view.ts
-│       ├── feature-example-routing.module.ts
-│       ├── feature-example.configs.ts
-│       ├── feature-example.constants.ts
-│       └── feature-example.module.ts
-├── layout/
-│   ├── footer/
-│   │   ├── _footer.variables.scss
-│   │   ├── footer.component.html
-│   │   ├── footer.component.scss
-│   │   └── footer.component.ts
-│   ├── header/
-│   │   ├── _header.variables.scss
-│   │   ├── header.component.html
-│   │   ├── header.component.scss
-│   │   └── header.component.ts
-│   └── layout.module.ts
-├── shared/
-│   ├── components/
-│   │   ├── complex-component-example/
-│   │   │   ├── components/
-│   │   │   │   └── simple-component-example/
-│   │   │   │       ├── _component-example.variables.scss
-│   │   │   │       ├── component-example.component.html
-│   │   │   │       ├── component-example.component.scss
-│   │   │   │       ├── component-example.component.ts
-│   │   │   │       └── type-example.ts
-│   │   │   ├── helpers/
-│   │   │   │   └── example.helpers.ts
-│   │   │   ├── types/
-│   │   │   │   └── type-example.ts
-│   │   │   └── complex-component-example.module.ts
-│   │   └── simple-component-example/
-│   │       ├── _component-example.variables.scss
-│   │       ├── component-example.component.html
-│   │       ├── component-example.component.scss
-│   │       ├── component-example.component.ts
-│   │       └── type-example.ts
-│   ├── directives/
-│   │   └── directive-example.directive.ts
-│   ├── pipes/
-│   │   └── pipe-example.pipe.ts
-│   ├── types/
-│   │   └── type-example.ts
-│   ├── helpers.ts
-│   └── shared.module.ts
-├── styles/
-│   ├── _variables.scss
-│   ├── base.scss
-│   ├── buttons.scss
-│   ├── ...
-│   └── form.scss
-├── testing/
-│   └── component-example.component.stub.ts
-│   └── service-example.service.stub.ts
-├── views/
-│   ├── page-not-found/
-│   │   ├── _page-not-found.variables.scss
-│   │   ├── page-not-found.view.html
-│   │   ├── page-not-found.view.scss
-│   │   └── page-not-found.view.ts
-│   └── views.module.ts
-├── app-routing.module.ts
-├── app.component.html
-├── app.component.ts
-├── app.constants.ts
-└── app.module.ts
-```
+TODO: Explain where to put spec files - .spec.ts extension
+TODO: Explain the purpose of /testing directory - stubbed components, services etc.
 -->
+
+{% highlight plain %}
+testing/
+├── component-example.component.stub.ts
+└── service-example.service.stub.ts
+{% endhighlight %}
