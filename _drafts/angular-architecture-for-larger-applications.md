@@ -705,19 +705,30 @@ views/
 
 ### 2.7 Styles
 
-Directory `/styles` at app's root is not exactly holding a styles module. It is used to store all the files with app's global styles definitions. I won't go into details here as CSS architecture is a topic for an article on its own. I'm already working on such article. Stay tuned if you're interested (via [Twitter](https://twitter.com/jurebajt){:target='_blank'} or [RSS feed](/feed.xml){:target='_blank'}).
+Directory `styles/` at app's root is not exactly holding a styles module. It is used to store all the files with app's global styles definitions. I won't go into details here as CSS architecture is a topic for an article on its own. I'm already working on such article. Stay tuned if you're interested (via [Twitter](https://twitter.com/jurebajt){:target='_blank'} or [RSS feed](/feed.xml){:target='_blank'}).
 
 ### 3. Testing
 
 If there's one thing you SHOULDN'T remember from this article is the lack of unit tests. I allowed myself to omit them in the [Coffee Election example app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'} for clarity since directory structure snippets would get even more verbose. I would not allow myself to do such a thing in a production app! 🧐
 
-<!-- 
-TODO: Explain where to put spec files - .spec.ts extension
-TODO: Explain the purpose of /testing directory - stubbed components, services etc.
--->
+In general I find it best to put the test/spec files right next to files containing the implementation of components, services and other code under test. For example, I would put the test suite to test the `CoffeeListStore` in the same directory `features/coffee-list/services` where the store is located and use the `.spec.ts` suffix to indicate the file contains unit tests:
+
+{% highlight plain %}
+features/coffee-list/services/
+├── coffee-list.store.ts
+└── coffee-list.store.spec.ts
+{% endhighlight %}
+
+A lot of the times unit testing requires us to mock/stub certain building blocks of the app. I like to put these stubs in `testing/` directory at the root of the app (where all other modules like `core` and `features` are located) and use the `.stub.ts` suffix to indicate a file containing mocked/stubbed component or service:
 
 {% highlight plain %}
 testing/
 ├── component-example.component.stub.ts
 └── service-example.service.stub.ts
 {% endhighlight %}
+
+As the content of this `testing` directory expands it becomes useful to organize stub files into more subdirectories.
+
+There's a lot more to be written about testing but since this article is already quite lengthy I'll draw the line at this point. If you are interested in how to unit test the observable store services used for state management in the architecture described in this article you can learn more by checking out my previous post about [observable stores](/state-management-in-angular-with-observable-store-services/){:target='_blank'}. I would also suggest you check out the official [Angular documentation](https://angular.io/guide/testing){:target='_blank'} to learn more about testing of Angular apps.
+
+##
