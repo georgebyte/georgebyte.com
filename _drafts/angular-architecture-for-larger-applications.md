@@ -5,7 +5,31 @@ description: "TODO"
 last_update: 2018-11-20
 ---
 
-Note: All code examples used in this article are simplified snippets of code from the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this article. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementations, just click on the file name above code blocks.
+<p class="excerpt">
+<!-- TODO -->
+</p>
+
+Note: All code examples used in this article are simplified snippets of code from the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this article. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementations, just click on the file name above code snippets.
+
+## Contents <!-- omit in toc --> 
+
+- [1. Main ideas and concepts](#1-main-ideas-and-concepts)
+  - [1.1 State management with observable store services](#11-state-management-with-observable-store-services)
+  - [1.2 Component based architecture](#12-component-based-architecture)
+    - [1.2.1 Presentational components](#121-presentational-components)
+    - [1.2.2 Smart container components](#122-smart-container-components)
+  - [1.3 One-way data flow](#13-one-way-data-flow)
+  - [1.4 Communication with external systems](#14-communication-with-external-systems)
+- [2. Splitting apps' functionalities into Angular modules](#2-splitting-apps-functionalities-into-angular-modules)
+  - [2.1 App's root](#21-apps-root)
+  - [2.2 Core module](#22-core-module)
+  - [2.3 Feature modules](#23-feature-modules)
+  - [2.4 Shared module](#24-shared-module)
+  - [2.5 Layout module](#25-layout-module)
+  - [2.6 Views module](#26-views-module)
+  - [2.7 Styles](#27-styles)
+- [3. Testing](#3-testing)
+- [4. Conclusion](#4-conclusion)
 
 ## 1. Main ideas and concepts
 
@@ -707,7 +731,7 @@ views/
 
 Directory `styles/` at app's root is not exactly holding a styles module. It is used to store all the files with app's global styles definitions. I won't go into details here as CSS architecture is a topic for an article on its own. I'm already working on such article. Stay tuned if you're interested (via [Twitter](https://twitter.com/jurebajt){:target='_blank'} or [RSS feed](/feed.xml){:target='_blank'}).
 
-### 3. Testing
+## 3. Testing
 
 If there's one thing you SHOULDN'T remember from this article is the lack of unit tests. I allowed myself to omit them in the [Coffee Election example app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'} for clarity since directory structure snippets would get even more verbose. I would not allow myself to do such a thing in a production app! 🧐
 
@@ -731,4 +755,12 @@ As the content of this `testing` directory expands it becomes useful to organize
 
 There's a lot more to be written about testing but since this article is already quite lengthy I'll draw the line at this point. If you are interested in how to unit test the observable store services used for state management in the architecture described in this article you can learn more by checking out my previous post about [observable stores](/state-management-in-angular-with-observable-store-services/){:target='_blank'}. I would also suggest you check out the official [Angular documentation](https://angular.io/guide/testing){:target='_blank'} to learn more about testing of Angular apps.
 
-##
+## 4. Conclusion
+
+<!-- TODO -->
+
+<div class="vertical-separator"></div>
+
+I hope you learned something new by reading this article. Questions, suggestions, improvements or just general discussion about the topic are very welcome in the comments bellow.
+
+Also, let's connect on [Twitter](https://twitter.com/jurebajt){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).
