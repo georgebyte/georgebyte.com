@@ -17,7 +17,7 @@ description: "A list of my software development projects."
             </h3>
             <div class="projects-grid__item-image-container">
                 <a href="https://www.npmjs.com/package/rxjs-observable-store" target="_blank">
-                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/rxjs-observable-store-screenshot.png" alt="rxjs-observable-store Store class screenshot" />
+                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/rxjs-observable-store-screenshot.jpg" alt="rxjs-observable-store Store class screenshot" />
                 </a>
             </div>
             <p class="projects-grid__item-description">
@@ -35,7 +35,7 @@ description: "A list of my software development projects."
             </h3>
             <div class="projects-grid__item-image-container">
                 <a href="https://www.npmjs.com/package/ngx-categorized-select" target="_blank">
-                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/ngx-categorized-select-screenshot.png" alt="ngx-categorized-select component screenshot" />
+                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/ngx-categorized-select-screenshot.jpg" alt="ngx-categorized-select component screenshot" />
                 </a>
             </div>
             <p class="projects-grid__item-description">
@@ -55,7 +55,7 @@ description: "A list of my software development projects."
             </h3>
             <div class="projects-grid__item-image-container">
                 <a href="http://slides.com/jurebajt/state-management-in-angular-with-observable-store-services" target="_blank">
-                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/state-management-in-angular-with-observable-store-services-talk-screenshot.png" alt="State management in Angular with observable store services talk first slide" />
+                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/state-management-in-angular-with-observable-store-services-talk-screenshot.jpg" alt="State management in Angular with observable store services talk first slide" />
                 </a>
             </div>
             <p class="projects-grid__item-description">
@@ -72,8 +72,8 @@ description: "A list of my software development projects."
                 <a href="https://github.com/jurebajt/bday-party-planner" target="_blank">Birthday party planner</a>
             </h3>
             <div class="projects-grid__item-image-container">
-                <a href="{{ site.baseurl }}/images/birthday-party-planner-screenshot.png">
-                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/birthday-party-planner-screenshot.png" alt="Birthday party planner screenshot" />
+                <a href="{{ site.baseurl }}/images/birthday-party-planner-screenshot.jpg">
+                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/birthday-party-planner-screenshot.jpg" alt="Birthday party planner screenshot" />
                 </a>
             </div>
             <p class="projects-grid__item-description">
@@ -93,8 +93,8 @@ description: "A list of my software development projects."
                 Custom table component
             </h3>
             <div class="projects-grid__item-image-container">
-                <a href="{{ site.baseurl }}/images/custom-table-component-screenshot.png">
-                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/custom-table-component-screenshot.png" alt="Custom table component screenshot" />
+                <a href="{{ site.baseurl }}/images/custom-table-component-screenshot.jpg">
+                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/custom-table-component-screenshot.jpg" alt="Custom table component screenshot" />
                 </a>
             </div>
             <p class="projects-grid__item-description">
@@ -128,8 +128,8 @@ description: "A list of my software development projects."
                 <a href="http://mojekarte.si" target="_blank">Seat selection widget</a>
             </h3>
             <div class="projects-grid__item-image-container">
-                <a href="{{ site.baseurl }}/images/venue-seat-selection-screenshot.png">
-                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/venue-seat-selection-screenshot.png" alt="Seat selection widget screenshot" />
+                <a href="{{ site.baseurl }}/images/venue-seat-selection-screenshot.jpg">
+                    <img class="projects-grid__item-image" src="{{ site.baseurl }}/images/venue-seat-selection-screenshot.jpg" alt="Seat selection widget screenshot" />
                 </a>
             </div>
             <p class="projects-grid__item-description">
