@@ -9,7 +9,7 @@ last_update: 2018-11-20
 <!-- TODO -->
 </p>
 
-Note: All code examples used in this article are simplified snippets of code from the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described in this article. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementations, just click on the file name above code snippets.
+Note: All code examples used in this article are simplified snippets of code from the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described below. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementation, click on the file name above code snippets.
 
 ## Contents <!-- omit in toc --> 
 
@@ -20,7 +20,7 @@ Note: All code examples used in this article are simplified snippets of code fro
     - [1.2.2 Smart container components](#122-smart-container-components)
   - [1.3 One-way data flow](#13-one-way-data-flow)
   - [1.4 Communication with external systems](#14-communication-with-external-systems)
-- [2. Splitting apps' functionalities into Angular modules](#2-splitting-apps-functionalities-into-angular-modules)
+- [2. Modules](#2-modules)
   - [2.1 App's root](#21-apps-root)
   - [2.2 Core module](#22-core-module)
   - [2.3 Feature modules](#23-feature-modules)
@@ -33,7 +33,7 @@ Note: All code examples used in this article are simplified snippets of code fro
 
 ## 1. Main ideas and concepts
 
-This section will present the patterns and main ideas used to create a scalable app architecture described later in the article. These concepts are in my opinion current state of the art when it comes to front-end applications development. Although I'll present them in the context of Angular framework, I would suggest you consider adopting their slightly modified version even when developing apps using other frameworks.
+This section will present the patterns and main ideas used to create a scalable app architecture described later in the article. These concepts are in my opinion current state of the art when it comes to front-end development. Although I'll present them in the context of Angular framework, I would suggest you consider adopting their slightly modified version even when developing apps using other frameworks.
 
 ### 1.1 State management with observable store services
 
@@ -41,9 +41,11 @@ Effective state management is crucial in larger front-end applications. This sca
 
 ### 1.2 Component based architecture
 
-Component based architecture has gained a lot of popularity in front-end development over the past few years. It's a pattern that fits nicely in the context of developing front-end applications and enables developers to write maintainable and extensible front-end code.
+Component based architecture has gained a lot of popularity in front-end development over the past few years. It's a pattern that fits nicely in the context of developing front-end applications and enables developers to write maintainable and extensible code.
 
-The scalable Angular app architecture described in this article is strongly rooted in component based architecture. The purpose of many ideas written bellow is to enhance components' reusability which in turn makes front-end apps easier (and way more fun) to understand and extend. In my opinion, the most important part of creating truly reusable components is to separate them into **containers and presentational components**.
+The scalable Angular app architecture described in this article is strongly rooted in component based architecture. The purpose of many ideas written bellow is to enhance components' reusability which in turn makes apps easier (and way more fun) to understand and extend.
+
+In my opinion, the most important part of creating truly reusable components is to separate them into **containers and presentational components**.
 
 #### 1.2.1 Presentational components
 
@@ -94,13 +96,13 @@ export class CoffeeCandidateComponent {
 }
 {% endhighlight %}
 
-As you can see the component class is pretty simple. There is basically only one `Input` and one `Output` defined. And that's the point. `CoffeeCandidateComponent` is concerned with just the presentation of state (passed in via inputs) and reacting to user actions by emitting events (via outputs).
+As you can see the component class is pretty simple. There is basically only one `Input` and one `Output` defined. And that's the point. `CoffeeCandidateComponent` is only concerned with the presentation of state (passed in via inputs) and reacting to user actions by emitting events (via outputs).
 
-In many cases presentational components need additional methods and properties in order to support more complicated user interfaces. Some examples would be:
+In many cases presentational components need additional methods and properties in order to create more complicated user interfaces. Some examples would be:
 
 * a `boolean` property `isSectionVisible` used to show/hide a certain section of component's UI,
 * methods to compute (from input data) some additional properties rendered in the UI,
-* event handlers for more complex user interaction,
+* event handlers for more complex user interactions,
 * methods to throttle or debounce user input etc.
 
 Logic needed to implement these functionalities can be quite complex. But no matter how complex it is, it should always be concerned with just the presentation of app's state and capturing of user actions. There should be **no business logic, no direct app's state updates, no API calls etc.** in presentational components. This should be handled by observable stores or other services.
@@ -113,7 +115,7 @@ Good, we've got presentational components covered. Let's continue and explore th
 
 #### 1.2.2 Smart container components
 
-Smart container components are components that act as a "glue" which **binds observable stores and other business logic with presentational components** in a loosely coupled way. They are "smart" because in order achieve this they must know how app's state is structured, which stores contain the state required, which store's method to call when an output callback is triggered by a presentational component etc. Because of that, container components are much more specific to app's features and their reusability is lower. But that's fine - some parts of the app must be smart so that the app can do smart things.
+Smart container components are components that act as a "glue" which **binds observable stores and other business logic with presentational components** in a loosely coupled way. They are "smart" because, in order achieve this, they must know how app's state is structured, which stores contain the state required, which store's method to call when an output callback is triggered by a presentational component etc. Because of that, container components are much more specific to app's features and their reusability is lower. But that's fine - some parts of the app must be smart so that the app can do smart things.
 
 A container component class may look something like this (please refer to my previous article about [observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'} if any of the code examples bellow doesn't make sense to you):
 
@@ -170,15 +172,15 @@ The template of a container component is much more interesting in my opinion:
 </ng-container>
 {% endhighlight %}
 
-The example above shows a container component "in action". First a `subs` object is created whose role is to store subscriptions to different observables stores. This is an optimization so that only one subscription per store is created in a template by [storing conditional result in a variable](https://angular.io/api/common/NgIf#storing-conditional-result-in-a-variable){:target='_blank'}. Otherwise `async` pipe would create a new subscription for every template binding using `store.state$` observable.
+The example above shows a container component "in action". First a `subs` object is created whose role is to store subscriptions to different observables stores. This is an optimization so that only one subscription per store is created in a template by [storing a conditional result in a variable](https://angular.io/api/common/NgIf#storing-a-conditional-result-in-a-variable){:target='_blank'}. Otherwise, `async` pipe would create a new subscription for every template binding using `store.state$` observable.
 
-The next interesting part is the inclusion of a presentational component (`<ce-coffee-candidate>`). Notice how the container component wires correct inputs and outputs to `CoffeeCandidateComponent`. As I stated before, container component knows how `store`'s state is structured and which methods of modifying the state exist in the store. It also knows what the interface exposed by `CoffeeCandidateComponent` looks like. And it knows how to connect the store to `CoffeeCandidateComponent` in order to add a voting feature to the app.
+The next interesting part is the inclusion of a presentational component (`<ce-coffee-candidate>`). Notice how the container component wires correct inputs and outputs to `CoffeeCandidateComponent`. As I stated before, container component knows how `store`'s state is structured and which public methods of modifying the state exist in the store. It also knows what the interface exposed by `CoffeeCandidateComponent` looks like. And it knows how to connect the store to `CoffeeCandidateComponent` in order to add a voting feature to the app.
 
 The best part is that the store doesn't care who uses its state and in what way it is used. It is instead concerned with implementing the right business logic and state persistance. The store assumes a "smart" consumer knows how to use its exposed interface. Similarly `CoffeeCandidateComponent` presentational component isn't concerned with where a `candidate` to render comes from or how to update the state when user votes for this coffee candidate.
 
 This clear separation of concerns makes the app much easier to understand and extend with new features. And it enables data to "flow" in one direction through the app. I'll explain this further in a minute.
 
-There's is just one more thing left to explain in this section. You may have noticed the above container component is actually called a "view". This isn't a mistake.
+There's just one more thing left to explain in this section. You may have noticed the above container component is actually called a "view". This isn't a mistake.
 
 A **view** is a special type of container component. It's a smart container **component which can be routed to** by Angular `Router`. In other words, it's a component included in the list of `Routes` with a path specified:
 
@@ -231,7 +233,7 @@ export class CoffeeListView implements OnInit, OnDestroy {
 }
 {% endhighlight %}
 
-`CoffeeListView` is responsible for updating the state whenever `sort` query param is updated. It does this by subscribing to an observable of route's query params (`this.route.queryParams.subscribe(...)`) and then invoking store's `sortCandidates` method with `sort` query param value.
+`CoffeeListView` is responsible for updating the state whenever `sort` query param is updated. It does this by subscribing to an observable of route's query params (`this.route.queryParams.subscribe(...)`) and invoking `this.store.sortCandidates` when necessary.
 
 Views should take care of doing the sync in reverse direction too. What this means is that whenever state in store is updated (and this update must be reflected in the URL), it is views that are responsible for making the new state persistent by updating the URL. In practice it looks like this:
 
@@ -254,7 +256,7 @@ As promised a few paragraphs above, this section will explore what is a good way
 * **app's state** we would like to present to the user and
 * **actions' payload** needed to update app's state upon user interaction.
 
-One-way data flow is a great pattern to ensure state is consistent across all components making up the app. It became quite popular thanks to React. But this doesn't mean it is only possible to use this pattern in React apps. On the contrary, I would argue that one-way data flow is a great pattern to use when developing front-end applications regardless of framework. Because data flows in one direction it is easy to "follow" it around and get a clear picture of how the app works.
+One-way data flow is a great pattern to ensure state is consistent across all components making up the app. It became quite popular thanks to React. But this doesn't mean it is only possible to use this pattern in React apps. On the contrary, I would argue that one-way data flow is a great pattern to use when developing front-end applications regardless of framework. Because data flows in one direction it's easy to "follow" it around and get a clear picture of how the app works.
 
 Here's a diagram of how the one-way data flow pattern looks like when applied to the architecture I'm describing in this article:
 
@@ -289,10 +291,10 @@ This concludes the explanation of one-way data flow. It's not so hard too keep t
 
 The last pattern I'll talk about in this part of the article is about how to connect an app with external "systems", such as server API, browser's local storage, cookies etc. Although I'll only provide examples of communication with servers, the two main ideas are the same for other types of external systems:
 
-* Observable **stores** should be the **only part of an app that knows about external systems**.
+* Observable **stores** (or other services containing business logic) should be the **only part of an app that knows about external systems**.
 * Observable stores should not communicate with external systems directly - a **proxy service** should be used to abstract away communication details.
 
-The following examples demonstrate how these ideas translate into practice when communicating with a REST API. The proxy service in this case is called `CoffeeListEndpoint` and is injected into the store as `endpoint`. The store uses it to reload a list of candidates on initialization and when user wants to sort the list of candidates (omitted in the example for clarity).
+The following examples demonstrate how these ideas translate into practice when communicating with a REST API. The proxy service in this case is called `CoffeeListEndpoint` and it is injected into the store as `endpoint`. The store uses it to reload a list of candidates on initialization and when user wants to sort the list of candidates (omitted in the example for clarity).
 
 <span class="highlight-filename">
     <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.store.ts" target="_blank">coffee-list.store.ts</a>
@@ -352,7 +354,9 @@ export class CoffeeListStore extends Store<CoffeeListStoreState>
 }
 {% endhighlight %}
 
-Notice how `endpoint.listCandidates` is not called directly. This pattern is used to make sure we'll always **update the state with data from endpoint's last response** if multiple reload candidates requests are initiated at roughly the same time. When we want to reload the list of candidates we push a new value (`undefined`) into `store.reloadCandidates$` stream. This triggers execution of pipeable operators. Inside `switchMap` we create a new request and `switchMap` replaces previous pending request (if present) with this newly created request. The rest of pipeable operators are only executed when the last request is finished. The state is then updated with most recent data from endpoint. If a request to the endpoint is not successful the `retry` operator is used to resubscribe to `store.reloadCandidates$` observable (otherwise the stream would complete and no further reloads could be triggered by pushing new values into `store.reloadCandidates$`).
+Notice how `endpoint.listCandidates` is not called directly. This pattern is used to make sure we'll always **update the state with data from endpoint's last response** if multiple reload candidates requests are initiated at roughly the same time.
+
+When we want to reload the list of candidates we push a new value (`undefined`) into `store.reloadCandidates$` stream. This triggers execution of pipeable operators. Inside `switchMap` we create a new request and `switchMap` replaces previous pending request (if present) with this newly created request. The rest of pipeable operators are only executed when the last request is finished. The state is then updated with the most recent data returned from the endpoint. If a request to the endpoint is not successful the `retry` operator is used to resubscribe to `store.reloadCandidates$` observable (otherwise the stream would complete and no further reloads could be triggered by pushing new values into `store.reloadCandidates$`).
 
 Lets now have a look at how `endpoint.listCandidates` is implemented.
 
@@ -396,7 +400,9 @@ export class CoffeeListEndpoint {
 }
 {% endhighlight %}
 
-In essence, endpoint constructs request parameters and executes HTTP request via Angular's `HttpClient`. One part that needs some more context are the calls to `requestStateUpdater`. `requestStateUpdater: StoreRequestStateUpdater` is a function used to update request state in the store. Endpoint from the example above uses it to update the state of a request to `inProgress` or `error`. Stores use `endpointHelpers.getStoreRequestStateUpdater` in order to generate the default `StoreRequestStateUpdater`.
+In essence, endpoint constructs request parameters and executes HTTP request via Angular's `HttpClient`. One part that needs some more context are the calls to `requestStateUpdater`.
+
+`requestStateUpdater: StoreRequestStateUpdater` is a function used to update request state in the store. Endpoint from the example above uses it to update the state of a request to `inProgress` or `error`. Stores use `endpointHelpers.getStoreRequestStateUpdater` in order to generate the default `StoreRequestStateUpdater`.
 
 <span class="highlight-filename">
     <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/shared/helpers/endpoint.helpers.ts" target="_blank">endpoint.helpers.ts</a>
@@ -417,7 +423,9 @@ export function getStoreRequestStateUpdater(
 }
 {% endhighlight %}
 
-Sometimes a more flexible way of updating request state is required. In these cases `requestStateUpdater: CustomRequestStateUpdater` can be passed to the endpoint. For example, calling the `getUpdateCandidateRequestStateUpdater` in `CoffeeListStore` generates such custom request state updater.
+Sometimes a more flexible way of updating request state is required. In these cases `requestStateUpdater: CustomRequestStateUpdater` can be passed to the endpoint.
+
+For example, calling the `getUpdateCandidateRequestStateUpdater` in `CoffeeListStore` generates such custom request state updater:
 
 <span class="highlight-filename">
     <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.store.ts" target="_blank">coffee-list.store.ts</a>
@@ -453,7 +461,7 @@ This concludes the first part where we explored main concepts and ideas used to 
 
 In the next part we'll dive into less theoretical stuff. I'll present how to lay out an app's directory structure and how to organize your source files so that you'll know exactly where to put different parts that make up your app.
 
-## 2. Splitting apps' functionalities into Angular modules
+## 2. Modules
 
 The concept of scalable Angular architecture presented in this article is based on dividing an app into different modules. At the root level this division looks like this:
 
@@ -473,7 +481,7 @@ In this part of the article we'll define the role of each one of these modules a
 
 ### 2.1 App's root
 
-At the root of the app there are the following files whose main purpose is to tie everything together into a nicely working app:
+At the [root of the app](https://github.com/jurebajt/coffee-election-ng-app-example/tree/master/src/app){:target='_blank'} there are the following files whose main purpose is to tie everything together into a nicely working app:
 
 {% highlight plain %}
 app/
@@ -494,13 +502,15 @@ app/
 
 `AppRoutingModule` is the main routing module. It initializes Angular router with top-level `Routes` config. Other routes are defined in features' routing modules - more about this later.
 
-`AppInitializationModule` makes use of Angular's `APP_INITIALIZER` injection token to do some work during Angular initialization process. This is useful for loading app's settings from a server since the code is executed before rendering anything. Note that your app won’t start until all promises are resolved so doing too much work might impact the performance of your app negatively. In many scenarios it is better to use route resolvers to load necessary data before rendering route's component as this doesn't delay app's initialization.
+`AppInitializationModule` makes use of Angular's `APP_INITIALIZER` injection token to do some work during Angular initialization process. This is useful for loading app's settings from a server since the code is executed before rendering anything. Note that your app won’t start until all promises are resolved so doing too much work during initialization might impact the performance of your app negatively. In many scenarios it is better to use route resolvers to load necessary data before rendering route's component as this doesn't delay app's initialization.
 
 Lastly, `app.constants.ts` is used to store global constants' enums and `app.config.ts` is used to store global app's configs like REST API base URL or some defaults.
 
 ### 2.2 Core module
 
-Core module is dedicated to **singleton providers (services) provided in root injector**. Only one instance is created for each one of these services in app's "lifetime" between page reloads. An example of such service would be the `user` core service which is responsible for holding the state of the logged-in user.
+Core module is dedicated to **singleton providers (observable stores/services) provided in root injector**. Only one instance is created for each one of these services in app's "lifetime" between page reloads. These services contain business logic used by app's features.
+
+An example of such service would be the `user` core service which is responsible for holding the state of the logged-in user.
 
 Core module's directories and files are structured like this:
 
@@ -541,9 +551,13 @@ export class CoreModule {}
 
 `CoreModule` is imported into `AppModule` so that all of its providers are added to app's root injector.
 
+<!-- TODO: Review from here -->
+
 ### 2.3 Feature modules
 
-Feature module is a module composed of related components, providers, types, constants, routing configs etc. All these **components work together to implement an app's feature**. Their only concern should be this feature and they **should care as little as possible about other parts of the app**. This means that all of the **connections to the "outside world" are made from features' stores** to stores (providers) in `CoreModule` (subscribing to their observable state or triggering actions defined by these core services) or by features' views synching query params' state with state in features' stores. **A feature should never communicate with other features directly - this communications should be supported via providers in `CoreModules`.** Adhering to this rule we prevent creating direct dependencies/ tight coupling between features.
+Feature module is a module composed of related components, providers, types, constants, routing configs etc. All these **components work together to implement an app's feature**. Their only concern should be this feature and they **should care as little as possible about other parts of the app**. This means that all of the **connections to the "outside world" are made from features' services** to services in `CoreModule` or by features' views synching query params' state with state in features' stores.
+
+**A feature should never communicate with other features directly - this communications should be supported via services in `CoreModules`.** By adhering to this rule we prevent creating direct dependencies/tight coupling between features. We should be able to remove any feature from our app without breaking other app's features.
 
 Feature modules live inside `app/features/` directory, each module in its own subdirectory, with a structure like this:
 
@@ -555,7 +569,7 @@ features/
 │   │   │   ├── component-example.component.html
 │   │   │   ├── component-example.component.scss
 │   │   │   ├── component-example.component.ts
-│   │   │   └── private-type-example.ts
+│   │   │   └── private-type-example.ts (TypeScript type used by this presentational component only)
 │   │   └── ...
 │   ├── containers/ (container components that CAN'T be routed to, usually used by views to compose more complex interfaces)
 │   │   ├── container-example/
