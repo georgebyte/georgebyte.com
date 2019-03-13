@@ -6,7 +6,7 @@ description: "My writings about pretty much anything."
 ---
 
 <div class="quote">
-    My writings about pretty much anything.
+    My writings about pretty much anything (mostly web development).
 </div>
 
 <div class="blog-posts">

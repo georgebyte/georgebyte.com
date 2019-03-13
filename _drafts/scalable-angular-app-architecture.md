@@ -1,12 +1,12 @@
 ---
 layout: blog-post
-title: "Scalable Angular architecture for larger applications"
-description: "TODO"
-last_update: 2018-11-20
+title: "Scalable Angular app architecture"
+description: "A collection of my knowledge about building robust and scalable front-end applications in Angular."
+last_update: 2019-03-13
 ---
 
 <p class="excerpt">
-<!-- TODO -->
+This article is a collection of my knowledge about building robust and scalable front-end applications in Angular. First part presents the concepts which I've found are worth adopting when developing front-end applications. In the second part I showcase an Angular app architecture built on top of these concepts.
 </p>
 
 Note: All code examples used in this article are simplified snippets of code from the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described below. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementation, click on the file name above code snippets.
@@ -33,7 +33,7 @@ Note: All code examples used in this article are simplified snippets of code fro
 
 ## 1. Main ideas and concepts
 
-This section will present the patterns and main ideas used to create a scalable app architecture described later in the article. These concepts are in my opinion current state of the art when it comes to front-end development. Although I'll present them in the context of Angular framework, I would suggest you consider adopting their slightly modified version even when developing apps using other frameworks.
+This section will present the patterns and main ideas used to create a robust and scalable front-end app architecture. These concepts are in my opinion current state of the art when it comes to front-end development and I use them daily when building production ready front-end apps. Although I'll present them in the context of Angular framework, I suggest you consider adopting their slightly modified version even when developing apps using other frameworks.
 
 ### 1.1 State management with observable store services
 
@@ -557,7 +557,7 @@ export class CoreModule {}
 
 Feature module is a module composed of related components, providers, types, constants, routing configs etc. All these **components work together to implement an app's feature**. Their only concern should be this feature and they **should care as little as possible about other parts of the app**. This means that all of the **connections to the "outside world" are made from features' services** to services in `CoreModule` or by features' views synching query params' state with state in features' stores.
 
-**A feature should never communicate with other features directly - this communications should be supported via services in `CoreModules`.** By adhering to this rule we prevent creating direct dependencies/tight coupling between features. We should be able to remove any feature from our app without breaking other app's features.
+**A feature should never communicate with other features directly - this communications should be supported via services in `CoreModules`.** By adhering to this rule we prevent creating direct dependencies/tight coupling between features. We should be able to remove any non-core feature from our app without breaking other app's features.
 
 Feature modules live inside `app/features/` directory, each module in its own subdirectory, with a structure like this:
 
@@ -697,7 +697,7 @@ Layout module is a place where I recommend putting the components like header an
 </div>
 {% endhighlight %}
 
-Directory structure of the layout module is not to complicated:
+Directory structure of the layout module is not too complicated:
 
 {% highlight plain %}
 layout/
@@ -771,10 +771,8 @@ There's a lot more to be written about testing but since this article is already
 
 ## 4. Conclusion
 
-<!-- TODO -->
+We covered a lot of ground in this article. First we explored the concepts I find very useful when developing front-end applications like component based architecture and one-way data flow. If you remember just one thing from the first part, let it be this: **you should divide your app into smart and presentational components**.
 
-<div class="vertical-separator"></div>
-
-I hope you learned something new by reading this article. Questions, suggestions, improvements or just general discussion about the topic are very welcome in the comments bellow.
+In the second part I laid out an app architecture which I hope will provide some guidance when you'll find yourself wondering where to put a specific component, service or some other building block in your apps. This architecture is by no means the ultimate silver bullet, but I find it to be *good enough* to support development of production ready, robust and scalable front-end applications. Questions, suggestions, improvements or just general discussion about it are very welcome in the comments bellow.
 
 Also, let's connect on [Twitter](https://twitter.com/jurebajt){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).
