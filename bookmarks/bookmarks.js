@@ -176,6 +176,10 @@
                     name: 'Regex tester and debugger',
                     url: 'https://regex101.com/',
                 },
+                {
+                    name: 'Wireframes and mockups creator',
+                    url: 'https://app.moqups.com/',
+                },
                 {name: 'Diagrams creator', url: 'https://www.draw.io'},
                 {name: '', url: ''},
             ],
