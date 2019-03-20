@@ -2,14 +2,16 @@
 layout: blog-post
 title: "Scalable Angular app architecture"
 description: "A collection of my knowledge about building robust and scalable front-end applications in Angular."
-last_update: 2019-03-13
+last_update: 2019-03-20
 ---
 
 <p class="excerpt">
 This article is a collection of my knowledge about building robust and scalable front-end applications in Angular. First part presents the concepts which I've found are worth adopting when developing front-end applications. In the second part I showcase an Angular app architecture built on top of these concepts.
 </p>
 
-Note: All code examples used in this article are simplified snippets of code from the [Coffee Election app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'}. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described below. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementation, click on the file name above code snippets.
+<p class="note">
+Note: All code examples used in this article are simplified snippets of code from the <a href="https://github.com/jurebajt/coffee-election-ng-app-example" target="_blank">Coffee Election app</a>. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described below. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementation, click on the file name above code snippets.
+</p>
 
 ## Contents <!-- omit in toc --> 
 
@@ -277,7 +279,7 @@ Upon user interaction data flows like this:
 
 1. Presentational component registers user interaction and emits an event with payload to a smart component via `@Output()` binding.
 2. Smart component reacts to emitted event by invoking store's method with arguments computed form event's payload.
-3. Store updates its state directly or sends a request to an API to make the update persistent. In this case new state is loaded from API and stored into state after the request is complete.
+3. Store updates its state directly or sends a request to an API to make the update persistent. In this case new state is loaded from the API and stored into state after the request is complete.
 4. ... and we've come full circle.
 
 There is another version of the circle presented in the diagram. In this version presentational components are substituted with query params. There are only two differences in how data flows:
@@ -294,7 +296,7 @@ The last pattern I'll talk about in this part of the article is about how to con
 * Observable **stores** (or other services containing business logic) should be the **only part of an app that knows about external systems**.
 * Observable stores should not communicate with external systems directly - a **proxy service** should be used to abstract away communication details.
 
-The following examples demonstrate how these ideas translate into practice when communicating with a REST API. The proxy service in this case is called `CoffeeListEndpoint` and it is injected into the store as `endpoint`. The store uses it to reload a list of candidates on initialization and when user wants to sort the list of candidates (omitted in the example for clarity).
+The following examples demonstrate how these ideas translate into practice when communicating with a REST API. The proxy service in this case is called `CoffeeListEndpoint` and it is injected into the store as `endpoint`. The store uses it to reload a list of candidates on initialization.
 
 <span class="highlight-filename">
     <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.store.ts" target="_blank">coffee-list.store.ts</a>
@@ -455,9 +457,9 @@ private getUpdateCandidateRequestStateUpdater(
 ...
 {% endhighlight %}
 
-This custom request state updater is used to update the candidate's `updateRequest` property with request state passed in via `requestState`.
+This custom request state updater is used to update the candidate's `updateRequest` property with request state passed in via `requestState` argument.
 
-This concludes the first part where we explored main concepts and ideas used to create a scalable app architecture. We covered quite some ground while learning about state management with observable stores, presentational and smart container components, one-way data flow and communication with external systems.
+This concludes the first part where we explored main concepts and ideas used to create a scalable app architecture. We learned about state management with observable stores, presentational and smart container components, one-way data flow and communication with external systems.
 
 In the next part we'll dive into less theoretical stuff. I'll present how to lay out an app's directory structure and how to organize your source files so that you'll know exactly where to put different parts that make up your app.
 
@@ -508,7 +510,7 @@ Lastly, `app.constants.ts` is used to store global constants' enums and `app.con
 
 ### 2.2 Core module
 
-Core module is dedicated to **singleton providers (observable stores/services) provided in root injector**. Only one instance is created for each one of these services in app's "lifetime" between page reloads. These services contain business logic used by app's features.
+Core module is dedicated to **singleton providers (observable stores/services) provided in root injector**. Only one instance is created for each one of these services in app's "lifetime" between page reloads. These services contain business logic used by other core services or app's features.
 
 An example of such service would be the `user` core service which is responsible for holding the state of the logged-in user.
 
@@ -550,8 +552,6 @@ export class CoreModule {}
 {% endhighlight %}
 
 `CoreModule` is imported into `AppModule` so that all of its providers are added to app's root injector.
-
-<!-- TODO: Review from here -->
 
 ### 2.3 Feature modules
 
