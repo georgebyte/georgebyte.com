@@ -3,7 +3,7 @@ layout: blog-post
 permalink: /state-management-in-angular-with-observable-store-services/
 title: "State management in Angular with observable store services"
 description: "Observable stores are a state management solution for Angular apps implemented using RxJS to mimic Redux architecture."
-last_update: 2018-11-20
+last_update: 2019-03-20
 ---
 
 <p class="excerpt">
@@ -25,6 +25,11 @@ One could argue that developing a custom solution for state management introduce
 This article explains how one can use the observable store pattern we developed to manage state in Angular apps. The solution was inspired by the following article from Angular University: [How to build Angular apps using Observable Data Services](https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/){:target='_blank'}.
 
 To showcase the usage of observable stores we'll build a simple app called *Coffee election* that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates. The source code is available on GitHub: [github.com/jurebajt/coffee-election](https://github.com/jurebajt/coffee-election){:target='_blank'}.
+
+<div class="note">
+  <p class="note__label">Edit (March 20, 2019):</p>
+  <p>Many readers have been asking about how to best integrate observable store pattern into an app. I've published an article about scalable Angular app architecture which uses observable stores to manage state. The article and accompanying example app should give you a better understanding of how to use the ideas from this article to build production ready front-end apps. It's available here: <a href="/scalable-angular-app-architecture/" target="_blank">Scalable Angular app architecture</a>.</p>
+</div>
 
 ## Abstract `Store` class (get it from npm: [rxjs-observable-store](https://www.npmjs.com/package/rxjs-observable-store){:target='_blank'})
 
@@ -265,6 +270,8 @@ describe('CoffeeElectionStore', () => {
 ## Conclusion
 
 The purpose of this article was to present how one can leverage the built in features of Angular framework to implement a simple yet powerful state management solution. The provided *Coffee election* example app is very simple, but the concepts it demonstrates can be used to successfully manage state in much bigger and more complex apps. At Zemanta we used observable store services to implement a rather complex feature and since the experiment worked out great we will continue to use such stores in our app going forward.
+
+If you are interested in how to use the ideas from this article to build production ready front-end apps, you should check out my article about [Scalable Angular app architecture](/scalable-angular-app-architecture/){:target='_blank'}.
 
 <div class="note">
   <p class="note__label">Edit (March 4, 2018):</p>
