@@ -2,6 +2,7 @@
 layout: blog-post
 title: "Scalable Angular app architecture"
 description: "A collection of my knowledge about building robust and scalable front-end applications in Angular."
+featured_image: "/images/one-way-data-flow.png"
 last_update: 2019-03-20
 ---
 

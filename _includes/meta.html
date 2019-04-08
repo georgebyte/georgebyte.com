@@ -6,12 +6,21 @@
 {% if page.description %}
     <meta name="description" content="{{ page.description| strip_html }}" />
     <meta property="og:description" content="{{ page.description| strip_html }}" />
+    <meta property="twitter:description" content="{{ page.description| strip_html }}" />
 {% else if page.excerpt %}
     <meta name="description" content="{{ page.excerpt| strip_html }}" />
     <meta property="og:description" content="{{ page.excerpt| strip_html }}" />
+    <meta property="twitter:description" content="{{ page.excerpt| strip_html }}" />
 {% else %}
     <meta name="description" content="{{ site.description }}">
     <meta property="og:description" content="{{ site.description }}" />
+    <meta property="twitter:description" content="{{ site.description }}" />
+{% endif %}
+
+{% if page.featured_image %}
+    <meta property="og:image" content="{{ site.url }}{{ page.featured_image }}">
+    <meta property="twitter:image" content="{{ site.url }}{{ page.featured_image }}">
+    <meta property="twitter:card" content="summary_large_image">
 {% endif %}
 
 <meta name="author" content="{{ site.name }}" />
