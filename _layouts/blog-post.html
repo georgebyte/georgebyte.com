@@ -5,7 +5,12 @@ layout: default
 <article class="entry">
     <h1>{{ page.title }}</h1>
     <div class="date">
-        Last update: {{ page.last_update | date: "%B %e, %Y" }}
+        Published: {{ page.date | date: "%B %e, %Y" }}
+        {% assign published_date = page.date | date: "%Y-%m-%d" %}
+        {% assign last_update_date = page.last_update | date: "%Y-%m-%d" %}
+        {% if published_date != last_update_date %}
+            (last update: {{ page.last_update | date: "%B %e, %Y" }})
+        {% endif %}
     </div>
 
     <div class="entry__content">
