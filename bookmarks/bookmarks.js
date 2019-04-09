@@ -57,7 +57,6 @@
             iconClasses: 'fab fa-trello',
             panelClasses: 'trello-links',
             bookmarks: [
-                {name: 'Verdi', url: 'https://trello.com/b/C9wKkCVH/verdi'},
                 {
                     name: 'Z1 team main board',
                     url:
@@ -108,7 +107,6 @@
                     url:
                         'https://www.notion.so/juresworkspace/Jure-s-workspace-2e68506e6426494e929709ebe909d37a',
                 },
-                {name: 'Toggl', url: 'https://toggl.com/app/timer'},
                 {
                     name: 'Shopping list',
                     url: 'https://todoist.com/app?lang=en&v=856#start',
@@ -127,11 +125,6 @@
                 },
                 {name: 'LastPass', url: 'https://lastpass.com/'},
                 {name: 'IFTTT', url: 'https://ifttt.com/discover'},
-                {name: 'T-2 Horizont', url: 'https://horizont.t-2.net/'},
-                {
-                    name: 'CovenantEyes',
-                    url: 'https://covenanteyes.com/myaccount/account/',
-                },
                 {name: 'Godaddy', url: 'https://dcc.godaddy.com/manage/'},
                 {name: 'NameCheap', url: 'https://ap.www.namecheap.com/'},
                 {name: '', url: ''},
@@ -384,9 +377,8 @@
             panelClasses: 'irl-services-links',
             bookmarks: [
                 {
-                    name: 'Barbara Mazej Poredoš',
-                    url:
-                        'http://www.zd-lj.si/zdlj/index.php?option=com_zdravniki&SIFRAD=20015&strm_zdr=5650&view=zdravnik&Itemid=823',
+                    name: 'Zdravstveni dom Logatec',
+                    url: 'http://zd-logatec.si/urniki/',
                 },
                 {
                     name: 'Okulodent',
@@ -432,7 +424,6 @@
             panelClasses: 'free-time-links',
             bookmarks: [
                 {name: 'TasteDive', url: 'https://tastedive.com/'},
-                {name: 'T-2 tv2go', url: 'https://tv2go.t-2.net/tv/epg/2'},
                 {name: '', url: ''},
             ],
         },
