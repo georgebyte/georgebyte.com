@@ -377,8 +377,14 @@
             panelClasses: 'irl-services-links',
             bookmarks: [
                 {
-                    name: 'Zdravstveni dom Logatec',
+                    name: 'Zdravstveni dom Logatec (Primož Brejc, dr.med.)',
                     url: 'http://zd-logatec.si/urniki/',
+                },
+                {
+                    name:
+                        'Zobozdravstvena ambulanta Logatec (Katja Markelj Kraševec dr.dent.med.)',
+                    url:
+                        'http://zd-logatec.si/zobozdravstvo/zobozdravstvena-dejavnost-za-odrasle/',
                 },
                 {
                     name: 'Okulodent',
