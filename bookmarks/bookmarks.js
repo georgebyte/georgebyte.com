@@ -127,6 +127,10 @@
                 {name: 'IFTTT', url: 'https://ifttt.com/discover'},
                 {name: 'Godaddy', url: 'https://dcc.godaddy.com/manage/'},
                 {name: 'NameCheap', url: 'https://ap.www.namecheap.com/'},
+                {
+                    name: 'Brave Rewards',
+                    url: 'https://publishers.basicattentiontoken.org',
+                },
                 {name: '', url: ''},
             ],
         },
@@ -228,6 +232,7 @@
                     url: 'https://www.bankain.si/BIN/vstopna.seam?login=motp',
                 },
                 {name: 'Degiro', url: 'https://trader.degiro.nl/'},
+                {name: 'Uphold', url: 'https://uphold.com/dashboard'},
                 {
                     name: 'Portfolio - Carta',
                     url:
