@@ -435,6 +435,10 @@
             panelClasses: 'free-time-links',
             bookmarks: [
                 {name: 'TasteDive', url: 'https://tastedive.com/'},
+                {
+                    name: 'Grouvee (game collection)',
+                    url: 'https://www.grouvee.com/',
+                },
                 {name: '', url: ''},
             ],
         },
