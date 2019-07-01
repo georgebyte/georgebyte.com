@@ -426,6 +426,10 @@
                     url:
                         'http://www.ocarm.info/cgi-bin/dada/mail.cgi/list/lectiodivina/',
                 },
+                {
+                    name: 'Bible contradictions visualization',
+                    url: 'http://bibviz.com',
+                },
                 {name: '', url: ''},
             ],
         },
@@ -439,6 +443,8 @@
                     name: 'Grouvee (game collection)',
                     url: 'https://www.grouvee.com/',
                 },
+                {name: 'SteamDB', url: 'https://steamdb.info/sales/'},
+                {name: 'Good Game Deals', url: 'https://gg.deals/'},
                 {name: '', url: ''},
             ],
         },
