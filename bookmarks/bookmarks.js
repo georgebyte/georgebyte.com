@@ -445,6 +445,22 @@
                 },
                 {name: 'SteamDB', url: 'https://steamdb.info/sales/'},
                 {name: 'Good Game Deals', url: 'https://gg.deals/'},
+                {
+                    name: 'Hidden game gems',
+                    url: 'https://steam250.com/hidden_gems.html',
+                },
+                {name: '', url: ''},
+            ],
+        },
+        {
+            name: 'Travel',
+            iconClasses: 'fas fa-suitcase',
+            panelClasses: 'travel-links',
+            bookmarks: [
+                {
+                    name: "Cool cousin (locals' recommendations)",
+                    url: 'https://www.coolcousin.com',
+                },
                 {name: '', url: ''},
             ],
         },
