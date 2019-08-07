@@ -102,6 +102,7 @@
             panelClasses: 'services-links',
             bookmarks: [
                 {name: 'Pocket', url: 'https://getpocket.com/a/queue/list/'},
+                {name: 'Liner', url: 'https://getliner.com/c/all'},
                 {
                     name: 'Notion',
                     url:
