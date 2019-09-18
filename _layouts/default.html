@@ -1,64 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.name }}</title>
+---
+layout: blank
+---
 
-    {% include meta.html %}
-
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-    <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon">
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-</head>
-
-<body>
-    <div class="wrapper">
-        <div class="wrapper-masthead">
-            <div class="container">
-                <header class="masthead clearfix">
-                    <a href="{{ site.baseurl }}/" class="site-avatar">
-                        <img src="/images/jure-bajt.jpg" srcset="/images/jure-bajt.jpg 1x, /images/jure-bajt@2x.jpg 2x" alt="Jure Bajt's profile photo" />
-                    </a>
-
-                    <div class="site-info">
-                        <h2 class="site-name">
-                        <a href="{{ site.baseurl }}/">{{ site.name }}</a>
-                        </h2>
-                        <p class="site-description">{{ site.description }}</p>
-                    </div>
-
-                    <nav>
-                        <a href="{{ site.baseurl }}/">About</a>
-                        <a href="{{ site.baseurl }}/blog">Blog</a>
-                        <a href="{{ site.baseurl }}/projects">Projects</a>
-                    </nav>
-                </header>
-            </div>
-        </div>
-
-        <div id="main" role="main" class="container">
-            {{ content }}
-        </div>
-    </div>
-
-    <div class="wrapper-footer">
+<div class="wrapper">
+    <div class="wrapper-masthead">
         <div class="container">
-            <footer class="footer">
-                {% include svg-icons.html %}
-            </footer>
+            <header class="masthead clearfix">
+                <a href="{{ site.baseurl }}/" class="site-avatar">
+                    <img src="/images/jure-bajt.jpg" srcset="/images/jure-bajt.jpg 1x, /images/jure-bajt@2x.jpg 2x" alt="Jure Bajt's profile photo" />
+                </a>
+
+                <div class="site-info">
+                    <h2 class="site-name">
+                    <a href="{{ site.baseurl }}/">{{ site.name }}</a>
+                    </h2>
+                    <p class="site-description">{{ site.description }}</p>
+                </div>
+
+                <nav>
+                    {% include navigation-links.html %}
+                </nav>
+            </header>
         </div>
     </div>
 
-    {% if site.google_analytics and jekyll.environment == 'production' %}
-        {% include analytics.html %}
-    {% endif %}
-</body>
-</html>
+    <div id="main" role="main" class="container">
+        {{ content }}
+    </div>
+</div>
+
+<div class="wrapper-footer">
+    <div class="container">
+        <footer class="footer">
+            {% include svg-icons.html %}
+        </footer>
+    </div>
+</div>
