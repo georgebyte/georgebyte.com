@@ -32,9 +32,3 @@ $easeInOut: 200ms ease-in-out;
     @content;
   }
 }
-
-@mixin mobile-projects {
-  @media screen and (max-width: 740px) {
-    @content;
-  }
-}

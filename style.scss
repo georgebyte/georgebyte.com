@@ -488,65 +488,6 @@ nav {
   color: inherit;
 }
 
-.projects-quote {
-  margin-bottom: -10px;
-}
-
-.projects-grid__item {
-  width: 50%;
-  float: left;
-  margin-top: 20px;
-  padding: 20px;
-
-  &:first-child {
-    padding-left: 0;
-  }
-
-  &:last-child {
-    padding-right: 0;
-  }
-
-  @include mobile-projects {
-    width: 100%;
-    float: none;
-    margin-top: 40px;
-    padding: 0;
-  }
-}
-
-.projects-grid__item-image-container {
-  height: 250px;
-  text-align: center;
-}
-
-.projects-grid__item-image {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.projects-grid__item-title {
-  margin-top: 0;
-
-  a {
-    color: inherit;
-  }
-}
-
-.projects-grid__item-description {
-  margin: 10px 0 0;
-  font-size: 16px;
-}
-
-.projects-grid__item-tech-stack {
-  margin: 5px 0 0;
-  color: $gray;
-  font-size: 14px;
-}
-
-.projects-grid__item-tech-stack-label {
-  margin-top: 4px;
-}
-
 .wrapper-footer {
   margin-top: 50px;
   border-top: 1px solid #ddd;
@@ -557,6 +498,157 @@ nav {
 footer {
   padding: 20px 0;
   text-align: center;
+}
+
+@media only screen {
+  @media (min-width: 740px) {
+    .cv-container {
+      flex: 1 0 auto;
+      padding: 40px;
+      background-color: $lighterGray;
+    }
+  }
+
+  .cv {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: $white;
+
+    @media (min-width: 740px) {
+      max-width: 950px;
+      padding: 40px;
+      box-shadow: 2px 2px 1px $darkGray;
+    }
+  }
+}
+
+.cv-header {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+
+.cv-avatar-container {
+  flex: 1 1 auto;
+  min-width: 75px;
+  max-width: 150px;
+  margin: 10px;
+}
+
+.cv-avatar {
+  vertical-align: top;
+}
+
+.cv-intro {
+  flex: 1 1 400px;
+  max-width: 100%;
+  margin: 10px;
+}
+
+.cv-name {
+  margin-top: 0;
+  padding-left: 4px;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.cv-bio-emphasized {
+  margin: 5px 0;
+}
+
+.cv-bio {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.cv-links {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px -10px;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  font-family: $sansSerifFont;
+}
+
+.cv-link {
+  margin: 5px 10px;
+}
+
+.cv-section-container {
+  margin-top: 20px;
+}
+
+.cv-section {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+
+.cv-section-title {
+  flex: 0 0 150px;
+  max-width: 100%;
+  margin: 10px;
+
+  @media only screen {
+    padding: 2px 4px;
+    text-align: center;
+    background: $primaryColor;
+    color: $white;
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  @media only print {
+    min-width: 100%;
+  }
+}
+
+.cv-section-content {
+  flex: 1 1 600px;
+  max-width: 100%;
+  margin: 10px;
+}
+
+.cv-section-content strong {
+  padding: 0 2px;
+  border-radius: 2px;
+  background-color: lighten($primaryColor, 43%);
+}
+
+.cv-section-subtitle {
+  margin: 0;
+  line-height: 26px;
+  font-size: 20px;
+}
+
+.cv-section-subtitle:not(:first-child) {
+  margin-top: 20px;
+}
+
+.cv-section-bullets {
+  margin: 10px 0 0;
+  font-size: 14px;
+}
+
+.cv-section-bullet:not(:first-child) {
+  margin-top: 12px;
+}
+
+.cv-section-subbullets {
+  margin-top: 6px;
+}
+
+.cv-section-subtitle-deemphasized {
+  color: $lighterGray;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.cv-section-content-item {
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
