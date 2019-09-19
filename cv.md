@@ -64,13 +64,13 @@ description: "Jure Bajt's CV."
                             Because of my broad knowledge of front-end development and good software engineering practices, I've been able to <strong>greatly improve the quality of (front-end) work in teams</strong> I've worked with. This led me to becoming a front-end lead at Zemanta.
                         </li>
                         <li class="cv-section-bullet">
-                            As a <strong>front-end lead</strong> I've been responsible for <strong>setting up new SPAs, making decisions about used technologies and application design/architecture</strong> (also implementing them in practice, including large gradual refactorings). I've been involved in designing basically every feature the teams added to front-end apps. I always tried to use these designing/consulting sessions to share as much of my knowledge as possible with the team. I've <strong>done a lot of mentoring</strong> (which I love to do!), be it in the form of in-depth design and code reviews, presentations for my team, articles and many answered comments on my blog (e.g. articles about <a href="{{ site.baseurl }}/state-management-in-angular-with-observable-store-services/" target="_blank">state management</a> or <a href="{{ site.baseurl }}/scalable-angular-app-architecture/" target="_blank">scalable web app architecture</a>) or talks at JS meetups.
+                            As a <strong>front-end lead</strong> I've been responsible for <strong>setting up new SPAs, making decisions about which technologies to use and application design/architecture</strong> (also implementing them in practice, including large gradual refactorings). I've been involved in designing basically every feature the teams added to front-end apps. I always tried to use these designing/consulting sessions to share as much of my knowledge as possible with the team. I've <strong>done a lot of mentoring</strong> (which I love to do!), be it in the form of in-depth design and code reviews, presentations for my team, articles and many answered comments on my blog (e.g. articles about <a href="{{ site.baseurl }}/state-management-in-angular-with-observable-store-services/" target="_blank">state management</a> or <a href="{{ site.baseurl }}/scalable-angular-app-architecture/" target="_blank">scalable web app architecture</a>) or talks at JS meetups.
                         </li>
                         <li class="cv-section-bullet">
                             As far as front-end technologies go, I consider myself to be quite good in JavaScript/TypeScript, RxJs, CSS (Sass, Less etc.) and HTML. I really try to use these technologies in a way to <strong>build robust and scalable front-end applications</strong>. I also know Webpack and Babel pretty well and have <strong>set up many build pipelines</strong> using them - most notably a custom Webpack build for a hybrid AngularJS + Angular application supporting different themes.
                         </li>
                         <li class="cv-section-bullet">
-                            I'm most proficient with Angular framework, but my <strong>good understanding of how the browser works and my knowledge of component based architecture and different ways of state management</strong>, enable me to quickly pick up any development stack and be productive with it.
+                            Although I'm most proficient with Angular framework, my <strong>good understanding of how the browser works and my knowledge of component based architecture and different ways of state management</strong> enable me to quickly pick up any development stack and be productive with it.
                         </li>
                         <li class="cv-section-bullet">
                             I'm passionate about <strong>delivering good UX</strong> and I really enjoy creating UIs that "make sense" and look good.
@@ -129,7 +129,7 @@ description: "Jure Bajt's CV."
                             I'm used to work in close <strong>collaboration with product managers and designers</strong>.
                         </li>
                         <li class="cv-section-bullet">
-                            I've been a valuable contributor to hiring processes and have <strong>interviewed many candidates</strong> in technical interviews.
+                            I've been a valuable contributor to hiring process design at Zemanta and have <strong>interviewed many candidates</strong> in technical interviews.
                         </li>
                         <li class="cv-section-bullet">
                             I <strong>helped to shape and implement the development process</strong> (variation of scrum) in my team at Zemanta.
@@ -141,7 +141,7 @@ description: "Jure Bajt's CV."
                             I'm highly organized and self-motivated.
                         </li>
                         <li class="cv-section-bullet">
-                            I like to constantly be learning something new, reading a bunch of books and keeping up to date with developments in IT industry.
+                            I like to constantly be learning something new, reading a bunch of books and keeping up to date with developments in IT industry and web development.
                         </li>
                         <li class="cv-section-bullet">
                             I have some experience with remote work and overcoming the challenges it introduces.
