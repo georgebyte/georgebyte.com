@@ -179,6 +179,10 @@
                     url: 'https://app.moqups.com/',
                 },
                 {name: 'Diagrams creator', url: 'https://www.draw.io'},
+                {
+                    name: 'Fact check',
+                    url: 'https://toolbox.google.com/factcheck/explorer',
+                },
                 {name: '', url: ''},
             ],
         },
@@ -520,9 +524,7 @@
                 }
                 groupBookmarksHtml += `
                     <li class="link-list__item">
-                        <a href="${
-                            bookmark.url
-                        }" class="link-list__link" target="_blank">
+                        <a href="${bookmark.url}" class="link-list__link" target="_blank">
                             ${bookmark.name}
                         </a>
                     </li>
@@ -532,9 +534,7 @@
                 generatedHtml += `
                     <div class="panel ${group.panelClasses}">
                         <h3 class="panel__title">
-                            <i class="${
-                                group.iconClasses
-                            } panel__title-icon"></i>
+                            <i class="${group.iconClasses} panel__title-icon"></i>
                             <span class="panel__title-text">${group.name}</span>
                         </h3>
                         <div class="panel__content">
