@@ -319,6 +319,10 @@
                     name: 'Readability score',
                     url: 'https://readability-score.com/',
                 },
+                {
+                    name: 'APA style citation guidelines',
+                    url: 'https://www.scribbr.com/category/apa-style/',
+                },
                 {name: 'Hemingway', url: 'http://www.hemingwayapp.com/'},
                 {
                     name: 'Paper grader',
