@@ -240,6 +240,10 @@
                 {name: 'Degiro', url: 'https://trader.degiro.nl/'},
                 {name: 'Uphold', url: 'https://uphold.com/dashboard'},
                 {
+                    name: 'Etrade',
+                    url: 'https://us.etrade.com/etx/hw/accountshome',
+                },
+                {
                     name: 'Portfolio - Carta',
                     url:
                         'https://carta.com/investors/firm/23408/company/49917/holdings/',
