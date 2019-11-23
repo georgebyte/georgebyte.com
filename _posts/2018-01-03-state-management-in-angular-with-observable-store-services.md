@@ -283,9 +283,3 @@ If you are interested in how to use the ideas from this article to build product
 
   <p>As it turned out in our case at Zemanta, one may not need a full blown state management library to manage state even in larger applications. This "stripped down" implementation of Redux pattern covers pretty much all of Zemanta's app use cases without introducing much additional complexity. I believe less complexity comes from the fact that observable store services heavily depend on Angular features (dependency injection, async pipes etc.) to do a lot of heavy lifting (e.g. cleaning-up unused state when components are destroyed, creating new instances of stores when needed etc.).</p>
 </div>
-
-<div class="vertical-separator"></div>
-
-I hope you learned something new by reading this article. If anything seems confusing please get back to me in the comments. Suggestions, improvements or just general discussion about the topic are very welcome, too.
-
-Also, let's connect on [Twitter](https://twitter.com/georgebyte){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).

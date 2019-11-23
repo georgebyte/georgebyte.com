@@ -77,9 +77,3 @@ This meant I had to learn more about server-side technologies, APIs, software ar
 ## Chapter 8: Keep calm and keep learning
 
 I'm sure you managed to recognize the common denominator of my career path if you made it this far in the post. It's all about passion for learning new things and experimenting with them. As the time goes by it becomes easier to distinguish between important stuff to learn and some overly-hyped stuff you don't need to know everything about. Only then can you start to really enjoy the era of fast innovation and not worry about burning out as a software engineer.
-
-<div class="vertical-separator"></div>
-
-Before you leave, please consider sharing an excerpt of your own career path and one most important thing you learned along the way in the comment section. I would love to hear how you got into the business.
-
-Also, let's connect on [Twitter](https://twitter.com/georgebyte){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).

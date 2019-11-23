@@ -774,6 +774,4 @@ There's a lot more to be written about testing but since this article is already
 
 We covered a lot of ground in this article. First we explored the concepts I find very useful when developing front-end applications like component based architecture and one-way data flow. If you remember just one thing from the first part, let it be this: **you should divide your app into smart and presentational components**.
 
-In the second part I laid out an app architecture which I hope will provide some guidance when you'll find yourself wondering where to put a specific component, service or some other building block in your apps. This architecture is by no means the ultimate silver bullet, but I find it to be *good enough* to support development of production ready, robust and scalable front-end applications. Questions, suggestions, improvements or just general discussion about it are very welcome in the comments bellow.
-
-Also, let's connect on [Twitter](https://twitter.com/georgebyte){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).
+In the second part I laid out an app architecture which I hope will provide some guidance when you'll find yourself wondering where to put a specific component, service or some other building block in your apps. This architecture is by no means the ultimate silver bullet, but I find it to be *good enough* to support development of production ready, robust and scalable front-end applications.
