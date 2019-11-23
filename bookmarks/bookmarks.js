@@ -14,17 +14,12 @@
                     url: 'https://calendar.google.com/calendar/b/0/r',
                 },
                 {
-                    name: 'Outbrain mail',
+                    name: 'Work mail',
                     url: 'https://mail.google.com/mail/u/1/#inbox',
                 },
                 {
-                    name: 'Outbrain calendar',
+                    name: 'Work calendar',
                     url: 'https://calendar.google.com/calendar/b/1/r',
-                },
-                {
-                    name: 'Wisdom DB',
-                    url:
-                        'https://docs.google.com/spreadsheets/d/1UzilPdk01HA-l4UPhUK8TYgqp8wjyteSb5MnUTEsH2M/edit#gid=0',
                 },
                 {name: '', url: ''},
             ],
@@ -118,7 +113,7 @@
                     name: 'Google Drive',
                     url: 'https://drive.google.com/drive/my-drive',
                 },
-                {name: 'Slides', url: 'https://slides.com/jurebajt'},
+                {name: 'Slides', url: 'https://slides.com/georgebyte'},
                 {
                     name: 'PayPal',
                     url:
@@ -127,7 +122,6 @@
                 {name: 'LastPass', url: 'https://lastpass.com/'},
                 {name: 'IFTTT', url: 'https://ifttt.com/discover'},
                 {name: 'Godaddy', url: 'https://dcc.godaddy.com/manage/'},
-                {name: 'NameCheap', url: 'https://ap.www.namecheap.com/'},
                 {
                     name: 'Brave Rewards',
                     url: 'https://publishers.basicattentiontoken.org',
@@ -201,7 +195,7 @@
                         'https://gist.github.com/jurebajt/fcc985ba39d708745287e4789f85e3af',
                 },
                 {name: 'DevDocs', url: 'http://devdocs.io/'},
-                {name: 'CodePen', url: 'http://codepen.io/jurebajt/'},
+                {name: 'CodePen', url: 'http://codepen.io/georgebyte/'},
                 {
                     name: 'Bundlephobia - cost of adding a npm package',
                     url: 'https://bundlephobia.com/',
