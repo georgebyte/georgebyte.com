@@ -264,7 +264,7 @@ One-way data flow is a great pattern to ensure state is consistent across all co
 Here's a diagram of how the one-way data flow pattern looks like when applied to the architecture I'm describing in this article:
 
 <div class="image image--centered">
-    <img src="/images/one-way-data-flow.png" alt="Diagram 1: One-way data flow" class="image__img">
+    <img src="/images/one_way_data_flow.png" alt="Diagram 1: One-way data flow" class="image__img">
     <p class="image__description">Diagram 1: One-way data flow</p>
 </div>
 

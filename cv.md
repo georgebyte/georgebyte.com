@@ -1,15 +1,16 @@
 ---
 layout: blank
-title: "CV"
+title: "Jure Bajt"
 permalink: "/cv/"
-description: "Jure Bajt's CV."
+html_title: "Jure Bajt"
+description: "Jure Bajt - Full stack web engineer deeply in love with front-end development."
 ---
 
 <div class="cv-container">
     <div id="main" role="main" class="cv">
         <div class="cv-header">
             <div class="cv-avatar-container">
-                <img class="cv-avatar" src="/images/jure-bajt-cv.jpg" srcset="/images/jure-bajt-cv.jpg 1x, /images/jure-bajt-cv@2x.jpg 2x" alt="Jure Bajt's profile photo" />
+                <img class="cv-avatar" src="/images/jure_bajt_cv.jpg" srcset="/images/jure_bajt_cv.jpg 1x, /images/jure_bajt_cv@2x.jpg 2x" alt="Jure Bajt's profile photo" />
             </div>
             <div class="cv-intro">
                 <h1 class="cv-name">Jure Bajt</h1>
@@ -82,10 +83,10 @@ description: "Jure Bajt's CV."
                             Some of the more interesting/complex widgets I've implemented include:
                             <ul class="cv-section-subbullets">
                                 <li>
-                                    A custom table component capable of rendering huge datasets (via virtual scroll) with support for multiple data types, multi-level, collapsable rows, inline editing etc. <a href="{{ site.baseurl }}/images/custom-table-component-screenshot.jpg" target="_blank">[screenshot]</a>
+                                    A custom table component capable of rendering huge datasets (via virtual scroll) with support for multiple data types, multi-level, collapsable rows, inline editing etc. <a href="{{ site.baseurl }}/images/custom_table_component_screenshot.jpg" target="_blank">[screenshot]</a>
                                 </li>
                                 <li>
-                                    Interactive venue seat selection widget used for buying event tickets at <a href="https://www.mojekarte.si/" target="_blank">mojekarte.si</a>. <a href="{{ site.baseurl }}/images/venue-seat-selection-screenshot.jpg" target="_blank">[screenshot]</a>
+                                    Interactive venue seat selection widget used for buying event tickets at <a href="https://www.mojekarte.si/" target="_blank">mojekarte.si</a>. <a href="{{ site.baseurl }}/images/venue_seat_selection_screenshot.jpg" target="_blank">[screenshot]</a>
                                 </li>
                             </ul>
                         </li>

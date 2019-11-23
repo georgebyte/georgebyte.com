@@ -16,7 +16,7 @@ last_update: 2017-08-12
 My family got our first PC when I was about seven years old. Truth be told, I used it mainly for gaming. You know, AOE II and stuff. I've shown absolutely no interest in software development until I was fourteen or so.
 
 <div class="image image--centered">
-    <img src="/images/jure-bajt-first-pc.jpeg" alt="Jure Bajt's first PC" class="image__img">
+    <img src="/images/george_byte_first_pc.jpeg" alt="George Byte's first PC" class="image__img">
     <p class="image__description">Rocking high fashion developer outfits from an early age.</p>
 </div>
 
