@@ -288,4 +288,4 @@ If you are interested in how to use the ideas from this article to build product
 
 I hope you learned something new by reading this article. If anything seems confusing please get back to me in the comments. Suggestions, improvements or just general discussion about the topic are very welcome, too.
 
-Also, let's connect on [Twitter](https://twitter.com/jurebajt){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).
+Also, let's connect on [Twitter](https://twitter.com/georgebyte){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).

@@ -744,7 +744,7 @@ views/
 
 ### 2.7 Styles
 
-Directory `styles/` at app's root is not exactly holding a styles module. It is used to store all the files with app's global styles definitions. I won't go into details here as CSS architecture is a topic for an article on its own. I'm already working on such article. Stay tuned if you're interested (via [Twitter](https://twitter.com/jurebajt){:target='_blank'} or [RSS feed](/feed.xml){:target='_blank'}).
+Directory `styles/` at app's root is not exactly holding a styles module. It is used to store all the files with app's global styles definitions. I won't go into details here as CSS architecture is a topic for an article on its own. I'm already working on such article. Stay tuned if you're interested (via [Twitter](https://twitter.com/georgebyte){:target='_blank'} or [RSS feed](/feed.xml){:target='_blank'}).
 
 ## 3. Testing
 
@@ -776,4 +776,4 @@ We covered a lot of ground in this article. First we explored the concepts I fin
 
 In the second part I laid out an app architecture which I hope will provide some guidance when you'll find yourself wondering where to put a specific component, service or some other building block in your apps. This architecture is by no means the ultimate silver bullet, but I find it to be *good enough* to support development of production ready, robust and scalable front-end applications. Questions, suggestions, improvements or just general discussion about it are very welcome in the comments bellow.
 
-Also, let's connect on [Twitter](https://twitter.com/jurebajt){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).
+Also, let's connect on [Twitter](https://twitter.com/georgebyte){:target='_blank'} (I have no product to push on you and my feed stays clean and interesting 😇).
