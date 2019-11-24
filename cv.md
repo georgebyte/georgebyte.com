@@ -2,7 +2,7 @@
 layout: blank
 title: "Jure Bajt"
 permalink: "/cv/"
-html_title: "Jure Bajt"
+html_title: "Jure Bajt's CV"
 description: "Jure Bajt - Full stack web engineer deeply in love with front-end development."
 ---
 

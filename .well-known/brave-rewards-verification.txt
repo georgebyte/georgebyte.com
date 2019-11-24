@@ -1,4 +1,4 @@
 This is a Brave Rewards publisher verification file.
 
-Domain: jurebajt.com
-Token: d81df9e9207834b6224ba90152792fc2890a09be7e1a57aa72d6bdc44de706d4
+Domain: georgebyte.com
+Token: 5fad2890f5472854062157e7105435a96ac5b46e77c6222cca648da9b0523c16
