@@ -65,11 +65,11 @@
             ],
         },
         {
-            name: 'jurebajt.com',
+            name: 'georgebyte.com',
             iconClasses: 'fas fa-user-astronaut',
-            panelClasses: 'jurebajt-links',
+            panelClasses: 'georgebyte-links',
             bookmarks: [
-                {name: 'jurebajt.com', url: 'http://jurebajt.com/'},
+                {name: 'georgebyte.com', url: 'https://georgebyte.com/'},
                 {
                     name: 'Analytics',
                     url:
@@ -86,7 +86,7 @@
                 },
                 {
                     name: 'Cloudflare',
-                    url: 'https://www.cloudflare.com/a/overview/jurebajt.com',
+                    url: 'https://dash.cloudflare.com/',
                 },
                 {name: '', url: ''},
             ],
