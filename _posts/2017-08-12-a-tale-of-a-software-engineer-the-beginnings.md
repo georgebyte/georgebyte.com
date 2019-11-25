@@ -1,5 +1,6 @@
 ---
 layout: article
+permalink: /a-tale-of-a-software-engineer-the-beginnings/
 title: "A tale of a software engineer: The beginnings"
 description: "My journey from a curious child to a (still curious) full stack web engineer."
 last_update: 2017-08-12
