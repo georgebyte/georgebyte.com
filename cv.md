@@ -25,7 +25,7 @@ description: "Jure Bajt - Full stack web engineer deeply in love with front-end 
                         <a href="{{ site.baseurl }}/" target="_blank">Website</a>
                     </li>
                     <li class="cv-link">
-                        <a href="{{ site.baseurl }}/blog" target="_blank">Blog</a>
+                        <a href="{{ site.baseurl }}/articles" target="_blank">Blog</a>
                     </li>
                     {% if site.footer-links.email %}
                         <li class="cv-link">
@@ -65,7 +65,7 @@ description: "Jure Bajt - Full stack web engineer deeply in love with front-end 
                             Because of my broad knowledge of front-end development and good software engineering practices, I've been able to <strong>greatly improve the quality of (front-end) work in teams</strong> I've worked with. This led me to becoming a front-end lead at Zemanta.
                         </li>
                         <li class="cv-section-bullet">
-                            As a <strong>front-end lead</strong> I've been responsible for <strong>setting up new SPAs, making decisions about which technologies to use and application design/architecture</strong> (also implementing them in practice, including large gradual refactorings). I've been involved in designing basically every feature the teams added to front-end apps. I always tried to use these designing/consulting sessions to share as much of my knowledge as possible with the team. I've <strong>done a lot of mentoring</strong> (which I love to do!), be it in the form of in-depth design and code reviews, presentations for my team, articles and many answered comments on my blog (e.g. articles about <a href="{{ site.baseurl }}/state-management-in-angular-with-observable-store-services/" target="_blank">state management</a> or <a href="{{ site.baseurl }}/scalable-angular-app-architecture/" target="_blank">scalable web app architecture</a>) or talks at JS meetups.
+                            As a <strong>front-end lead</strong> I've been responsible for <strong>setting up new SPAs, making decisions about which technologies to use and application design/architecture</strong> (also implementing them in practice, including large gradual refactorings). I've been involved in designing basically every feature the teams added to front-end apps. I always tried to use these designing/consulting sessions to share as much of my knowledge as possible with the team. I've <strong>done a lot of mentoring</strong> (which I love to do!), be it in the form of in-depth design and code reviews, presentations for my team, articles and many answered articles' comments (e.g. articles about <a href="{{ site.baseurl }}/state-management-in-angular-with-observable-store-services/" target="_blank">state management</a> or <a href="{{ site.baseurl }}/scalable-angular-app-architecture/" target="_blank">scalable web app architecture</a>) or talks at JS meetups.
                         </li>
                         <li class="cv-section-bullet">
                             As far as front-end technologies go, I consider myself to be quite good in JavaScript/TypeScript, RxJs, CSS (Sass, Less etc.) and HTML. I really try to use these technologies in a way to <strong>build robust and scalable front-end applications</strong>. I also know Webpack and Babel pretty well and have <strong>set up many build pipelines</strong> using them - most notably a custom Webpack build for a hybrid AngularJS + Angular application supporting different themes.
@@ -179,7 +179,7 @@ description: "Jure Bajt - Full stack web engineer deeply in love with front-end 
                     </h3>
                     <ul class="cv-section-bullets">
                         <li class="cv-section-bullet">
-                            Articles on my <a href="{{ site.baseurl }}/blog" target="_blank">blog</a>.
+                            Articles on my <a href="{{ site.baseurl }}/articles" target="_blank">blog</a>.
                         </li>
                         <li class="cv-section-bullet">
                             Assistant at <a href="https://www.simbioza.eu/" target="_blank">Simbioza project</a>.

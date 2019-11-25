@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1,
-.blog-posts__entry-title {
+.articles-list__entry-title {
   font-size: 34px;
   a {
     color: inherit;
@@ -438,12 +438,12 @@ nav {
   }
 }
 
-.blog-posts__entry {
+.articles-list__entry {
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
 }
 
-.blog-posts__entry:last-child {
+.articles-list__entry:last-child {
   padding-bottom: 1em;
   border-bottom: none;
 }
@@ -459,7 +459,7 @@ nav {
   }
 }
 
-.entry:not(.blog-posts__entry) {
+.entry:not(.articles-list__entry) {
   .excerpt {
     position: relative;
     margin-bottom: 30px;
@@ -483,7 +483,7 @@ nav {
   }
 }
 
-.blog-posts__entry .excerpt {
+.articles-list__entry .excerpt {
   font-size: inherit;
   color: inherit;
 }

@@ -1,7 +1,7 @@
 ---
 layout: default
-title: "Blog"
-permalink: "/blog/"
+title: "Articles"
+permalink: "/articles/"
 description: "My writings about pretty much anything."
 ---
 
@@ -9,10 +9,10 @@ description: "My writings about pretty much anything."
     My writings about pretty much anything (mostly web development).
 </div>
 
-<div class="blog-posts">
+<div class="articles-list">
     {% for post in site.posts %}
-        <article class="entry blog-posts__entry">
-            <h2 class="blog-posts__entry-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+        <article class="entry articles-list__entry">
+            <h2 class="articles-list__entry-title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
 
             {{ post.excerpt }}
 

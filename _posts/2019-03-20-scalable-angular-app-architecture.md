@@ -1,5 +1,5 @@
 ---
-layout: blog-post
+layout: article
 title: "Scalable Angular app architecture"
 description: "A collection of my knowledge about building robust and scalable front-end applications in Angular."
 featured_image: "/images/one-way-data-flow.png"
