@@ -499,6 +499,7 @@
                     name: 'Hidden game gems',
                     url: 'https://steam250.com/hidden_gems.html',
                 },
+                {name: 'RomsMania', url: 'https://romsmania.cc/'},
                 {name: '', url: ''},
             ],
         },
