@@ -42,25 +42,6 @@
                     url: 'https://www.youtube.com/feed/subscriptions',
                 },
                 {name: 'Hacker News', url: 'https://news.ycombinator.com/'},
-                {name: 'Investopedia', url: 'https://www.investopedia.com/'},
-                {name: 'DevTube', url: 'https://dev.tube/'},
-                {name: '', url: ''},
-            ],
-        },
-        {
-            name: 'Trello',
-            iconClasses: 'fab fa-trello',
-            panelClasses: 'trello-links',
-            bookmarks: [
-                {
-                    name: 'Z1 team main board',
-                    url:
-                        'https://trello.com/b/TCvZgkr7/eng-z1-team-main-board?filter=member:jurebajt',
-                },
-                {
-                    name: 'Z1 team backlog',
-                    url: 'https://trello.com/b/M0KFOwHG/eng-z1-team-backlog',
-                },
                 {name: '', url: ''},
             ],
         },
@@ -97,7 +78,6 @@
             panelClasses: 'services-links',
             bookmarks: [
                 {name: 'Pocket', url: 'https://getpocket.com/a/queue/list/'},
-                {name: 'Liner', url: 'https://getliner.com/c/all'},
                 {
                     name: 'Notion',
                     url:
@@ -499,6 +479,7 @@
                     name: 'Hidden game gems',
                     url: 'https://steam250.com/hidden_gems.html',
                 },
+                {name: 'Emuparadise', url: 'https://www.emuparadise.me/'},
                 {name: 'RomsMania', url: 'https://romsmania.cc/'},
                 {name: '', url: ''},
             ],
