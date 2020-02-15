@@ -71,7 +71,7 @@ description: "Jure Bajt - Full stack web engineer deeply in love with front-end 
                             As far as front-end technologies go, I consider myself to be quite good in JavaScript/TypeScript, RxJs, CSS (Sass, Less etc.) and HTML. I really try to use these technologies in a way to <strong>build robust and scalable front-end applications</strong>. I also know Webpack and Babel pretty well and have <strong>set up many build pipelines</strong> using them - most notably a custom Webpack build for a hybrid AngularJS + Angular application supporting different themes.
                         </li>
                         <li class="cv-section-bullet">
-                            Although I'm most proficient with Angular framework, my <strong>good understanding of how the browser works and my knowledge of component based architecture and different ways of state management</strong> enable me to quickly pick up any development stack and be productive with it.
+                            Although I'm most proficient with Angular and React, my <strong>good understanding of how the browser works and my knowledge of component based architecture and different ways of state management</strong> enable me to quickly pick up any development stack and be productive with it.
                         </li>
                         <li class="cv-section-bullet">
                             I'm passionate about <strong>delivering good UX</strong> and I really enjoy creating UIs that "make sense" and look good.
@@ -193,7 +193,13 @@ description: "Jure Bajt - Full stack web engineer deeply in love with front-end 
                 <h2 class="cv-section-title">Relevant work experience</h2>
                 <div class="cv-section-content">
                     <h3 class="cv-section-subtitle">
-                        Zemanta, an Outbrain company <span class="cv-section-subtitle-deemphasized">(Mar 2016 - Present)</span>
+                        tretton37 <span class="cv-section-subtitle-deemphasized">(Jan 2020 - Present)</span>
+                    </h3>
+                    <div class="cv-section-content-item">
+                        Senior lead developer, front-end ninja, mentor
+                    </div>
+                    <h3 class="cv-section-subtitle">
+                        Zemanta, an Outbrain company <span class="cv-section-subtitle-deemphasized">(Mar 2016 - Jan 2020)</span>
                     </h3>
                     <div class="cv-section-content-item">
                         Full stack web engineer, front-end lead, mentor
