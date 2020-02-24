@@ -94,11 +94,6 @@
                     url: 'https://drive.google.com/drive/my-drive',
                 },
                 {name: 'Slides', url: 'https://slides.com/georgebyte'},
-                {
-                    name: 'PayPal',
-                    url:
-                        'https://www.paypal.com/si/cgi-bin/webscr?cmd=_account',
-                },
                 {name: 'LastPass', url: 'https://lastpass.com/'},
                 {name: 'IFTTT', url: 'https://ifttt.com/discover'},
                 {name: 'Godaddy', url: 'https://dcc.godaddy.com/manage/'},
@@ -212,7 +207,13 @@
                     url: 'https://www.bankain.si/BIN/vstopna.seam?login=motp',
                 },
                 {name: 'Degiro', url: 'https://trader.degiro.nl/'},
+                {
+                    name: 'PayPal',
+                    url:
+                        'https://www.paypal.com/si/cgi-bin/webscr?cmd=_account',
+                },
                 {name: 'Uphold', url: 'https://uphold.com/dashboard'},
+                {name: 'Valu', url: 'https://www.valu.si/'},
                 {
                     name: 'Etrade',
                     url: 'https://us.etrade.com/etx/hw/accountshome',
