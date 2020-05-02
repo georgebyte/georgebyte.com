@@ -77,7 +77,7 @@
             iconClasses: 'fas fa-concierge-bell',
             panelClasses: 'services-links',
             bookmarks: [
-                {name: 'Pocket', url: 'https://getpocket.com/a/queue/list/'},
+                {name: 'Instapaper', url: 'https://www.instapaper.com/'},
                 {
                     name: 'Notion',
                     url:
