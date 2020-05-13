@@ -262,6 +262,7 @@
             bookmarks: [
                 {name: 'Goodreads', url: 'https://www.goodreads.com/'},
                 {name: 'Audible', url: 'https://www.audible.com/'},
+                {name: 'Fictionary', url: 'https://thefictionary.net/'},
                 {
                     name: 'Actionable Books (summaries)',
                     url: 'http://www.actionablebooks.com/en-ca/summaries/',
