@@ -481,6 +481,7 @@
                     name: 'Hidden game gems',
                     url: 'https://steam250.com/hidden_gems.html',
                 },
+                {name: 'PCGamingWiki', url: 'https://www.pcgamingwiki.com/'},
                 {name: 'Emuparadise', url: 'https://www.emuparadise.me/'},
                 {name: 'RomsMania', url: 'https://romsmania.cc/'},
                 {name: '', url: ''},
