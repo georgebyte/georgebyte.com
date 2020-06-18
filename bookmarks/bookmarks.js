@@ -207,6 +207,7 @@
                     url: 'https://www.bankain.si/BIN/vstopna.seam?login=motp',
                 },
                 {name: 'Degiro', url: 'https://trader.degiro.nl/'},
+                {name: 'Sava pokojninska (Mojanet)', url: 'https://www.sava-pokojninska.si/'},
                 {
                     name: 'PayPal',
                     url:
