@@ -52,7 +52,7 @@
             bookmarks: [
                 {name: 'georgebyte.com', url: 'https://georgebyte.com/'},
                 {
-                    name: 'Analytics',
+                    name: 'Analytics (georgebyte.com)',
                     url:
                         'https://analytics.google.com/analytics/web/#embed/report-home/a46129147w153974228p155754283/',
                 },
@@ -65,10 +65,7 @@
                     url:
                         'https://www.google.com/webmasters/tools/home?hl=en&authuser=0',
                 },
-                {
-                    name: 'Cloudflare',
-                    url: 'https://dash.cloudflare.com/',
-                },
+                {name: 'Cloudflare', url: 'https://dash.cloudflare.com/'},
                 {name: '', url: ''},
             ],
         },
@@ -96,7 +93,6 @@
                 {name: 'Slides', url: 'https://slides.com/georgebyte'},
                 {name: 'LastPass', url: 'https://lastpass.com/'},
                 {name: 'IFTTT', url: 'https://ifttt.com/discover'},
-                {name: 'Godaddy', url: 'https://dcc.godaddy.com/manage/'},
                 {
                     name: 'Brave Rewards',
                     url: 'https://publishers.basicattentiontoken.org',
