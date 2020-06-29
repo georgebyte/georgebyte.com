@@ -24,7 +24,7 @@ One could argue that developing a custom solution for state management introduce
 
 This article explains how one can use the observable store pattern we developed to manage state in Angular apps. The solution was inspired by the following article from Angular University: [How to build Angular apps using Observable Data Services](https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/){:target='_blank'}.
 
-To showcase the usage of observable stores we'll build a simple app called *Coffee election* that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates. The source code is available on GitHub: [github.com/jurebajt/coffee-election](https://github.com/jurebajt/coffee-election){:target='_blank'}.
+To showcase the usage of observable stores we'll build a simple app called *Coffee election* that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates. The source code is available on GitHub: [github.com/georgebyte/coffee-election](https://github.com/georgebyte/coffee-election){:target='_blank'}.
 
 <div class="note">
   <p class="note__label">Edit (March 20, 2019):</p>
@@ -35,7 +35,7 @@ To showcase the usage of observable stores we'll build a simple app called *Coff
 
 At the core of observable store pattern is the abstract `Store` class. It leverages RxJS to achieve data flow similar to Redux. It is implemented like this:
 
-<span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/store.ts" target="_blank">store.ts</a></span>
+<span class="highlight-filename"><a href="https://github.com/georgebyte/coffee-election/blob/master/src/app/store.ts" target="_blank">store.ts</a></span>
 {% highlight typescript linenos %}
 import {Observable, BehaviorSubject} from 'rxjs';
 
@@ -66,7 +66,7 @@ The store's state (`_state$`) is a RxJS `BehaviorSubject`. Changing the state me
 
 Feature specific stores are Angular `Injectable`s extending the abstract `Store` class:
 
-<span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/coffee-election.store.ts" target="_blank">coffee-election.store.ts</a></span>
+<span class="highlight-filename"><a href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.store.ts" target="_blank">coffee-election.store.ts</a></span>
 {% highlight typescript linenos %}
 @Injectable()
 export class CoffeeElectionStore extends Store<CoffeeElectionState> {
@@ -78,7 +78,7 @@ In the code snippet above note the `CoffeeElectionState` type used when extendin
 
 `CoffeeElectionState` is a class representing state object with initial values. In the *Coffee election* example app it looks like this:
 
-<span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/coffee-election-state.ts" target="_blank">coffee-election-state.ts</a></span>
+<span class="highlight-filename"><a href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election-state.ts" target="_blank">coffee-election-state.ts</a></span>
 {% highlight typescript linenos %}
 export class CoffeeElectionState {
   candidates: {name: string, votes: number}[] = [];
@@ -87,7 +87,7 @@ export class CoffeeElectionState {
 
 One last thing to do to make this simple example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize the state when creating a new instance of `CoffeeElectionStore`:
 
-<span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/coffee-election.store.ts" target="_blank">coffee-election.store.ts</a></span>
+<span class="highlight-filename"><a href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.store.ts" target="_blank">coffee-election.store.ts</a></span>
 {% highlight typescript linenos %}
 constructor () {
   super(new CoffeeElectionState());
@@ -96,7 +96,7 @@ constructor () {
 
 With the above code in place, each instance of `CoffeeElectionStore` has a way of setting its state and getting the current state or an observable of the state. To make it more useful, additional methods to modify the state (similar to Redux reducers) should be added:
 
-<span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/coffee-election.store.ts" target="_blank">coffee-election.store.ts</a></span>
+<span class="highlight-filename"><a href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.store.ts" target="_blank">coffee-election.store.ts</a></span>
 {% highlight typescript linenos %}
 @Injectable()
 export class CoffeeElectionStore extends Store<CoffeeElectionState> {
@@ -183,7 +183,7 @@ Private component stores are used in the same way as global stores by defining t
 
 Once a store instance is injected into a component or service, this component/ service can subscribe to state updates. In the example of `coffee-election` component, subscribing to state updates looks like this:
 
-<span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/coffee-election.component.ts" target="_blank">coffee-election.component.ts</a></span>
+<span class="highlight-filename"><a href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.component.ts" target="_blank">coffee-election.component.ts</a></span>
 {% highlight typescript linenos %}
 @Component({ ... })
 export class CoffeeElectionComponent implements OnInit {
@@ -214,7 +214,7 @@ Note that these **subscriptions must be cleaned up** before a component is destr
 
 In case a component doesn't execute any logic on state update and it only serves as a proxy to pass the state to its template, Angular provides a nice shortcut to subscribe to state updates directly from templates via the `async` pipe. `ngFor` in the example below will redraw a list of candidates every time the state is updated.
 
-<span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/coffee-election.component.html" target="_blank">coffee-election.component.html</a></span>
+<span class="highlight-filename"><a href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.component.html" target="_blank">coffee-election.component.html</a></span>
 {% highlight html linenos %}
 <ul>
   <li *ngFor="let candidate of (store.state$ | async).candidates">
@@ -236,7 +236,7 @@ Testing state modifying store methods is pretty straightforward. It consists of 
 
 In practice unit tests to test the store from the *Coffee election* example look like this:
 
-<span class="highlight-filename"><a href="https://github.com/jurebajt/coffee-election/blob/master/src/app/coffee-election.store.spec.ts" target="_blank">coffee-election.store.spec.ts</a></span>
+<span class="highlight-filename"><a href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.store.spec.ts" target="_blank">coffee-election.store.spec.ts</a></span>
 {% highlight typescript linenos %}
 describe('CoffeeElectionStore', () => {
   let store: CoffeeElectionStore;

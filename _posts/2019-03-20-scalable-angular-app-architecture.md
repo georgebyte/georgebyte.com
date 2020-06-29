@@ -12,7 +12,7 @@ This article is a collection of my knowledge about building robust and scalable 
 </p>
 
 <p class="note">
-Note: All code examples used in this article are simplified snippets of code from the <a href="https://github.com/jurebajt/coffee-election-ng-app-example" target="_blank">Coffee Election app</a>. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described below. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementation, click on the file name above code snippets.
+Note: All code examples used in this article are simplified snippets of code from the <a href="https://github.com/georgebyte/coffee-election-ng-app-example" target="_blank">Coffee Election app</a>. Coffee Election app is an Angular app showcasing the scalable Angular app architecture described below. It lets its users vote for their favorite type of coffee and displays voting results. To see actual, non-simplified implementation, click on the file name above code snippets.
 </p>
 
 ## Contents <!-- omit in toc --> 
@@ -60,7 +60,7 @@ Presentational components are responsible for rendering the current state and pr
 Let's see how the theory of presentational components looks like in practice. We'll first have a look at a simplified template of a coffee candidate that the users can vote for.
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/components/coffee-candidate/coffee-candidate.component.html" target="_blank">coffee-candidate.component.html</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/components/coffee-candidate/coffee-candidate.component.html" target="_blank">coffee-candidate.component.html</a>
 </span>
 {% highlight html linenos %}
 <div class="ce-coffee-candidate__name">
@@ -81,7 +81,7 @@ Let's see how the theory of presentational components looks like in practice. We
 The template above renders `candidate`'s name and sets up a `click` event handler on "Add vote" button that triggers `onUserAction.emit(UserAction.AddVote)`. The properties and methods used are defined in component class:
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/components/coffee-candidate/coffee-candidate.component.ts" target="_blank">coffee-candidate.component.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/components/coffee-candidate/coffee-candidate.component.ts" target="_blank">coffee-candidate.component.ts</a>
 </span>
 {% highlight typescript linenos %}
 @Component({
@@ -124,7 +124,7 @@ Smart container components are components that act as a "glue" which **binds obs
 A container component class may look something like this (please refer to my previous article about [observable store services](/state-management-in-angular-with-observable-store-services/){:target='_blank'} if any of the code examples bellow don't make sense to you):
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.ts" target="_blank">coffee-list.view.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.ts" target="_blank">coffee-list.view.ts</a>
 </span>
 {% highlight typescript linenos %}
 @Component({
@@ -150,7 +150,7 @@ Nothing too complicated. The most interesting parts are:
 The template of a container component is much more interesting in my opinion:
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.html" target="_blank">coffee-list.view.html</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.html" target="_blank">coffee-list.view.html</a>
 </span>
 {% highlight html linenos %}
 <ng-container *ngIf="{state$: store.state$ | async} as subs">
@@ -189,7 +189,7 @@ There's just one more thing left to explain in this section. You may have notice
 A **view** is a special type of container component. It's a smart container **component which can be routed to** by Angular `Router`. In other words, it's a component included in the list of `Routes` with a path specified:
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/coffee-list-routing.module.ts" target="_blank">coffee-list-routing.module.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/coffee-list-routing.module.ts" target="_blank">coffee-list-routing.module.ts</a>
 </span>
 {% highlight typescript linenos %}
 const routes: Routes = [
@@ -209,7 +209,7 @@ export class CoffeeListRoutingModule {}
 Views are quite similar to regular container components. The only difference is that views are responsible for **synching query params' state with state in app's stores**. An example will make this statement much clearer:
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.ts" target="_blank">coffee-list.view.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/views/coffee-list/coffee-list.view.ts" target="_blank">coffee-list.view.ts</a>
 </span>
 {% highlight typescript linenos %}
 export class CoffeeListView implements OnInit, OnDestroy {
@@ -301,7 +301,7 @@ The last pattern I'll talk about in this part of the article is about how to con
 The following examples demonstrate how these ideas translate into practice when communicating with a REST API. The proxy service in this case is called `CoffeeListEndpoint` and it is injected into the store as `endpoint`. The store uses it to reload a list of candidates on initialization.
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.store.ts" target="_blank">coffee-list.store.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.store.ts" target="_blank">coffee-list.store.ts</a>
 </span>
 {% highlight typescript linenos %}
 @Injectable()
@@ -365,7 +365,7 @@ When we want to reload the list of candidates we push a new value (`undefined`) 
 Lets now have a look at how `endpoint.listCandidates` is implemented.
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.endpoint.ts" target="_blank">coffee-list.endpoint.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.endpoint.ts" target="_blank">coffee-list.endpoint.ts</a>
 </span>
 {% highlight typescript linenos %}
 @Injectable()
@@ -409,7 +409,7 @@ In essence, endpoint constructs request parameters and executes HTTP request via
 `requestStateUpdater: StoreRequestStateUpdater` is a function used to update request state in the store. Endpoint from the example above uses it to update the state of a request to `inProgress` or `error`. Stores use `endpointHelpers.getStoreRequestStateUpdater` in order to generate the default `StoreRequestStateUpdater`.
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/shared/helpers/endpoint.helpers.ts" target="_blank">endpoint.helpers.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/shared/helpers/endpoint.helpers.ts" target="_blank">endpoint.helpers.ts</a>
 </span>
 {% highlight typescript linenos %}
 export function getStoreRequestStateUpdater(
@@ -432,7 +432,7 @@ Sometimes a more flexible way of updating request state is required. In these ca
 For example, calling the `getUpdateCandidateRequestStateUpdater` in `CoffeeListStore` generates such custom request state updater:
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.store.ts" target="_blank">coffee-list.store.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/features/coffee-list/services/coffee-list.store.ts" target="_blank">coffee-list.store.ts</a>
 </span>
 {% highlight typescript linenos %}
 ...
@@ -485,7 +485,7 @@ In this part of the article we'll define the role of each one of these modules a
 
 ### 2.1 App's root
 
-At the [root of the app](https://github.com/jurebajt/coffee-election-ng-app-example/tree/master/src/app){:target='_blank'} there are the following files whose main purpose is to tie everything together into a nicely working app:
+At the [root of the app](https://github.com/georgebyte/coffee-election-ng-app-example/tree/master/src/app){:target='_blank'} there are the following files whose main purpose is to tie everything together into a nicely working app:
 
 {% highlight plain %}
 app/
@@ -543,7 +543,7 @@ core/
 Each core service or, in the case of larger core submodules, each submodule, should be specified in `providers`/`imports` lists in `CoreModule`:
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/core/core.module.ts" target="_blank">core.module.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/core/core.module.ts" target="_blank">core.module.ts</a>
 </span>
 {% highlight typescript linenos %}
 @NgModule({
@@ -689,7 +689,7 @@ shared/
 Layout module is a place where I recommend putting the components like header and footer used to create basic app layout. These components are usually rendered in the UI at all times and are often included directly into root `AppComponent`:
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/app.component.html" target="_blank">app.component.html</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/app.component.html" target="_blank">app.component.html</a>
 </span>
 {% highlight html linenos %}
 <ce-header class="ce-header"></ce-header>
@@ -719,7 +719,7 @@ layout/
 Views module is another module that usually turns out to be quite simple. It holds the views that are not a part of any feature and whose routing paths are defined in `AppRoutingModule`. An example of such a view is a 404 page (`PageNotFoundView`).
 
 <span class="highlight-filename">
-    <a href="https://github.com/jurebajt/coffee-election-ng-app-example/blob/master/src/app/app-routing.module.ts" target="_blank">app-routing.module.ts</a>
+    <a href="https://github.com/georgebyte/coffee-election-ng-app-example/blob/master/src/app/app-routing.module.ts" target="_blank">app-routing.module.ts</a>
 </span>
 {% highlight typescript linenos %}
 const appRoutes: Routes = [
@@ -749,7 +749,7 @@ Directory `styles/` at app's root is not exactly holding a styles module. It is 
 
 ## 3. Testing
 
-If there's one thing you SHOULDN'T remember from this article is the lack of unit tests. I allowed myself to omit them in the [Coffee Election example app](https://github.com/jurebajt/coffee-election-ng-app-example){:target='_blank'} for clarity since directory structure snippets would get even more verbose. I would not allow myself to do such a thing in a production app! 🧐
+If there's one thing you SHOULDN'T remember from this article is the lack of unit tests. I allowed myself to omit them in the [Coffee Election example app](https://github.com/georgebyte/coffee-election-ng-app-example){:target='_blank'} for clarity since directory structure snippets would get even more verbose. I would not allow myself to do such a thing in a production app! 🧐
 
 In general I find it best to put the test/spec files right next to files containing the implementation of components, services and other code under test. For example, I would put the test suite to test the `CoffeeListStore` in the same directory `features/coffee-list/services` where the store is located and use the `.spec.ts` suffix to indicate the file contains unit tests:
 

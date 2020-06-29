@@ -159,11 +159,11 @@
             bookmarks: [
                 {name: 'GitLab', url: 'https://gitlab.com/'},
                 {name: 'GitHub', url: 'https://github.com/'},
-                {name: 'Gists', url: 'https://gist.github.com/jurebajt'},
+                {name: 'Gists', url: 'https://gist.github.com/georgebyte'},
                 {
                     name: 'VS Code Settings Sync gist',
                     url:
-                        'https://gist.github.com/jurebajt/fcc985ba39d708745287e4789f85e3af',
+                        'https://gist.github.com/georgebyte/fcc985ba39d708745287e4789f85e3af',
                 },
                 {name: 'DevDocs', url: 'http://devdocs.io/'},
                 {name: 'CodePen', url: 'http://codepen.io/georgebyte/'},

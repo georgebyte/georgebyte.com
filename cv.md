@@ -171,7 +171,7 @@ description: "Jure Bajt - Full stack web engineer deeply in love with front-end 
                             <a href="https://slides.com/georgebyte/state-management-in-angular-with-observable-store-services#/" target="_blank">State management in Angular with observable store services</a> - <a href="https://www.meetup.com/Ljubljana-JavaScript-User-Group/events/247901199/" target="_blank">February 2018 JSmeet</a>.
                         </li>
                         <li class="cv-section-bullet">
-                            <a href="https://github.com/jurebajt/examples-rendering-performance/" target="_blank">Boosting web apps' FPS</a> - <a href="https://www.meetup.com/Ljubljana-JavaScript-User-Group/events/235410586/" target="_blank">November 2016 JSmeet</a>.
+                            <a href="https://github.com/georgebyte/examples-rendering-performance/" target="_blank">Boosting web apps' FPS</a> - <a href="https://www.meetup.com/Ljubljana-JavaScript-User-Group/events/235410586/" target="_blank">November 2016 JSmeet</a>.
                         </li>
                     </ul>
                     <h3 class="cv-section-subtitle">
