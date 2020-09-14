@@ -210,6 +210,7 @@
                         'https://www.paypal.com/si/cgi-bin/webscr?cmd=_account',
                 },
                 {name: 'Uphold', url: 'https://uphold.com/dashboard'},
+                {name: 'CredEarn', url: 'https://uphold-earn.mycred.io/'},
                 {name: 'Valu', url: 'https://www.valu.si/'},
                 {
                     name: 'Etrade',
