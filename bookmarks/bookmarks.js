@@ -204,6 +204,8 @@
                 },
                 {name: 'Degiro', url: 'https://trader.degiro.nl/'},
                 {name: 'Sava pokojninska (Mojanet)', url: 'https://www.sava-pokojninska.si/'},
+                {name: 'Sharesight portfolio', url: 'https://portfolio.sharesight.com/'},
+                {name: 'TradingView (stock charts)', url: 'https://www.tradingview.com/'},
                 {
                     name: 'PayPal',
                     url:
@@ -225,15 +227,6 @@
                     name: 'Finance and investing',
                     url:
                         'https://drive.google.com/drive/folders/1Jf9h7x7I0E1w9XDelaOaiVwVfb7kv5Zk',
-                },
-                {
-                    name: 'Portfolio',
-                    url:
-                        'https://www.investing.com/portfolio/?portfolioID=YGdmNmcwN2g2YW5lYzQ%3D',
-                },
-                {
-                    name: 'Stocks chart',
-                    url: 'https://www.investing.com/charts/stocks-charts',
                 },
                 {
                     name: 'eDavki',
