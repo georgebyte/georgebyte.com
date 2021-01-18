@@ -3,7 +3,7 @@ layout: blank
 title: "Jure Bajt"
 permalink: "/cv/"
 html_title: "Jure Bajt's CV"
-description: "Jure Bajt - Full stack web engineer deeply in love with front-end development."
+description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with front-end development."
 ---
 
 <div class="cv-container">
@@ -15,10 +15,10 @@ description: "Jure Bajt - Full stack web engineer deeply in love with front-end 
             <div class="cv-intro">
                 <h1 class="cv-name">Jure Bajt</h1>
                 <p class="cv-bio-emphasized">
-                    Full stack web engineer deeply in love with front-end development.
+                    Tech lead/Full stack web engineer deeply in love with front-end development.
                 </p>
                 <p class="cv-bio">
-                    More than 5 years of professional software engineering experience during which I've grown from a junior software developer to a front-end lead, mentor and a key architect on front-end projects.
+                    More than 6 years of professional software engineering experience during which I've grown from a junior software developer to a tech lead, mentor and a key architect on software development projects.
                 </p>
                 <ul class="cv-links">
                     <li class="cv-link">
@@ -196,7 +196,7 @@ description: "Jure Bajt - Full stack web engineer deeply in love with front-end 
                         tretton37 <span class="cv-section-subtitle-deemphasized">(Jan 2020 - Present)</span>
                     </h3>
                     <div class="cv-section-content-item">
-                        Senior lead developer, front-end ninja, mentor
+                        Tech lead/Lead developer, front-end ninja, mentor
                     </div>
                     <h3 class="cv-section-subtitle">
                         Zemanta, an Outbrain company <span class="cv-section-subtitle-deemphasized">(Mar 2016 - Jan 2020)</span>
