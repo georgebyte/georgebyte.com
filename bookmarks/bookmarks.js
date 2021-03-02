@@ -497,7 +497,7 @@
             bookmarks: [
                 {name: 'Partis', url: 'http://www.partis.si/'},
                 {name: 'Zooqle', url: 'https://zooqle.com/'},
-                {name: 'Library Genesis', url: 'http://gen.lib.rus.ec/'},
+                {name: 'Library Genesis (LibGen)', url: 'http://gen.lib.rus.ec/'},
                 {name: 'ZLibrary', url: 'https://b-ok.org/'},
                 {name: 'Audiobook torrents', url: 'http://audiobookbay.nl/'},
                 {
