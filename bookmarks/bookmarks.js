@@ -106,6 +106,10 @@
             panelClasses: 'tools-links',
             bookmarks: [
                 {
+                    name: 'Coffitivity - noise/ambient sounds machine',
+                    url: 'https://coffitivity.com/',
+                },
+                {
                     name: 'Photopea - Photoshop clone',
                     url: 'https://www.photopea.com/',
                 },
