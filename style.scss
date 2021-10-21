@@ -313,6 +313,15 @@ img {
   }
 }
 
+.bmc-button {
+  display: inline-block;
+
+  > img {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
 // Specify the color of the selection
 ::-moz-selection {
   color: $black;
