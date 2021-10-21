@@ -4,7 +4,7 @@ permalink: /scalable-angular-app-architecture/
 title: "Scalable Angular app architecture"
 description: "A collection of my knowledge about building robust and scalable front-end applications in Angular."
 featured_image: "/images/one-way-data-flow.png"
-last_update: 2019-03-20
+last_update: 2021-10-21
 ---
 
 <p class="excerpt">
@@ -745,7 +745,7 @@ views/
 
 ### 2.7 Styles
 
-Directory `styles/` at app's root is not exactly holding a styles module. It is used to store all the files with app's global styles definitions. I won't go into details here as CSS architecture is a topic for an article on its own. I'm already working on such article. Stay tuned if you're interested (via [Twitter](https://twitter.com/georgebyte){:target='_blank'} or [RSS feed](/feed.xml){:target='_blank'}).
+Directory `styles/` at app's root is not exactly holding a styles module. It is used to store all the files with app's global styles definitions. I won't go into details here as CSS architecture is a topic for an article on its own.
 
 ## 3. Testing
 
