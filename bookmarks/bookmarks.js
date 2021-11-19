@@ -215,8 +215,6 @@
                     url:
                         'https://www.paypal.com/si/cgi-bin/webscr?cmd=_account',
                 },
-                {name: 'Uphold', url: 'https://uphold.com/dashboard'},
-                {name: 'CredEarn', url: 'https://uphold-earn.mycred.io/'},
                 {name: 'Valu', url: 'https://www.valu.si/'},
                 {
                     name: 'Etrade',
@@ -325,10 +323,14 @@
             panelClasses: 'crypto-links',
             bookmarks: [
                 {
-                    name: 'Crypto trades',
-                    url:
-                        'https://docs.google.com/spreadsheets/d/1RcssO8LDkTMm26MKzX7DlQcTdTiZ9JhhsVwr1wyICGs/edit',
+                    name: '3Commas (DCA bots)',
+                    url: 'https://3commas.io/',
                 },
+                {
+                    name: 'Binance',
+                    url: 'https://www.binance.com/',
+                },
+                {name: 'Uphold', url: 'https://uphold.com/dashboard'},
                 {
                     name: 'Bitstamp',
                     url: 'https://www.bitstamp.net/market/tradeview/',
@@ -336,27 +338,6 @@
                 {
                     name: 'Live Coin Watch',
                     url: 'https://www.livecoinwatch.com/',
-                },
-                {
-                    name: '/r/CryptoCurrency',
-                    url: 'https://www.reddit.com/r/CryptoCurrency/',
-                },
-                {name: '/r/btc', url: 'https://www.reddit.com/r/btc/'},
-                {
-                    name: '/r/Bitcoincash',
-                    url: 'https://www.reddit.com/r/Bitcoincash/',
-                },
-                {name: 'BCH Block Explorer', url: 'https://bch.btc.com/'},
-                {name: 'BitInfoCharts', url: 'https://bitinfocharts.com/'},
-                {
-                    name: 'Compare cryptocurrencies',
-                    url:
-                        'https://coinlib.io/compare/2017-08-01/BTC/ETH/BCH/LTC',
-                },
-                {name: 'fork.lol', url: 'https://fork.lol/pow/work'},
-                {
-                    name: 'Mempool size statis',
-                    url: 'https://jochen-hoenicke.de/queue/cash/#24h',
                 },
                 {name: '', url: ''},
             ],
