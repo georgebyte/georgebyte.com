@@ -156,6 +156,88 @@
                 {name: '', url: ''},
             ],
         },
+
+        {
+            name: 'Finance and investing',
+            iconClasses: 'fas fa-university',
+            panelClasses: 'finance-links',
+            bookmarks: [
+                {
+                    name: 'Finance (Google Drive)',
+                    url:
+                        'https://drive.google.com/drive/u/0/folders/1FTKghwn_GGiKUJxpHgSoRLu0tGROiCvt',
+                },
+                {
+                    name: 'Investing (Google Drive)',
+                    url:
+                        'https://drive.google.com/drive/folders/1Jf9h7x7I0E1w9XDelaOaiVwVfb7kv5Zk',
+                },
+                {
+                    name: 'Intesa Sanpaolo spletna banka',
+                    url: 'https://online.intesasanpaolobank.si/web/',
+                },
+                {name: 'Degiro', url: 'https://trader.degiro.nl/'},
+                {name: 'SAVA pokojninska (SAVANet)', url: 'https://portal.savanet.si/pokojnina'},
+                {name: 'Portfolio tracker (Sharesight)', url: 'https://portfolio.sharesight.com/'},
+                {name: 'Crypto portfolio tracker (CoinMarketCap)', url: 'https://coinmarketcap.com/portfolio-tracker/'},
+                {name: 'Charts (TradingView)', url: 'https://www.tradingview.com/'},
+                {name: 'Revolut', url: 'https://app.revolut.com/home'},
+                {name: 'Valu', url: 'https://www.valu.si/'},
+                {
+                    name: 'PayPal',
+                    url:
+                        'https://www.paypal.com/si/cgi-bin/webscr?cmd=_account',
+                },
+                {
+                    name: 'Etrade',
+                    url: 'https://us.etrade.com/etx/hw/accountshome',
+                },
+                {
+                    name: 'Portfolio - Carta',
+                    url:
+                        'https://carta.com/investors/firm/23408/company/49917/holdings/',
+                },
+                {
+                    name: 'eDavki',
+                    url:
+                        'https://edavki.durs.si/OpenPortal/Pages/StartPage/StartPage.aspx',
+                    },
+                {
+                    name: 'Slovar borznih izrazov',
+                    url: 'http://www.ljse.si/cgi-bin/jve.cgi?doc=791',
+                },
+                {name: 'Stock screener', url: 'https://finviz.com/'},
+                {
+                    name: 'Treasury yield curve',
+                    url:
+                    'https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/Historic-Yield-Data-Visualization.aspx',
+                },
+                {name: '', url: ''},
+            ],
+        },
+        {
+            name: 'Crypto',
+            iconClasses: 'fab fa-bitcoin',
+            panelClasses: 'crypto-links',
+            bookmarks: [
+                {
+                    name: 'Bitstamp',
+                    url: 'https://www.bitstamp.net/market/tradeview/',
+                },
+                {
+                    name: 'Binance',
+                    url: 'https://www.binance.com/',
+                },
+                {name: 'Uphold', url: 'https://uphold.com/dashboard'},
+                {
+                    name: '3Commas (DCA bots)',
+                    url: 'https://3commas.io/',
+                },
+                {name: 'CoinMarketCap', url: 'https://coinmarketcap.com/'},
+                {name: 'Crypto news/headlines (CoinMarketCap)', url: 'https://coinmarketcap.com/headlines/'},
+                {name: '', url: ''},
+            ],
+        },
         {
             name: 'Software engineering',
             iconClasses: 'fas fa-code',
@@ -188,73 +270,13 @@
             ],
         },
         {
-            name: 'Finance',
-            iconClasses: 'fas fa-university',
-            panelClasses: 'finance-links',
-            bookmarks: [
-                {
-                    name: 'Finance',
-                    url:
-                        'https://drive.google.com/drive/u/0/folders/1FTKghwn_GGiKUJxpHgSoRLu0tGROiCvt?ths=true',
-                },
-                {
-                    name: 'ETF trades',
-                    url:
-                        'https://docs.google.com/spreadsheets/d/1AXZP4jamcOPKzksOj_qpoYK_epD3dAXDu46fu7aRhU8/edit#gid=662105215',
-                },
-                {
-                    name: 'Banka IN',
-                    url: 'https://www.bankain.si/BIN/vstopna.seam?login=motp',
-                },
-                {name: 'Degiro', url: 'https://trader.degiro.nl/'},
-                {name: 'Sava pokojninska (Mojanet)', url: 'https://www.sava-pokojninska.si/'},
-                {name: 'Sharesight portfolio', url: 'https://portfolio.sharesight.com/'},
-                {name: 'TradingView (stock charts)', url: 'https://www.tradingview.com/'},
-                {
-                    name: 'PayPal',
-                    url:
-                        'https://www.paypal.com/si/cgi-bin/webscr?cmd=_account',
-                },
-                {name: 'Valu', url: 'https://www.valu.si/'},
-                {
-                    name: 'Etrade',
-                    url: 'https://us.etrade.com/etx/hw/accountshome',
-                },
-                {
-                    name: 'Portfolio - Carta',
-                    url:
-                        'https://carta.com/investors/firm/23408/company/49917/holdings/',
-                },
-                {
-                    name: 'Finance and investing',
-                    url:
-                        'https://drive.google.com/drive/folders/1Jf9h7x7I0E1w9XDelaOaiVwVfb7kv5Zk',
-                },
-                {
-                    name: 'eDavki',
-                    url:
-                        'https://edavki.durs.si/OpenPortal/Pages/StartPage/StartPage.aspx',
-                },
-                {
-                    name: 'Slovar borznih izrazov',
-                    url: 'http://www.ljse.si/cgi-bin/jve.cgi?doc=791',
-                },
-                {name: 'Stock screener', url: 'https://finviz.com/'},
-                {
-                    name: 'Treasury yield curve',
-                    url:
-                        'https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/Historic-Yield-Data-Visualization.aspx',
-                },
-                {name: '', url: ''},
-            ],
-        },
-        {
             name: 'Reading',
             iconClasses: 'fas fa-book',
             panelClasses: 'reading-links',
             bookmarks: [
                 {name: 'Goodreads', url: 'https://www.goodreads.com/'},
                 {name: 'Audible', url: 'https://www.audible.com/'},
+                {name: 'Study guides (SparkNotes)', url: 'https://www.sparknotes.com/'},
                 {name: 'Fictionary', url: 'https://thefictionary.net/'},
                 {
                     name: 'Actionable Books (summaries)',
@@ -313,31 +335,6 @@
                 {
                     name: 'Recipes by ingredients',
                     url: 'http://www.supercook.com/#/recipes',
-                },
-                {name: '', url: ''},
-            ],
-        },
-        {
-            name: 'Crypto',
-            iconClasses: 'fab fa-bitcoin',
-            panelClasses: 'crypto-links',
-            bookmarks: [
-                {
-                    name: '3Commas (DCA bots)',
-                    url: 'https://3commas.io/',
-                },
-                {
-                    name: 'Binance',
-                    url: 'https://www.binance.com/',
-                },
-                {name: 'Uphold', url: 'https://uphold.com/dashboard'},
-                {
-                    name: 'Bitstamp',
-                    url: 'https://www.bitstamp.net/market/tradeview/',
-                },
-                {
-                    name: 'Live Coin Watch',
-                    url: 'https://www.livecoinwatch.com/',
                 },
                 {name: '', url: ''},
             ],
