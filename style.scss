@@ -649,6 +649,10 @@ footer {
   margin-top: 6px;
 }
 
+.cv-section-subbullet:not(:first-child) {
+  margin-top: 6px;
+}
+
 .cv-section-subtitle-deemphasized {
   color: $lighterGray;
   font-size: 16px;

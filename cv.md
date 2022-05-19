@@ -3,7 +3,7 @@ layout: blank
 title: "Jure Bajt"
 permalink: "/cv/"
 html_title: "Jure Bajt's CV"
-description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with front-end development."
+description: "Jure Bajt - Tech lead and full stack web engineer deeply in love with front-end development."
 ---
 
 <div class="cv-container">
@@ -15,10 +15,10 @@ description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with 
             <div class="cv-intro">
                 <h1 class="cv-name">Jure Bajt</h1>
                 <p class="cv-bio-emphasized">
-                    Tech lead/Full stack web engineer deeply in love with front-end development.
+                    Tech lead and full stack web engineer deeply in love with front-end development.
                 </p>
                 <p class="cv-bio">
-                    More than 6 years of professional software engineering experience during which I've grown from a junior software developer to a tech lead, mentor and a key architect on software development projects.
+                    More than 8 years of professional software engineering experience during which I've grown from a junior software developer to a tech lead, mentor and a key architect on software development projects.
                 </p>
                 <ul class="cv-links">
                     <li class="cv-link">
@@ -59,33 +59,30 @@ description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with 
                     </h3>
                     <ul class="cv-section-bullets">
                         <li class="cv-section-bullet">
-                            I have extensive experience with development of websites and SPAs. I've <strong>build complex web applications from the ground up</strong> as well as <strong>inherited large legacy SPAs and improved them piece by piece</strong> while making sure they continue to work undisturbed in production, with new features added to them continuously.
+                            I have extensive experience with development of web applications. I've <strong>led teams and helped build complex web applications from the ground up</strong> as well as <strong>inherited large legacy SPAs and improved them piece by piece</strong> while making sure they continue to work undisturbed in production, with new features added to them continuously.
                         </li>
                         <li class="cv-section-bullet">
-                            Because of my broad knowledge of front-end development and good software engineering practices, I've been able to <strong>greatly improve the quality of (front-end) work in teams</strong> I've worked with. This led me to becoming a front-end lead at Zemanta.
+                            Because of my broad knowledge of front-end development and good software engineering practices, I've been able to <strong>greatly improve the quality of (front-end) code and architecture in teams</strong> I've worked with. This led me to the front-end lead role at Zemanta and later tech lead role at 13|37.
                         </li>
                         <li class="cv-section-bullet">
-                            As a <strong>front-end lead</strong> I've been responsible for <strong>setting up new SPAs, making decisions about which technologies to use and application design/architecture</strong> (also implementing them in practice, including large gradual refactorings). I've been involved in designing basically every feature the teams added to front-end apps. I always tried to use these designing/consulting sessions to share as much of my knowledge as possible with the team. I've <strong>done a lot of mentoring</strong> (which I love to do!), be it in the form of in-depth design and code reviews, presentations for my team, articles and many answered articles' comments (e.g. articles about <a href="{{ site.baseurl }}/state-management-in-angular-with-observable-store-services/" target="_blank">state management</a> or <a href="{{ site.baseurl }}/scalable-angular-app-architecture/" target="_blank">scalable web app architecture</a>) or talks at JS meetups.
+                            I consider myself to be quite good in <strong>JavaScript/TypeScript, RxJs, CSS (Sass, Less etc.) and HTML</strong>. I really try to use these technologies in a way to <strong>build robust and scalable front-end applications</strong>. I also know Webpack and Babel pretty well and have <strong>set up many build pipelines</strong> using them - most notably a custom Webpack build pipeline for a hybrid AngularJS + Angular application supporting multiple themes (client branding).
                         </li>
                         <li class="cv-section-bullet">
-                            As far as front-end technologies go, I consider myself to be quite good in JavaScript/TypeScript, RxJs, CSS (Sass, Less etc.) and HTML. I really try to use these technologies in a way to <strong>build robust and scalable front-end applications</strong>. I also know Webpack and Babel pretty well and have <strong>set up many build pipelines</strong> using them - most notably a custom Webpack build for a hybrid AngularJS + Angular application supporting different themes.
+                            Although I'm most proficient with React and Angular, my <strong>good understanding of how internet/ browsers work, my knowledge of component based architecture and different ways of state management</strong> enable me to quickly pick up any development stack and be productive with it.
                         </li>
                         <li class="cv-section-bullet">
-                            Although I'm most proficient with Angular and React, my <strong>good understanding of how the browser works and my knowledge of component based architecture and different ways of state management</strong> enable me to quickly pick up any development stack and be productive with it.
-                        </li>
-                        <li class="cv-section-bullet">
-                            I'm passionate about <strong>delivering good UX</strong> and I really enjoy creating UIs that "make sense" and look good.
+                            I'm passionate about <strong>delivering good UX</strong> and I really enjoy crafting UIs that "make sense" and look good.
                         </li>
                         <li class="cv-section-bullet">
                             I strive to follow best practices for <strong>creating responsive and accessible web apps</strong>. I explored these topics in my <a href="http://eprints.fri.uni-lj.si/3278/" target="_blank">diploma thesis</a> and got a lot of practice from creating more than 20 different designs for web shops built on <a href="https://www.mojekarte.si/" target="_blank">DRAGON Ticketing platform</a> earlier in my career.
                         </li>
                         <li class="cv-section-bullet">
-                            Some of the more interesting/complex widgets I've implemented include:
+                            Some interesting/complex widgets I've implemented include:
                             <ul class="cv-section-subbullets">
-                                <li>
-                                    A custom table component capable of rendering huge datasets (via virtual scroll) with support for multiple data types, multi-level, collapsable rows, inline editing etc. <a href="{{ site.baseurl }}/images/custom_table_component_screenshot.jpg" target="_blank">[screenshot]</a>
+                                <li class="cv-section-subbullet">
+                                    A custom table component capable of rendering huge datasets (via virtual scroll) with support for multiple data types, multi-level collapsable rows, inline editing etc. <a href="{{ site.baseurl }}/images/custom_table_component_screenshot.jpg" target="_blank">[screenshot]</a>
                                 </li>
-                                <li>
+                                <li class="cv-section-subbullet">
                                     Interactive venue seat selection widget used for buying event tickets at <a href="https://www.mojekarte.si/" target="_blank">mojekarte.si</a>. <a href="{{ site.baseurl }}/images/venue_seat_selection_screenshot.jpg" target="_blank">[screenshot]</a>
                                 </li>
                             </ul>
@@ -96,27 +93,35 @@ description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with 
                     </h3>
                     <ul class="cv-section-bullets">
                         <li class="cv-section-bullet">
-                            Throughout my career I've implemented and <strong>delivered many product features in a "full-stack manner"</strong> - from database layer (PostgreSQL, MySQL), to application layer (Python with Django framework, Java/Kotlin with Spring framework), to rendered UI.
-                        </li>
-                        <li class="cv-section-bullet">
-                            I've <strong>designed and implemented REST API endpoints</strong> and connected them to front-end applications.
-                        </li>
-                        <li class="cv-section-bullet">
-                            I have some experience with AWS and S3 - I've created a video upload widget which uploads a video from the browser directly to S3 bucket using presigned URLs and converts it into multiple formats with Amazon Elastic Transcoder.
+                            Some of the technologies I've used on a daily basis to build application back-ends and APIs include:
+                            <ul class="cv-section-subbullets">
+                                <li class="cv-section-subbullet">
+                                   Node.js + Express, Python + Django, Java/Kotlin + Spring framework, Firebase
+                                </li>
+                                <li class="cv-section-subbullet">
+                                    PostgreSQL, MySQL, Firestore, BigQuery
+                                </li>
+                                <li class="cv-section-subbullet">
+                                    GCP and AWS clouds (streaming solutions, FaaS, storage buckets etc.)
+                                </li>
+                                <li class="cv-section-subbullet">
+                                    GraphQL
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                     <h3 class="cv-section-subtitle">
-                        Developer experience and CI/CD pipelines
+                        Developer experience, monitoring and CI/CD pipelines
                     </h3>
                     <ul class="cv-section-bullets">
                         <li class="cv-section-bullet">
-                           I've set up local development environments using <strong>Docker</strong> which enabled new team members to be up and running with a single <code class="highlighter-rouge">make</code> command.
+                           I have good knowledge of <strong>Docker</strong> and have used it to setup local and deployed environments. I also have some experience with Terraform to manage infrastructure as code.
                         </li>
                         <li class="cv-section-bullet">
-                            I've integrated build processes for front-end applications in many deployment pipelines (e.g. using <strong>Jenkins</strong>).
+                            I've setup a few fairly complex CI/CD pipelines (e.g. using <strong>Jenkins or GitHub Actions</strong>).
                         </li>
                         <li class="cv-section-bullet">
-                            I've introduced linters and code formatters in development environments and deployment pipelines.
+                            I've helped with setting up monitoring and alerting using Google Cloud Operations (Stackdriver), Grafana and Sentry.
                         </li>
                     </ul>
                     <h3 class="cv-section-subtitle">
@@ -124,16 +129,16 @@ description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with 
                     </h3>
                     <ul class="cv-section-bullets">
                         <li class="cv-section-bullet">
-                            I can't imagine developing and maintaining an application without <strong>Git and good test coverage</strong> (unit and e2e tests).
+                            Throughout my career <strong>I've took ownership of and delivered many product features</strong>. This included not only the design and implementation work, but also a lot of collaboration with product owners, users, UX specialists, engineers, data analysts and other stakeholders to <strong>make sure the right solution gets implemented for a specific end-user need</strong>.
                         </li>
                         <li class="cv-section-bullet">
-                            I'm used to work in close <strong>collaboration with product managers and designers</strong>.
+                            As a team/tech lead I believe in <strong>trusting my teammates to develop solutions in an empowered manner (no micromanaging)</strong>, offering support when needed and helping steering development processes to increase team effectiveness and sense of ownership.
                         </li>
                         <li class="cv-section-bullet">
-                            I've been a valuable contributor to hiring process design at Zemanta and have <strong>interviewed many candidates</strong> in technical interviews.
+                           I've <strong>done a lot of mentoring and knowledge sharing</strong> (which I love to do!), be it in the form of in-depth design and code reviews, workshops for my teams, articles and many answered comments (e.g. articles about <a href="{{ site.baseurl }}/state-management-in-angular-with-observable-store-services/" target="_blank">state management</a> or <a href="{{ site.baseurl }}/scalable-angular-app-architecture/" target="_blank">scalable web app architecture</a>) or talks at JS meetups.
                         </li>
                         <li class="cv-section-bullet">
-                            I <strong>helped to shape and implement the development process</strong> (variation of scrum) in my team at Zemanta.
+                            I've been a valuable contributor to hiring process design at both 13|37 and Zemanta and have <strong>interviewed more than 30 candidates</strong> in technical interviews over the past 3 years.
                         </li>
                         <li class="cv-section-bullet">
                             I don't like to do things half-assed 🧐
@@ -145,7 +150,7 @@ description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with 
                             I like to constantly be learning something new, reading a bunch of books and keeping up to date with developments in IT industry and web development.
                         </li>
                         <li class="cv-section-bullet">
-                            I have some experience with remote work and overcoming the challenges it introduces.
+                            I've worked in remote work arrangements for the past 3 years and I'm used to async communication.
                         </li>
                     </ul>
                 </div>
@@ -160,7 +165,7 @@ description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with 
                     </h3>
                     <ul class="cv-section-bullets">
                         <li class="cv-section-bullet">
-                            <a href="https://www.npmjs.com/package/rxjs-observable-store" target="_blank">rxjs-observable-store</a> - an open sourced state management solution implemented using RxJs to mimic Redux architecture.
+                            <a href="https://www.npmjs.com/package/rxjs-observable-store" target="_blank">rxjs-observable-store</a> - an open-sourced state management solution implemented using RxJs to mimic Redux architecture.
                         </li>
                     </ul>
                     <h3 class="cv-section-subtitle">
@@ -193,10 +198,10 @@ description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with 
                 <h2 class="cv-section-title">Relevant work experience</h2>
                 <div class="cv-section-content">
                     <h3 class="cv-section-subtitle">
-                        tretton37 <span class="cv-section-subtitle-deemphasized">(Jan 2020 - Present)</span>
+                        13|37 <span class="cv-section-subtitle-deemphasized">(Jan 2020 - Present)</span>
                     </h3>
                     <div class="cv-section-content-item">
-                        Tech lead/Lead developer, front-end ninja, mentor
+                        Lead consultant (Tech lead/System architect at an undisclosed multinational retailer), front-end ninja, mentor
                     </div>
                     <h3 class="cv-section-subtitle">
                         Zemanta, an Outbrain company <span class="cv-section-subtitle-deemphasized">(Mar 2016 - Jan 2020)</span>
@@ -218,7 +223,7 @@ description: "Jure Bajt - Tech lead/Full stack web engineer deeply in love with 
                     </div>
                     <div class="cv-section-content-item">
                         Project:<br>
-                        Using creativity to gain practical knowledge: Automation testing of web applications
+                        Using creativity to gain practical knowledge: Automated testing of web applications UIs
                     </div>
                 </div>
             </div>
