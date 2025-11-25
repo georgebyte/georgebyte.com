@@ -1,0 +1,15 @@
+---
+import {siteConfig} from "../config/site";
+---
+
+{
+    siteConfig.navigationLinks.map(link => (
+        <a
+            href={link.href}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noreferrer noopener" : undefined}
+        >
+            {link.label}
+        </a>
+    ))
+}

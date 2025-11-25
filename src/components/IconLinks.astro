@@ -1,0 +1,36 @@
+---
+import {siteConfig} from "../config/site";
+import type {SocialKey} from "../config/site";
+
+const linksOrder: ("rss" | SocialKey)[] = ["rss", "x", "youtube", "linkedin", "github"];
+
+const links: {key: "rss" | SocialKey; href: string; target: string | undefined}[] = linksOrder
+    .map(key => {
+        if (key === "rss") {
+            return {key, href: siteConfig.rssFeedUrl, target: undefined};
+        }
+
+        const socialLink = siteConfig.socialLinks[key];
+        if (!socialLink) {
+            return null;
+        }
+
+        const href = socialLink;
+        const target = "_blank";
+
+        return {key, href, target};
+    })
+    .filter(link => link !== null);
+---
+
+{
+    links.map(link => (
+        <a
+            href={link.href}
+            target={link.target}
+            rel={link.target === "_blank" ? "noreferrer noopener" : undefined}
+        >
+            <i class={`svg-icon ${link.key}`} />
+        </a>
+    ))
+}

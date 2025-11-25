@@ -1,0 +1,47 @@
+---
+import {siteConfig} from "../config/site";
+import BlankLayout from "./BlankLayout.astro";
+import NavigationLinks from "../components/NavigationLinks.astro";
+import IconLinks from "../components/IconLinks.astro";
+---
+
+<BlankLayout {...Astro.props}>
+    <div class="wrapper">
+        <div class="wrapper-masthead">
+            <div class="container">
+                <header class="masthead clearfix">
+                    <a href="/" class="site-avatar">
+                        <img
+                            src={siteConfig.avatar.primary}
+                            srcset={`${siteConfig.avatar.primary} 1x, ${siteConfig.avatar.retina} 2x`}
+                            alt="George Byte's profile photo"
+                        />
+                    </a>
+
+                    <div class="site-info">
+                        <h2 class="site-name">
+                            <a href="/">{siteConfig.name}</a>
+                        </h2>
+                        <p class="site-description">{siteConfig.description}</p>
+                    </div>
+
+                    <nav>
+                        <NavigationLinks />
+                    </nav>
+                </header>
+            </div>
+        </div>
+
+        <div id="main" role="main" class="container">
+            <slot />
+        </div>
+    </div>
+
+    <div class="wrapper-footer">
+        <div class="container">
+            <footer class="footer">
+                <IconLinks />
+            </footer>
+        </div>
+    </div>
+</BlankLayout>
