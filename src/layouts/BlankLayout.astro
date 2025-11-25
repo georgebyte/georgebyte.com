@@ -5,12 +5,13 @@ interface Props {
     title?: string;
     htmlTitle?: string;
     description?: string;
+    excerpt?: string;
     featuredImage?: string;
 }
 
-const {title, htmlTitle, description, featuredImage} = Astro.props as Props;
+const {title, htmlTitle, description, excerpt, featuredImage} = Astro.props as Props;
 const computedTitle = htmlTitle ?? (title ? `${title} | ${siteConfig.name}` : siteConfig.name);
-const metaDescription = description ?? siteConfig.description;
+const metaDescription = description ?? excerpt ?? siteConfig.description;
 const canonicalUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
 const openGraphTitle = title ?? siteConfig.name;
 
