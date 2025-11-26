@@ -11,13 +11,14 @@ export async function getStaticPaths() {
 }
 
 const {article} = Astro.props;
-const {title, description, datePublished, dateLastUpdated} = article.data;
+const {title, description, excerpt, datePublished, dateLastUpdated} = article.data;
 const {Content} = await article.render();
 ---
 
 <ArticleLayout
     title={title}
     description={description}
+    excerpt={excerpt}
     datePublished={datePublished}
     dateLastUpdated={dateLastUpdated}
 >

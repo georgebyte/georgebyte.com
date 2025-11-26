@@ -1,14 +1,16 @@
 ---
 import DefaultLayout from "./DefaultLayout.astro";
+import ArticleExcerpt from "../components/ArticleExcerpt.astro";
 
 interface Props {
     title: string;
     description: string;
     datePublished: string;
     dateLastUpdated?: string;
+    excerpt?: string;
 }
 
-const {title, description, datePublished, dateLastUpdated} = Astro.props as Props;
+const {title, description, excerpt, datePublished, dateLastUpdated} = Astro.props as Props;
 const formattedDateOptions: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "long",
@@ -36,6 +38,7 @@ const formattedDateLastUpdated = dateLastUpdated
         </div>
 
         <div class="entry__content">
+            {excerpt && <ArticleExcerpt html={excerpt} />}
             <slot />
             <div class="vertical-separator"></div>
             <p>
