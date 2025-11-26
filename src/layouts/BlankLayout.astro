@@ -15,7 +15,6 @@ const computedTitle = htmlTitle ?? (title ? `${title} | ${siteConfig.name}` : si
 const metaDescription = description ?? excerpt ?? siteConfig.description;
 const canonicalUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
 const openGraphTitle = title ?? siteConfig.name;
-
 ---
 
 <!doctype html>
@@ -37,7 +36,6 @@ const openGraphTitle = title ?? siteConfig.name;
             featuredImage && (
                 <>
                     <meta property="og:image" content={`${siteConfig.url}${featuredImage}`} />
-                    <!-- TODO (gb): Replace with X properties -->
                     <meta property="twitter:image" content={`${siteConfig.url}${featuredImage}`} />
                     <meta property="twitter:card" content="summary_large_image" />
                 </>

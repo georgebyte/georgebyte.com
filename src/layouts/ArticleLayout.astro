@@ -6,8 +6,8 @@ interface Props {
     title: string;
     description: string;
     datePublished: string;
-    dateLastUpdated?: string;
-    excerpt?: string;
+    dateLastUpdated?: string | undefined;
+    excerpt?: string | undefined;
 }
 
 const {title, description, excerpt, datePublished, dateLastUpdated} = Astro.props as Props;
