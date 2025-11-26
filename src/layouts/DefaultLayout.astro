@@ -140,7 +140,7 @@ import IconLinks from "../components/IconLinks.astro";
             font-size: 16px;
         }
 
-        a {
+        :global(a) {
             margin-left: 20px;
             color: var(--color-dark-gray);
             text-align: right;
@@ -150,6 +150,11 @@ import IconLinks from "../components/IconLinks.astro";
             @media (max-width: 740px) {
                 margin: 0 10px;
             }
+        }
+
+        :global(a:hover),
+        :global(a:active) {
+            color: var(--color-primary);
         }
     }
 
