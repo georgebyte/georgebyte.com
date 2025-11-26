@@ -370,8 +370,9 @@ img {
     &:not(.articles-list__entry) {
         .excerpt {
             position: relative;
+            margin-top: 15px;
             margin-bottom: 30px;
-            padding: 50px 15px 15px;
+            padding: 35px 15px 15px;
             background-color: var(--color-very-light-gray);
             color: var(--color-dark-gray);
 

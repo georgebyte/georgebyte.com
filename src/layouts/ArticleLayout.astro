@@ -1,0 +1,50 @@
+---
+import DefaultLayout from "./DefaultLayout.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    datePublished: string;
+    dateLastUpdated?: string;
+}
+
+const {title, description, datePublished, dateLastUpdated} = Astro.props as Props;
+const formattedDateOptions: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+};
+const formattedDatePublished = new Date(datePublished).toLocaleDateString(
+    "en-US",
+    formattedDateOptions
+);
+const formattedDateLastUpdated = dateLastUpdated
+    ? new Date(dateLastUpdated).toLocaleDateString("en-US", formattedDateOptions)
+    : null;
+---
+
+<DefaultLayout title={title} description={description}>
+    <article class="entry">
+        <h1>{title}</h1>
+        <div class="date">
+            Published: {formattedDatePublished}
+            {
+                formattedDateLastUpdated && formattedDateLastUpdated !== formattedDatePublished && (
+                    <span> (last update: {formattedDateLastUpdated})</span>
+                )
+            }
+        </div>
+
+        <div class="entry__content">
+            <slot />
+            <div class="vertical-separator"></div>
+            <p>
+                Btw, let's connect on <a
+                    href="https://x.com/georgebyte"
+                    target="_blank"
+                    rel="noreferrer noopener">X</a
+                > if you enjoyed this article.
+            </p>
+        </div>
+    </article>
+</DefaultLayout>
