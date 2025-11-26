@@ -1,4 +1,4 @@
-@import './reset.css';
+@import "./reset.css";
 
 :root {
     --color-primary: #4183c4;
@@ -12,9 +12,9 @@
     --color-very-light-gray: #f6f6f6;
     --color-white: #fff;
 
-    --font-serif: 'Merriweather', 'Georgia', serif;
-    --font-sans: 'Helvetica Neue', 'Arial', sans-serif;
-    --font-titles: 'Open Sans Condensed', 'Arial', sans-serif;
+    --font-serif: "Merriweather", "Georgia", serif;
+    --font-sans: "Helvetica Neue", "Arial", sans-serif;
+    --font-titles: "Open Sans Condensed", "Arial", sans-serif;
 
     --transition-fast: 200ms ease-in-out;
 }
@@ -46,7 +46,7 @@ a {
     }
 }
 
-a[id^='jbref:'] {
+a[id^="jbref:"] {
     color: inherit;
     cursor: initial;
 }
@@ -134,11 +134,11 @@ sup {
 }
 
 .footnote:before {
-    content: '[';
+    content: "[";
 }
 
 .footnote:after {
-    content: ']';
+    content: "]";
 }
 
 .footnotes {
@@ -179,21 +179,26 @@ img {
 
 .image {
     display: block;
+}
 
-    &--centered {
-        text-align: center;
-    }
+.image--centered {
+    text-align: center;
 
-    &__img {
-        display: inline-block;
-        vertical-align: top;
+    .image__img {
+        margin-left: auto;
+        margin-right: auto;
     }
+}
 
-    &__description {
-        margin: 10px 0 0;
-        color: var(--color-lighter-gray);
-        font-size: 15px;
-    }
+.image__img {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.image__description {
+    margin: 10px 0 0;
+    color: var(--color-lighter-gray);
+    font-size: 15px;
 }
 
 .vertical-separator {
@@ -202,7 +207,7 @@ img {
     margin: 30px 0;
 
     &:before {
-        content: '...';
+        content: "...";
         display: inline-block;
         vertical-align: top;
         margin-top: -9px;
@@ -210,10 +215,10 @@ img {
         font-size: 32px;
         color: var(--color-light-gray);
     }
+}
 
-    &--condensed {
-        margin: 15px 0;
-    }
+.vertical-separator--condensed {
+    margin: 15px 0;
 }
 
 .quote {
@@ -227,10 +232,10 @@ img {
 
 .note {
     color: var(--color-lighter-gray);
+}
 
-    &__label {
-        font-weight: 600;
-    }
+.note__label {
+    font-weight: 600;
 }
 
 .checklist {
@@ -243,7 +248,7 @@ img {
         padding-left: 18px;
     }
 
-    input[type='checkbox'] {
+    input[type="checkbox"] {
         position: absolute;
         top: 6px;
         left: 0;
@@ -339,7 +344,7 @@ img {
 
 .clearfix:before,
 .clearfix:after {
-    content: ' ';
+    content: " ";
     display: table;
 }
 
@@ -376,7 +381,7 @@ img {
             color: var(--color-dark-gray);
 
             &:before {
-                content: 'tl;dr';
+                content: "tl;dr";
                 position: absolute;
                 top: 15px;
                 left: 15px;
