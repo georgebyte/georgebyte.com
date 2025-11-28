@@ -177,30 +177,6 @@ img {
     max-width: 100%;
 }
 
-.image {
-    display: block;
-}
-
-.image--centered {
-    text-align: center;
-
-    .image__img {
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-.image__img {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.image__description {
-    margin: 10px 0 0;
-    color: var(--color-lighter-gray);
-    font-size: 15px;
-}
-
 .vertical-separator {
     display: block;
     height: 5px;
@@ -320,15 +296,6 @@ img {
     &:active {
         color: var(--color-white);
         background-color: var(--color-primary-lighter);
-    }
-}
-
-.bmc-button {
-    display: inline-block;
-
-    > img {
-        display: inline-block;
-        vertical-align: top;
     }
 }
 

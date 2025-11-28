@@ -1,0 +1,56 @@
+---
+type BaseProps = {
+    alt: string;
+    description?: string | undefined;
+    align?: "center" | "left" | "right";
+};
+
+type Props =
+    | (BaseProps & {src: string; filename?: never})
+    | (BaseProps & {filename: string; src?: never});
+
+const {src, filename, alt, description, align = "center"} = Astro.props as Props;
+
+const outputSrc = src ? src : filename ? `/images/${filename}` : "";
+const outputAlt = `${alt}${description ? ` - ${description}` : ""}`;
+---
+
+<figure
+    class:list={[
+        {
+            "align-center": align === "center",
+            "align-left": align === "left",
+            "align-right": align === "right",
+        },
+    ]}
+>
+    <img src={outputSrc} alt={outputAlt} />
+    {description && <figcaption>{description}</figcaption>}
+</figure>
+
+<style>
+    figure {
+        &.align-center {
+            text-align: center;
+        }
+
+        &.align-left {
+            text-align: left;
+        }
+
+        &.align-right {
+            text-align: right;
+        }
+
+        img {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        figcaption {
+            margin: 10px 0 0;
+            color: var(--color-lighter-gray);
+            font-size: 15px;
+        }
+    }
+</style>
