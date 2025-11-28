@@ -46,3 +46,19 @@ export const siteConfig: SiteConfig = {
         github: `https://github.com/georgebyte`,
     },
 };
+
+const legacyArticlesPaths = [
+    "/a-tale-of-a-software-engineer-the-beginnings",
+    "/state-management-in-angular-with-observable-store-services",
+    "/scalable-angular-app-architecture",
+];
+
+export const legacyRedirects = {
+    ...legacyArticlesPaths.reduce(
+        (redirects, path) => {
+            redirects[path] = `/articles${path}`;
+            return redirects;
+        },
+        {} as Record<string, string>
+    ),
+};
