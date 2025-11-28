@@ -206,14 +206,6 @@ img {
     font-style: italic;
 }
 
-.note {
-    color: var(--color-lighter-gray);
-}
-
-.note__label {
-    font-weight: 600;
-}
-
 .checklist {
     margin: 15px 0;
     padding: 0;
