@@ -6,10 +6,10 @@ interface Props {
 const {label} = Astro.props as Props;
 ---
 
-<div class="note">
+<section role="note" class="note">
     {label && <p class="note-label">{label}</p>}
     <slot />
-</div>
+</section>
 
 <style>
     .note {
