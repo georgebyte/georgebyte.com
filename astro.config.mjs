@@ -8,6 +8,13 @@ const astroExpressiveCodeOptions = {
     defaultProps: {
         wrap: false,
     },
+    styleOverrides: {
+        codeFontSize: "0.9rem",
+        borderRadius: "0",
+        frames: {
+            shadowColor: "#f8f8f8",
+        },
+    },
 };
 
 // https://astro.build/config

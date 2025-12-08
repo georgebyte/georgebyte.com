@@ -9,7 +9,7 @@
     --color-gray: #666;
     --color-lighter-gray: #aaa;
     --color-light-gray: #eee;
-    --color-very-light-gray: #f6f6f6;
+    --color-very-light-gray: #f2f2f2;
     --color-white: #fff;
 
     --font-serif: "Merriweather", "Georgia", serif;
@@ -151,15 +151,13 @@ sup {
 }
 
 code {
-    font-family: monospace;
-}
-
-code.highlighter-rouge {
-    vertical-align: top;
-    color: var(--color-lighter-gray);
+    margin: 0;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
     background-color: var(--color-very-light-gray);
-    padding: 1px 4px;
-    border-radius: 2px;
+    font-family: monospace;
+    font-size: 85%;
+    white-space: break-spaces;
 }
 
 .expressive-code {
@@ -272,16 +270,6 @@ img {
         color: var(--color-white);
         background-color: var(--color-primary-lighter);
     }
-}
-
-::-moz-selection {
-    color: var(--color-black);
-    background: var(--color-light-gray);
-}
-
-::selection {
-    color: var(--color-black);
-    background: var(--color-light-gray);
 }
 
 .clearfix:before,
