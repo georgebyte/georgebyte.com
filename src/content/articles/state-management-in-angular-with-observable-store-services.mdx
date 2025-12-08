@@ -40,29 +40,27 @@ To showcase the usage of observable stores we'll build a simple app called _Coff
 
 At the core of observable store pattern is the abstract `Store` class. It leverages RxJS to achieve data flow similar to Redux. It is implemented like this:
 
-<span class="highlight-filename"><Link href="https://github.com/georgebyte/coffee-election/blob/master/src/app/store.ts">store.ts</Link></span>
-{/* {% highlight typescript linenos %}
-import {Observable, BehaviorSubject} from 'rxjs';
+```ts title="src/app/store.ts"
+import {Observable, BehaviorSubject} from "rxjs";
 
 export class Store<T> {
-state$: Observable<T>;
+    state$: Observable<T>;
     private _state$: BehaviorSubject<T>;
 
-    protected constructor (initialState: T) {
+    protected constructor(initialState: T) {
         this._state$ = new BehaviorSubject(initialState);
         this.state$ = this._state$.asObservable();
     }
 
-    get state (): T {
+    get state(): T {
         return this._state$.getValue();
     }
 
-    setState (nextState: T): void {
+    setState(nextState: T): void {
         this._state$.next(nextState);
     }
-
 }
-{% endhighlight %} \*/}
+```
 
 The store's state (`_state$`) is a RxJS `BehaviorSubject`. Changing the state means pushing new state object into the `_state$` stream via the `setState` method. Interested entities can subscribe to state updates by subscribing to the `state$` property. It is also possible to get the current state via the `state` property without subscribing to state updates.
 
@@ -72,76 +70,60 @@ The store's state (`_state$`) is a RxJS `BehaviorSubject`. Changing the state me
 
 Feature specific stores are Angular `Injectable`s extending the abstract `Store` class:
 
-<span class="highlight-filename">
-    <Link href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.store.ts">
-        coffee-election.store.ts
-    </Link>
-</span>
-{/* {% highlight typescript linenos %}
+```ts title="src/app/coffee-election.store.ts"
 @Injectable()
 export class CoffeeElectionStore extends Store<CoffeeElectionState> {
-...
+    ...
 }
-{% endhighlight %} */}
+```
 
 In the code snippet above note the `CoffeeElectionState` type used when extending the `Store`. Specifying `CoffeeElectionState` as the store type adds correct type definitions to the generic store.
 
 `CoffeeElectionState` is a class representing state object with initial values. In the _Coffee election_ example app it looks like this:
 
-<span class="highlight-filename">
-    <Link href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election-state.ts">
-        coffee-election-state.ts
-    </Link>
-</span>
-{/* {% highlight typescript linenos %}
+```ts title="src/app/coffee-election-state.ts"
 export class CoffeeElectionState {
-candidates: {name: string, votes: number}[] = [];
+    candidates: {name: string; votes: number}[] = [];
 }
-{% endhighlight %} */}
+```
 
 One last thing to do to make this simple example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize the state when creating a new instance of `CoffeeElectionStore`:
 
-<span class="highlight-filename">
-    <Link href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.store.ts">
-        coffee-election.store.ts
-    </Link>
-</span>
-{/* {% highlight typescript linenos %}
+```ts title="src/app/coffee-election.store.ts"
 constructor () {
-super(new CoffeeElectionState());
+    super(new CoffeeElectionState());
 }
-{% endhighlight %} */}
+```
 
 With the above code in place, each instance of `CoffeeElectionStore` has a way of setting its state and getting the current state or an observable of the state. To make it more useful, additional methods to modify the state (similar to Redux reducers) should be added:
 
-<span class="highlight-filename"><Link href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.store.ts">coffee-election.store.ts</Link></span>
-{/* {% highlight typescript linenos %}
+```ts title="src/app/coffee-election.store.ts"
 @Injectable()
 export class CoffeeElectionStore extends Store<CoffeeElectionState> {
-constructor () {
-super(new CoffeeElectionState());
-}
+    constructor() {
+        super(new CoffeeElectionState());
+    }
 
-addVote (candidate: {name: string, votes: number}): void {
-this.setState({
-...this.state,
-candidates: this.state.candidates.map(c => {
-if (c === candidate) {
-return {...c, votes: c.votes + 1};
-}
-return c;
-})
-});
-}
+    addVote(candidate: {name: string; votes: number}): void {
+        this.setState({
+            ...this.state,
+            candidates: this.state.candidates.map(c => {
+                if (c === candidate) {
+                    return {...c, votes: c.votes + 1};
+                }
+                return c;
+            }),
+        });
+    }
 
-addCandidate (name: string): void {
-this.setState({
-...this.state,
-candidates: [...this.state.candidates, {name: name, votes: 0}]
-});
+    addCandidate(name: string): void {
+        this.setState({
+            ...this.state,
+            candidates: [...this.state.candidates, {name: name, votes: 0}],
+        });
+    }
 }
-}
-{% endhighlight %} \*/}
+```
 
 In the example above `CoffeeElectionStore`'s functionality was extended by defining `addVote` and `addCandidate` methods. In essence, these methods modify the state by pushing new state objects into the observable `state$` stream via the `setState` method.
 
@@ -158,43 +140,40 @@ There are two types of stores that emerge from splitting:
 
 To set up a **store containing global state** accessed by different services and components, the store is listed as a provider in a module's providers list (root app module or a feature specific module). This way Angular adds a new global provider to its dependency injector. The state in global stores will be available until the page is reloaded.
 
-<span class="highlight-filename">app.module.ts</span>
-{/* {% highlight typescript linenos %}
+```ts title="app.module.ts"
 @NgModule({
-...
+    ...
 providers: [ExampleGlobalStore],
 })
 export class AppModule {
-...
+    ...
 }
-{% endhighlight %} */}
+```
 
 Note that **many global stores can be defined** as providers in app's modules, each managing its own subset of global state. The codebase stays much more maintainable this way, since each store follows the principle of single responsibility.
 
 To use a global store in different parts of the app, the store needs to be defined as their dependency. This way Angular injects the **same instance** of a global store (defined as singleton provider in `AppModule` or any other module) into every component/ service depending on it.
 
-<span class="highlight-filename">example.component.ts</span>
-{/* {% highlight typescript linenos %}
+```ts title="example.component.ts"
 @Component({ ... })
 export class ExampleComponent {
-constructor (private exampleGlobalStore: ExampleGlobalStore) {
-// ExampleComponent has access to global state via exampleGlobalStore reference
+    constructor (private exampleGlobalStore: ExampleGlobalStore) {
+        // ExampleComponent has access to global state via exampleGlobalStore reference
+    }
 }
-}
-{% endhighlight %} */}
+```
 
 Not all state needs to be global though. **Component specific state** should only exist in memory if a component is using it. Once user navigates to a different view and the component is destroyed, its state should be cleaned-up too. This can be achieved by adding the store to a list of component's providers. This way we get "self-cleaning" stores that are kept in memory as long as components using them are kept in memory.
 
-<span class="highlight-filename">example.component.ts</span>
-{/* {% highlight typescript linenos %}
+```ts title="example.component.ts"
 @Component({
-...
-providers: [ExampleComponentStore],
+    ...
+    providers: [ExampleComponentStore],
 })
 export class ExampleComponent {
-...
+    ...
 }
-{% endhighlight %} */}
+```
 
 Private component stores are used in the same way as global stores by defining them as dependencies in the components' constructors. The key difference is that these **component specific stores are not singletons**. Instead, Angular creates a new instance of the store each time a component depending on it is created. As a consequence, multiple instances of the same component can be present in the DOM at the same time, each one of them having its own store instance with its own state.
 
@@ -202,31 +181,29 @@ Private component stores are used in the same way as global stores by defining t
 
 Once a store instance is injected into a component or service, this component/ service can subscribe to state updates. In the example of `coffee-election` component, subscribing to state updates looks like this:
 
-<span class="highlight-filename"><Link href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.component.ts">coffee-election.component.ts</Link></span>
-{/* {% highlight typescript linenos %}
+```ts title="src/app/coffee-election.component.ts"
 @Component({ ... })
 export class CoffeeElectionComponent implements OnInit {
-constructor (private store: CoffeeElectionStore) {}
+    constructor(private store: CoffeeElectionStore) {}
 
-ngOnInit () {
-this.store.state$.subscribe(state => {
-// Logic to execute on state update
-});
+    ngOnInit() {
+        this.store.state$.subscribe(state => {
+            // Logic to execute on state update
+        });
+    }
 }
-}
-{% endhighlight %} \*/}
+```
 
 It is also possible to only subscribe to updates of a subset of state:
 
-<span></span>
-{/* {% highlight typescript linenos %}
+```ts
 this.store.state$
-.map(state => state.candidates)
-.distinctUntilChanged()
-.subscribe(candidates => {
-// Logic to execute on state.candidates update
-});
-{% endhighlight %} */}
+    .map(state => state.candidates)
+    .distinctUntilChanged()
+    .subscribe(candidates => {
+        // Logic to execute on state.candidates update
+    });
+```
 
 Note that these **subscriptions must be cleaned up** before a component is destroyed in order to prevent memory leaks. We won't go into details about unsubscribing in this article. Check out <Link href="https://stackoverflow.com/a/41177163">this topic on Stack Overflow</Link> to learn more.
 
@@ -234,17 +211,15 @@ Note that these **subscriptions must be cleaned up** before a component is destr
 
 In case a component doesn't execute any logic on state update and it only serves as a proxy to pass the state to its template, Angular provides a nice shortcut to subscribe to state updates directly from templates via the `async` pipe. `ngFor` in the example below will redraw a list of candidates every time the state is updated.
 
-<span class="highlight-filename"><Link href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.component.html">coffee-election.component.html</Link></span>
-{/* {% highlight html linenos %}
-
+```html title="src/app/coffee-election.component.html"
 <ul>
-  <li *ngFor="let candidate of (store.state$ | async).candidates">
-    <span>{% raw %}{{ candidate.name }}{% endraw %}</span>
-    <span>Votes: {% raw %}{{ candidate.votes }}{% endraw %}</span>
-    <button (click)="store.addVote(candidate)">+</button>
-  </li>
+    <li *ngFor="let candidate of (store.state$ | async).candidates">
+        <span>{% raw %}{{ candidate.name }}{% endraw %}</span>
+        <span>Votes: {% raw %}{{ candidate.votes }}{% endraw %}</span>
+        <button (click)="store.addVote(candidate)">+</button>
+    </li>
 </ul>
-{% endhighlight %} */}
+```
 
 These subscriptions to state updates via `async` pipes are **automatically cleaned up** by the framework upon destroying the component.
 
@@ -258,37 +233,38 @@ Testing state modifying store methods is pretty straightforward. It consists of 
 
 In practice unit tests to test the store from the _Coffee election_ example look like this:
 
-<span class="highlight-filename"><Link href="https://github.com/georgebyte/coffee-election/blob/master/src/app/coffee-election.store.spec.ts">coffee-election.store.spec.ts</Link></span>
-{/* {% highlight typescript linenos %}
-describe('CoffeeElectionStore', () => {
-let store: CoffeeElectionStore;
+```ts title="src/app/coffee-election.store.spec.ts"
+describe("CoffeeElectionStore", () => {
+    let store: CoffeeElectionStore;
 
-const MOCK_CANDIDATES = [{name: 'Test candidate 1', votes: 0}, {name: 'Test candidate 2', votes: 5}];
+    const MOCK_CANDIDATES = [
+        {name: "Test candidate 1", votes: 0},
+        {name: "Test candidate 2", votes: 5},
+    ];
 
-beforeEach(() => {
-TestBed.configureTestingModule({
-providers: [CoffeeElectionStore]
-});
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [CoffeeElectionStore],
+        });
 
-    store = new CoffeeElectionStore();
-    store.setState({
-      candidates: MOCK_CANDIDATES
+        store = new CoffeeElectionStore();
+        store.setState({
+            candidates: MOCK_CANDIDATES,
+        });
     });
 
-});
+    it("should correctly add a vote to a candidate", () => {
+        store.addVote(MOCK_CANDIDATES[1]);
+        expect(store.state.candidates[0].votes).toBe(0);
+        expect(store.state.candidates[1].votes).toBe(6);
+    });
 
-it('should correctly add a vote to a candidate', () => {
-store.addVote(MOCK_CANDIDATES[1]);
-expect(store.state.candidates[0].votes).toBe(0);
-expect(store.state.candidates[1].votes).toBe(6);
+    it("should correctly add a candidate", () => {
+        store.addCandidate("Test candidate 3");
+        expect(store.state.candidates[2].name).toBe("Test candidate 3");
+    });
 });
-
-it('should correctly add a candidate', () => {
-store.addCandidate('Test candidate 3');
-expect(store.state.candidates[2].name).toBe('Test candidate 3');
-});
-});
-{% endhighlight %} \*/}
+```
 
 ## Conclusion
 
