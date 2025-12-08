@@ -162,6 +162,10 @@ code.highlighter-rouge {
     border-radius: 2px;
 }
 
+.expressive-code {
+    margin: 20px 0;
+}
+
 strong,
 b {
     font-weight: bold;
@@ -221,27 +225,6 @@ img {
         top: 6px;
         left: 0;
         margin: 0;
-    }
-}
-
-.highlight-filename {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: -20px;
-    padding: 2px 8px;
-    background-color: var(--color-very-light-gray);
-    border: 1px solid var(--color-light-gray);
-    border-bottom: 0;
-    color: var(--color-lighter-gray);
-    font-size: 16px;
-    font-family: monospace;
-
-    a {
-        color: var(--color-lighter-gray);
-
-        &:hover {
-            text-decoration: underline;
-        }
     }
 }
 
