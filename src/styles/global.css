@@ -179,10 +179,12 @@ img {
     max-width: 100%;
 }
 
-.vertical-separator {
+hr.three-dots {
     display: block;
     height: 5px;
     margin: 30px 0;
+    color: transparent;
+    border: none;
 
     &:before {
         content: "...";
@@ -195,7 +197,7 @@ img {
     }
 }
 
-.vertical-separator--condensed {
+hr.three-dots--condensed {
     margin: 15px 0;
 }
 
