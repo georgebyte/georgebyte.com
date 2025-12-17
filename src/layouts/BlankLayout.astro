@@ -11,7 +11,7 @@ interface Props {
 }
 
 const {title, htmlTitle, description, excerpt, featuredImage} = Astro.props as Props;
-const computedTitle = htmlTitle ?? (title ? `${title} | ${siteConfig.name}` : siteConfig.name);
+const computedTitle = htmlTitle ?? (title ? `${title} • ${siteConfig.name}` : siteConfig.name);
 const metaDescription = description ?? excerpt ?? siteConfig.description;
 const canonicalUrl = new URL(Astro.url.pathname, siteConfig.url).toString();
 const openGraphTitle = title ?? siteConfig.name;
