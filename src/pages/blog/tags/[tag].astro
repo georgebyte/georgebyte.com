@@ -1,51 +1,32 @@
 ---
-import {getCollection} from "astro:content";
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
 import BlogPostsList from "../../../components/BlogPostsList.astro";
-import {slugifyTag} from "../../../utils/slugifyTag";
+import type {CollectionEntry} from "astro:content";
+import {getBlogTags} from "../../../utils/blogTags";
 
 interface Props {
     tagLabel: string;
+    blogPosts: CollectionEntry<"blog-posts">[];
 }
 
 export async function getStaticPaths() {
-    const blogPosts = await getCollection("blog-posts");
-
-    const tagSlugToLabel = new Map<string, string>();
-    for (const blogPost of blogPosts) {
-        for (const tagLabel of blogPost.data.tags ?? []) {
-            const tagSlug = slugifyTag(tagLabel);
-            if (!tagSlug) {
-                continue;
-            }
-
-            if (!tagSlugToLabel.has(tagSlug)) {
-                tagSlugToLabel.set(tagSlug, tagLabel);
-            }
-        }
-    }
-
-    return Array.from(tagSlugToLabel.entries()).map(([tagSlug, tagLabel]) => ({
-        params: {tag: tagSlug},
-        props: {tagLabel},
+    const tags = await getBlogTags();
+    return tags.map(tag => ({
+        params: {tag: tag.slug},
+        props: {tagLabel: tag.label, blogPosts: tag.posts},
     }));
 }
 
-const tagSlug = Astro.params.tag;
-const {tagLabel} = Astro.props as Props;
+const {tagLabel, blogPosts} = Astro.props as Props;
 
-const blogPosts = await getCollection("blog-posts", ({data}) => {
-    return (data.tags ?? []).some(tag => slugifyTag(tag) === tagSlug);
-});
-
-const title = `#${tagLabel}`;
+const title = `Tag: ${tagLabel}`;
+const metaDescription = `George Byte's blog posts tagged with #${tagLabel}`;
 const blogPostsCount = blogPosts.length;
-const pluralSuffix = blogPostsCount === 1 ? "post" : "posts";
-const description = `${blogPostsCount} blog ${pluralSuffix} tagged with #${tagLabel}`;
+const description = `${blogPostsCount} ${blogPostsCount === 1 ? "post" : "posts"} tagged with #${tagLabel}`;
 ---
 
-<DefaultLayout title={title} description={description}>
-    <h1>{title}</h1>
+<DefaultLayout title={title} description={metaDescription}>
+    <h1>#{tagLabel}</h1>
     <p>{description}</p>
     <BlogPostsList blogPosts={blogPosts} />
 </DefaultLayout>

@@ -1,0 +1,22 @@
+---
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import {getBlogTags} from "../../../utils/blogTags";
+
+const tags = await getBlogTags();
+const title = "Tags";
+const metaDescription = "Browse George Byte's blog posts by tag";
+---
+
+<DefaultLayout title={title} description={metaDescription}>
+    <h1>{title}</h1>
+    <ul>
+        {
+            tags.map(tag => (
+                <li>
+                    <a href={`/blog/tags/${tag.slug}`}>#{tag.label}</a> ({tag.posts.length}{" "}
+                    {tag.posts.length === 1 ? "post" : "posts"})
+                </li>
+            ))
+        }
+    </ul>
+</DefaultLayout>
