@@ -1,0 +1,10 @@
+---
+import {getCollection} from "astro:content";
+import BlogPostsListLayout from "../layouts/BlogPostsListLayout.astro";
+
+const blogPosts = await getCollection("blog-posts");
+const title = "Blog";
+const description = "My writings about pretty much anything (mostly web development).";
+---
+
+<BlogPostsListLayout title={title} description={description} blogPosts={blogPosts} />
