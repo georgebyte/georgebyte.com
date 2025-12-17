@@ -1,0 +1,51 @@
+---
+import {getCollection} from "astro:content";
+import DefaultLayout from "../../../layouts/DefaultLayout.astro";
+import BlogPostsList from "../../../components/BlogPostsList.astro";
+import {slugifyTag} from "../../../utils/slugifyTag";
+
+interface Props {
+    tagLabel: string;
+}
+
+export async function getStaticPaths() {
+    const blogPosts = await getCollection("blog-posts");
+
+    const tagSlugToLabel = new Map<string, string>();
+    for (const blogPost of blogPosts) {
+        for (const tagLabel of blogPost.data.tags ?? []) {
+            const tagSlug = slugifyTag(tagLabel);
+            if (!tagSlug) {
+                continue;
+            }
+
+            if (!tagSlugToLabel.has(tagSlug)) {
+                tagSlugToLabel.set(tagSlug, tagLabel);
+            }
+        }
+    }
+
+    return Array.from(tagSlugToLabel.entries()).map(([tagSlug, tagLabel]) => ({
+        params: {tag: tagSlug},
+        props: {tagLabel},
+    }));
+}
+
+const tagSlug = Astro.params.tag;
+const {tagLabel} = Astro.props as Props;
+
+const blogPosts = await getCollection("blog-posts", ({data}) => {
+    return (data.tags ?? []).some(tag => slugifyTag(tag) === tagSlug);
+});
+
+const title = `#${tagLabel}`;
+const blogPostsCount = blogPosts.length;
+const pluralSuffix = blogPostsCount === 1 ? "post" : "posts";
+const description = `${blogPostsCount} blog ${pluralSuffix} tagged with #${tagLabel}`;
+---
+
+<DefaultLayout title={title} description={description}>
+    <h1>{title}</h1>
+    <p>{description}</p>
+    <BlogPostsList blogPosts={blogPosts} />
+</DefaultLayout>
