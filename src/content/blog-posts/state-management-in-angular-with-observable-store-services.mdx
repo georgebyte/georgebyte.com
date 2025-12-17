@@ -8,7 +8,7 @@ excerpt: |
 ---
 
 import Link from "@components/Link.astro";
-import ArticleNote from "@components/ArticleNote.astro";
+import BlogPostNote from "@components/BlogPostNote.astro";
 
 Effective state management in front-end development is a challenge, especially in larger and more complex single page applications. Right now, Redux is probably the most popular way of managing state. It is based on a few main ideas:
 
@@ -27,14 +27,14 @@ This article explains how one can use the observable store pattern we developed 
 
 To showcase the usage of observable stores we'll build a simple app called _Coffee election_ that lets its users vote for their favorite type of coffee and add their own coffee type to the list of candidates. The source code is available on GitHub: <Link href="https://github.com/georgebyte/coffee-election">github.com/georgebyte/coffee-election</Link>.
 
-<ArticleNote label="Edit (March 20, 2019):">
+<BlogPostNote label="Edit (March 20, 2019):">
     Many readers have been asking about how to best integrate observable store pattern into an app.
     I've published an article about scalable Angular app architecture which uses observable stores
     to manage state. The article and accompanying example app should give you a better understanding
     of how to use the ideas from this article to build production ready front-end apps. It's
     available here:{" "}
     <Link href="/scalable-angular-app-architecture/">Scalable Angular app architecture</Link>.
-</ArticleNote>
+</BlogPostNote>
 
 ## Abstract `Store` class (get it from npm: <Link href="https://www.npmjs.com/package/rxjs-observable-store">rxjs-observable-store</Link>)
 
@@ -272,7 +272,7 @@ The purpose of this article was to present how one can leverage the built in fea
 
 If you are interested in how to use the ideas from this article to build production ready front-end apps, you should check out my article about <Link href="/scalable-angular-app-architecture/">Scalable Angular app architecture</Link>.
 
-<ArticleNote label="Edit (March 4, 2018):">
+<BlogPostNote label="Edit (March 4, 2018):">
     Some readers pointed out that different state management libraries (e.g. ngrx) provide the same functionality as observable store services and were wondering why one may use observable store pattern instead of these libraries.
 
     Observable store pattern I described here is a much simpler solution in my opinion.
@@ -283,4 +283,4 @@ If you are interested in how to use the ideas from this article to build product
 
     library to manage state even in larger applications. This "stripped down" implementation of Redux pattern covered pretty much all of use cases in our app without introducing much additional complexity. I believe less complexity comes from the fact that observable store services heavily depend on Angular features (dependency injection, async pipes etc.) to do a lot of heavy lifting (e.g. cleaning-up unused state when components are destroyed, creating new instances of stores when needed etc.).
 
-</ArticleNote>
+</BlogPostNote>
