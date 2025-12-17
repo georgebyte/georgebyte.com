@@ -1,6 +1,6 @@
 ---
 import DefaultLayout from "./DefaultLayout.astro";
-import BlogPostsListItem from "../components/BlogPostsListItem.astro";
+import BlogPostsList from "../components/BlogPostsList.astro";
 import type {CollectionEntry} from "astro:content";
 
 interface Props {
@@ -10,32 +10,10 @@ interface Props {
 }
 
 const {title, description, blogPosts} = Astro.props as Props;
-
-const sortedBlogPosts = [...blogPosts].sort((a, b) => {
-    return new Date(b.data.datePublished).getTime() - new Date(a.data.datePublished).getTime();
-});
-
-const blogPostsGroupedByYear = new Map<string, CollectionEntry<"blog-posts">[]>();
-for (const blogPost of sortedBlogPosts) {
-    const year = new Date(blogPost.data.datePublished).getFullYear().toString();
-    if (!blogPostsGroupedByYear.has(year)) {
-        blogPostsGroupedByYear.set(year, []);
-    }
-    blogPostsGroupedByYear.get(year)!.push(blogPost);
-}
 ---
 
 <DefaultLayout title={title} description={description}>
     <h1>{title}</h1>
     {description && <p>{description}</p>}
-    {
-        Array.from(blogPostsGroupedByYear.entries()).map(([year, blogPosts]) => (
-            <section>
-                <h2>{year}</h2>
-                {blogPosts.map(blogPost => (
-                    <BlogPostsListItem blogPost={blogPost} />
-                ))}
-            </section>
-        ))
-    }
+    <BlogPostsList blogPosts={blogPosts} />
 </DefaultLayout>

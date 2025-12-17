@@ -1,0 +1,38 @@
+---
+import type {CollectionEntry} from "astro:content";
+import BlogPostsListItem from "./BlogPostsListItem.astro";
+
+interface Props {
+    blogPosts: CollectionEntry<"blog-posts">[];
+}
+
+const {blogPosts} = Astro.props as Props;
+
+const sortedBlogPosts = [...blogPosts].sort((a, b) => {
+    return new Date(b.data.datePublished).getTime() - new Date(a.data.datePublished).getTime();
+});
+
+const blogPostsGroupedByYear = new Map<string, CollectionEntry<"blog-posts">[]>();
+for (const blogPost of sortedBlogPosts) {
+    const year = new Date(blogPost.data.datePublished).getFullYear().toString();
+
+    let group = blogPostsGroupedByYear.get(year);
+    if (!group) {
+        group = [];
+        blogPostsGroupedByYear.set(year, group);
+    }
+    group.push(blogPost);
+}
+---
+
+{
+    Array.from(blogPostsGroupedByYear.entries()).map(([year, blogPostsForYear]) => (
+        <section>
+            <h2>{year}</h2>
+            {blogPostsForYear.map(blogPost => (
+                <BlogPostsListItem blogPost={blogPost} />
+            ))}
+        </section>
+    ))
+}
+
