@@ -36,7 +36,7 @@ export const siteConfig: SiteConfig = {
     googleAnalyticsId: "UA-46129147-5",
     navigationLinks: [
         {href: "/", label: "About"},
-        {href: "/articles", label: "Articles"},
+        {href: "/blog", label: "Blog"},
         {href: "/cv", label: "CV", external: true},
     ],
     socialLinks: {
@@ -47,16 +47,16 @@ export const siteConfig: SiteConfig = {
     },
 };
 
-const legacyArticlesPaths = [
+const legacyBlogPostsPaths = [
     "/a-tale-of-a-software-engineer-the-beginnings",
     "/state-management-in-angular-with-observable-store-services",
     "/scalable-angular-app-architecture",
 ];
 
 export const legacyRedirects = {
-    ...legacyArticlesPaths.reduce(
+    ...legacyBlogPostsPaths.reduce(
         (redirects, path) => {
-            redirects[path] = `/articles${path}`;
+            redirects[path] = `/blog${path}`;
             return redirects;
         },
         {} as Record<string, string>
