@@ -1,5 +1,5 @@
-import {getCollection, type CollectionEntry} from "astro:content";
-import {slugifyTag} from "./slugifyTag";
+import {type CollectionEntry} from "astro:content";
+import {getAllArticles} from "./articles";
 
 type TagWithPosts<T extends "articles"> = {
     slug: string;
@@ -9,15 +9,7 @@ type TagWithPosts<T extends "articles"> = {
 
 type TagWithArticles = TagWithPosts<"articles">;
 
-let articlesPromise: Promise<CollectionEntry<"articles">[]> | undefined;
 let blogTagsPromise: Promise<TagWithArticles[]> | undefined;
-
-async function getAllArticles(): Promise<CollectionEntry<"articles">[]> {
-    if (!articlesPromise) {
-        articlesPromise = getCollection("articles");
-    }
-    return articlesPromise;
-}
 
 export async function getBlogTags(): Promise<TagWithArticles[]> {
     if (blogTagsPromise) return blogTagsPromise;
@@ -31,12 +23,12 @@ export async function getBlogTags(): Promise<TagWithArticles[]> {
                 const slug = slugifyTag(tagLabel);
                 if (!slug) continue;
 
-                let info = tagsBySlug.get(slug);
-                if (!info) {
-                    info = {slug, label: tagLabel, posts: []};
-                    tagsBySlug.set(slug, info);
+                let tagData = tagsBySlug.get(slug);
+                if (!tagData) {
+                    tagData = {slug, label: tagLabel, posts: []};
+                    tagsBySlug.set(slug, tagData);
                 }
-                info.posts.push(article);
+                tagData.posts.push(article);
             }
         }
 
@@ -46,4 +38,14 @@ export async function getBlogTags(): Promise<TagWithArticles[]> {
     })();
 
     return blogTagsPromise;
+}
+
+function slugifyTag(tag: string): string {
+    return tag
+        .trim()
+        .toLowerCase()
+        .replace(/['’]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
 }
