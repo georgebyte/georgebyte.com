@@ -4,7 +4,7 @@ import {getBlogTags} from "../../../utils/blogTags";
 
 const tags = await getBlogTags();
 const title = "Tags";
-const metaDescription = "Browse George Byte's blog posts by tag";
+const metaDescription = "Browse George Byte's blog articles by tag";
 ---
 
 <DefaultLayout title={title} description={metaDescription}>
@@ -14,7 +14,7 @@ const metaDescription = "Browse George Byte's blog posts by tag";
             tags.map(tag => (
                 <li>
                     <a href={`/blog/tags/${tag.slug}`}>#{tag.label}</a> ({tag.posts.length}{" "}
-                    {tag.posts.length === 1 ? "post" : "posts"})
+                    {tag.posts.length === 1 ? "article" : "articles"})
                 </li>
             ))
         }

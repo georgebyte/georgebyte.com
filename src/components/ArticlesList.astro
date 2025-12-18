@@ -1,0 +1,37 @@
+---
+import type {CollectionEntry} from "astro:content";
+import ArticlesListItem from "./ArticlesListItem.astro";
+
+interface Props {
+    articles: CollectionEntry<"articles">[];
+}
+
+const {articles} = Astro.props as Props;
+
+const sortedArticles = [...articles].sort((a, b) => {
+    return new Date(b.data.datePublished).getTime() - new Date(a.data.datePublished).getTime();
+});
+
+const articlesGroupedByYear = new Map<string, CollectionEntry<"articles">[]>();
+for (const article of sortedArticles) {
+    const year = new Date(article.data.datePublished).getFullYear().toString();
+
+    let group = articlesGroupedByYear.get(year);
+    if (!group) {
+        group = [];
+        articlesGroupedByYear.set(year, group);
+    }
+    group.push(article);
+}
+---
+
+{
+    Array.from(articlesGroupedByYear.entries()).map(([year, articlesForYear]) => (
+        <section>
+            <h2>{year}</h2>
+            {articlesForYear.map(article => (
+                <ArticlesListItem article={article} />
+            ))}
+        </section>
+    ))
+}

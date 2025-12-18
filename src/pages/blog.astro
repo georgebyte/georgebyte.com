@@ -1,16 +1,16 @@
 ---
 import {getCollection} from "astro:content";
 import DefaultLayout from "../layouts/DefaultLayout.astro";
-import BlogPostsList from "../components/BlogPostsList.astro";
+import ArticlesList from "../components/ArticlesList.astro";
 
-const blogPosts = await getCollection("blog-posts");
+const articles = await getCollection("articles");
 const title = "Blog";
-const metaDescription = "George Byte's blog posts";
+const metaDescription = "All George Byte's blog articles";
 const description = "My writings about pretty much anything (mostly web development).";
 ---
 
 <DefaultLayout title={title} description={metaDescription}>
     <h1>{title}</h1>
     <p>{description}</p>
-    <BlogPostsList blogPosts={blogPosts} />
+    <ArticlesList articles={articles} />
 </DefaultLayout>

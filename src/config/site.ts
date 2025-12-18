@@ -47,14 +47,14 @@ export const siteConfig: SiteConfig = {
     },
 };
 
-const legacyBlogPostsPaths = [
+const legacyArticlesPaths = [
     "/a-tale-of-a-software-engineer-the-beginnings",
     "/state-management-in-angular-with-observable-store-services",
     "/scalable-angular-app-architecture",
 ];
 
 export const legacyRedirects = {
-    ...legacyBlogPostsPaths.reduce(
+    ...legacyArticlesPaths.reduce(
         (redirects, path) => {
             redirects[path] = `/blog${path}`;
             return redirects;

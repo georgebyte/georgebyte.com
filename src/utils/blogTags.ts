@@ -1,31 +1,33 @@
 import {getCollection, type CollectionEntry} from "astro:content";
 import {slugifyTag} from "./slugifyTag";
 
-export interface BlogTagInfo {
+type TagWithPosts<T extends "articles"> = {
     slug: string;
     label: string;
-    posts: CollectionEntry<"blog-posts">[];
-}
+    posts: CollectionEntry<T>[];
+};
 
-let blogPostsPromise: Promise<CollectionEntry<"blog-posts">[]> | undefined;
-let blogTagsPromise: Promise<BlogTagInfo[]> | undefined;
+type TagWithArticles = TagWithPosts<"articles">;
 
-export async function getAllBlogPosts(): Promise<CollectionEntry<"blog-posts">[]> {
-    if (!blogPostsPromise) {
-        blogPostsPromise = getCollection("blog-posts");
+let articlesPromise: Promise<CollectionEntry<"articles">[]> | undefined;
+let blogTagsPromise: Promise<TagWithArticles[]> | undefined;
+
+async function getAllArticles(): Promise<CollectionEntry<"articles">[]> {
+    if (!articlesPromise) {
+        articlesPromise = getCollection("articles");
     }
-    return blogPostsPromise;
+    return articlesPromise;
 }
 
-export async function getBlogTags(): Promise<BlogTagInfo[]> {
+export async function getBlogTags(): Promise<TagWithArticles[]> {
     if (blogTagsPromise) return blogTagsPromise;
 
     blogTagsPromise = (async () => {
-        const blogPosts = await getAllBlogPosts();
+        const articles = await getAllArticles();
 
-        const tagsBySlug = new Map<string, BlogTagInfo>();
-        for (const blogPost of blogPosts) {
-            for (const tagLabel of blogPost.data.tags ?? []) {
+        const tagsBySlug = new Map<string, TagWithArticles>();
+        for (const article of articles) {
+            for (const tagLabel of article.data.tags ?? []) {
                 const slug = slugifyTag(tagLabel);
                 if (!slug) continue;
 
@@ -34,7 +36,7 @@ export async function getBlogTags(): Promise<BlogTagInfo[]> {
                     info = {slug, label: tagLabel, posts: []};
                     tagsBySlug.set(slug, info);
                 }
-                info.posts.push(blogPost);
+                info.posts.push(article);
             }
         }
 

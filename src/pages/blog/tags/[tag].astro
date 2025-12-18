@@ -1,32 +1,32 @@
 ---
 import DefaultLayout from "../../../layouts/DefaultLayout.astro";
-import BlogPostsList from "../../../components/BlogPostsList.astro";
+import ArticlesList from "../../../components/ArticlesList.astro";
 import type {CollectionEntry} from "astro:content";
 import {getBlogTags} from "../../../utils/blogTags";
 
 interface Props {
     tagLabel: string;
-    blogPosts: CollectionEntry<"blog-posts">[];
+    articles: CollectionEntry<"articles">[];
 }
 
 export async function getStaticPaths() {
     const tags = await getBlogTags();
     return tags.map(tag => ({
         params: {tag: tag.slug},
-        props: {tagLabel: tag.label, blogPosts: tag.posts},
+        props: {tagLabel: tag.label, articles: tag.posts},
     }));
 }
 
-const {tagLabel, blogPosts} = Astro.props as Props;
+const {tagLabel, articles} = Astro.props as Props;
 
 const title = `Tag: ${tagLabel}`;
-const metaDescription = `George Byte's blog posts tagged with #${tagLabel}`;
-const blogPostsCount = blogPosts.length;
-const description = `${blogPostsCount} ${blogPostsCount === 1 ? "post" : "posts"} tagged with #${tagLabel}`;
+const metaDescription = `George Byte's blog articles tagged with #${tagLabel}`;
+const articlesCount = articles.length;
+const description = `${articlesCount} ${articlesCount === 1 ? "article" : "articles"} tagged with #${tagLabel}`;
 ---
 
 <DefaultLayout title={title} description={metaDescription}>
     <h1>#{tagLabel}</h1>
     <p>{description}</p>
-    <BlogPostsList blogPosts={blogPosts} />
+    <ArticlesList articles={articles} />
 </DefaultLayout>
