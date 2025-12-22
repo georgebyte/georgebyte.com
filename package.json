@@ -8,12 +8,11 @@
         "build": "astro build",
         "preview": "astro preview"
     },
-    "dependencies": {
+    "dependencies": {},
+    "devDependencies": {
         "@astrojs/mdx": "^4.3.12",
         "astro": "^5.16.4",
-        "astro-expressive-code": "^0.41.3"
-    },
-    "devDependencies": {
+        "astro-expressive-code": "^0.41.3",
         "autoprefixer": "^10.4.22",
         "postcss": "^8.5.6",
         "postcss-nesting": "^13.0.2",
