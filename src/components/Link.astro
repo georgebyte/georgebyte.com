@@ -1,7 +1,7 @@
 ---
 interface Props {
     href: string;
-    target?: string | undefined;
+    target?: "_self" | "_blank" | undefined;
 }
 
 const {href, target = "_blank"} = Astro.props as Props;
