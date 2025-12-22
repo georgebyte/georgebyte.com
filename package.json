@@ -28,5 +28,10 @@
         "**/*": [
             "prettier --check --ignore-unknown"
         ]
-    }
+    },
+    "browserslist": [
+        "defaults",
+        "not IE 11",
+        "not op_mini all"
+    ]
 }
