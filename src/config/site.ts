@@ -36,8 +36,8 @@ export const siteConfig: SiteConfig = {
     googleAnalyticsId: "UA-46129147-5",
     navigationLinks: [
         {href: "/", label: "About"},
-        {href: "/blog", label: "Blog"},
-        {href: "/cv", label: "CV", external: true},
+        {href: "/blog/", label: "Blog"},
+        {href: "/cv/", label: "CV", external: true},
     ],
     socialLinks: {
         x: `https://www.x.com/georgebyte`,
@@ -56,7 +56,7 @@ const legacyArticlesPaths = [
 export const legacyRedirects = {
     ...legacyArticlesPaths.reduce(
         (redirects, path) => {
-            redirects[path] = `/blog${path}`;
+            redirects[path] = `/blog${path}/`;
             return redirects;
         },
         {} as Record<string, string>

@@ -20,6 +20,7 @@ const astroExpressiveCodeOptions = {
 // https://astro.build/config
 export default defineConfig({
     site: siteConfig.url,
+    trailingSlash: "always",
     integrations: [astroExpressiveCode(astroExpressiveCodeOptions), mdx()],
     redirects: {...legacyRedirects},
 });

@@ -13,7 +13,7 @@ const metaDescription = "Browse George Byte's blog articles by tag";
         {
             tags.map(tag => (
                 <li>
-                    <a href={`/blog/tags/${tag.slug}`}>#{tag.label}</a> ({tag.posts.length}{" "}
+                    <a href={`/blog/tags/${tag.slug}/`}>#{tag.label}</a> ({tag.posts.length}{" "}
                     {tag.posts.length === 1 ? "article" : "articles"})
                 </li>
             ))
