@@ -74,7 +74,7 @@ Feature specific stores are Angular `Injectable`s extending the abstract `Store`
 ```ts title="src/app/coffee-election.store.ts"
 @Injectable()
 export class CoffeeElectionStore extends Store<CoffeeElectionState> {
-    ...
+    // ...
 }
 ```
 
@@ -91,8 +91,11 @@ export class CoffeeElectionState {
 One last thing to do to make this simple example work is to add a `super` call to `CoffeeElectionStore`'s constructor in order to correctly initialize the state when creating a new instance of `CoffeeElectionStore`:
 
 ```ts title="src/app/coffee-election.store.ts"
-constructor () {
-    super(new CoffeeElectionState());
+@Injectable()
+export class CoffeeElectionStore extends Store<CoffeeElectionState> {
+    constructor() {
+        super(new CoffeeElectionState());
+    }
 }
 ```
 
@@ -143,11 +146,11 @@ To set up a **store containing global state** accessed by different services and
 
 ```ts title="app.module.ts"
 @NgModule({
-    ...
-providers: [ExampleGlobalStore],
+    // ...
+    providers: [ExampleGlobalStore],
 })
 export class AppModule {
-    ...
+    // ...
 }
 ```
 
@@ -156,9 +159,11 @@ Note that **many global stores can be defined** as providers in app's modules, e
 To use a global store in different parts of the app, the store needs to be defined as their dependency. This way Angular injects the **same instance** of a global store (defined as singleton provider in `AppModule` or any other module) into every component/ service depending on it.
 
 ```ts title="example.component.ts"
-@Component({ ... })
+@Component({
+    // ...
+})
 export class ExampleComponent {
-    constructor (private exampleGlobalStore: ExampleGlobalStore) {
+    constructor(private exampleGlobalStore: ExampleGlobalStore) {
         // ExampleComponent has access to global state via exampleGlobalStore reference
     }
 }
@@ -168,11 +173,11 @@ Not all state needs to be global though. **Component specific state** should onl
 
 ```ts title="example.component.ts"
 @Component({
-    ...
+    // ...
     providers: [ExampleComponentStore],
 })
 export class ExampleComponent {
-    ...
+    // ...
 }
 ```
 
@@ -183,7 +188,9 @@ Private component stores are used in the same way as global stores by defining t
 Once a store instance is injected into a component or service, this component/ service can subscribe to state updates. In the example of `coffee-election` component, subscribing to state updates looks like this:
 
 ```ts title="src/app/coffee-election.component.ts"
-@Component({ ... })
+@Component({
+    // ...
+})
 export class CoffeeElectionComponent implements OnInit {
     constructor(private store: CoffeeElectionStore) {}
 
@@ -280,8 +287,6 @@ If you are interested in how to use the ideas from this article to build product
 
     I used ngrx in the past and I think it is a really good library for state management. But it also takes longer to learn it, because of all the features it supports.
 
-    As it turned out at my previous company, one may not need a full blown state management
-
-    library to manage state even in larger applications. This "stripped down" implementation of Redux pattern covered pretty much all of use cases in our app without introducing much additional complexity. I believe less complexity comes from the fact that observable store services heavily depend on Angular features (dependency injection, async pipes etc.) to do a lot of heavy lifting (e.g. cleaning-up unused state when components are destroyed, creating new instances of stores when needed etc.).
+    As it turned out at my previous company, one may not need a full blown state management library to manage state even in larger applications. This "stripped down" implementation of Redux pattern covered pretty much all of use cases in our app without introducing much additional complexity. I believe less complexity comes from the fact that observable store services heavily depend on Angular features (dependency injection, async pipes etc.) to do a lot of heavy lifting (e.g. cleaning-up unused state when components are destroyed, creating new instances of stores when needed etc.).
 
 </ArticleNote>
