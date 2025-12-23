@@ -9,6 +9,7 @@ const articles = defineCollection({
         dateLastUpdated: z.string().optional(),
         excerpt: z.string().optional(),
         tags: z.array(z.string()).optional(),
+        toc: z.boolean().optional(),
     }),
 });
 
