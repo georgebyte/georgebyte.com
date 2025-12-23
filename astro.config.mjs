@@ -1,6 +1,7 @@
 import {defineConfig} from "astro/config";
 import astroExpressiveCode from "astro-expressive-code";
 import mdx from "@astrojs/mdx";
+import rehypeSlug from "rehype-slug";
 import {legacyRedirects, siteConfig} from "./src/config/site";
 
 const astroExpressiveCodeOptions = {
@@ -21,6 +22,9 @@ const astroExpressiveCodeOptions = {
 export default defineConfig({
     site: siteConfig.url,
     trailingSlash: "always",
+    markdown: {
+        rehypePlugins: [rehypeSlug],
+    },
     integrations: [astroExpressiveCode(astroExpressiveCodeOptions), mdx()],
     redirects: {...legacyRedirects},
 });
