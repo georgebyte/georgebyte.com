@@ -9,13 +9,15 @@ const {items} = Astro.props as Props;
 ---
 
 <nav class="toc" aria-labelledby="toc-title">
-    <div class="toc__title" id="toc-title">Contents</div>
+    <h2 id="toc-title">Contents</h2>
     <ol class="toc__list">
         {
             items.map(item => (
                 <li class={`toc__item toc__item--depth-${item.depth}`}>
                     <a class="toc__link" href={`#${item.slug}`}>
-                        <span class="toc__number">{item.number}</span>
+                        <span class="toc__number">
+                            {item.depth === 1 ? `${item.number}.` : item.number}
+                        </span>
                         <span class="toc__text">{item.text}</span>
                     </a>
                 </li>
@@ -23,3 +25,34 @@ const {items} = Astro.props as Props;
         }
     </ol>
 </nav>
+
+<style>
+    .toc {
+        margin: 24px 0 28px;
+        color: var(--color-dark-gray);
+    }
+
+    .toc__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .toc__item {
+        margin: 5px 0;
+    }
+
+    .toc__item--depth-2 {
+        padding-left: 30px;
+    }
+
+    .toc__item--depth-3 {
+        padding-left: 60px;
+    }
+
+    .toc__link {
+        display: inline-flex;
+        gap: 5px;
+        align-items: baseline;
+    }
+</style>
