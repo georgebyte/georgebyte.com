@@ -2,7 +2,7 @@
 
 Helpful notes for working in this repo:
 
-- Framework: Astro 5 with MDX; content lives in `src/content/articles/*.mdx` and is validated by `src/content/config.ts` (title/description/dates/tags).
+- Framework: Astro 6 with MDX; content lives in `src/content/articles/*.mdx` and is validated by `src/content/config.ts` (title/description/dates/tags).
 - Pages: `src/pages/index.astro` (about), `src/pages/blog/index.astro` (list), `src/pages/blog/[slug].astro` (detail), and tag pages in `src/pages/blog/tags`.
 - Layouts: `src/layouts/BlankLayout.astro` sets global head/meta, imports `src/styles/global.css`; `src/layouts/DefaultLayout.astro` wraps nav/footer; `src/layouts/ArticleLayout.astro` formats post dates and excerpt.
 - Site metadata + legacy redirects: `src/config/site.ts` (navigation, social links, RSS URL, legacy paths), wired into `astro.config.mjs`.

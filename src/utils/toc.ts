@@ -40,7 +40,7 @@ export function buildToc(headings: MarkdownHeading[]): TocItem[] {
 
         tocItems.push({
             depth: heading.depth - 1,
-            number: numberParts.join("."),
+            number: numberParts.join("."), // PRTODO (gb): Include . for h1 numbers as well - currently this . is appended in src/components/ArticleTOC.astro
             slug: heading.slug,
             text: heading.text,
         });
