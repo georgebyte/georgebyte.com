@@ -13,6 +13,8 @@ const {src, filename, alt, description, align = "center"} = Astro.props as Props
 
 const outputSrc = src ? src : filename ? `/images/${filename}` : "";
 const outputAlt = `${alt}${description ? ` - ${description}` : ""}`;
+
+// TODO (gb): Maybe use <Image /> Astro component here: https://docs.astro.build/en/guides/images/#image-
 ---
 
 <figure
